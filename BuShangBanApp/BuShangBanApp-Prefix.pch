@@ -1,0 +1,133 @@
+//
+
+//  BuShangBanApp-Prefix.pch
+
+//  BuShangBanApp
+
+//
+
+//  Created by Zuo on 16/3/16.
+
+//  Copyright © 2016年 Zuo. All rights reserved.
+
+//
+
+
+
+#import <Availability.h>
+
+
+
+#ifndef __IPHONE_3_0
+
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+
+#endif
+
+
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "UIView+KGViewExtend.h"
+#import "QHViewTag.h"
+#import "QHCommonUtil.h"
+#import "MLTransitionAnimation.h"
+#import "UIViewController+MLTransition.h"
+#import "UIViewExt.h"
+#import "SSHttpRequest.h"
+#import "MBProgressHUD+MJ.h"
+#import "QHBasicViewController.h"
+#import "MJExtension.h"
+#import "MBProgressHUD+MJ.h"
+#import <MBProgressHUD.h>
+#import "UITableView+FDTemplateLayoutCell.h"
+#import "UIView+Extension.h"
+
+
+// 网络类
+
+#import "SSLXNetworkManager.h"
+#import "SSLXUrlParamsRequest.h"
+
+
+
+// JSON
+
+#import "NSString+JSON.h"
+
+
+
+// 存储类
+
+#import "KVStoreManager.h"
+
+
+
+// 账户相关
+
+#import "UserAccountManager.h"
+
+
+// 工具类
+
+#import "NSString+Utility.h"
+#import <RegExCategories/RegExCategories.h>
+#define kPasswordExg (@"/[@#\$%\^&\*\s]+/g")
+
+
+
+// UI类
+
+#import <MBProgressHUD+BWMExtension.h>
+
+
+
+// 安全类
+
+#import "TDSafeArray.h"
+#import "NSDictionary+Utility.h"
+
+
+// UI渲染类
+
+#import <YYKit/YYKit.h>
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
+#import "CommonHelper.h"
+#import "Define.h"
+
+
+#endif
+
+
+
+
+
+#define PRINTLOG
+
+#ifdef PRINTLOG
+
+//#define NSLog(...) NSLog(__VA_ARGS__)
+
+#else
+
+#define NSLog(...) {}
+
+#endif
+
+
+
+
+
+#ifdef DEBUG // 处于开发阶段
+
+#define Log(...) NSLog(__VA_ARGS__)
+
+#else // 处于发布阶段
+
+#define Log(...)
+
+#endif
+
