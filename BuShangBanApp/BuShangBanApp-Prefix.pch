@@ -98,6 +98,7 @@
 #import "CommonHelper.h"
 #import "Define.h"
 
+#import "BaseTableCell.h"
 
 #endif
 

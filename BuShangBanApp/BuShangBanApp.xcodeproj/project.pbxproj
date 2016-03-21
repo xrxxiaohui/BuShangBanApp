@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		16F4E9FC092DB9729036DE5C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84061A76B715983FD7DDC680 /* libPods.a */; };
+		A376A7E91CA00F6400B4F9BF /* HomeHeadViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A376A7E61CA00F6400B4F9BF /* HomeHeadViewCell.m */; };
+		A376A7EA1CA00F6400B4F9BF /* HomePageContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A376A7E81CA00F6400B4F9BF /* HomePageContentCell.m */; };
+		A376A7ED1CA00F9000B4F9BF /* DataListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A376A7EC1CA00F9000B4F9BF /* DataListViewController.m */; };
 		A377D11F1C99556F00C779A7 /* MoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A377D11E1C99556F00C779A7 /* MoreCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A377D1231C9955C100C779A7 /* GMDCircleLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A377D1221C9955C100C779A7 /* GMDCircleLoader.m */; };
 		A377D13C1C99560A00C779A7 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A377D1261C99560A00C779A7 /* FontAwesome.ttf */; };
@@ -166,6 +169,12 @@
 /* Begin PBXFileReference section */
 		106682B18EE7A803C07A5F8E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		84061A76B715983FD7DDC680 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A376A7E51CA00F6400B4F9BF /* HomeHeadViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeHeadViewCell.h; sourceTree = "<group>"; };
+		A376A7E61CA00F6400B4F9BF /* HomeHeadViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeHeadViewCell.m; sourceTree = "<group>"; };
+		A376A7E71CA00F6400B4F9BF /* HomePageContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageContentCell.h; sourceTree = "<group>"; };
+		A376A7E81CA00F6400B4F9BF /* HomePageContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageContentCell.m; sourceTree = "<group>"; };
+		A376A7EB1CA00F9000B4F9BF /* DataListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataListViewController.h; sourceTree = "<group>"; };
+		A376A7EC1CA00F9000B4F9BF /* DataListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataListViewController.m; sourceTree = "<group>"; };
 		A377D11D1C99556F00C779A7 /* MoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreCell.h; sourceTree = "<group>"; };
 		A377D11E1C99556F00C779A7 /* MoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCell.m; sourceTree = "<group>"; };
 		A377D1211C9955C100C779A7 /* GMDCircleLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMDCircleLoader.h; sourceTree = "<group>"; };
@@ -713,6 +722,10 @@
 		A377D1E41C9A358200C779A7 /* HomePageCell */ = {
 			isa = PBXGroup;
 			children = (
+				A376A7E51CA00F6400B4F9BF /* HomeHeadViewCell.h */,
+				A376A7E61CA00F6400B4F9BF /* HomeHeadViewCell.m */,
+				A376A7E71CA00F6400B4F9BF /* HomePageContentCell.h */,
+				A376A7E81CA00F6400B4F9BF /* HomePageContentCell.m */,
 			);
 			path = HomePageCell;
 			sourceTree = "<group>";
@@ -755,6 +768,8 @@
 		A39CD3471C99529400F0D8EE /* 发现 */ = {
 			isa = PBXGroup;
 			children = (
+				A376A7EB1CA00F9000B4F9BF /* DataListViewController.h */,
+				A376A7EC1CA00F9000B4F9BF /* DataListViewController.m */,
 				A377D1501C99579200C779A7 /* FindViewController.h */,
 				A377D1511C99579200C779A7 /* FindViewController.m */,
 			);
@@ -1327,6 +1342,7 @@
 				A39CD3431C99514C00F0D8EE /* BaseView.m in Sources */,
 				A377D1401C99560A00C779A7 /* UIColor+YUColor.m in Sources */,
 				A39CD32E1C9950F600F0D8EE /* BaseViewController.m in Sources */,
+				A376A7E91CA00F6400B4F9BF /* HomeHeadViewCell.m in Sources */,
 				A377D1461C99560A00C779A7 /* YUDarkGlassView.m in Sources */,
 				A3FD048F1C993EB900E84A0B /* NSMutableArray+TDSafeMutableArray.m in Sources */,
 				A377D1A71C995E3000C779A7 /* MJRefreshGifHeader.m in Sources */,
@@ -1360,6 +1376,7 @@
 				A39CD3251C9950C600F0D8EE /* SUNSlideSwitchView.m in Sources */,
 				A3FD04421C99397A00E84A0B /* QHConfiguredObj.m in Sources */,
 				A3FD044B1C993C9100E84A0B /* UIViewExt.m in Sources */,
+				A376A7EA1CA00F6400B4F9BF /* HomePageContentCell.m in Sources */,
 				A3FD045D1C993CF100E84A0B /* UIWindow+Extension.m in Sources */,
 				A377D1A81C995E3000C779A7 /* MJRefreshHeader.m in Sources */,
 				A377D13F1C99560A00C779A7 /* YUDIVView.m in Sources */,
@@ -1372,6 +1389,7 @@
 				A377D1431C99560A00C779A7 /* yConst.m in Sources */,
 				A377D1441C99560A00C779A7 /* YUBottomPopSelctModel.m in Sources */,
 				A3FD03EA1C99190700E84A0B /* main.m in Sources */,
+				A376A7ED1CA00F9000B4F9BF /* DataListViewController.m in Sources */,
 				A39CD3411C99514C00F0D8EE /* BaseTableCell.m in Sources */,
 				A3FD045C1C993CF100E84A0B /* UIView+Frame.m in Sources */,
 				A3FD04A21C99403E00E84A0B /* HelloWorldReq.pb.m in Sources */,
