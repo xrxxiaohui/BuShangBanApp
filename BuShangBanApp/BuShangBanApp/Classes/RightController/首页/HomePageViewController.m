@@ -20,8 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self customNavigationBarWithTitle:@"不上班"];
-    
+//    [self customNavigationBarWithTitle:@"不上班"];
+    [self customNavigationBarWithImage:@"logo"];
     UIButton *mentionButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [mentionButton setFrame:CGRectMake(self.navView.width - 60, (self.navView.height - 40)/2, 60, 40)];
     [mentionButton setImage:[UIImage imageNamed:@"newSearch"] forState:UIControlStateNormal];

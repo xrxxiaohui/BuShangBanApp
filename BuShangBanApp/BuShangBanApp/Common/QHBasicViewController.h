@@ -50,5 +50,6 @@ typedef void(^actionBlock)(void);
 -(void)customNavigationBarWithTitle:(NSString *)title ;
 -(void)customLeftItemWithBtn:(UIButton *)sender;
 -(void)customRightItemWithBtn:(UIButton *)sender;
+-(void)customNavigationBarWithImage:(NSString *)image;
 
 @end

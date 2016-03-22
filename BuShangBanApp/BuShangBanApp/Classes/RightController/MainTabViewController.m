@@ -80,7 +80,7 @@ static MainTabViewController *main;
     //    [_tabC.tabBar setTintColor:RGBA(96, 164, 222, 1)];
     [_tabController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabbarBottom"]];
     _tabController.tabBar.translucent = YES;
-    [_tabController.tabBar setAlpha:0.94];
+//    [_tabController.tabBar setAlpha:0.94];
     [_tabController.tabBar setClipsToBounds:YES];
     [_tabController setSelectedIndex:0];
     
@@ -133,7 +133,7 @@ static MainTabViewController *main;
     [_tabController.tabBar setBackgroundImage:[UIImage imageNamed:@"tabbarBottom"]];
     //    _tabController.tabBar.translucent = YES;
     //    [_tabController.tabBar setBackgroundColor:[UIColor redColor]];
-    [_tabController.tabBar setAlpha:0.94];
+//    [_tabController.tabBar setAlpha:0.94];
     
     NSArray *ar = _tabController.viewControllers;
     NSMutableArray *arD = [NSMutableArray new];
@@ -181,8 +181,8 @@ static MainTabViewController *main;
              }
                  
          }
-         [item setTitleTextAttributes:@{NSForegroundColorAttributeName:kAppRedColor,NSFontAttributeName:[UIFont systemFontOfSize:11]} forState:UIControlStateHighlighted];
-         //        [item setTitleTextAttributes:@{NSForegroundColorAttributeName:kTabBtnNormalColor,NSFontAttributeName:[UIFont systemFontOfSize:11]} forState:UIControlStateNormal];
+         [item setTitleTextAttributes:@{NSForegroundColorAttributeName:COLOR(7, 139, 109),NSFontAttributeName:[UIFont systemFontOfSize:12]} forState:UIControlStateHighlighted];
+         [item setTitleTextAttributes:@{NSForegroundColorAttributeName:kTabBtnNormalColor,NSFontAttributeName:[UIFont systemFontOfSize:12]} forState:UIControlStateNormal];
          
          viewController.tabBarItem = item;
          [arD addObject:viewController];

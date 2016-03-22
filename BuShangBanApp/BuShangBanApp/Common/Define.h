@@ -274,7 +274,7 @@
 #define kCommonBottomLineColor COLOR1(227, 227, 227)
 #define kAppRedColor COLOR(0xe6, 0x32, 0x14)
 #define kTabBtnSelectedColor COLOR(0xff, 0x3e, 0x30)
-#define kTabBtnNormalColor COLOR(0x5f, 0x64, 0x6e)
+#define kTabBtnNormalColor COLOR(56, 56, 56)
 
 //cell accessoryType
 #define CellAccessoryNone @"UITableViewCellAccessoryNone"                   // don't show any accessory view
