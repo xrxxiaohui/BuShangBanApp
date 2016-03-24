@@ -6,8 +6,8 @@
 //  Copyright © 2016年 Zuo. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface FindViewController : QHBasicViewController
+
+-(void)clickEvent:(UIButton *)btn;
 
 @end

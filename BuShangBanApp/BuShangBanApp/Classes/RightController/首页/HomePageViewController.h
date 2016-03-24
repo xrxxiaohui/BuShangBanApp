@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 顺顺留学. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+
 #import "QHBasicViewController.h"
 #import "HomeHeadViewCell.h"
 #import "HomePageContentCell.h"

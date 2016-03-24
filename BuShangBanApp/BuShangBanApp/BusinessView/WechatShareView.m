@@ -112,6 +112,10 @@
     return self;
 }
 
+-(void)ShowShareView:(UIButton *)btn
+{
+}
+
 -(id)initWechatShareView {
 
     self = [[WechatShareView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight+20)];

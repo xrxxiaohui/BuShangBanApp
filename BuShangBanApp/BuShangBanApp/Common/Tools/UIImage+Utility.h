@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 Qunar.com. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+
 
 @interface UIImage (Utility)
 

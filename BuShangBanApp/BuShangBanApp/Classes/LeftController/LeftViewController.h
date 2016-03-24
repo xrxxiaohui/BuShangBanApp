@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 Apple. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+
 //#import "MyAnswerViewController.h"
 //#import "MyCareViewController.h"
 //#import "MyMentionViewController.h"

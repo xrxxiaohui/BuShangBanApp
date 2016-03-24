@@ -6,12 +6,13 @@
 //  Copyright © 2016年 Zuo. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
 @interface MainTabViewController : QHBasicViewController
 
 @property(nonatomic,retain)UITabBarController *tabController;;
 
 + (MainTabViewController *)getMain;
+
+-(void)removeLoginOrRigistView;
 
 @end

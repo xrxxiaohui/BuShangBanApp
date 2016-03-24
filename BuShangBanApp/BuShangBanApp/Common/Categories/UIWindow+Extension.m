@@ -51,9 +51,9 @@
     [SliderViewController sharedSliderController].LeftSJudgeOffset=100;
     [SliderViewController sharedSliderController].changeLeftView = ^(CGFloat sca, CGFloat transX)
     {
-        CGAffineTransform ltransS = CGAffineTransformMakeScale(sca, sca);
-        CGAffineTransform ltransT = CGAffineTransformMakeTranslation(transX, 0);
-        CGAffineTransform lconT = CGAffineTransformConcat(ltransT, ltransS);
+//        CGAffineTransform ltransS = CGAffineTransformMakeScale(sca, sca);
+//        CGAffineTransform ltransT = CGAffineTransformMakeTranslation(transX, 0);
+//        CGAffineTransform lconT = CGAffineTransformConcat(ltransT, ltransS);
 //        leftVC.contentView.transform = lconT;
     };
 

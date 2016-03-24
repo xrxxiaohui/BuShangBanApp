@@ -8,11 +8,20 @@
 
 #import "AppDelegate.h"
 #import "UIWindow+Extension.h"
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+#import "WXApi.h"
+#import "WeiboSDK.h"
+#import <AVOSCloud/AVOSCloud.h>
+#import "LoginOrRegistViewController.h"
 
 
 @interface AppDelegate ()
 
+
 @end
+
+AppDelegate *_appDelegate=nil;
 
 @implementation AppDelegate
 
@@ -21,31 +30,51 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self.window makeKeyAndVisible];
-    self.window.backgroundColor = [UIColor whiteColor];
     
+    [self initializePlat:launchOptions];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // 通过版本切换引导页主页
     [self.window switchRootViewController];
-    
-//    [ShareSDK registerApp:@"9af115514064"];
-//    [self initializePlat];
-
-
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
-/*
-- (void)initializePlat
-{
-    //初始化微信，微信开放平台上注册应用
-    [ShareSDK connectWeChatWithAppId:@"wx794b3c8889c9756b"
-                           appSecret:@"7d3aae49a91a29d03c1c7175f62dec25"
-                           wechatCls:[WXApi class]];
-    [ShareSDK importWeChatClass:[WXApi class]];
-}
 
- */
+
+- (void)initializePlat:(NSDictionary *)launchOptions
+{
+    NSString *infoConfigPath =[[NSBundle mainBundle] pathForResource:@"infoConfig" ofType:@"plist"];
+    NSDictionary *tempDic=[[NSDictionary alloc]initWithContentsOfFile:infoConfigPath];
+    NSDictionary *infoConfigDic=[tempDic objectForKey:@"Root"];
+    
+    //    leanCloud
+    [AVOSCloud setApplicationId:
+     [infoConfigDic objectForKey:@"AVOSCloudAPPID"]
+                      clientKey:[infoConfigDic objectForKey:@"AVOSCloudAppKey"]];
+    [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    //    微信  微博
+    
+        [ShareSDK registerApp:@"iosv1101" activePlatforms:@[ @(SSDKPlatformTypeSinaWeibo),  @(SSDKPlatformTypeWechat)]
+                     onImport:^(SSDKPlatformType platformType)
+         {
+             platformType==SSDKPlatformTypeWechat?[ShareSDKConnector connectWeChat:[WXApi class]]:nil;
+             platformType==SSDKPlatformTypeSinaWeibo?[ShareSDKConnector connectWeChat:[WeiboSDK class]]:nil;
+         }
+              onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo)
+         {
+             platformType==SSDKPlatformTypeSinaWeibo?
+             [appInfo SSDKSetupSinaWeiboByAppKey:
+            [infoConfigDic objectForKey:@"shareSDKSinaWeiboAppKey"]
+             appSecret:[infoConfigDic objectForKey:
+            @"shareSDKSinaWeiboAppSecret"] redirectUri:
+            [infoConfigDic objectForKey:@"shareSDKSinaWeiboRedirectUri"]                            authType:SSDKAuthTypeBoth]:nil;
+    
+             platformType==SSDKPlatformTypeWechat?
+             [appInfo SSDKSetupWeChatByAppId:[infoConfigDic objectForKey:
+             @"shareSDKWeChatAppId"]  appSecret:[infoConfigDic objectForKey:@"shareSDKWeChatappSecret"] ]:nil;
+         }];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

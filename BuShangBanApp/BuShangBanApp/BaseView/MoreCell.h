@@ -6,7 +6,7 @@
 //  Copyright (c) 2012年 hers. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+
 #import "GMDCircleLoader.h"
 
 @interface MoreCell : UITableViewCell{

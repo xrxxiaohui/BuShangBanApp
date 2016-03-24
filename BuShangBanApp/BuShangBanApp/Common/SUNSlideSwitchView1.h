@@ -6,7 +6,6 @@
 //  
 //
 
-#import <UIKit/UIKit.h>
 
 @protocol SUNSlideSwitchView1Delegate;
 @interface SUNSlideSwitchView1 : UIView<UIScrollViewDelegate>

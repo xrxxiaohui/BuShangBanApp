@@ -7,7 +7,6 @@
 //  Copyright (c) 2015年 itcast. All rights reserved.
 //  给ScrollView增加下拉刷新、上拉刷新的功能
 
-#import <UIKit/UIKit.h>
 #import "MJRefreshConst.h"
 
 @class MJRefreshGifHeader, MJRefreshLegendHeader, MJRefreshHeader;

@@ -7,7 +7,7 @@
 //  Copyright (c) 2015年 itcast. All rights reserved.
 //  刷新组件：基本的开始刷新和结束刷新行为
 
-#import <UIKit/UIKit.h>
+
 
 @interface MJRefreshComponent : UIView
 {

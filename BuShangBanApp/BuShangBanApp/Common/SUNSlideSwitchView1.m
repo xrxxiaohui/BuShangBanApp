@@ -326,7 +326,7 @@ static const NSUInteger kTagOfRightSideButton = 999;
             //                        }
             //                        else{
             
-            NSString *buttonStr = sender.titleLabel.text;
+//            NSString *buttonStr = sender.titleLabel.text;
             
             _shadowImageView.centerX = sender.centerX;
             

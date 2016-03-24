@@ -6,7 +6,6 @@
 //  Copyright (c) 2014年 ATAW. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
 @interface UIColor (YUColor)
 +(UIColor * )borderGrayColor;

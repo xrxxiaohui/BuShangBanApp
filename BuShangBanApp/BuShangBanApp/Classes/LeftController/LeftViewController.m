@@ -252,6 +252,7 @@
     
     [self reloadImage];
 }
+
 /*
 -(NSDictionary *)personData{
     
@@ -505,6 +506,9 @@
     //    cell.textLabel.textColor = COLOR(0xcd, 0xd3, 0xdd);
     return leftTableViewCell;
 }
+
+-(void)toLoginPage
+{}
 
 #pragma mark - UITableViewDelegate
 
