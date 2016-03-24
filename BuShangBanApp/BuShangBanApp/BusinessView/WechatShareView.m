@@ -7,7 +7,7 @@
 //
 
 #import "WechatShareView.h"
-#import <ShareSDK/ShareSDK.h>
+//#import <ShareSDK/ShareSDK.h>
 
 @interface WechatShareView () {
 
@@ -122,7 +122,7 @@
     
     return self;
 }
-
+/*
 - (void)ShowShareView:(UIButton *)sender {
     
     ShareType type = 0;
@@ -165,7 +165,7 @@
     }];
 }
 
-
+*/
 - (void)dismissShareView
 {
     

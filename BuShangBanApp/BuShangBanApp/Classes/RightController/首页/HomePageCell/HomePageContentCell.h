@@ -10,4 +10,9 @@
 
 @interface HomePageContentCell : BaseTableCell
 
+
+@property (nonatomic, copy) clickBlock zanButtonActionBlock;
+@property (nonatomic, copy) clickBlock commentButtonActionBlock;
+@property (nonatomic, copy) clickBlock shareButtonActionBlock;
+
 @end

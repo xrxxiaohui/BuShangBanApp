@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "UITempletViewController.h"
 #import "QHBasicViewController.h"
+#import "HomeHeadViewCell.h"
+#import "HomePageContentCell.h"
 
 @interface HomePageViewController : QHBasicViewController
 

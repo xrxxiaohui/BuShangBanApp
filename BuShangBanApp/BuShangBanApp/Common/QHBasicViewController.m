@@ -113,11 +113,11 @@
     
     aTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenBounds.size.width/2 - 120,  (_navView.height - 40)/2, 240.0f, 40.0f)];
     aTitleLabel.text = title;
-    aTitleLabel.font = [UIFont systemFontOfSize:17];
+    aTitleLabel.font = [UIFont systemFontOfSize:16];
     aTitleLabel.textAlignment = NSTextAlignmentCenter;
     aTitleLabel.backgroundColor = [UIColor clearColor];
     //    aTitleLabel.adjustsFontSizeToFitWidth = YES;
-    aTitleLabel.textColor = [UIColor blackColor];
+    aTitleLabel.textColor = COLOR(56, 56, 56);
     aTitleLabel.tag = 1022;
     [_navView addSubview:aTitleLabel];
     //    [aTitleLabel release];
@@ -164,11 +164,11 @@
     //设置标题
     aTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenBounds.size.width/2 - 120,  (_navView.height - 40)/2, 240.0f, 40.0f)];
     aTitleLabel.text = szTitle;
-    aTitleLabel.font = [UIFont systemFontOfSize:17];
+    aTitleLabel.font = [UIFont systemFontOfSize:16];
     aTitleLabel.textAlignment = NSTextAlignmentCenter;
     aTitleLabel.backgroundColor = [UIColor clearColor];
 //    aTitleLabel.adjustsFontSizeToFitWidth = YES;
-    aTitleLabel.textColor = [UIColor blackColor];
+    aTitleLabel.textColor = COLOR(56, 56, 56);
     aTitleLabel.tag = 1022;
     [_navView addSubview:aTitleLabel];
 //    [aTitleLabel release];
@@ -220,7 +220,7 @@
     //设置标题
     aTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50,  (_navView.height - 40)/2, kScreenWidth-100, 40.0f)];
     aTitleLabel.text = szTitle;
-    aTitleLabel.font = [UIFont systemFontOfSize:17];
+    aTitleLabel.font = [UIFont systemFontOfSize:16];
     aTitleLabel.textAlignment = NSTextAlignmentCenter;
     aTitleLabel.backgroundColor = [UIColor clearColor];
 //    aTitleLabel.adjustsFontSizeToFitWidth = YES;

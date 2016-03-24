@@ -181,8 +181,8 @@ static MainTabViewController *main;
              }
                  
          }
-         [item setTitleTextAttributes:@{NSForegroundColorAttributeName:COLOR(7, 139, 109),NSFontAttributeName:[UIFont systemFontOfSize:12]} forState:UIControlStateHighlighted];
-         [item setTitleTextAttributes:@{NSForegroundColorAttributeName:kTabBtnNormalColor,NSFontAttributeName:[UIFont systemFontOfSize:12]} forState:UIControlStateNormal];
+         [item setTitleTextAttributes:@{NSForegroundColorAttributeName:COLOR(7, 139, 109),NSFontAttributeName:[UIFont systemFontOfSize:10]} forState:UIControlStateHighlighted];
+         [item setTitleTextAttributes:@{NSForegroundColorAttributeName:kTabBtnNormalColor,NSFontAttributeName:[UIFont systemFontOfSize:10]} forState:UIControlStateNormal];
          
          viewController.tabBarItem = item;
          [arD addObject:viewController];
