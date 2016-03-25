@@ -11,6 +11,7 @@
 #import "BuShangBanImagePicker.h"
 
 
+
 @interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(strong,nonatomic)UITableView *tableView;
@@ -41,9 +42,7 @@
         btn.layer.cornerRadius=btn.width/2;
         btn.clipsToBounds=YES;
         
-        
-        
-        
+
         
         
     }];
@@ -53,6 +52,8 @@
 {
     [self.tableView endEditing:YES];
 }
+
+
 
 -(UITableView *)tableView
 {

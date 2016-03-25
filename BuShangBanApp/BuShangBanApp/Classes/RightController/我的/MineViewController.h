@@ -12,4 +12,5 @@
 
 -(void)settingBtn:(UIButton *)btn;
 
+-(void)hideCalendar:(UIButton *)btn;
 @end

@@ -10,6 +10,10 @@
 		042B099E1CA42D1A003A533D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 042B099D1CA42D1A003A533D /* libz.tbd */; };
 		042B09A01CA42DFC003A533D /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042B099F1CA42DFC003A533D /* JavaScriptCore.framework */; };
 		042B09A21CA42E09003A533D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042B09A11CA42E09003A533D /* ImageIO.framework */; };
+		042B09C11CA5162B003A533D /* BuShangBanCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B09BB1CA5162B003A533D /* BuShangBanCalendar.m */; };
+		042B09C21CA5162B003A533D /* BuShangBanCalendarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B09BD1CA5162B003A533D /* BuShangBanCalendarItem.m */; };
+		042B09C31CA5162B003A533D /* icon_next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 042B09BF1CA5162B003A533D /* icon_next@2x.png */; };
+		042B09C41CA5162B003A533D /* icon_previous@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 042B09C01CA5162B003A533D /* icon_previous@2x.png */; };
 		049EF1E41CA38D8D00C1D68A /* AddressChoicePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF1D51CA38D8D00C1D68A /* AddressChoicePickerView.m */; };
 		049EF1E51CA38D8D00C1D68A /* AddressChoicePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049EF1D61CA38D8D00C1D68A /* AddressChoicePickerView.xib */; };
 		049EF1E61CA38D8D00C1D68A /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 049EF1D71CA38D8D00C1D68A /* area.plist */; };
@@ -193,6 +197,12 @@
 		042B099D1CA42D1A003A533D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		042B099F1CA42DFC003A533D /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		042B09A11CA42E09003A533D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		042B09BA1CA5162B003A533D /* BuShangBanCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuShangBanCalendar.h; sourceTree = "<group>"; };
+		042B09BB1CA5162B003A533D /* BuShangBanCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuShangBanCalendar.m; sourceTree = "<group>"; };
+		042B09BC1CA5162B003A533D /* BuShangBanCalendarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuShangBanCalendarItem.h; sourceTree = "<group>"; };
+		042B09BD1CA5162B003A533D /* BuShangBanCalendarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuShangBanCalendarItem.m; sourceTree = "<group>"; };
+		042B09BF1CA5162B003A533D /* icon_next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_next@2x.png"; sourceTree = "<group>"; };
+		042B09C01CA5162B003A533D /* icon_previous@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_previous@2x.png"; sourceTree = "<group>"; };
 		049EF1D41CA38D8D00C1D68A /* AddressChoicePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressChoicePickerView.h; sourceTree = "<group>"; };
 		049EF1D51CA38D8D00C1D68A /* AddressChoicePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressChoicePickerView.m; sourceTree = "<group>"; };
 		049EF1D61CA38D8D00C1D68A /* AddressChoicePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressChoicePickerView.xib; sourceTree = "<group>"; };
@@ -546,6 +556,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		042B09B91CA5162B003A533D /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				042B09BA1CA5162B003A533D /* BuShangBanCalendar.h */,
+				042B09BB1CA5162B003A533D /* BuShangBanCalendar.m */,
+				042B09BC1CA5162B003A533D /* BuShangBanCalendarItem.h */,
+				042B09BD1CA5162B003A533D /* BuShangBanCalendarItem.m */,
+				042B09BE1CA5162B003A533D /* Resource */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		042B09BE1CA5162B003A533D /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				042B09BF1CA5162B003A533D /* icon_next@2x.png */,
+				042B09C01CA5162B003A533D /* icon_previous@2x.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		049EF1D31CA38D8D00C1D68A /* AddressChoise */ = {
 			isa = PBXGroup;
 			children = (
@@ -1039,6 +1070,7 @@
 		A3FD041D1C9936D000E84A0B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				042B09B91CA5162B003A533D /* Calendar */,
 				049EF2791CA3ED0400C1D68A /* ImagePicker */,
 				049EF1D31CA38D8D00C1D68A /* AddressChoise */,
 				049EF1DA1CA38D8D00C1D68A /* LoginManager.h */,
@@ -1405,9 +1437,11 @@
 				A3FD04591C993CF100E84A0B /* MBProgressHUD.bundle in Resources */,
 				049EF2761CA3904200C1D68A /* ShareSDK.bundle in Resources */,
 				A33447FD1CA299820006C8A3 /* Images.xcassets in Resources */,
+				042B09C41CA5162B003A533D /* icon_previous@2x.png in Resources */,
 				A377D1A11C995E3000C779A7 /* LICENSE in Resources */,
 				049EF1E51CA38D8D00C1D68A /* AddressChoicePickerView.xib in Resources */,
 				049EF2721CA3904200C1D68A /* WeiboSDK.bundle in Resources */,
+				042B09C31CA5162B003A533D /* icon_next@2x.png in Resources */,
 				A3FD041C1C99197300E84A0B /* Podfile in Resources */,
 				A3FD03F31C99190700E84A0B /* Main.storyboard in Resources */,
 				A33447F71CA290860006C8A3 /* 3.jpg in Resources */,
@@ -1515,6 +1549,7 @@
 				A3FD045A1C993CF100E84A0B /* UILabel+Attributed.m in Sources */,
 				A377D13E1C99560A00C779A7 /* UIButton+Bootstrap.m in Sources */,
 				A3FD04261C99386700E84A0B /* QHBasicViewController.m in Sources */,
+				042B09C21CA5162B003A533D /* BuShangBanCalendarItem.m in Sources */,
 				049EF2391CA38FA000C1D68A /* FindView.m in Sources */,
 				A39CD29C1C9950A300F0D8EE /* MainTabViewController.m in Sources */,
 				A3FD04931C993EB900E84A0B /* NSString+JSON.m in Sources */,
@@ -1533,6 +1568,7 @@
 				049EF23A1CA38FA000C1D68A /* FindViewController.m in Sources */,
 				A39CD3421C99514C00F0D8EE /* BaseTipsMoreCell.m in Sources */,
 				A39CD1721C994F8900F0D8EE /* JSONManager.m in Sources */,
+				042B09C11CA5162B003A533D /* BuShangBanCalendar.m in Sources */,
 				049EF2441CA38FCE00C1D68A /* SettingViewController.m in Sources */,
 				A377D1A41C995E3000C779A7 /* MJRefreshConst.m in Sources */,
 				A3FD04581C993CF100E84A0B /* MBProgressHUD+MJ.m in Sources */,
@@ -1747,7 +1783,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu89;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BuShangBanApp-Prefix.pch";
 				INFOPLIST_FILE = BuShangBanApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1762,6 +1798,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bushangban.bushangban;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "af358486-2b9d-4f05-a3d5-dcf1b140e146";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1790,7 +1827,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu89;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BuShangBanApp-Prefix.pch";
 				INFOPLIST_FILE = BuShangBanApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1805,6 +1842,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bushangban.bushangban;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "af358486-2b9d-4f05-a3d5-dcf1b140e146";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -72,7 +72,7 @@ static MainTabViewController *main;
     
     _tabController.viewControllers = @[homePageViewController,findViewController,messageController,mineViewController];
     
-    [_tabController.view addSubview:_loginOrRegistVC.view];
+//    [_tabController.view addSubview:_loginOrRegistVC.view];
     [self reloadImage];
     //    [[UITabBarItem appearance] setTitleTextAttributes:
     //        [NSDictionary dictionaryWithObjectsAndKeys:RGBA(96, 164, 222, 1), UITextAttributeTextColor, nil]

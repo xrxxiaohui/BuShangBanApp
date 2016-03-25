@@ -43,14 +43,14 @@
             btn.left=_left ;
             btn.top=_top ;
             UILabel *label=[self labelWithText:titleArray[i] btn:btn];
-            if (i%3==2)
+            if (i%3 == 2)
             {
                 _top=marginTop + label.bottom;
                 _left=marginLeft ;
             }
             else
             {
-                _left+=marginLeft +  btn.width;
+                _left= marginLeft +  btn.right;
             }
         }
     }

@@ -12,11 +12,13 @@
 #import "TableHeaderView.h"
 #import "SettingViewController.h"
 #import "SliderViewController.h"
+#import "BuShangBanCalendar.h"
 
 #define tableHeaderViewHeight 200
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 
+@property(nonatomic,strong)BuShangBanCalendar *calendar;
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)TableViewCell *cell;
 @property(nonatomic,strong)NSArray *titleArray;
@@ -26,9 +28,7 @@
 @end
 
 @implementation MineViewController
-{
-    NSIndexPath *_indexPath;
-}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -37,10 +37,46 @@
     [self.view addSubview:self.tableView];
 }
 
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.tableView endEditing:YES];
+}
+
 -(void)settingBtn:(UIButton *)btn
 {
     [[SliderViewController sharedSliderController].navigationController pushViewController:[[SettingViewController alloc]init] animated:YES];
 }
+-(void)__showCalendar
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.calendar.alpha=1;
+    }];
+}
+
+-(void)hideCalendar:(UIButton *)btn
+{
+   _cell.contentTF.text =[[NSString stringWithFormat:@"%@",_calendar.date]componentsSeparatedByString:@" "][0] ;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.calendar.alpha=0.01;
+    }];
+    [_calendar removeFromSuperview];
+    _calendar=nil;
+}
+
+#pragma mark --- 懒加载 ---
+-(BuShangBanCalendar *)calendar
+{
+    if (!_calendar)
+    {
+        _calendar=[[BuShangBanCalendar alloc]initWithCurrentDate:[NSDate date]];
+        _calendar.top=20;
+        _calendar.alpha=0;
+        [self.view addSubview:_calendar];
+    }
+    return _calendar;
+}
+
 
 -(NSMutableArray *)contentArray
 {
@@ -77,11 +113,8 @@
     return _tableView;
 }
 
+#pragma mark --- delegate ---
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 4;
@@ -91,6 +124,7 @@
 {
     return 1;
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 1;
@@ -103,7 +137,6 @@
     cell.contentTF.text=_contentArray[indexPath.row];
     if (indexPath.row==0)
     {
-        [cell.contentTF endEditing:YES];
         cell.contentTF.delegate=self;
     }
     return cell;
@@ -111,11 +144,15 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView endEditing:YES];
     _cell = [tableView cellForRowAtIndexPath:indexPath];
     if (indexPath.row==0)
     {
-        _indexPath=indexPath;
         [self textFieldDidBeginEditing:_cell.contentTF];
+    }
+    else if(indexPath.row == 1)
+    {
+        [self __showCalendar];
     }
     else
     {
@@ -124,7 +161,6 @@
     }
     _contentArray[indexPath.row]=_cell.contentTF.text;
 }
-
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
@@ -135,10 +171,4 @@
     };
     [addressChoice show];
 }
-
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    [self.tableView endEditing:YES];
-}
-
 @end
