@@ -23,14 +23,16 @@
     // 当前软件的版本号（从Info.plist中获得）
     NSString *currentVersion = [NSBundle mainBundle].infoDictionary[key];
     
-    if ([currentVersion isEqualToString:lastVersion]) { // 版本号相同：这次打开和上次打开的是同一个版本
-        self.rootViewController = [self mainVc];
-    } else { // 这次打开的版本和上一次不一样，显示新特性
-        self.rootViewController = [[SSNewFeatureViewController alloc] init];
-        // 将当前的版本号存进沙盒
-        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:key];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
+//    if ([currentVersion isEqualToString:lastVersion]) { // 版本号相同：这次打开和上次打开的是同一个版本
+//        self.rootViewController = [self mainVc];
+//    } else { // 这次打开的版本和上一次不一样，显示新特性
+//        self.rootViewController = [[SSNewFeatureViewController alloc] init];
+//        // 将当前的版本号存进沙盒
+//        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:key];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+//    }
+    self.rootViewController = [self mainVc];
+
 }
 
 //创建主视图和左视图

@@ -34,7 +34,12 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
+
+        UIImageView *lineImageView = [[UIImageView alloc] init];
+        lineImageView.backgroundColor = kCommonBottomLineColor;
+        [lineImageView setFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
+        [self.contentView addSubview:lineImageView];
+
         self.backgroundColor = [UIColor whiteColor];
         _leftUpButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_leftUpButton setFrame:CGRectMake(12, 0, 34, 40)];
@@ -78,26 +83,39 @@
         _mainContentLabel = [[UILabel alloc] init];
         [_mainContentLabel setText:@"无论创业还是职场，总会有一时流行的东西，然后若有一天你也想站在顶端受人尊敬，那么最好的办法就是提高自己！"];
         [_mainContentLabel setFont:[UIFont systemFontOfSize:12]];
-        [_mainContentLabel setFrame:CGRectMake(20, _mainTitleLabel.bottom+8, kScreenWidth-40, 45)];
+        [_mainContentLabel setFrame:CGRectMake(20, _mainTitleLabel.bottom+8, kScreenWidth-40, 30)];
         _mainContentLabel.numberOfLines = 0;
         [_mainContentLabel setTextColor:COLOR(99, 99, 99)];
         [self.contentView addSubview:_mainContentLabel];
         
         _zanButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_zanButton setFrame:CGRectMake(kScreenWidth-50, _mainContentLabel.bottom+10, 12, 12)];
+        [_zanButton setFrame:CGRectMake(kScreenWidth-60, _mainContentLabel.bottom+10, 14, 14)];
+        [_zanButton setImage:[UIImage imageNamed:@"like_nomal"] forState:UIControlStateNormal];
         [_zanButton addTarget:self action:@selector(zanButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_zanButton];
         
         _remarkButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_remarkButton setFrame:CGRectMake(kScreenWidth-50, _mainContentLabel.bottom+10, 12, 12)];
+        [_remarkButton setFrame:CGRectMake(kScreenWidth-120, _mainContentLabel.bottom+10, 14, 14)];
         [_remarkButton addTarget:self action:@selector(commentButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_remarkButton setImage:[UIImage imageNamed:@"comment_nomal"] forState:UIControlStateNormal];
         [self.contentView addSubview:_remarkButton];
 
         _shareButton  = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_shareButton setFrame:CGRectMake(kScreenWidth-50, _mainContentLabel.bottom+10, 12, 12)];
+        [_shareButton setFrame:CGRectMake(kScreenWidth-180, _mainContentLabel.bottom+10, 14, 14)];
         [_shareButton addTarget:self action:@selector(shareButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_shareButton setImage:[UIImage imageNamed:@"share_nomal"] forState:UIControlStateNormal];
+
         [self.contentView addSubview:_shareButton];
 
+        UIImageView *lineImageView1 = [[UIImageView alloc] init];
+        lineImageView1.backgroundColor = kCommonBottomLineColor;
+        [lineImageView1 setFrame:CGRectMake(0, _shareButton.bottom+8, kScreenWidth, 0.5)];
+        [self.contentView addSubview:lineImageView1];
+
+        UIView *grayView = [[UIView alloc] init];
+        [grayView setBackgroundColor:COLOR(249, 249, 249)];
+        [grayView setFrame:CGRectMake(0, _shareButton.bottom+8.5, kScreenWidth, 12)];
+        [self.contentView addSubview:grayView];
         
     }
     
@@ -106,6 +124,11 @@
 
 -(void)refreshUI {
     
+}
+
++(CGFloat)getCellHeight {
+    
+    return 426-60;
 }
 
 -(void)zanButtonClick:(UIButton *)sender {
