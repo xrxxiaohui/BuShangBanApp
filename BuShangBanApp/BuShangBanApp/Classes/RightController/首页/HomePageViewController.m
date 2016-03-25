@@ -43,19 +43,31 @@
 }
 
 -(void)createTabelView{
-    
+
+    UIImageView *lineImageView = [[UIImageView alloc] init];
+    lineImageView.backgroundColor = COLOR(0xd9, 0xd9, 0xd9);
+    [lineImageView setFrame:CGRectMake(0, 64, kScreenWidth, 1)];
+    [self.view addSubview:lineImageView];
+
+
+
     CGFloat height = kScreenHeight - 44;
-    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, height) style:UITableViewStylePlain];
+    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 65, self.view.width, height) style:UITableViewStylePlain];
     
     _mainTableView.delegate = self;
     _mainTableView.dataSource = self;
     _mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+    _mainTableView.backgroundColor = COLOR(249, 249, 249);
     //设置下拉刷新回调
     [_mainTableView addGifHeaderWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
 //    [_mainTableView addGifFooterWithRefreshingTarget:self refreshingAction:@selector(requestDataMore)];
     
     [self.view addSubview:_mainTableView];
+
+    UIImageView *lineImageView1 = [[UIImageView alloc] init];
+    lineImageView1.backgroundColor = COLOR(0xd9, 0xd9, 0xd9);
+    [lineImageView1 setFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth, 1)];
+    [self.view addSubview:lineImageView1];
 }
 
 -(void)loadNewData{
@@ -118,8 +130,7 @@
     if(section == 0)
         return 1;
     else
-//        return _dataArray.count;
-        return 1;
+        return 3;
 }
 
 
@@ -138,7 +149,7 @@
         return 260*kScreenWidth/414;
     }else{
     
-        return 428;
+        return [HomePageContentCell getCellHeight];
     }
 }
 
@@ -159,6 +170,7 @@
         if (cell == nil) {
             cell = [[HomePageContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
         }
+        
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
