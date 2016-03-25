@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "QHBasicViewController.h"
 #import "HomeHeadViewCell.h"
+#import "BaseWebViewController.h"
 #import "HomePageContentCell.h"
 
 @interface HomePageViewController : QHBasicViewController
