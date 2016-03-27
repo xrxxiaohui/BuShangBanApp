@@ -9,12 +9,11 @@
 #import "FindView.h"
 #import "FindViewController.h"
 
-
-#define findViewController  [[FindViewController alloc]init]
 #define adapt  [[[ScreenAdapt alloc]init] adapt]
+#define findViewController  [[FindViewController alloc]init]
 #define margin 6
 #define marginTop floor(50 * adapt.scaleHeight)
-#define marginLeft floor(66 * adapt.scaleWidth)
+#define marginLeft floor((kScreenWidth-150)/4)
 #define TAG 1000
 
 
@@ -26,6 +25,7 @@
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
+    self.frame=CGRectMake(0, 64, kScreenWidth, 404 *adapt.scaleHeight);
     if (self)
     {
         self.backgroundColor=[UIColor whiteColor];

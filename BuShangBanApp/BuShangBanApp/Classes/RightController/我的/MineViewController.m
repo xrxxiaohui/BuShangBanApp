@@ -13,28 +13,48 @@
 #import "SettingViewController.h"
 #import "SliderViewController.h"
 #import "BuShangBanCalendar.h"
-
-#define tableHeaderViewHeight 200
+#import "FileManager.h"
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 
 @property(nonatomic,strong)BuShangBanCalendar *calendar;
 @property(nonatomic,strong)UITableView *tableView;
-@property(nonatomic,strong)TableViewCell *cell;
 @property(nonatomic,strong)NSArray *titleArray;
-@property(nonatomic,strong)NSMutableArray *contentArray;
+@property(nonatomic,strong)NSArray *contentArray;
 @property(nonatomic,strong)TableHeaderView * headerView;
 
 @end
 
 @implementation MineViewController
-
+{
+    TableViewCell *_cell;
+    NSIndexPath   *_indexPath;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets=NO;
     _titleArray=@[@"所在地",@"生日",@"职业",@"兴趣"];
+//    if (_user.isLogin) {
+    _contentArray=@[@"",@"",@"",@""];
+//         _contentArray=@[_user.address,_user.birthDay,_user.UserExtend.occupation,_user.UserExtend.interest];
+//    }
     [self.view addSubview:self.tableView];
+}
+
+-(void)saveOrEditInfo:(UIButton *)sender
+{
+    [self.view endEditing:YES];
+    sender.selected=!sender.selected;
+    NSString *title=sender.selected?@"保 存":@"编 辑";
+    [sender setTitle:title forState:UIControlStateNormal];
+
+//    [FileManager archiverObject:_user key:@"kUser" fileName:@"user.achiever"];
+    
+//    [FileManager upLoadDataToSeverWithURL:[NSURL URLWithString:@""] post:YES dic:nil infor:^(BOOL error, NSString *info) {
+//        
+//        
+//    }];
 }
 
 
@@ -47,6 +67,7 @@
 {
     [[SliderViewController sharedSliderController].navigationController pushViewController:[[SettingViewController alloc]init] animated:YES];
 }
+
 -(void)__showCalendar
 {
     [UIView animateWithDuration:0.5 animations:^{
@@ -65,6 +86,7 @@
 }
 
 #pragma mark --- 懒加载 ---
+
 -(BuShangBanCalendar *)calendar
 {
     if (!_calendar)
@@ -77,25 +99,22 @@
     return _calendar;
 }
 
-
--(NSMutableArray *)contentArray
-{
-    if (!_contentArray)
-    {
-        _contentArray=[NSMutableArray arrayWithArray:@[@"",@"",@"",@""]];
-    }
-    return _contentArray;
-}
-
 -(TableHeaderView *)headerView
 {
     if (!_headerView)
     {
-        _headerView  = [[TableHeaderView alloc]initWithFrame:CGRectMake(0, 0, self.view.width,tableHeaderViewHeight)];
-//        _headerView.bgImageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@""]];
-//        _headerView.headImageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@""]];
+        _headerView  = [[TableHeaderView alloc]init];
+        UIImage *image=[UIImage imageWithContentsOfFile:_user.avatar];
+        if (!image) {
+            image=[UIImage imageNamed:@"Default avatar"];
+        }
+        [_headerView.headImageBtn setBackgroundImage:image forState:UIControlStateNormal];
+        
+//        [_headerView  descriptionLabelWithText:_user.UserExtend.experience];
+//        [_headerView nickNameLabelWithNickName:_user.nickname label:_user.UserExtend.myLabel];
+        
         [_headerView  descriptionLabelWithText:@"前36kr老编辑zuo，五年媒体经验"];
-        [_headerView nickNameLabelWithNickName:@"老编辑 | " label:@"不上班创始人"];
+        [_headerView nickNameLabelWithNickName:@"老编辑" label:@"不上班创始人"];
     }
     return _headerView;
 }
@@ -104,9 +123,8 @@
 {
     if (!_tableView)
     {
-        _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,0,kScreenHeight, kScreenHeight) style:UITableViewStylePlain];
+        _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0,0,kScreenHeight, kScreenHeight) style:UITableViewStyleGrouped];
         _tableView.tableHeaderView=self.headerView;
-        _tableView.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
         _tableView.delegate=self;
         _tableView.dataSource=self;
     }
@@ -139,12 +157,16 @@
     {
         cell.contentTF.delegate=self;
     }
+//    if (_user.isLogin) {
+//        cell.userInteractionEnabled=NO;
+//    }
     return cell;
 }
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [tableView endEditing:YES];
+    _indexPath=indexPath;
     _cell = [tableView cellForRowAtIndexPath:indexPath];
     if (indexPath.row==0)
     {
@@ -159,7 +181,6 @@
         _cell.contentTF.userInteractionEnabled=YES;
         [_cell.contentTF becomeFirstResponder];
     }
-    _contentArray[indexPath.row]=_cell.contentTF.text;
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField
@@ -170,5 +191,25 @@
         textField.text=[NSString stringWithFormat:@"%@",locate];
     };
     [addressChoice show];
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    switch (_indexPath.row) {
+        case 0:
+            _user.address=textField.text;
+            break;
+        case 1:
+            _user.birthDay=textField.text;
+            break;
+        case 2:
+            _user.UserExtend.occupation=textField.text;
+            break;
+        case 3:
+            _user.UserExtend.interest=textField.text;
+            break;
+        default:
+            break;
+    }
 }
 @end

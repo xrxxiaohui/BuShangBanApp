@@ -7,7 +7,8 @@
 //
 
 #import "ScreenAdapt.h"
-#import "iPhoneScreen.h"
+
+
 @implementation ScreenAdapt
 
 -(ScreenAdapt *)adapt

@@ -7,6 +7,7 @@
 //
 
 @interface ScreenAdapt : NSObject
+#import "iPhoneScreen.h"
 
 @property(nonatomic,assign)CGFloat scaleWidth;
 @property(nonatomic,assign)CGFloat scaleHeight;

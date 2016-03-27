@@ -201,17 +201,17 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
     
     if (indexPath.row < firstWeekday) {    // 小于这个月的第一天
         NSInteger day = totalDaysOfLastMonth - firstWeekday + indexPath.row + 1;
-        cell.dayLabel.text = [NSString stringWithFormat:@"%ld", day];
+        cell.dayLabel.text = [NSString stringWithFormat:@"%ld", (long)day];
         cell.dayLabel.textColor = [UIColor grayColor];
         cell.chineseDayLabel.text = [self chineseCalendarOfDate:[self dateOfMonth:FDCalendarMonthPrevious WithDay:day]];
     } else if (indexPath.row >= totalDaysOfMonth + firstWeekday) {    // 大于这个月的最后一天
         NSInteger day = indexPath.row - totalDaysOfMonth - firstWeekday + 1;
-        cell.dayLabel.text = [NSString stringWithFormat:@"%ld", day];
+        cell.dayLabel.text = [NSString stringWithFormat:@"%ld", (long)day];
         cell.dayLabel.textColor = [UIColor grayColor];
         cell.chineseDayLabel.text = [self chineseCalendarOfDate:[self dateOfMonth:FDCalendarMonthNext WithDay:day]];
     } else {    // 属于这个月
         NSInteger day = indexPath.row - firstWeekday + 1;
-        cell.dayLabel.text= [NSString stringWithFormat:@"%ld", day];
+        cell.dayLabel.text= [NSString stringWithFormat:@"%ld", (long)day];
         
         if (day == [[NSCalendar currentCalendar] component:NSCalendarUnitDay fromDate:self.date]) {
             cell.backgroundColor = [UIColor redColor];

@@ -132,3 +132,12 @@
 
 #endif
 
+//字体
+#define nomalFont [UIFont systemFontOfSize:14.f]
+#define smallerFont [UIFont systemFontOfSize:12.f]
+//颜色
+#define nomalTextColor [UIColor colorWithHexString:@"#383838"]
+#define placeHoldTextColor [UIColor colorWithHexString:@"#7c7c7c"]
+
+//用户信息
+#define _user [[User alloc]init]

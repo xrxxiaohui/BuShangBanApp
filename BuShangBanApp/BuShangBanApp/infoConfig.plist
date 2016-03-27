@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AppName</key>
+	<string>天天不上班</string>
 	<key>AVOSCloudAppKey</key>
 	<string>6DYAlNtMVqters495KKlBdwP</string>
 	<key>AVOSCloudAPPID</key>
@@ -10,14 +12,12 @@
 	<string>2ExS6gJIYWjqOgce4DNhnmqa</string>
 	<key>shareSDKSinaWeiboAppKey</key>
 	<string>1701171842</string>
-	<key>AppName</key>
-	<string>天天不上班</string>
 	<key>shareSDKWeChatappSecret</key>
-	<string></string>
+	<string>17b1e9d6437f831f5931f576fdcd4ed2</string>
 	<key>shareSDKWeChatAppId</key>
-	<string></string>
+	<string>wx7f73ba75d829ffa9</string>
 	<key>shareSDKSinaWeiboRedirectUri</key>
-	<string></string>
+	<string>https://api.weibo.com/oauth2/default.html</string>
 	<key>shareSDKSinaWeiboAppSecret</key>
 	<string>62d3a4f2b2c8c00599f05a5e675dcbea</string>
 </dict>

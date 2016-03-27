@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self customNavigationBarWithTitle:@"发现"];
-    FindView *findView=[[FindView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, 404)];
+    FindView *findView=[[FindView alloc]init];
     [self.view addSubview:findView];
 }
 

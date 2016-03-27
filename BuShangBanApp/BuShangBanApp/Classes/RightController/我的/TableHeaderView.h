@@ -12,7 +12,7 @@
 
 @interface TableHeaderView : BaseView
 @property(nonatomic,strong)UIImageView *bgImageView;
-@property(nonatomic,strong)UIImageView *headImageView;
+@property(nonatomic,strong)UIButton *headImageBtn;
 
 -(void)nickNameLabelWithNickName:(NSString *)nickName label:(NSString *)label;
 -(void)descriptionLabelWithText:(NSString *)text;

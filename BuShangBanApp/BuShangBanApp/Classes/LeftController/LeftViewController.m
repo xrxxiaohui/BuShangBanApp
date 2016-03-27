@@ -39,7 +39,7 @@
     
     UIButton *loginButton;
 
-    NSDictionary *_user;
+//    NSDictionary *_user;
 }
 
 @property(nonatomic,retain)NSMutableArray *dataArray;

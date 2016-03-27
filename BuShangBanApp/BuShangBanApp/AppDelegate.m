@@ -15,9 +15,7 @@
 #import <AVOSCloud/AVOSCloud.h>
 #import "LoginOrRegistViewController.h"
 
-
 @interface AppDelegate ()
-
 
 @end
 

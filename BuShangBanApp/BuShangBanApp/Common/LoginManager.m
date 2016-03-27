@@ -16,7 +16,10 @@
 
 @end
 
+
 @implementation LoginManager
+
+
 
 #pragma mark - 第三方登录
 -(void)ssoLogInWechat
