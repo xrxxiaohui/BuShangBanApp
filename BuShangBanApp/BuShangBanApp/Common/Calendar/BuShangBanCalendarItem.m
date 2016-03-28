@@ -1,16 +1,12 @@
 //
 //  BuShangBanCalendarItem.m
-//  FDCalendarDemo
-//
-//  Created by mac on 16/3/25.
-//  Copyright © 2016年 fergusding. All rights reserved.
-//
 
 #import "BuShangBanCalendarItem.h"
 
 @interface FDCalendarCell : UICollectionViewCell
 
 - (UILabel *)dayLabel;
+
 - (UILabel *)chineseDayLabel;
 
 @end
@@ -31,13 +27,12 @@
     return _dayLabel;
 }
 
-- (UILabel *)chineseDayLabel
-{
+- (UILabel *)chineseDayLabel {
     if (!_chineseDayLabel) {
         _chineseDayLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 20, 10)];
         _chineseDayLabel.textAlignment = NSTextAlignmentCenter;
         _chineseDayLabel.font = [UIFont boldSystemFontOfSize:9];
-        
+
         CGPoint point = _dayLabel.center;
         point.y += 15;
         _chineseDayLabel.center = point;
@@ -60,16 +55,15 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
     FDCalendarMonthNext = 2,
 };
 
-@interface  BuShangBanCalendarItem () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface BuShangBanCalendarItem () <UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (strong, nonatomic) UICollectionView *collectionView;
+@property(strong, nonatomic) UICollectionView *collectionView;
 
 @end
 
 @implementation BuShangBanCalendarItem
 
-- (instancetype)init
-{
+- (instancetype)init {
     if (self = [super init]) {
         self.backgroundColor = [UIColor clearColor];
         [self setupCollectionView];
@@ -109,13 +103,13 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
 - (void)setupCollectionView {
     CGFloat itemWidth = (DeviceWidth - CollectionViewHorizonMargin * 2) / 7;
     CGFloat itemHeight = itemWidth;
-    
+
     UICollectionViewFlowLayout *flowLayot = [[UICollectionViewFlowLayout alloc] init];
     flowLayot.sectionInset = UIEdgeInsetsZero;
     flowLayot.itemSize = CGSizeMake(itemWidth, itemHeight);
     flowLayot.minimumLineSpacing = 0;
     flowLayot.minimumInteritemSpacing = 0;
-    
+
     CGRect collectionViewFrame = CGRectMake(CollectionViewHorizonMargin, CollectionViewVerticalMargin, DeviceWidth - CollectionViewHorizonMargin * 2, itemHeight * 6);
     self.collectionView = [[UICollectionView alloc] initWithFrame:collectionViewFrame collectionViewLayout:flowLayot];
     [self addSubview:self.collectionView];
@@ -146,23 +140,23 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
 - (NSDate *)dateOfMonth:(FDCalendarMonth)calendarMonth WithDay:(NSInteger)day {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate *date;
-    
+
     switch (calendarMonth) {
         case FDCalendarMonthPrevious:
             date = [self previousMonthDate];
             break;
-            
+
         case FDCalendarMonthCurrent:
             date = self.date;
             break;
-            
+
         case FDCalendarMonthNext:
             date = [self nextMonthDate];
             break;
         default:
             break;
     }
-    
+
     NSDateComponents *components = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:date];
     [components setDay:day];
     NSDate *dateOfDay = [calendar dateFromComponents:components];
@@ -179,7 +173,7 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
     } else {
         day = ChineseDays[components.day - 1];
     }
-    
+
     return day;
 }
 
@@ -198,42 +192,41 @@ typedef NS_ENUM(NSUInteger, FDCalendarMonth) {
     NSInteger firstWeekday = [self weekdayOfFirstDayInDate];
     NSInteger totalDaysOfMonth = [self totalDaysInMonthOfDate:self.date];
     NSInteger totalDaysOfLastMonth = [self totalDaysInMonthOfDate:[self previousMonthDate]];
-    
+
     if (indexPath.row < firstWeekday) {    // 小于这个月的第一天
         NSInteger day = totalDaysOfLastMonth - firstWeekday + indexPath.row + 1;
-        cell.dayLabel.text = [NSString stringWithFormat:@"%ld", day];
+        cell.dayLabel.text = [NSString stringWithFormat:@"%ld", (long) day];
         cell.dayLabel.textColor = [UIColor grayColor];
         cell.chineseDayLabel.text = [self chineseCalendarOfDate:[self dateOfMonth:FDCalendarMonthPrevious WithDay:day]];
     } else if (indexPath.row >= totalDaysOfMonth + firstWeekday) {    // 大于这个月的最后一天
         NSInteger day = indexPath.row - totalDaysOfMonth - firstWeekday + 1;
-        cell.dayLabel.text = [NSString stringWithFormat:@"%ld", day];
+        cell.dayLabel.text = [NSString stringWithFormat:@"%ld", (long) day];
         cell.dayLabel.textColor = [UIColor grayColor];
         cell.chineseDayLabel.text = [self chineseCalendarOfDate:[self dateOfMonth:FDCalendarMonthNext WithDay:day]];
     } else {    // 属于这个月
         NSInteger day = indexPath.row - firstWeekday + 1;
-        cell.dayLabel.text= [NSString stringWithFormat:@"%ld", day];
-        
+        cell.dayLabel.text = [NSString stringWithFormat:@"%ld", (long) day];
+
         if (day == [[NSCalendar currentCalendar] component:NSCalendarUnitDay fromDate:self.date]) {
             cell.backgroundColor = [UIColor redColor];
             cell.layer.cornerRadius = cell.frame.size.height / 2;
             cell.dayLabel.textColor = [UIColor whiteColor];
             cell.chineseDayLabel.textColor = [UIColor whiteColor];
         }
-        
+
         // 如果日期和当期日期同年同月不同天, 注：第一个判断中的方法是iOS8的新API, 会比较传入单元以及比传入单元大得单元上数据是否相等，亲测同时传入Year和Month结果错误
         if ([[NSCalendar currentCalendar] isDate:[NSDate date] equalToDate:self.date toUnitGranularity:NSCalendarUnitMonth] && ![[NSCalendar currentCalendar] isDateInToday:self.date]) {
-            
+
             // 将当前日期的那天高亮显示
             if (day == [[NSCalendar currentCalendar] component:NSCalendarUnitDay fromDate:[NSDate date]]) {
                 cell.dayLabel.textColor = [UIColor redColor];
             }
         }
-        
+
         cell.chineseDayLabel.text = [self chineseCalendarOfDate:[self dateOfMonth:FDCalendarMonthCurrent WithDay:day]];
     }
-    
-    
-    
+
+
     return cell;
 }
 

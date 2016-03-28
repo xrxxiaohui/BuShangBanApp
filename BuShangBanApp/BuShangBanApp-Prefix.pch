@@ -17,13 +17,11 @@
 #import <Availability.h>
 
 
-
 #ifndef __IPHONE_3_0
 
 #warning "This project uses features only available in iOS SDK 3.0 and later."
 
 #endif
-
 
 
 #ifdef __OBJC__
@@ -75,6 +73,7 @@
 
 #import "NSString+Utility.h"
 #import <RegExCategories/RegExCategories.h>
+
 #define kPasswordExg (@"/[@#\$%\^&\*\s]+/g")
 
 
@@ -104,8 +103,6 @@
 #endif
 
 
-
-
 #define PRINTLOG
 
 #ifdef PRINTLOG
@@ -119,9 +116,6 @@
 #endif
 
 
-
-
-
 #ifdef DEBUG // 处于开发阶段
 
 #define Log(...) NSLog(__VA_ARGS__)
@@ -132,3 +126,12 @@
 
 #endif
 
+//字体
+#define nomalFont [UIFont systemFontOfSize:14.f]
+#define smallerFont [UIFont systemFontOfSize:12.f]
+//颜色
+#define nomalTextColor [UIColor colorWithHexString:@"#383838"]
+#define placeHoldTextColor [UIColor colorWithHexString:@"#7c7c7c"]
+
+//用户信息
+#define _user [[User alloc]init]

@@ -12,57 +12,50 @@
 #import "MainTabViewController.h"
 
 #define mainTC [[MainTabViewController alloc]init]
+
 @interface LoginManager ()
 
 @end
 
 @implementation LoginManager
 
+
 #pragma mark - 第三方登录
--(void)ssoLogInWechat
-{
+
+- (void)ssoLogInWechat {
     [mainTC removeLoginOrRigistView];
-    if([WXApi isWXAppInstalled])
-    {
+    if ([WXApi isWXAppInstalled]) {
         [ShareSDK getUserInfo:SSDKPlatformTypeWechat onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
-            if (state  == SSDKResponseStateSuccess)
-            {
+            if (state == SSDKResponseStateSuccess) {
                 [MBProgressHUD showSuccess:@"登录成功"];
 //                _user.username;
-            }else if (state == SSDKResponseStateFail)
-            {
+            } else if (state == SSDKResponseStateFail) {
                 [MBProgressHUD showError:@"登录失败"];
             }
         }];
-    }else
-    {
+    } else {
         [MBProgressHUD showError:@"没有安装维修客户端"];
     }
 }
 
--(void)ssoLogInWeibo
-{
+- (void)ssoLogInWeibo {
     [mainTC removeLoginOrRigistView];
     [ShareSDK getUserInfo:SSDKPlatformTypeSinaWeibo onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
-        if (state  == SSDKResponseStateSuccess)
-        {
+        if (state == SSDKResponseStateSuccess) {
             [MBProgressHUD showSuccess:@"登录成功"];
 //            _user.username;
         }
-        else if (state == SSDKResponseStateFail)
-        {
+        else if (state == SSDKResponseStateFail) {
             [MBProgressHUD showError:@"登录失败"];
         }
     }];
 }
 
--(void)defaultLogin
-{
+- (void)defaultLogin {
     [mainTC removeLoginOrRigistView];
 }
 
--(void)login
-{
+- (void)login {
     [mainTC removeLoginOrRigistView];
 }
 @end

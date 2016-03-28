@@ -14,6 +14,8 @@
 		042B09C21CA5162B003A533D /* BuShangBanCalendarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B09BD1CA5162B003A533D /* BuShangBanCalendarItem.m */; };
 		042B09C31CA5162B003A533D /* icon_next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 042B09BF1CA5162B003A533D /* icon_next@2x.png */; };
 		042B09C41CA5162B003A533D /* icon_previous@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 042B09C01CA5162B003A533D /* icon_previous@2x.png */; };
+		042B09CE1CA5A082003A533D /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B09CD1CA5A082003A533D /* FileManager.m */; };
+		044DAE1D1CA7E89F0058A319 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049EF24D1CA3904200C1D68A /* ShareSDK.framework */; };
 		049EF1E41CA38D8D00C1D68A /* AddressChoicePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF1D51CA38D8D00C1D68A /* AddressChoicePickerView.m */; };
 		049EF1E51CA38D8D00C1D68A /* AddressChoicePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049EF1D61CA38D8D00C1D68A /* AddressChoicePickerView.xib */; };
 		049EF1E61CA38D8D00C1D68A /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 049EF1D71CA38D8D00C1D68A /* area.plist */; };
@@ -34,7 +36,6 @@
 		049EF2461CA38FCE00C1D68A /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF2421CA38FCE00C1D68A /* TableViewCell.m */; };
 		049EF2481CA3900A00C1D68A /* infoConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 049EF2471CA3900A00C1D68A /* infoConfig.plist */; };
 		049EF26C1CA3904200C1D68A /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049EF24B1CA3904200C1D68A /* AVOSCloud.framework */; };
-		049EF26D1CA3904200C1D68A /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049EF24D1CA3904200C1D68A /* ShareSDK.framework */; };
 		049EF26E1CA3904200C1D68A /* ShareSDKExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049EF2501CA3904200C1D68A /* ShareSDKExtension.framework */; };
 		049EF26F1CA3904200C1D68A /* ShareSDKUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 049EF2511CA3904200C1D68A /* ShareSDKUI.bundle */; };
 		049EF2701CA3904200C1D68A /* ShareSDKUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049EF2521CA3904200C1D68A /* ShareSDKUI.framework */; };
@@ -71,7 +72,6 @@
 		A377D1491C99564500C779A7 /* ConstObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A377D1481C99564500C779A7 /* ConstObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A377D14F1C99575D00C779A7 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A377D14E1C99575D00C779A7 /* MessageViewController.m */; };
 		A377D1551C99596A00C779A7 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A377D1541C99596A00C779A7 /* UIView+Extension.m */; };
-		A377D1A11C995E3000C779A7 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A377D1841C995E3000C779A7 /* LICENSE */; };
 		A377D1A21C995E3000C779A7 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A377D1881C995E3000C779A7 /* MJRefresh.bundle */; };
 		A377D1A31C995E3000C779A7 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = A377D18B1C995E3000C779A7 /* MJRefreshComponent.m */; };
 		A377D1A41C995E3000C779A7 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = A377D18D1C995E3000C779A7 /* MJRefreshConst.m */; };
@@ -84,7 +84,6 @@
 		A377D1AB1C995E3000C779A7 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A377D19B1C995E3000C779A7 /* UIScrollView+MJExtension.m */; };
 		A377D1AC1C995E3000C779A7 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = A377D19D1C995E3000C779A7 /* UIScrollView+MJRefresh.m */; };
 		A377D1AD1C995E3000C779A7 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A377D19F1C995E3000C779A7 /* UIView+MJExtension.m */; };
-		A377D1AE1C995E3000C779A7 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A377D1A01C995E3000C779A7 /* README.md */; };
 		A377D1B11C995EB900C779A7 /* WechatShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = A377D1B01C995EB900C779A7 /* WechatShareView.m */; };
 		A38A86041CA4CA9000582AD5 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A38A86031CA4CA9000582AD5 /* Launch Screen.storyboard */; };
 		A38A86071CA4CB4400582AD5 /* launchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A38A86051CA4CB4400582AD5 /* launchImage@2x.png */; };
@@ -178,6 +177,18 @@
 		A3FD04D91C994D5C00E84A0B /* libobjc.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A3FD04D81C994D5C00E84A0B /* libobjc.tbd */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		040E01A71CA7CD750023A37F /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = sourcecode.dtrace;
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "/usr/sbin/dtrace\n";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXContainerItemProxy section */
 		A3FD03FF1C99190700E84A0B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -205,6 +216,8 @@
 		042B09BD1CA5162B003A533D /* BuShangBanCalendarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuShangBanCalendarItem.m; sourceTree = "<group>"; };
 		042B09BF1CA5162B003A533D /* icon_next@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_next@2x.png"; sourceTree = "<group>"; };
 		042B09C01CA5162B003A533D /* icon_previous@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_previous@2x.png"; sourceTree = "<group>"; };
+		042B09CC1CA5A082003A533D /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
+		042B09CD1CA5A082003A533D /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
 		049EF1D41CA38D8D00C1D68A /* AddressChoicePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressChoicePickerView.h; sourceTree = "<group>"; };
 		049EF1D51CA38D8D00C1D68A /* AddressChoicePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressChoicePickerView.m; sourceTree = "<group>"; };
 		049EF1D61CA38D8D00C1D68A /* AddressChoicePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressChoicePickerView.xib; sourceTree = "<group>"; };
@@ -313,7 +326,6 @@
 		A377D1531C99596A00C779A7 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		A377D1541C99596A00C779A7 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		A377D1561C995A4A00C779A7 /* BuShangBanApp-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BuShangBanApp-Prefix.pch"; sourceTree = SOURCE_ROOT; };
-		A377D1841C995E3000C779A7 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		A377D1881C995E3000C779A7 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		A377D1891C995E3000C779A7 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		A377D18A1C995E3000C779A7 /* MJRefreshComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshComponent.h; sourceTree = "<group>"; };
@@ -502,6 +514,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				044DAE1D1CA7E89F0058A319 /* ShareSDK.framework in Frameworks */,
 				A3FD04CF1C994CCF00E84A0B /* libsqlite3.tbd in Frameworks */,
 				042B09A21CA42E09003A533D /* ImageIO.framework in Frameworks */,
 				042B09A01CA42DFC003A533D /* JavaScriptCore.framework in Frameworks */,
@@ -539,7 +552,6 @@
 				A3FD04A51C99422E00E84A0B /* AVFoundation.framework in Frameworks */,
 				16F4E9FC092DB9729036DE5C /* libPods.a in Frameworks */,
 				049EF2751CA3904200C1D68A /* MOBFoundation.framework in Frameworks */,
-				049EF26D1CA3904200C1D68A /* ShareSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -850,7 +862,6 @@
 		A377D1831C995E3000C779A7 /* MJRefresh */ = {
 			isa = PBXGroup;
 			children = (
-				A377D1841C995E3000C779A7 /* LICENSE */,
 				A377D1851C995E3000C779A7 /* MJRefreshExample */,
 				A377D1A01C995E3000C779A7 /* README.md */,
 			);
@@ -1101,6 +1112,8 @@
 				A3FD04271C99397A00E84A0B /* SlidePull */,
 				A3FD04241C99386700E84A0B /* QHBasicViewController.h */,
 				A3FD04251C99386700E84A0B /* QHBasicViewController.m */,
+				042B09CC1CA5A082003A533D /* FileManager.h */,
+				042B09CD1CA5A082003A533D /* FileManager.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1344,6 +1357,7 @@
 				78E54DC0B2B24C48C0FA6BBF /* Copy Pods Resources */,
 			);
 			buildRules = (
+				040E01A71CA7CD750023A37F /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -1442,19 +1456,15 @@
 				049EF2481CA3900A00C1D68A /* infoConfig.plist in Resources */,
 				A3FD04591C993CF100E84A0B /* MBProgressHUD.bundle in Resources */,
 				049EF2761CA3904200C1D68A /* ShareSDK.bundle in Resources */,
-				A33447FD1CA299820006C8A3 /* Images.xcassets in Resources */,
 				042B09C41CA5162B003A533D /* icon_previous@2x.png in Resources */,
-				A377D1A11C995E3000C779A7 /* LICENSE in Resources */,
 				049EF1E51CA38D8D00C1D68A /* AddressChoicePickerView.xib in Resources */,
 				049EF2721CA3904200C1D68A /* WeiboSDK.bundle in Resources */,
 				042B09C31CA5162B003A533D /* icon_next@2x.png in Resources */,
-				A377D1A11C995E3000C779A7 /* LICENSE in Resources */,
 				A38A86071CA4CB4400582AD5 /* launchImage@2x.png in Resources */,
 				A3FD041C1C99197300E84A0B /* Podfile in Resources */,
 				A3FD03F31C99190700E84A0B /* Main.storyboard in Resources */,
 				A38A86041CA4CA9000582AD5 /* Launch Screen.storyboard in Resources */,
 				A33447F71CA290860006C8A3 /* 3.jpg in Resources */,
-				A376A7F11CA11B0E00B4F9BF /* Launch Screen.storyboard in Resources */,
 				049EF26F1CA3904200C1D68A /* ShareSDKUI.bundle in Resources */,
 				049EF2741CA3904200C1D68A /* read_me.txt in Resources */,
 				A30012B81CA3A12A00BD6FAD /* 750*1334.png in Resources */,
@@ -1589,6 +1599,7 @@
 				A377D1A61C995E3000C779A7 /* MJRefreshGifFooter.m in Sources */,
 				A3FD048E1C993EB900E84A0B /* NSArray+TDSafeArray.m in Sources */,
 				049EF2311CA38F5700C1D68A /* AboutUserProtocalViewController.m in Sources */,
+				042B09CE1CA5A082003A533D /* FileManager.m in Sources */,
 				A39CD32F1C9950F600F0D8EE /* ArrowBackViewController.m in Sources */,
 				049EF2331CA38F5700C1D68A /* LoginOrRegistViewController.m in Sources */,
 				A377D1451C99560A00C779A7 /* YUBottomPopSelctView.m in Sources */,
@@ -1633,7 +1644,6 @@
 				A3FD04671C993DC200E84A0B /* SSLXNetworkManager.m in Sources */,
 				A3FD04681C993DC200E84A0B /* SSLXBaseRequest.m in Sources */,
 				A39CD29B1C9950A300F0D8EE /* LeftViewController.m in Sources */,
-				A377D1AE1C995E3000C779A7 /* README.md in Sources */,
 				A39CD3C51C99529400F0D8EE /* HomePageViewController.m in Sources */,
 				049EF2431CA38FCE00C1D68A /* MineViewController.m in Sources */,
 				A3FD04401C99397A00E84A0B /* UIViewController+MLTransition.m in Sources */,
@@ -1778,10 +1788,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK/Connection",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK/Core",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK/UI",
 					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/release-v3.2.7/Static",
 					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK",
 					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK/Support/Optional",
@@ -1798,9 +1804,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK/Extend/SinaWeiboSDK",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
+					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK/Support/PlatformSDK/WeChatSDK",
+					"$(PROJECT_DIR)/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
+					"$(PROJECT_DIR)/ShareSDK/Support/PlatformSDK/WeChatSDK",
+				);
+				"LIBRARY_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
 					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Support/PlatformSDK/WeChatSDK",
@@ -1822,10 +1832,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK/Connection",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK/Core",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK/UI",
 					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/release-v3.2.7/Static",
 					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK",
 					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK/Support/Optional",
@@ -1842,8 +1848,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK/Extend/SinaWeiboSDK",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK/Extend/WeChatSDK",
 					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",

@@ -10,11 +10,11 @@
 
 @interface TableViewCell : UITableViewCell
 
-@property (strong, nonatomic) UITextField *contentTF;
+@property(strong, nonatomic) UITextField *contentTF;
 
-@property(nonatomic,strong)UIButton *headBtn;
+@property(nonatomic, strong) UIButton *headBtn;
 
-@property(nonatomic,strong)UITextView *profileTextView;
+@property(nonatomic, strong) UITextView *profileTextView;
 
 
 @end

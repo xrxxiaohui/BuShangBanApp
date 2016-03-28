@@ -18,43 +18,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self customNavigationBarWithTitle:@"发现"];
-    FindView *findView=[[FindView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, 404)];
+    FindView *findView = [[FindView alloc] init];
     [self.view addSubview:findView];
 }
 
--(void)clickEvent:(UIButton *)btn
-{
-    switch (btn.tag)
-    {
+- (void)clickEvent:(UIButton *)btn {
+    switch (btn.tag) {
         case 1000:
-            
+
             break;
         case 1001:
-            
+
             break;
         case 1002:
-            
+
             break;
         case 1003:
-            
+
             break;
         case 1004:
-            
+
             break;
         case 1005:
-            
+
             break;
         case 1006:
-            
+
             break;
         case 1007:
-            
+
             break;
         case 1008:
-            
+
             break;
         case 1009:
-            
+
             break;
         default:
             break;

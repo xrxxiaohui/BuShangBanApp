@@ -8,6 +8,6 @@
 
 @interface FindViewController : QHBasicViewController
 
--(void)clickEvent:(UIButton *)btn;
+- (void)clickEvent:(UIButton *)btn;
 
 @end

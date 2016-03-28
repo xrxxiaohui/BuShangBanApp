@@ -33,13 +33,13 @@
     NSString *greenString = [hexString substringWithRange:NSMakeRange(digits, digits)];
     NSString *blueString = [hexString substringWithRange:NSMakeRange(2 * digits, digits)];
     
-    NSUInteger red = 0;
-    NSUInteger green = 0;
-    NSUInteger blue = 0;
+    unsigned int red = 0;
+    unsigned int green = 0;
+    unsigned int blue = 0;
     
-	sscanf([redString UTF8String], "%lx", &red);
-    sscanf([greenString UTF8String], "%lx", &green);
-    sscanf([blueString UTF8String], "%lx", &blue);
+	sscanf([redString UTF8String], "%x", &red);
+    sscanf([greenString UTF8String], "%x", &green);
+    sscanf([blueString UTF8String], "%x", &blue);
     
 	return [UIColor colorWithRed:red/maxValue green:green/maxValue blue:blue/maxValue alpha:1.0];
 }

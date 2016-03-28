@@ -10,7 +10,9 @@
 
 @interface MineViewController : QHBasicViewController
 
--(void)settingBtn:(UIButton *)btn;
+- (void)saveOrEditInfo:(UIButton *)sender;
 
--(void)hideCalendar:(UIButton *)btn;
+- (void)settingBtn:(UIButton *)btn;
+
+- (void)hideCalendar:(UIButton *)btn;
 @end

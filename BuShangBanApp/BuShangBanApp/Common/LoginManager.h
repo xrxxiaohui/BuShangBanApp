@@ -8,9 +8,11 @@
 
 @interface LoginManager : NSObject
 
--(void)ssoLogInWechat;
--(void)ssoLogInWeibo;
--(void)defaultLogin;
+- (void)ssoLogInWechat;
 
--(void)login;
+- (void)ssoLogInWeibo;
+
+- (void)defaultLogin;
+
+- (void)login;
 @end

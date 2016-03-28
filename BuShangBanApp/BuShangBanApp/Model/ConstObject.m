@@ -33,7 +33,7 @@
 @synthesize countrySelectedTagArray;
 @synthesize identitySelectedTag;
 @synthesize itemsArray;
-@synthesize newQuestionID;
+@synthesize recentlyQuestionID;
 @synthesize countryArray;
 
 
