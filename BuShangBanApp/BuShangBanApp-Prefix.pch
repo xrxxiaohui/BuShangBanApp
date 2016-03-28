@@ -126,7 +126,10 @@
 
 #endif
 
+//默认
+
 //字体
+#define fontName @"PingFang TC"
 #define nomalFont [UIFont systemFontOfSize:14.f]
 #define smallerFont [UIFont systemFontOfSize:12.f]
 //颜色

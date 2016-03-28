@@ -12,4 +12,5 @@
 
 - (void)setHeadImage:(UIButton *)btn;
 
+- (void)tapEvent:(UITapGestureRecognizer *)tap;
 @end

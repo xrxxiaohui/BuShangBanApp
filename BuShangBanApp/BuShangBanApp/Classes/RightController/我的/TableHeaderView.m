@@ -14,7 +14,7 @@
 
 @interface TableHeaderView ()
 
-@property(nonatomic, strong) UIButton *saveOrEditBtn;
+@property(nonatomic, strong) UIButton *settingBtn;
 @property(nonatomic, strong) UILabel *nickNameLabel;
 @property(nonatomic, strong) UILabel *descriptionLabel;
 
@@ -24,17 +24,17 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    if (self) {
+    if ( self ) {
         self.frame = CGRectMake(0, 0, kScreenWidth, tableHeaderViewHeight * adapt.scaleHeight);
         [self addSubview:self.bgImageView];
         [self addSubview:self.headImageBtn];
-        [self addSubview:self.saveOrEditBtn];
+        [self addSubview:self.settingBtn];
     }
     return self;
 }
 
 - (void)nickNameLabelWithNickName:(NSString *)nickName label:(NSString *)label {
-    if (!_nickNameLabel) {
+    if ( !_nickNameLabel ) {
         _nickNameLabel = [[UILabel alloc] init];
         nickName = [NSString stringWithFormat:@"%@   |   ", nickName];
 
@@ -55,7 +55,7 @@
 }
 
 - (void)descriptionLabelWithText:(NSString *)text {
-    if (!_descriptionLabel) {
+    if ( !_descriptionLabel ) {
         _descriptionLabel = [[UILabel alloc] init];
         _descriptionLabel.font = smallerFont;
         _descriptionLabel.textColor = placeHoldTextColor;
@@ -69,7 +69,7 @@
 
 
 - (UIImageView *)bgImageView {
-    if (!_bgImageView) {
+    if ( !_bgImageView ) {
         _bgImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         _bgImageView.size = self.size;
         _bgImageView.image = [UIImage imageNamed:@"bg"];
@@ -77,24 +77,23 @@
     return _bgImageView;
 }
 
-- (UIButton *)saveOrEditBtn {
-    if (!_saveOrEditBtn) {
-        _saveOrEditBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-        [_saveOrEditBtn setTitle:@"编 辑" forState:UIControlStateNormal];
-        [_saveOrEditBtn setTitleColor:nomalTextColor forState:UIControlStateNormal];
-        [_saveOrEditBtn addTarget:[[MineViewController alloc] init] action:@selector(saveOrEditInfo:) forControlEvents:UIControlEventTouchUpInside];
-        _saveOrEditBtn.selected = YES;
-        [_saveOrEditBtn sizeToFit];
-        _saveOrEditBtn.left = kScreenWidth - _saveOrEditBtn.width - 16;
-        _saveOrEditBtn.top = 33.f;
+- (UIButton *)settingBtn {
+    if ( !_settingBtn ) {
+        _settingBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+        [_settingBtn setBackgroundImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
+        [_settingBtn addTarget:[[MineViewController alloc] init] action:@selector(settingBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [_settingBtn sizeToFit];
+        _settingBtn.left = kScreenWidth - _settingBtn.width - 16;
+        _settingBtn.top = 33.f;
     }
-    return _saveOrEditBtn;
+    return _settingBtn;
 }
 
 - (UIButton *)headImageBtn {
-    if (!_headImageBtn) {
+    if ( !_headImageBtn ) {
         _headImageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_headImageBtn addTarget:[[MineViewController alloc] init] action:@selector(settingBtn:) forControlEvents:UIControlEventTouchUpInside];
+        _headImageBtn.userInteractionEnabled = NO;
         _headImageBtn.frame = CGRectMake(0, 50 * adapt.scaleHeight, 58, 58);
         _headImageBtn.centerX = self.centerX;
         _headImageBtn.layer.cornerRadius = 29.f;

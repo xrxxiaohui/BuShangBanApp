@@ -49,7 +49,7 @@ static NSDateFormatter *dateFormattor;
         _btn.layer.cornerRadius = 5.f;
         _btn.clipsToBounds = YES;
         [_btn setTitle:@" 确  定 " forState:UIControlStateNormal];
-        [_btn addTarget:[[MineViewController alloc] init] action:@selector(hideCalendar:) forControlEvents:UIControlEventTouchUpInside];
+//        [_btn addTarget:[[MineViewController alloc] init] action:@selector(hideCalendar:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_btn];
     }
     return _btn;

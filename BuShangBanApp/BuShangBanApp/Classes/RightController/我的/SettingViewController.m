@@ -18,7 +18,7 @@
 @property(nonatomic, strong) NSArray *titleArray;
 @property(nonatomic, strong) NSArray *contentArray;
 @property(nonatomic, strong) UIButton *saveOrEditBtn;
-
+@property(nonatomic, strong) UIView *grayMaskView;
 @end
 
 @implementation SettingViewController {
@@ -40,6 +40,13 @@
     [self customNavigationBarWithTitle:@"基本资料"];
     [self defaultLeftItem];
     [self customRightItemWithBtn:self.saveOrEditBtn];
+}
+
+- (void)tapEvent:(UITapGestureRecognizer *)tap {
+    [self.tableView endEditing:YES];
+    _grayMaskView.alpha = 0.0;
+    [_grayMaskView removeFromSuperview];
+    _grayMaskView = nil;
 }
 
 - (void)saveOrEditInfo:(UIButton *)sender {
@@ -83,7 +90,7 @@
 }
 
 - (UIButton *)saveOrEditBtn {
-    if (!_saveOrEditBtn) {
+    if ( !_saveOrEditBtn ) {
         _saveOrEditBtn = [UIButton buttonWithType:UIButtonTypeSystem];
         [_saveOrEditBtn setTitle:@"编 辑" forState:UIControlStateNormal];
         [_saveOrEditBtn setTitleColor:nomalTextColor forState:UIControlStateNormal];
@@ -94,8 +101,23 @@
     return _saveOrEditBtn;
 }
 
+
+- (UIView *)grayMaskView {
+    if ( !_grayMaskView ) {
+        _grayMaskView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        _grayMaskView.layer.backgroundColor = [UIColor grayColor].CGColor;
+        _grayMaskView.alpha = 0.4f;
+
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapEvent:)];
+        tap.numberOfTapsRequired = 1;
+        tap.numberOfTouchesRequired = 1;
+        [_grayMaskView addGestureRecognizer:tap];
+    }
+    return _grayMaskView;
+}
+
 - (UITableView *)tableView {
-    if (!_tableView) {
+    if ( !_tableView ) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -117,15 +139,15 @@
     TableViewCell *cell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
     cell.textLabel.text = _titleArray[indexPath.section][indexPath.row];
     [cell becomeFirstResponder];
-    if (indexPath.section == 0) {
+    if ( indexPath.section == 0 ) {
         UIImage *image = [UIImage imageWithContentsOfFile:_user.avatar];
-        if (!image) {
+        if ( !image ) {
             image = [UIImage imageNamed:@"Default avatar"];
         }
         [cell.headBtn setBackgroundImage:image forState:UIControlStateNormal];
     }
-    else if (indexPath.section == 1) {
-        if (indexPath.row == 2) {
+    else if ( indexPath.section == 1 ) {
+        if ( indexPath.row == 2 ) {
             cell.profileTextView.delegate = self;
             [cell.profileTextView setText:_contentArray[indexPath.row]];
         }
@@ -140,14 +162,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.view addSubview:self.grayMaskView];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     TableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if (indexPath.section == 1) {
-        if (indexPath.row != 2) {
+    if ( indexPath.section == 1 ) {
+        if ( indexPath.row != 2 ) {
             cell.contentTF.userInteractionEnabled = YES;
             [cell.contentTF becomeFirstResponder];
         }
         else {
+            cell.profileTextView.userInteractionEnabled = YES;
             [cell.profileTextView becomeFirstResponder];
         }
     }
@@ -158,11 +182,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
+    if ( indexPath.section == 0 ) {
         return 80.f;
     }
     else {
-        if (indexPath.row == 2) {
+        if ( indexPath.row == 2 ) {
             return 100;
         }
         else {
@@ -184,7 +208,7 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    switch (_indexPath.row) {
+    switch ( _indexPath.row ) {
         case 0:
             _user.nickname = textField.text;
             break;

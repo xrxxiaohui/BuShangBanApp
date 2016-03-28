@@ -27,7 +27,7 @@ NSString *kUserInterest = @"kUserInterest";
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
     self = [super init];
-    if (self) {
+    if ( self ) {
         [coder decodeObjectForKey:kUserAvatar];
         [coder decodeObjectForKey:kUserIDsign];
         [coder decodeObjectForKey:kUserNickName];
