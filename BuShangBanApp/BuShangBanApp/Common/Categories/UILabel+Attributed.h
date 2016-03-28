@@ -6,7 +6,7 @@
 //  Copyright © 2016年 顺顺留学. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+
 
 @interface UILabel (Attributed)
 

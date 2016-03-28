@@ -44,8 +44,9 @@
 #import <MBProgressHUD.h>
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "UIView+Extension.h"
+#import "User.h"
 
-
+#import "QHBasicViewController.h"
 // 网络类
 
 #import "SSLXNetworkManager.h"
@@ -101,7 +102,6 @@
 #import "BaseTableCell.h"
 #import "SliderViewController.h"
 #endif
-
 
 
 

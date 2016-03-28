@@ -6,8 +6,6 @@
 //  Copyright © 2015年 顺顺留学. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 typedef void (^clickBlock)(void);
 
 @interface BaseView : UIView

@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Zuo. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+
 #import "QHCommonUtil.h"
 //#import "UITempletViewController.h"
 
@@ -44,6 +44,8 @@ typedef void(^actionBlock)(void);
 
 - (void)addObserver;
 
+
+-(void)defaultLeftItem;
 
 // custom view method
 -(void)customNavigationTitle:(NSString *)title ;

@@ -13,7 +13,7 @@
 
 @interface QHConfiguredObj : NSObject
 
-@property (nonatomic, assign) int nThemeIndex;
+@property (nonatomic, assign) NSInteger nThemeIndex;
 @property (nonatomic, retain) NSString *themefold;
 
 + (QHConfiguredObj *)defaultConfigure;

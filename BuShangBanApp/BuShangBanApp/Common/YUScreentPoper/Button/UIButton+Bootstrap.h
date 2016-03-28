@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Oskar Groth. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+
 #import "NSString+FontAwesome.h"
 @interface UIButton (Bootstrap)
 - (void)addAwesomeIcon:(FAIcon)icon beforeTitle:(BOOL)before;

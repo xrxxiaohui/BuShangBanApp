@@ -6,7 +6,7 @@
 //  Copyright © 2015年 顺顺留学. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+
 #import "QHBasicViewController.h"
 
 @interface KouBeiSuggestViewController : QHBasicViewController

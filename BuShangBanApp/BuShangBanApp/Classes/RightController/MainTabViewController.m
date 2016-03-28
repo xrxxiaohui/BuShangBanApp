@@ -15,6 +15,8 @@
 
 #import "LocationManager.h"
 #import "APIRequestManager.h"
+#import "LoginOrRegistViewController.h"
+
 #import "HomePageViewController.h"
 #import "FindViewController.h"
 #import "MessageViewController.h"
@@ -24,7 +26,7 @@
 {
     //    UITabBarController *_tabController;
     BOOL _needPop;
-    
+    LoginOrRegistViewController *_loginOrRegistVC;
     UIControl *_shadowView;
 }
 
@@ -62,7 +64,7 @@ static MainTabViewController *main;
     [self.view addSubview:_tabController.view];
     _tabController.delegate = self;
     
-    
+    _loginOrRegistVC=[[LoginOrRegistViewController alloc]init];
     HomePageViewController *homePageViewController = [[HomePageViewController alloc] init];
     MineViewController *mineViewController = [[MineViewController alloc] init];
     MessageViewController *messageController = [[MessageViewController alloc] init];
@@ -70,6 +72,7 @@ static MainTabViewController *main;
     
     _tabController.viewControllers = @[homePageViewController,findViewController,messageController,mineViewController];
     
+//    [_tabController.view addSubview:_loginOrRegistVC.view];
     [self reloadImage];
     //    [[UITabBarItem appearance] setTitleTextAttributes:
     //        [NSDictionary dictionaryWithObjectsAndKeys:RGBA(96, 164, 222, 1), UITextAttributeTextColor, nil]
@@ -91,6 +94,16 @@ static MainTabViewController *main;
     [_shadowView setAlpha:0];
     [self.view addSubview:_shadowView];
     
+}
+
+-(void)removeLoginOrRigistView
+{
+    [_loginOrRegistVC.view removeFromSuperview];
+    _loginOrRegistVC=nil;
+}
+
+-(void)shadowViewClick:(UIControl *)control
+{
 }
 
 //-(void)pushToDemoExample {

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AVOSCloudAppKey</key>
+	<string>6DYAlNtMVqters495KKlBdwP</string>
+	<key>AVOSCloudAPPID</key>
+	<string>et5iuCnEFjROo4KeXgluQ6JQ-gzGzoHsz</string>
+	<key>AVOSCloudMasterKey</key>
+	<string>2ExS6gJIYWjqOgce4DNhnmqa</string>
+	<key>shareSDKSinaWeiboAppKey</key>
+	<string>1701171842</string>
+	<key>AppName</key>
+	<string>天天不上班</string>
+	<key>shareSDKWeChatappSecret</key>
+	<string></string>
+	<key>shareSDKWeChatAppId</key>
+	<string></string>
+	<key>shareSDKSinaWeiboRedirectUri</key>
+	<string></string>
+	<key>shareSDKSinaWeiboAppSecret</key>
+	<string>62d3a4f2b2c8c00599f05a5e675dcbea</string>
+</dict>
+</plist>

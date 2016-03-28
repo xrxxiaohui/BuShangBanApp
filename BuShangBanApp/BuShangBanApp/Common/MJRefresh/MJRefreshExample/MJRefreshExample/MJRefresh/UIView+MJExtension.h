@@ -7,7 +7,7 @@
 //  Copyright (c) 2014年 itcast. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+
 
 @interface UIView (MJExtension)
 @property (assign, nonatomic) CGFloat mj_x;

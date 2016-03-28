@@ -6,7 +6,6 @@
 //  Copyright © 2016年 Zuo. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
 //leanCloud使用
 #define kApplicationId @"et5iuCnEFjROo4KeXgluQ6JQ-gzGzoHsz"

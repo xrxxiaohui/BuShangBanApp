@@ -8,6 +8,8 @@
 
 //定义屏幕
 #define kScreenBounds          [[UIScreen mainScreen] bounds]
+//#define kScreenWidth           [[UIScreen mainScreen] bounds].size.width
+//#define kScreenHeight          [[UIScreen mainScreen] bounds].size.height
 #define kScreenWidth1           [[UIScreen mainScreen] bounds].size.width
 #define kScreenHeight1          [[UIScreen mainScreen] bounds].size.height
 

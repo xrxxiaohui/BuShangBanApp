@@ -32,10 +32,10 @@
     return self;
 }
 
-- (void)setNThemeIndex:(int)nThemeIndex
+- (void)setNThemeIndex:(NSInteger)nThemeIndex
 {
     _nThemeIndex = nThemeIndex;
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:nThemeIndex] forKey:kTHEME_TAG];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:nThemeIndex] forKey:kTHEME_TAG];
 }
 
 - (void)setThemefold:(NSString *)themefold
