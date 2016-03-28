@@ -31,20 +31,20 @@
     if (self) {
                 
         _leftBigImageView = [[UIButton alloc] init];
-        _leftBigImageView.frame = CGRectMake(0, 0.5, kScreenWidth*0.628, kScreenWidth/414*260);
+        _leftBigImageView.frame = CGRectMake(0, 0.5, kScreenWidth*260/414, kScreenWidth/414*260);
         _leftBigImageView.tag = 0;
         [_leftBigImageView setImage:[UIImage imageNamed:@"1.jpg"] forState:UIControlStateNormal];
         [self.contentView addSubview:_leftBigImageView];
         
         _rightUpImageView = [[UIButton alloc] init];
-        _rightUpImageView.frame = CGRectMake(_leftBigImageView.right, 0.5, kScreenWidth*0.372, kScreenWidth/414*130);
+        _rightUpImageView.frame = CGRectMake(_leftBigImageView.right, 0.5, kScreenWidth*154/414, kScreenWidth/414*130);
         _rightUpImageView.tag = 1;
         [_rightUpImageView setImage:[UIImage imageNamed:@"2.jpg"] forState:UIControlStateNormal];
 
         [self.contentView addSubview:_rightUpImageView];
         
         _rightDownImageView = [[UIButton alloc] init];
-        _rightDownImageView.frame = CGRectMake(_leftBigImageView.right, _rightUpImageView.bottom, kScreenWidth*0.372, kScreenWidth/414*130);
+        _rightDownImageView.frame = CGRectMake(_leftBigImageView.right, _rightUpImageView.bottom, kScreenWidth*154/414, kScreenWidth/414*130);
         _rightDownImageView.tag = 2;
         [_rightDownImageView setImage:[UIImage imageNamed:@"3.jpg"] forState:UIControlStateNormal];
 
