@@ -15,6 +15,7 @@
 		042B09C31CA5162B003A533D /* icon_next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 042B09BF1CA5162B003A533D /* icon_next@2x.png */; };
 		042B09C41CA5162B003A533D /* icon_previous@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 042B09C01CA5162B003A533D /* icon_previous@2x.png */; };
 		042B09CE1CA5A082003A533D /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B09CD1CA5A082003A533D /* FileManager.m */; };
+		044DAE1D1CA7E89F0058A319 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049EF24D1CA3904200C1D68A /* ShareSDK.framework */; };
 		049EF1E41CA38D8D00C1D68A /* AddressChoicePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF1D51CA38D8D00C1D68A /* AddressChoicePickerView.m */; };
 		049EF1E51CA38D8D00C1D68A /* AddressChoicePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049EF1D61CA38D8D00C1D68A /* AddressChoicePickerView.xib */; };
 		049EF1E61CA38D8D00C1D68A /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 049EF1D71CA38D8D00C1D68A /* area.plist */; };
@@ -35,7 +36,6 @@
 		049EF2461CA38FCE00C1D68A /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF2421CA38FCE00C1D68A /* TableViewCell.m */; };
 		049EF2481CA3900A00C1D68A /* infoConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 049EF2471CA3900A00C1D68A /* infoConfig.plist */; };
 		049EF26C1CA3904200C1D68A /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049EF24B1CA3904200C1D68A /* AVOSCloud.framework */; };
-		049EF26D1CA3904200C1D68A /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049EF24D1CA3904200C1D68A /* ShareSDK.framework */; };
 		049EF26E1CA3904200C1D68A /* ShareSDKExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049EF2501CA3904200C1D68A /* ShareSDKExtension.framework */; };
 		049EF26F1CA3904200C1D68A /* ShareSDKUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 049EF2511CA3904200C1D68A /* ShareSDKUI.bundle */; };
 		049EF2701CA3904200C1D68A /* ShareSDKUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049EF2521CA3904200C1D68A /* ShareSDKUI.framework */; };
@@ -514,6 +514,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				044DAE1D1CA7E89F0058A319 /* ShareSDK.framework in Frameworks */,
 				A3FD04CF1C994CCF00E84A0B /* libsqlite3.tbd in Frameworks */,
 				042B09A21CA42E09003A533D /* ImageIO.framework in Frameworks */,
 				042B09A01CA42DFC003A533D /* JavaScriptCore.framework in Frameworks */,
@@ -551,7 +552,6 @@
 				A3FD04A51C99422E00E84A0B /* AVFoundation.framework in Frameworks */,
 				16F4E9FC092DB9729036DE5C /* libPods.a in Frameworks */,
 				049EF2751CA3904200C1D68A /* MOBFoundation.framework in Frameworks */,
-				049EF26D1CA3904200C1D68A /* ShareSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1788,10 +1788,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK/Connection",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK/Core",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK/UI",
 					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/release-v3.2.7/Static",
 					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK",
 					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK/Support/Optional",
@@ -1836,10 +1832,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK/Connection",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK/Core",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK",
-					"$(PROJECT_DIR)/BuShangBanApp/Common/ShareSDK/UI",
 					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/release-v3.2.7/Static",
 					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK",
 					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK/Support/Optional",

@@ -42,7 +42,7 @@
 @property (nonatomic, retain) NSMutableArray *itemsArray;//要申请的项目数组
 @property (nonatomic, retain) NSString *yuanxiaoSearchText;//点击的问题id
 
-@property (nonatomic, retain) NSString *newQuestionID;
+@property (nonatomic, retain) NSString *recentlyQuestionID;
 @property (nonatomic, retain) NSMutableArray *countryArray;
 
 @property (nonatomic, retain) NSDictionary *tuisongDic;

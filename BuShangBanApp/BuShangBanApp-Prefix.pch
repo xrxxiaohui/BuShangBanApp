@@ -17,13 +17,11 @@
 #import <Availability.h>
 
 
-
 #ifndef __IPHONE_3_0
 
 #warning "This project uses features only available in iOS SDK 3.0 and later."
 
 #endif
-
 
 
 #ifdef __OBJC__
@@ -75,6 +73,7 @@
 
 #import "NSString+Utility.h"
 #import <RegExCategories/RegExCategories.h>
+
 #define kPasswordExg (@"/[@#\$%\^&\*\s]+/g")
 
 
@@ -104,8 +103,6 @@
 #endif
 
 
-
-
 #define PRINTLOG
 
 #ifdef PRINTLOG
@@ -117,9 +114,6 @@
 #define NSLog(...) {}
 
 #endif
-
-
-
 
 
 #ifdef DEBUG // 处于开发阶段

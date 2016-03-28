@@ -29,7 +29,7 @@
     _nThemeIndex = [[[NSUserDefaults standardUserDefaults] objectForKey:kTHEME_TAG] integerValue];
     _themefold = [[NSUserDefaults standardUserDefaults] objectForKey:kTHEMEFOLD_TAG];
     
-    return self;
+    return  self;
 }
 
 - (void)setNThemeIndex:(NSInteger)nThemeIndex

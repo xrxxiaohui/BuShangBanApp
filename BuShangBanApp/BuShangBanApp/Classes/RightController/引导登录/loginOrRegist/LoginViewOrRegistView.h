@@ -8,15 +8,15 @@
 
 @interface LoginViewOrRegistView : UIView
 
-@property(nonatomic,strong)UIButton *rightBtn;
-@property(nonatomic,strong)UITextField *phoneNumberTF;
-@property(nonatomic,strong)UITextField *confirmationCodeTF;
-@property(nonatomic,strong)UIButton *loginOrRegistBtn;
-@property(nonatomic,strong)UIButton *readedBtn;
-@property(nonatomic,strong)UIButton *companyProtocolBtn;
-@property(nonatomic,strong)UIButton *getConfirmationCodeBtn;
-@property(nonatomic,strong)UIButton *weixinLogin;
-@property(nonatomic,strong)UIButton *weiboLogin;
-@property(nonatomic,assign)BOOL isLogin;
+@property(nonatomic, strong) UIButton *rightBtn;
+@property(nonatomic, strong) UITextField *phoneNumberTF;
+@property(nonatomic, strong) UITextField *confirmationCodeTF;
+@property(nonatomic, strong) UIButton *loginOrRegistBtn;
+@property(nonatomic, strong) UIButton *readedBtn;
+@property(nonatomic, strong) UIButton *companyProtocolBtn;
+@property(nonatomic, strong) UIButton *getConfirmationCodeBtn;
+@property(nonatomic, strong) UIButton *weixinLogin;
+@property(nonatomic, strong) UIButton *weiboLogin;
+@property(nonatomic, assign) BOOL isLogin;
 
 @end

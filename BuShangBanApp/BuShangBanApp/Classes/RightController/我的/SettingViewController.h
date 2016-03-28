@@ -10,6 +10,6 @@
 
 @interface SettingViewController : QHBasicViewController
 
--(void)setHeadImage:(UIButton *)btn;
+- (void)setHeadImage:(UIButton *)btn;
 
 @end
