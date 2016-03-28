@@ -22,6 +22,11 @@
     UILabel *_mainTitleLabel;
     UILabel *_mainContentLabel;
     UIImageView *_centerImageView;
+
+    UILabel *_shareNumLabel;
+    UILabel *_commentNumLabel;
+    UILabel *_zanNumLabel;
+
     
     UIView *_redPencilLine;
 }
@@ -93,6 +98,13 @@
         [_zanButton setImage:[UIImage imageNamed:@"like_nomal"] forState:UIControlStateNormal];
         [_zanButton addTarget:self action:@selector(zanButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_zanButton];
+
+        _zanNumLabel = [[UILabel alloc] init];
+        _zanNumLabel.frame = CGRectMake(_zanButton.right+4, _zanButton.y, 25, 12);
+        [_zanNumLabel setFont:[UIFont systemFontOfSize:12]];
+        [_zanNumLabel setText:@"122"];
+        [_zanNumLabel setTextColor:COLOR(124, 124, 124)];
+        [self.contentView addSubview:_zanNumLabel];
         
         _remarkButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_remarkButton setFrame:CGRectMake(kScreenWidth-120, _mainContentLabel.bottom+10, 14, 14)];
@@ -100,12 +112,27 @@
         [_remarkButton setImage:[UIImage imageNamed:@"comment_nomal"] forState:UIControlStateNormal];
         [self.contentView addSubview:_remarkButton];
 
+        _commentNumLabel = [[UILabel alloc] init];
+        _commentNumLabel.frame = CGRectMake(_remarkButton.right+4, _remarkButton.y, 25, 12);
+        [_commentNumLabel setFont:[UIFont systemFontOfSize:12]];
+        [_commentNumLabel setText:@"122"];
+        [_commentNumLabel setTextColor:COLOR(124, 124, 124)];
+        [self.contentView addSubview:_commentNumLabel];
+
         _shareButton  = [UIButton buttonWithType:UIButtonTypeCustom];
         [_shareButton setFrame:CGRectMake(kScreenWidth-180, _mainContentLabel.bottom+10, 14, 14)];
         [_shareButton addTarget:self action:@selector(shareButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [_shareButton setImage:[UIImage imageNamed:@"share_nomal"] forState:UIControlStateNormal];
-
         [self.contentView addSubview:_shareButton];
+
+        _shareNumLabel = [[UILabel alloc] init];
+        _shareNumLabel.frame = CGRectMake(_shareButton.right+4, _shareButton.y, 25, 12);
+        [_shareNumLabel setFont:[UIFont systemFontOfSize:12]];
+        [_shareNumLabel setText:@"122"];
+        [_shareNumLabel setTextColor:COLOR(124, 124, 124)];
+        [self.contentView addSubview:_shareNumLabel];
+
+
 
         UIImageView *lineImageView1 = [[UIImageView alloc] init];
         lineImageView1.backgroundColor = kCommonBottomLineColor;

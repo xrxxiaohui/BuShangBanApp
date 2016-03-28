@@ -99,7 +99,7 @@
 #import "Define.h"
 
 #import "BaseTableCell.h"
-
+#import "SliderViewController.h"
 #endif
 
 

@@ -234,7 +234,12 @@
 
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-   
+
+    BaseWebViewController *baseWebView = [[BaseWebViewController alloc] init];
+    baseWebView.isTestWeb = YES;
+    [[SliderViewController sharedSliderController].navigationController pushViewController:baseWebView animated:YES ];
+
+
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {

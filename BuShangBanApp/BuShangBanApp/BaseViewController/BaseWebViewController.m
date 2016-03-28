@@ -27,18 +27,19 @@
 -(void)viewDidLoad {
 
     [super viewDidLoad];
-    
+
+    [self customNavigationBarWithTitle:@"详情"];
     [self customWebView];
 
     [self customRightBtn];
     
-    _wechatShareView = [[WechatShareView alloc] initWechatShareView];
-    [self.view addSubview:_wechatShareView];
-    
-    if (self.isTestWeb) {
-        [self setWebUrl:@"http://192.168.1.105:3000/app"];
-    }
-    
+//    _wechatShareView = [[WechatShareView alloc] initWechatShareView];
+//    [self.view addSubview:_wechatShareView];
+
+//    if (self.isTestWeb) {
+//        [self setWebUrl:@"http://www.baidu.com"];
+//    }
+    self.webUrl = @"https://www.baidu.com";
     NSURLRequest *_request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.webUrl]];
     [_webView loadRequest:_request];
 }
@@ -97,12 +98,12 @@
     //        NSString *currentURL = [webView stringByEvaluatingJavaScriptFromString:@"document.location.href"];
     NSString *webTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     
-    if (webTitle&&[webTitle length]>0) {
-        [self setTitle:webTitle];
-        [self customNavigationTitle:webTitle];
-    }
+//    if (webTitle&&[webTitle length]>0) {
+//        [self setTitle:webTitle];
+//        [self customNavigationTitle:webTitle];
+//    }
     //    }
-    
+    /*
     JSContext *context =  [webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"]; // Undocumented access
     
     __weak typeof(self) weakSelf = self;
@@ -153,6 +154,7 @@
         default:
             break;
     }
+*/
 }
 
 #pragma mark - SKStoreProductViewController Delegate
