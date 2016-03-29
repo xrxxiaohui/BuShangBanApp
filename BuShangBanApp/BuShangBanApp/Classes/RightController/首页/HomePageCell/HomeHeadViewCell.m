@@ -33,21 +33,39 @@
         _leftBigImageView = [[UIButton alloc] init];
         _leftBigImageView.frame = CGRectMake(0, 0.5, kScreenWidth*260/414, kScreenWidth/414*260);
         _leftBigImageView.tag = 0;
+
+//        UIImage *finalImage = [self cuverImage:[UIImage imageNamed:@"1.jpg"] andRect:_leftBigImageView.frame];
+
         [_leftBigImageView setImage:[UIImage imageNamed:@"1.jpg"] forState:UIControlStateNormal];
+        [_leftBigImageView.imageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
+        _leftBigImageView.imageView.contentMode =  UIViewContentModeScaleAspectFill;
+        _leftBigImageView.imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        _leftBigImageView.imageView.clipsToBounds  = YES;
         [self.contentView addSubview:_leftBigImageView];
         
         _rightUpImageView = [[UIButton alloc] init];
         _rightUpImageView.frame = CGRectMake(_leftBigImageView.right, 0.5, kScreenWidth*154/414, kScreenWidth/414*130);
         _rightUpImageView.tag = 1;
+
         [_rightUpImageView setImage:[UIImage imageNamed:@"2.jpg"] forState:UIControlStateNormal];
+        [_rightUpImageView.imageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
+        _rightUpImageView.imageView.contentMode =  UIViewContentModeScaleAspectFill;
+        _rightUpImageView.imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        _rightUpImageView.imageView.clipsToBounds  = YES;
+
 
         [self.contentView addSubview:_rightUpImageView];
         
         _rightDownImageView = [[UIButton alloc] init];
         _rightDownImageView.frame = CGRectMake(_leftBigImageView.right, _rightUpImageView.bottom, kScreenWidth*154/414, kScreenWidth/414*130);
         _rightDownImageView.tag = 2;
-        [_rightDownImageView setImage:[UIImage imageNamed:@"3.jpg"] forState:UIControlStateNormal];
 
+        //图片只显示一部分
+        [_rightDownImageView setImage:[UIImage imageNamed:@"3.jpg"] forState:UIControlStateNormal];
+        [_rightDownImageView.imageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
+        _rightDownImageView.imageView.contentMode =  UIViewContentModeScaleAspectFill;
+        _rightDownImageView.imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        _rightDownImageView.imageView.clipsToBounds  = YES;
         [self.contentView addSubview:_rightDownImageView];
         
         ///////////////////////////////////////////
@@ -113,6 +131,14 @@
     }
     [label.layer insertSublayer:layer atIndex:0];
     
+}
+
+-(UIImage *)cuverImage:(UIImage *)image andRect:(CGRect)rect{
+
+
+    CGImageRef imageRef=CGImageCreateWithImageInRect([image CGImage],rect);
+    UIImage *image1=[UIImage imageWithCGImage:imageRef];
+    return image1;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
