@@ -24,7 +24,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     self.frame = CGRectMake(0, 64, kScreenWidth, 404 * adapt.scaleHeight);
-    if (self) {
+    if ( self ) {
         self.backgroundColor = [UIColor whiteColor];
         NSArray *nomalImageArray = @[@"find", @"find", @"find", @"find", @"find", @"find", @"find", @"find", @"find", @"find"];
         NSArray *selectedImageArray = @[@"find", @"find", @"find", @"find", @"find", @"find", @"find", @"find", @"find", @"find"];
@@ -34,12 +34,14 @@
         _left = marginLeft;
         _top = marginTop;
 
-        for (int i = 0; i < 9; i++) {
+        for (
+                int i = 0; i < 9; i++
+                ) {
             UIButton *btn = [self buttonWithNomalImage:[UIImage imageNamed:nomalImageArray[i]] selectedImage:[UIImage imageNamed:selectedImageArray[i]] tag:TAG + i];
             btn.left = _left;
             btn.top = _top;
             UILabel *label = [self labelWithText:titleArray[i] btn:btn];
-            if (i % 3 == 2) {
+            if ( i % 3 == 2 ) {
                 _top = marginTop + label.bottom;
                 _left = marginLeft;
             }
@@ -67,7 +69,7 @@
 - (UILabel *)labelWithText:(NSString *)text btn:(UIButton *)btn {
     UILabel *label = [[UILabel alloc] init];
     label.text = text;
-    label.font = [UIFont systemFontOfSize:12.f];
+    label.font = smallerFont;
     label.textColor = [UIColor colorWithHexString:@"#383838"];
     [label sizeToFit];
     label.top = btn.bottom + margin;

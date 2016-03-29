@@ -12,10 +12,8 @@
 #import "ScreenAdapt.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import "LoginOrRegistViewController.h"
-#import "LoginManager.h"
 
 #define LoginOrRegistViewController [[LoginOrRegistViewController alloc]init]
-#define loginManager [[LoginManager alloc]init]
 
 @interface LoginViewOrRegistView () <UITextFieldDelegate>
 
@@ -40,6 +38,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
+        self.bounds=[UIScreen mainScreen].bounds;
         [self screenAdapt];
         self.backgroundColor = [UIColor colorWithHexString:@"#f3f4f5"];
         [self bgView];
@@ -181,6 +180,7 @@
         _phoneNumberTF.left = self.phoneNumberBg.left + 51 / 3 * _scaleWidth;
         _phoneNumberTF.centerY = self.phoneNumberBg.centerY;
         _phoneNumberTF.width = 300.f;
+        _phoneNumberTF.tag=1000;
         [_phoneNumberTF resignFirstResponder];
         _phoneNumberTF.keyboardType = UIKeyboardTypeNumberPad;
         [self addSubview:_phoneNumberTF];
@@ -205,6 +205,7 @@
         _confirmationCodeTF.left = _confirmationCodeBg.left + 51 / 3 * _scaleWidth;
         _confirmationCodeTF.centerY = _confirmationCodeBg.centerY;
         _confirmationCodeTF.width = 300.f;
+        _confirmationCodeTF.tag=1001;
         [_confirmationCodeTF resignFirstResponder];
         _confirmationCodeTF.keyboardType = UIKeyboardTypeNumberPad;
         [_confirmationCodeTF resignFirstResponder];
@@ -241,7 +242,7 @@
         _loginOrRegistBtn.frame = CGRectMake(0, 0, _loginOrRegistBtn.currentBackgroundImage.size.width * _scaleWidth, _loginOrRegistBtn.currentBackgroundImage.size.height);
         _loginOrRegistBtn.top = self.confirmationCodeBg.bottom + 81 / 3;
         _loginOrRegistBtn.centerX = self.centerX;
-        [_loginOrRegistBtn addTarget:loginManager action:@selector(loginOrRegist) forControlEvents:UIControlEventTouchUpInside];
+        [_loginOrRegistBtn addTarget:LoginOrRegistViewController action:@selector(loginOrRegist) forControlEvents:UIControlEventTouchUpInside];
         [_loginOrRegistBtn becomeFirstResponder];
         [self addSubview:_loginOrRegistBtn];
     }
@@ -350,7 +351,7 @@
         _weiboLogin.frame = CGRectMake(0, 0, _weiboLogin.currentBackgroundImage.size.width * _scaleWidth, _weiboLogin.currentBackgroundImage.size.height * _scaleHeight);
         _weiboLogin.top = self.cutOffRulePromptLB.bottom + 125 / 3 * _scaleHeight;
         _weiboLogin.left = iPhoneScreenWidth / 2 + 105 / 3 / 2;
-        [_weiboLogin addTarget:loginManager action:@selector(ssoLogInWeibo) forControlEvents:UIControlEventTouchUpInside];
+        [_weiboLogin addTarget:LoginOrRegistViewController action:@selector(ssoLogInWeibo) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_weiboLogin];
     }
     return _weiboLogin;
@@ -363,7 +364,7 @@
         _weixinLogin.frame = CGRectMake(0, 0, _weixinLogin.currentBackgroundImage.size.width * _scaleWidth, _weixinLogin.currentBackgroundImage.size.height * _scaleHeight);
         _weixinLogin.top = self.cutOffRulePromptLB.bottom + 125 / 3 * _scaleHeight;
         _weixinLogin.right = self.weiboLogin.left - 105 / 3;
-        [_weixinLogin addTarget:loginManager action:@selector(ssoLogInWechat) forControlEvents:UIControlEventTouchUpInside];
+        [_weixinLogin addTarget:LoginOrRegistViewController action:@selector(ssoLogInWechat) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_weixinLogin];
     }
     return _weixinLogin;

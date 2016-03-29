@@ -26,7 +26,7 @@
 
 #ifdef __OBJC__
 
-#import <UIKit/UIKit.h>
+#import <UIkit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "UIView+KGViewExtend.h"
 #import "QHViewTag.h"
@@ -130,8 +130,8 @@
 
 //字体
 #define fontName @"PingFang TC"
-#define nomalFont [UIFont systemFontOfSize:14.f]
-#define smallerFont [UIFont systemFontOfSize:12.f]
+#define nomalFont [UIFont fontWithName:fontName size:14.f]
+#define smallerFont [UIFont fontWithName:fontName size:12.f]
 //颜色
 #define nomalTextColor [UIColor colorWithHexString:@"#383838"]
 #define placeHoldTextColor [UIColor colorWithHexString:@"#7c7c7c"]

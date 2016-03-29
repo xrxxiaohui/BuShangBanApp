@@ -57,6 +57,7 @@
 - (void)descriptionLabelWithText:(NSString *)text {
     if ( !_descriptionLabel ) {
         _descriptionLabel = [[UILabel alloc] init];
+        
         _descriptionLabel.font = smallerFont;
         _descriptionLabel.textColor = placeHoldTextColor;
         _descriptionLabel.text = text;
@@ -80,10 +81,10 @@
 - (UIButton *)settingBtn {
     if ( !_settingBtn ) {
         _settingBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-        [_settingBtn setBackgroundImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
+        [_settingBtn setImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
         [_settingBtn addTarget:[[MineViewController alloc] init] action:@selector(settingBtn:) forControlEvents:UIControlEventTouchUpInside];
-        [_settingBtn sizeToFit];
-        _settingBtn.left = kScreenWidth - _settingBtn.width - 16;
+        _settingBtn.size=CGSizeMake(44, 44);
+        _settingBtn.left = kScreenWidth - _settingBtn.width - 10;
         _settingBtn.top = 33.f;
     }
     return _settingBtn;

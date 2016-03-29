@@ -15,7 +15,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if ( self ) {
-        self.textLabel.font = [UIFont systemFontOfSize:15];
+        self.textLabel.font = [UIFont systemFontOfSize:14];
     }
     return self;
 }
@@ -24,7 +24,7 @@
     if ( !_contentTF ) {
         _contentTF = [[UITextField alloc] init];
         _contentTF.size = CGSizeMake(150, 30);
-        _contentTF.font = [UIFont fontWithName:@"PingFang TC" size:15];
+        _contentTF.font = [UIFont fontWithName:@"PingFang TC" size:14];
         _contentTF.centerY = self.centerY;
         _contentTF.left = kScreenWidth - 160.f;
         _contentTF.textAlignment = NSTextAlignmentRight;
@@ -55,9 +55,9 @@
     if ( !_profileTextView ) {
         _profileTextView = [[UITextView alloc] init];
         _profileTextView.userInteractionEnabled = NO;
-        _profileTextView.size = CGSizeMake(272, 86);
+        _profileTextView.size = CGSizeMake(262, 86);
         _profileTextView.backgroundColor = [UIColor colorWithHexString:@"#f2f2f2"];
-        _profileTextView.font = [UIFont fontWithName:fontName size:15];
+        _profileTextView.font = [UIFont fontWithName:fontName size:14];
         _profileTextView.textColor = [UIColor colorWithHexString:@"#383838"];
         _profileTextView.userInteractionEnabled = NO;
         _profileTextView.layer.cornerRadius = 8.f;
@@ -70,7 +70,6 @@
     [super layoutSubviews];
     _profileTextView.left = 100;
     _profileTextView.top = 8.f;
-
     _headBtn.top = 11.f;
     _headBtn.left = self.width - 70.f;
 }

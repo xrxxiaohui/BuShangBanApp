@@ -20,7 +20,6 @@
 		049EF1E51CA38D8D00C1D68A /* AddressChoicePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049EF1D61CA38D8D00C1D68A /* AddressChoicePickerView.xib */; };
 		049EF1E61CA38D8D00C1D68A /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 049EF1D71CA38D8D00C1D68A /* area.plist */; };
 		049EF1E71CA38D8D00C1D68A /* AreaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF1D91CA38D8D00C1D68A /* AreaObject.m */; };
-		049EF1E81CA38D8D00C1D68A /* LoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF1DB1CA38D8D00C1D68A /* LoginManager.m */; };
 		049EF1E91CA38D8D00C1D68A /* ScreenAdapt.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF1DF1CA38D8D00C1D68A /* ScreenAdapt.m */; };
 		049EF1EA1CA38D8D00C1D68A /* UIColor+PPCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF1E11CA38D8D00C1D68A /* UIColor+PPCategory.m */; };
 		049EF1EB1CA38D8D00C1D68A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF1E31CA38D8D00C1D68A /* User.m */; };
@@ -224,8 +223,6 @@
 		049EF1D71CA38D8D00C1D68A /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
 		049EF1D81CA38D8D00C1D68A /* AreaObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaObject.h; sourceTree = "<group>"; };
 		049EF1D91CA38D8D00C1D68A /* AreaObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaObject.m; sourceTree = "<group>"; };
-		049EF1DA1CA38D8D00C1D68A /* LoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginManager.h; sourceTree = "<group>"; };
-		049EF1DB1CA38D8D00C1D68A /* LoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginManager.m; sourceTree = "<group>"; };
 		049EF1DD1CA38D8D00C1D68A /* iPhoneScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iPhoneScreen.h; sourceTree = "<group>"; };
 		049EF1DE1CA38D8D00C1D68A /* ScreenAdapt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenAdapt.h; sourceTree = "<group>"; };
 		049EF1DF1CA38D8D00C1D68A /* ScreenAdapt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenAdapt.m; sourceTree = "<group>"; };
@@ -1090,8 +1087,6 @@
 				042B09B91CA5162B003A533D /* Calendar */,
 				049EF2791CA3ED0400C1D68A /* ImagePicker */,
 				049EF1D31CA38D8D00C1D68A /* AddressChoise */,
-				049EF1DA1CA38D8D00C1D68A /* LoginManager.h */,
-				049EF1DB1CA38D8D00C1D68A /* LoginManager.m */,
 				049EF1DC1CA38D8D00C1D68A /* ScreenAdapt */,
 				049EF1E01CA38D8D00C1D68A /* UIColor+PPCategory.h */,
 				049EF1E11CA38D8D00C1D68A /* UIColor+PPCategory.m */,
@@ -1648,7 +1643,6 @@
 				049EF2431CA38FCE00C1D68A /* MineViewController.m in Sources */,
 				A3FD04401C99397A00E84A0B /* UIViewController+MLTransition.m in Sources */,
 				049EF27C1CA3ED0400C1D68A /* BuShangBanImagePicker.m in Sources */,
-				049EF1E81CA38D8D00C1D68A /* LoginManager.m in Sources */,
 				A377D1B11C995EB900C779A7 /* WechatShareView.m in Sources */,
 				A3FD04A31C99403E00E84A0B /* UserActionRequest.pb.m in Sources */,
 			);

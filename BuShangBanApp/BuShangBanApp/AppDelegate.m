@@ -39,32 +39,28 @@ AppDelegate *_appDelegate = nil;
 
 - (void)initializePlat:(NSDictionary *)launchOptions {
     NSString *infoConfigPath = [[NSBundle mainBundle] pathForResource:@"infoConfig" ofType:@"plist"];
-    NSDictionary *tempDic = [[NSDictionary alloc] initWithContentsOfFile:infoConfigPath];
-    NSDictionary *infoConfigDic = [tempDic objectForKey:@"Root"];
-
+    NSDictionary *infoConfigDic = [[NSDictionary alloc] initWithContentsOfFile:infoConfigPath];
+    
     //    leanCloud
     [AVOSCloud setApplicationId:
-                    [infoConfigDic objectForKey:@"AVOSCloudAPPID"]
+                       [infoConfigDic objectForKey:@"AVOSCloudAPPID"]
                       clientKey:[infoConfigDic objectForKey:@"AVOSCloudAppKey"]];
     [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
     //    微信  微博
-
-    [ShareSDK registerApp:@"iosv1101" activePlatforms:@[@(SSDKPlatformTypeSinaWeibo), @(SSDKPlatformTypeWechat)] onImport:^(SSDKPlatformType platformType) {
+    [ShareSDK registerApp:@"1701171842" activePlatforms:@[@(SSDKPlatformTypeSinaWeibo), @(SSDKPlatformTypeWechat)] onImport:^(SSDKPlatformType platformType) {
                 platformType == SSDKPlatformTypeWechat ? [ShareSDKConnector connectWeChat:[WXApi class]] : nil;
                 platformType == SSDKPlatformTypeSinaWeibo ? [ShareSDKConnector connectWeChat:[WeiboSDK class]] : nil;
             }
           onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {
               platformType == SSDKPlatformTypeSinaWeibo ?
-                      [appInfo                                                   SSDKSetupSinaWeiboByAppKey:
-                                      [infoConfigDic objectForKey:@"shareSDKSinaWeiboAppKey"]
-                                                                                                  appSecret:[infoConfigDic objectForKey:
-                                                                                                          @"shareSDKSinaWeiboAppSecret"] redirectUri:
-                                      [infoConfigDic objectForKey:@"shareSDKSinaWeiboRedirectUri"] authType:SSDKAuthTypeBoth] : nil;
+                      [appInfo     SSDKSetupSinaWeiboByAppKey: [infoConfigDic objectForKey:@"shareSDKSinaWeiboAppKey"]
+             appSecret:[infoConfigDic objectForKey: @"shareSDKSinaWeiboAppSecret"] redirectUri:
+                                      [infoConfigDic objectForKey:@"shareSDKSinaWeiboRedirectUrl"] authType:SSDKAuthTypeBoth] : nil;
 
               platformType == SSDKPlatformTypeWechat ?
-                      [appInfo           SSDKSetupWeChatByAppId:[infoConfigDic objectForKey:
-                              @"shareSDKWeChatAppId"] appSecret:[infoConfigDic objectForKey:@"shareSDKWeChatappSecret"]] : nil;
+                      [appInfo SSDKSetupWeChatByAppId:[infoConfigDic objectForKey:
+                                                                             @"shareSDKWeChatAppID"] appSecret:[infoConfigDic objectForKey:@"shareSDKWeChatappSecret"]] : nil;
           }];
 }
 

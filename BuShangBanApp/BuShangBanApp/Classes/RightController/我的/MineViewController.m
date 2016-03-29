@@ -8,26 +8,17 @@
 
 #import "MineViewController.h"
 #import "TableViewCell.h"
-//#import "AddressChoicePickerView.h"
 #import "TableHeaderView.h"
 #import "SettingViewController.h"
 #import "SliderViewController.h"
-//#import "BuShangBanCalendar.h"
 #import "FileManager.h"
-
 
 @interface MineViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
-//@property(nonatomic,strong)UIButton *doneBtn;
-
-//@property(nonatomic, strong) BuShangBanCalendar *calendar;
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) NSArray *titleArray;
 @property(nonatomic, strong) NSArray *contentArray;
 @property(nonatomic, strong) TableHeaderView *headerView;
-
-//@property(nonatomic,strong)UIView * grayMaskView;
-
 
 @end
 
@@ -88,25 +79,15 @@
     return 4;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 1;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 1;
-}
-
 - (TableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TableViewCell *cell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
-    cell.userInteractionEnabled = YES;
+    if (_user.isLogin)
+       return  cell;
     cell.textLabel.text = _titleArray[indexPath.row];
     cell.contentTF.text = _contentArray[indexPath.row];
     if ( indexPath.row == 0 ) {
         cell.contentTF.delegate = self;
     }
-//    if (_user.isLogin) {
-//        cell.userInteractionEnabled=NO;
-//    }
     return cell;
 }
 
@@ -117,6 +98,5 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 44.f;
 }
-
 
 @end

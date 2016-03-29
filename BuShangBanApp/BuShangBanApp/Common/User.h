@@ -33,6 +33,10 @@
 
 @interface User : NSObject
 
+@property (nonatomic, copy)NSString *loginAcount;
+@property (nonatomic, copy)NSString *loginType;
+@property (nonatomic, copy)NSString *login;
+@property (nonatomic, copy)NSString *confirmationCode;
 @property(nonatomic, copy) NSString *isLogined;
 @property(nonatomic, copy) NSString *isLogin;
 @property(nonatomic, copy) NSString *isRigist;

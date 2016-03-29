@@ -6,13 +6,8 @@
 //  Copyright © 2016年 Zuo. All rights reserved.
 //
 
-
-
 @interface MineViewController : QHBasicViewController
 
-- (void)settingBtn:(UIButton *)btn;
-
-//- (void)hideCalendar:(UIButton *)btn;
-
+-(void)settingBtn:(UIButton *)btn;
 
 @end

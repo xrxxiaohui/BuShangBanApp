@@ -27,9 +27,9 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _titleArray = [NSArray arrayWithObjects:@[@"头像"], @[@"昵称", @"身份签名", @"个人简介"], nil];
+    _titleArray=@[@"头像",@"基本资料",@"昵称", @"身份签名", @"个人简介"];
 //    if (_user.isLogin) {
-    _contentArray = @[@"", @"", @""];
+    _contentArray = @[@"", @"", @"",@"",@"",@""];
 //          _contentArray=@[_user.avatar,_user.nickname,_user.UserExtend.IDsign,_user.UserExtend.profile];
 //    }
     [self.view addSubview:self.tableView];
@@ -84,10 +84,6 @@
 //    }];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [super touchesBegan:touches withEvent:event];
-    [self.tableView endEditing:YES];
-}
 
 - (UIButton *)saveOrEditBtn {
     if ( !_saveOrEditBtn ) {
@@ -118,7 +114,7 @@
 
 - (UITableView *)tableView {
     if ( !_tableView ) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
     }
@@ -127,92 +123,95 @@
 
 #pragma mark -- delegate --
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [_titleArray count];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_titleArray[section] count];
-}
-
 - (TableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TableViewCell *cell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
-    cell.textLabel.text = _titleArray[indexPath.section][indexPath.row];
-    [cell becomeFirstResponder];
-    if ( indexPath.section == 0 ) {
-        UIImage *image = [UIImage imageWithContentsOfFile:_user.avatar];
-        if ( !image ) {
-            image = [UIImage imageNamed:@"Default avatar"];
+    TableViewCell *cell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    cell.textLabel.text = _titleArray[indexPath.row];
+//        if(!_user.isLogin)
+//            return  cell;
+    switch (indexPath.row)
+    {
+        case 0:
+        {
+            UIImage *image = [UIImage imageWithContentsOfFile:_user.avatar];
+            if ( !image ) {
+                image = [UIImage imageNamed:@"Default avatar"];
+            }
+            [cell.headBtn setBackgroundImage:image forState:UIControlStateNormal];
+             break;
         }
-        [cell.headBtn setBackgroundImage:image forState:UIControlStateNormal];
-    }
-    else if ( indexPath.section == 1 ) {
-        if ( indexPath.row == 2 ) {
+        case 1:
+        {
+            cell.textLabel.font=[UIFont fontWithName:fontName size:12];
+            cell.textLabel.textColor=placeHoldTextColor;
+            cell.backgroundColor=[UIColor colorWithHexString:@"#cccccc"];
+            break;
+        }
+        case 4:
+        {
             cell.profileTextView.delegate = self;
             [cell.profileTextView setText:_contentArray[indexPath.row]];
+            break;
         }
-        else {
+        default:
+        {
             cell.contentTF.delegate = self;
             [cell.contentTF setText:_contentArray[indexPath.row]];
+            break;
         }
     }
-//    if(!_user.isLogin)
-//        cell.userInteractionEnabled=NO;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.view addSubview:self.grayMaskView];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.view addSubview:self.grayMaskView];
     TableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if ( indexPath.section == 1 ) {
-        if ( indexPath.row != 2 ) {
-            cell.contentTF.userInteractionEnabled = YES;
-            [cell.contentTF becomeFirstResponder];
+    switch (indexPath.row) {
+        case 0:
+        {
+            [self setHeadImage:cell.headBtn];
+            break;
         }
-        else {
+        case 4:
+        {
             cell.profileTextView.userInteractionEnabled = YES;
             [cell.profileTextView becomeFirstResponder];
+            break;
+        }
+        default:
+        {
+            cell.contentTF.userInteractionEnabled = YES;
+            [cell.contentTF becomeFirstResponder];
+            break;
         }
     }
-    else {
-        [self setHeadImage:cell.headBtn];
-    }
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ( indexPath.section == 0 ) {
+    if ( indexPath.row == 0 ) {
         return 80.f;
     }
     else {
-        if ( indexPath.row == 2 ) {
-            return 100;
-        }
-        else {
-            return 44;
-        }
+        return (indexPath.row==4? 100:44);
     }
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return section == 0 ? @" " : @"基本资料";
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 2.0;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return section == 0 ? 12 : 36;
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 12.f;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     switch ( _indexPath.row ) {
-        case 0:
+        case 2:
             _user.nickname = textField.text;
             break;
-        case 1:
+        case 3:
             _user.UserExtend.IDsign = textField.text;
             break;
         default:

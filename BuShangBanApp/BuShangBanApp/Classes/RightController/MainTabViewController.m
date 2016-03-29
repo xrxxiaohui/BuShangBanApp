@@ -48,7 +48,11 @@ static MainTabViewController *main;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6) {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeLoginOrRigistView) name:@"LoginSuccess" object:nil];
+
+
+
+    if ( [[[UIDevice currentDevice] systemVersion] floatValue] >= 6 ) {
         [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
     }
 
@@ -58,7 +62,6 @@ static MainTabViewController *main;
     [self.view addSubview:_tabController.view];
     _tabController.delegate = self;
 
-    _loginOrRegistVC = [[LoginOrRegistViewController alloc] init];
     HomePageViewController *homePageViewController = [[HomePageViewController alloc] init];
     MineViewController *mineViewController = [[MineViewController alloc] init];
     MessageViewController *messageController = [[MessageViewController alloc] init];
@@ -66,7 +69,6 @@ static MainTabViewController *main;
 
     _tabController.viewControllers = @[homePageViewController, findViewController, messageController, mineViewController];
 
-//    [_tabController.view addSubview:_loginOrRegistVC.view];
     [self reloadImage];
     //    [[UITabBarItem appearance] setTitleTextAttributes:
     //        [NSDictionary dictionaryWithObjectsAndKeys:RGBA(96, 164, 222, 1), UITextAttributeTextColor, nil]
@@ -88,6 +90,17 @@ static MainTabViewController *main;
     [_shadowView setAlpha:0];
     [self.view addSubview:_shadowView];
 
+
+    [self addLoginOrRigistView];
+
+}
+
+- (void)addLoginOrRigistView {
+    if (!_loginOrRegistVC)
+    {
+        _loginOrRegistVC = [[LoginOrRegistViewController alloc] init];
+        [_tabController.view addSubview:_loginOrRegistVC.view];
+    }
 }
 
 - (void)removeLoginOrRigistView {
@@ -143,7 +156,7 @@ static MainTabViewController *main;
     [ar enumerateObjectsUsingBlock:^(UIViewController *viewController, NSUInteger idx, BOOL *stop) {
         //        UITabBarItem *item = viewController.tabBarItem;
         UITabBarItem *item = nil;
-        switch (idx) {
+        switch ( idx ) {
             case 0: {
                 //首页
                 item = [[UITabBarItem alloc] initWithTitle:@"阅读" image:nil tag:0];
@@ -206,5 +219,11 @@ static MainTabViewController *main;
 
     [[APIRequestManager sharedInstance] postDeviceTokenReq];
 }
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
 
 @end
