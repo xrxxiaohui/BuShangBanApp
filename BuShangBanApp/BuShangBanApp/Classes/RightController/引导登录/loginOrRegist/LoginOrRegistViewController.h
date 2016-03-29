@@ -9,11 +9,21 @@
 #import "BaseViewController.h"
 
 @interface LoginOrRegistViewController : UIViewController
-@property(nonatomic,assign)BOOL isLogin;
+@property(nonatomic,assign)BOOL isTologin;
 
 -(void)clickAction:(UIButton *)btn;
--(void)loginOrRegist;
 -(void)rightLoginOrRegist;
 - (void)sendCode:(UIButton *)sender ;
 
+- (void)ssoLogInWechat;
+
+- (void)ssoLogInWeibo;
+
+- (void)defaultLogin;
+
+- (void)login;
+
+-(void)loginOrRegist;
+
+-(void)loginWithUsrDefault;
 @end

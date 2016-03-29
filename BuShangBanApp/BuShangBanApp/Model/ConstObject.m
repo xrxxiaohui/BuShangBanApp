@@ -126,7 +126,7 @@
 	if ((self = [super init])) {
         self.tagssArray = [NSMutableArray arrayWithCapacity:1];
 	}
-    
+
     return self;
 }
 
@@ -147,7 +147,7 @@
 
 -(void)dealloc
 {
-    
+
     [super dealloc];
 }
 

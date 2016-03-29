@@ -16,8 +16,8 @@
 	<string>17b1e9d6437f831f5931f576fdcd4ed2</string>
 	<key>shareSDKWeChatAppId</key>
 	<string>wx7f73ba75d829ffa9</string>
-	<key>shareSDKSinaWeiboRedirectUri</key>
-	<string>https://api.weibo.com/oauth2/default.html</string>
+	<key>shareSDKSinaWeiboRedirectUrl</key>
+	<string>http://open.weibo.com/apps/1701171842/info/advanced</string>
 	<key>shareSDKSinaWeiboAppSecret</key>
 	<string>62d3a4f2b2c8c00599f05a5e675dcbea</string>
 </dict>
