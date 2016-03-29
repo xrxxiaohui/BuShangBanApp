@@ -28,6 +28,16 @@
 				<string>wx7f73ba75d829ffa9</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.weibo</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wb1701171842</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
@@ -56,6 +66,10 @@
 	<array>
 		<string>fetch</string>
 		<string>remote-notification</string>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>sinaweibosso</string>
 	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
