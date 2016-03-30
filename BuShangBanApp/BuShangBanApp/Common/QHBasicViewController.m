@@ -25,6 +25,8 @@
     
     self = [super init];
     
+    self.view.backgroundColor=backgroundCoor;
+    
     [self.view setFrame:self.view.bounds];
     
     return self;

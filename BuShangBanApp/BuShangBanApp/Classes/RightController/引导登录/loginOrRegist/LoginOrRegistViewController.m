@@ -62,7 +62,16 @@
     }
 }
 
-
+-(void)getUserInfoWithUser:(SSDKUser *)user
+{
+    _user.platformType=user.platformType ;
+    _user.mid=user.uid;
+    _user.nickName=user.nickname;
+    _user.UserExtend.profile=user.aboutMe;
+    _user.birthDay=user.birthday;
+    _user.avatar=user.icon;
+    _user.gender=user.gender;
+}
 
 - (BOOL)isRegisted {
     return YES;
@@ -103,8 +112,6 @@
             [MBProgressHUD showError:@"手机号不对"];
             return ;
         }
-        _user.loginAcount=textField.text;
-        NSLog(@"*********************_user.loginAcount%@",_user.loginAcount);
     }
     else
     {
@@ -113,10 +120,6 @@
             if (!self.loginViewOrRegistView.readedBtn.selected) {
                 [MBProgressHUD showError:@"请先阅读并同意书单用户协议及隐私协议~"];
             }
-        }
-        else
-        {
-            _user.confirmationCode=textField.text;
         }
     }
     [textField endEditing:YES];
@@ -127,9 +130,7 @@
 
 
 - (void)loginOrRegist {
-    NSLog(@"****************************************");
-    /*
-     [AVOSCloud verifySmsCode:_user.confirmationCode mobilePhoneNumber:_user.loginAcount callback:^(BOOL succeeded, NSError *error) {
+     [AVOSCloud verifySmsCode:_loginViewOrRegistView.confirmationCodeTF.text mobilePhoneNumber:_loginViewOrRegistView.phoneNumberTF.text callback:^(BOOL succeeded, NSError *error) {
      if (succeeded) {
      [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"LoginSuccess" object:nil]];
      
@@ -149,7 +150,6 @@
      [MBProgressHUD showError:@"验证失败，请检查验证码"];
      }
      }];
-     */
 }
 
 - (void)defaultLogin {
@@ -167,9 +167,11 @@
     if ([WXApi isWXAppInstalled]) {
         [ShareSDK getUserInfo:SSDKPlatformTypeWechat onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
             if (state == SSDKResponseStateSuccess) {
-                [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"LoginSuccess" object:nil]];
                 [MBProgressHUD showSuccess:@"登录成功"];
-                //                _user.username;
+                [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"LoginSuccess" object:nil]];
+                
+                [self getUserInfoWithUser:user];
+                
             } else if (state == SSDKResponseStateFail) {
                 [MBProgressHUD showError:@"登录失败"];
             }
@@ -180,17 +182,27 @@
 }
 
 - (void)ssoLogInWeibo {
+   
+    
     [ShareSDK getUserInfo:SSDKPlatformTypeSinaWeibo onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error) {
         if (state == SSDKResponseStateSuccess) {
-            [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"LoginSuccess" object:nil]];
-            [MBProgressHUD showSuccess:@"登录成功"];
+            
+            NSLog(@"****************SSDKResponseStateSuccess");
+//            [MBProgressHUD showSuccess:@"登录成功"];
+//            [self getUserInfoWithUser:user];
+//            
+//            [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"LoginSuccess" object:nil]];
             //            _user.username;
         }
         else if (state == SSDKResponseStateFail) {
-            [MBProgressHUD showError:@"登录失败"];
+//            [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"LoginSuccess" object:nil]];
+            NSLog(@"************************SSDKResponseStateFail");
+//            [MBProgressHUD showError:@"登录失败"];
         }
     }];
 }
+
+
 
 -(void)loginWithUsrDefault
 {

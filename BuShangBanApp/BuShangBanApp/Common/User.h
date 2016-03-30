@@ -6,7 +6,6 @@
 //  Copyright © 2016年 Zuo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 
 
 @interface UserList : NSObject
@@ -33,23 +32,79 @@
 
 @interface User : NSObject
 
+typedef NS_ENUM(NSUInteger, BuShangBanPlatformType)
+{
+    /**
+     *  未知
+     */
+    BuShangBanPlatformTypeUnknown             = 0,
+    /**
+     *  新浪微博
+     */
+    BuShangBanPlatformTypeSinaWeibo           = 1,
+    /**
+     *  打印
+     */
+    BuShangBanPlatformTypePrint               = 20,
+    /**
+     *  拷贝
+     */
+    BuShangBanPlatformTypeCopy                = 21,
+    /**
+     *  微信好友
+     */
+    BuShangBanPlatformSubTypeWechatSession    = 22,
+    /**
+     *  微信朋友圈
+     */
+    BuShangBanPlatformSubTypeWechatTimeline   = 23,
+   
+    /**
+     *  微信收藏
+     */
+    BuShangBanPlatformSubTypeWechatFav        = 37,
+    /**
+     *  微信平台,
+     */
+    BuShangBanPlatformTypeWechat              = 997,
+    /**
+     *  任意平台
+     */
+    BuShangBanPlatformTypeAny                 = 999
+};
+
+typedef NS_ENUM(NSUInteger, BuShangBanGender){
+    /**
+     *  男
+     */
+    BuShangBanGenderMale      = 0,
+    /**
+     *  女
+     */
+    BuShangBanGenderFemale    = 1,
+    /**
+     *  未知
+     */
+    BuShangBanGenderUnknown   = 2,
+};
+
 @property (nonatomic, copy)NSString *loginAcount;
-@property (nonatomic, copy)NSString *loginType;
+@property (nonatomic, assign)BuShangBanPlatformType *platformType;
 @property (nonatomic, copy)NSString *login;
 @property (nonatomic, copy)NSString *confirmationCode;
 @property(nonatomic, copy) NSString *isLogined;
 @property(nonatomic, copy) NSString *isLogin;
 @property(nonatomic, copy) NSString *isRigist;
 @property(nonatomic, copy) NSString *isRigisted;
-@property(nonatomic, assign) NSUInteger mid;
+@property(nonatomic, copy) NSString* mid;
 @property(nonatomic, assign) NSUInteger age;
 @property(nonatomic, copy) NSString *address;
-@property(nonatomic, copy) NSString *avatar;
+@property(nonatomic, strong) UIImage *avatar;
 @property(nonatomic, copy) NSString *constellation;
-@property(nonatomic, copy) NSString *gender;
+@property(nonatomic, assign) BuShangBanGender *gender;
 @property(nonatomic, copy) NSString *groups;
 @property(nonatomic, copy) NSString *leagues;
-@property(nonatomic, copy) NSString *nickname;
+@property(nonatomic, copy) NSString *nickName;
 @property(nonatomic, copy) NSString *ofusername;
 @property(nonatomic, copy) NSString *pinyin;
 @property(nonatomic, copy) NSString *sign;
@@ -58,7 +113,7 @@
 @property(nonatomic, copy) NSString *distance;
 @property(nonatomic, copy) NSString *extension;
 @property(nonatomic, copy) NSString *mobile;
-@property(nonatomic, copy) NSString *birthDay;
+@property(nonatomic, copy) NSDate *birthDay;
 @property(nonatomic, assign) NSUInteger noteCount;
 @property(nonatomic, assign) NSUInteger favCount;
 @property(nonatomic, assign) CGFloat latitude;

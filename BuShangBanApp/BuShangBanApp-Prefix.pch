@@ -81,7 +81,7 @@
 // UI类
 
 #import <MBProgressHUD+BWMExtension.h>
-
+#import "ScreenAdapt.h"
 
 
 // 安全类
@@ -133,8 +133,9 @@
 #define nomalFont [UIFont fontWithName:fontName size:14.f]
 #define smallerFont [UIFont fontWithName:fontName size:12.f]
 //颜色
-#define nomalTextColor [UIColor colorWithHexString:@"#383838"]
-#define placeHoldTextColor [UIColor colorWithHexString:@"#7c7c7c"]
+#define  backgroundCoor  [UIColor colorWithHexString:@"f9f9f9"]
+#define  nomalTextColor [UIColor colorWithHexString:@"#383838"]
+#define  placeHoldTextColor [UIColor colorWithHexString:@"#7c7c7c"]
 
 //用户信息
 #define _user [[User alloc]init]
