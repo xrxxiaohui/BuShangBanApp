@@ -12,11 +12,8 @@
 #import "BuShangBanImagePicker.h"
 #import "BuShangBanCalendar.h"
 #import "AddressChoicePickerView.h"
-//#import "UserAccountManager.h"
-//#import "KVStoreManager.h"
 
-
-@interface SettingViewController () <UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate,UITextViewDelegate>
+@interface SettingViewController () <UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate>
 
 @property(strong, nonatomic) UITableView *tableView;
 @property(nonatomic, strong) NSArray *titleArray;
@@ -38,7 +35,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    _titleArray=@[@"头像",@"基本资料",@"所在地", @"生日", @"职业", @"兴趣",@"昵称", @"身份签名", @"个人简介"];
+    _titleArray=[NSArray arrayWithObjects:@[@"头像"], @[@"所在地", @"生日", @"职业", @"兴趣",@"昵称", @"身份签名", @"个人简介"],nil];
      _contentArray = [NSMutableArray arrayWithArray:@[@"", @"", @"",@"",@"",@"",@"", @"",@""]];
 //    if (_user.isLogin) {
 //        NSDictionary *infoDic = [[UserAccountManager sharedInstance] getCurrentUserInfo];
@@ -66,13 +63,15 @@
 
 -(void)keyBoardWillShow:(NSNotification *)notification
 {
-    NSDictionary *dic=[notification userInfo];
-    NSValue *aValue = [dic objectForKey:UIKeyboardFrameEndUserInfoKey];
-    CGRect keyBoardRect=[aValue CGRectValue];
-    
-    [UIView animateWithDuration:0.5 animations:^{
-        _tableView.bottom=keyBoardRect.origin.y;
-    }];
+    if (_indexPath.row>2)
+    {
+        NSDictionary *dic=[notification userInfo];
+        NSValue *aValue = [dic objectForKey:UIKeyboardFrameEndUserInfoKey];
+        CGRect keyBoardRect=[aValue CGRectValue];
+        [UIView animateWithDuration:0.5 animations:^{
+            _tableView.bottom=keyBoardRect.origin.y;
+        }];
+    }
     [self.view addSubview:self.grayMaskView];
 }
 
@@ -93,12 +92,7 @@
     [self.tableView endEditing:YES];
     
     switch (_indexPath.row) {
-        case 0:
-        {
-            
-            break;
-        }
-        case 8:
+        case 6:
             _contentArray[_indexPath.row]=_cell.profileTextView.text;
             break;
         default:
@@ -123,15 +117,15 @@
     else
     {
         _tableView.userInteractionEnabled=NO;
-        NSMutableDictionary *infoDic=[[NSMutableDictionary alloc]init];
-        NSArray *keys=@[@"address",@"birthDay",@"occupation",@"interest",@"nickname",@"IDsign",@"profile"];
-        
-        for (int i=2;i<[_contentArray count];i++) {
-            [infoDic setObject:_contentArray[i] forKey:keys[i]];
-        }
-        [infoDic setObject:_user.avatar forKey:@"avatar"];
-        
-        [[KVStoreManager sharedInstance] saveAccountWithUserInfo:infoDic withUid:[[KVStoreManager sharedInstance ] getCurrentUid]];
+//        NSMutableDictionary *infoDic=[[NSMutableDictionary alloc]init];
+//        NSArray *keys=@[@"address",@"birthDay",@"occupation",@"interest",@"nickname",@"IDsign",@"profile"];
+//        
+//        for (int i=2;i<[_contentArray count];i++) {
+//            [infoDic setObject:_contentArray[i] forKey:keys[i]];
+//        }
+//        [infoDic setObject:_user.avatar forKey:@"avatar"];
+//        
+//        [[KVStoreManager sharedInstance] saveAccountWithUserInfo:infoDic withUid:[[KVStoreManager sharedInstance ] getCurrentUid]];
     }
     sender.selected = !sender.selected;
 }
@@ -181,7 +175,7 @@
     {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, 180+44*7+12) style:UITableViewStyleGrouped];
         _tableView.backgroundColor=backgroundCoor;
-        _tableView.contentSize=CGSizeMake(kScreenWidth, 180+44*7+12);
+        _tableView.contentSize=CGSizeMake(kScreenWidth, 180+44*7+12<kScreenHeight?180+44*7+12:kScreenHeight);
         _tableView.userInteractionEnabled=NO;
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -201,96 +195,99 @@
 #pragma mark -- delegate --
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [_titleArray[section] count];
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return [_titleArray count];
 }
 
 - (TableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TableViewCell *cell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-    cell.textLabel.text = _titleArray[indexPath.row];
-    switch (indexPath.row)
+    cell.textLabel.text = _titleArray[indexPath.section][indexPath.row];
+    
+    if (indexPath.section == 0)
     {
-        case 0:
-        {
-            UIImage *image = _user.avatar;
-            if ( !image ) {
-                image = [UIImage imageNamed:@"Default avatar"];
-            }
-            [cell.headBtn setBackgroundImage:image forState:UIControlStateNormal];
-             break;
+        UIImage *image = _user.avatar;
+        if ( !image ) {
+            image = [UIImage imageNamed:@"Default avatar"];
         }
-        case 1:
-        {
-            cell.textLabel.font=[UIFont fontWithName:fontName size:12];
-            cell.textLabel.textColor=placeHoldTextColor;
-            cell.backgroundColor=backgroundCoor;
-            break;
-        }
-        case 8:
-        {
-            [cell.profileTextView setText:_contentArray[indexPath.row]];
-            break;
-        }
-        default:
-        {
-            [cell.contentTF setText:_contentArray[indexPath.row]];
-            cell.contentTF.delegate=self;
-            break;
-        }
+        [cell.headBtn setBackgroundImage:image forState:UIControlStateNormal];
+    }
+    else if(indexPath.row == 6)
+    {
+        [cell.profileTextView setText:_contentArray[indexPath.row]];
+    }
+    else
+    {
+        [cell.contentTF setText:_contentArray[indexPath.row]];
+        cell.contentTF.delegate=self;
     }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 0) {
+        [self setHeadImage:_cell.headBtn];
+        return;
+    }
+    
     _cell = [tableView cellForRowAtIndexPath:indexPath];
     _indexPath=indexPath;
-    switch (indexPath.row) {
-        case 0:
-        {
-            [self setHeadImage:_cell.headBtn];
-            break;
-        }
-        case 1:
-        {
-            break;
-        }
-        case 8:
-        {
-            _cell.profileTextView.userInteractionEnabled = YES;
-            [_cell.profileTextView becomeFirstResponder];
-            break;
-        }
-        default:
-        {
-            [self textFieldDidBeginEditing:_cell.contentTF];
-            break;
-        }
+    
+    if(indexPath.row  != 6 )
+        [self textFieldDidBeginEditing:_cell.contentTF];
+    else
+    {
+        _cell.profileTextView.userInteractionEnabled = YES;
+        [_cell.profileTextView becomeFirstResponder];
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    switch (indexPath.row) {
-        case 0:
-            return 80.f;
-        case 8:
-            return 100;
-        default:
-            return 44;
-    }
+    if (indexPath.section == 0) return 80.f;
+    else if(indexPath.row == 6) return 100.f;
+    else return 44.f;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return 12.f;
+    if(section == 0)
+        return nil;
+    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 44)];
+    UILabel *label=[[UILabel alloc]init];
+    label.font=[UIFont fontWithName:fontName size:12];
+    label.textColor=placeHoldTextColor;
+    label.backgroundColor=backgroundCoor;
+    label.text=@"基本资料";
+    [label sizeToFit];
+    [view addSubview:label];
+    label.centerY=view.centerY;
+    label.left=12.f;
+    return view;
+}
+
+-(CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return (section == 0 ? 12.f:44.f);
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.01;
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    if (_indexPath.row == 2||_indexPath.row == 3) {
+    if (_indexPath.row == 1||_indexPath.row == 0) 
         [textField resignFirstResponder];
-    }
-    switch (_indexPath.row) {
-        case 2:
+    switch (_indexPath.row)
+    {
+        case 0:
         {
             AddressChoicePickerView *addressChoice=[[AddressChoicePickerView alloc]init];
             addressChoice.block=^(AddressChoicePickerView *view, UIButton *btn, AreaObject *locate){
@@ -300,7 +297,7 @@
             [addressChoice show];
             break;
         }
-        case 3:
+        case 1:
         {
             NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
             [formatter setDateFormat:@"yyyy-MM-dd"];

@@ -64,13 +64,13 @@
 
 -(void)getUserInfoWithUser:(SSDKUser *)user
 {
-    _user.platformType=user.platformType ;
+    _user.platformType=(BuShangBanPlatformType)user.platformType ;
     _user.mid=user.uid;
     _user.nickName=user.nickname;
     _user.UserExtend.profile=user.aboutMe;
     _user.birthDay=user.birthday;
     _user.avatar=user.icon;
-    _user.gender=user.gender;
+    _user.gender=(BuShangBanGender)user.gender;
 }
 
 - (BOOL)isRegisted {

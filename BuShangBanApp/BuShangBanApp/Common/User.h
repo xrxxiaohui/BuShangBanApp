@@ -89,7 +89,7 @@ typedef NS_ENUM(NSUInteger, BuShangBanGender){
 };
 
 @property (nonatomic, copy)NSString *loginAcount;
-@property (nonatomic, assign)BuShangBanPlatformType *platformType;
+@property (nonatomic, assign)BuShangBanPlatformType platformType;
 @property (nonatomic, copy)NSString *login;
 @property (nonatomic, copy)NSString *confirmationCode;
 @property(nonatomic, copy) NSString *isLogined;
@@ -101,7 +101,7 @@ typedef NS_ENUM(NSUInteger, BuShangBanGender){
 @property(nonatomic, copy) NSString *address;
 @property(nonatomic, strong) UIImage *avatar;
 @property(nonatomic, copy) NSString *constellation;
-@property(nonatomic, assign) BuShangBanGender *gender;
+@property(nonatomic, assign) BuShangBanGender gender;
 @property(nonatomic, copy) NSString *groups;
 @property(nonatomic, copy) NSString *leagues;
 @property(nonatomic, copy) NSString *nickName;
