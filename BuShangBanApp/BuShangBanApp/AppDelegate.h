@@ -9,7 +9,7 @@
 
 //leanCloud使用
 #define kApplicationId @"et5iuCnEFjROo4KeXgluQ6JQ-gzGzoHsz"
-#define kClientKey @"6DYAlNtMVqters495KKlBdwP"
+#define kClientKey     @"6DYAlNtMVqters495KKlBdwP"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -91,7 +91,7 @@ static MainTabViewController *main;
     [self.view addSubview:_shadowView];
 
 
-    [self addLoginOrRigistView];
+//    [self addLoginOrRigistView];
 
 }
 

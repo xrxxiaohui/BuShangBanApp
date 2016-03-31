@@ -49,10 +49,13 @@
 {
     [super viewDidLoad];
     
-    /* { 导航条 } */
-       _navView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, StatusbarSize, kScreenWidth, 44.0f)];
-    //    ((UIImageView *)_navView).backgroundColor = [UIColor clearColor];
-//    ((UIImageView *)_navView).backgroundColor = kAppRedColor;//COLOR(0xe6, 0x32, 0x14);
+    UIImageView *navIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, _nSpaceNavY, self.view.width, 64 - _nSpaceNavY)];
+    navIV.tag = 98;
+    [self.view addSubview:navIV];
+    [self reloadImage];
+
+    _navView = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, StatusbarSize, 320, 44.f)];
+    ((UIImageView *)_navView).backgroundColor = [UIColor clearColor];
     [self.view addSubview:_navView];
     _navView.userInteractionEnabled = YES;
     
@@ -65,50 +68,25 @@
     {
         _statusBarView.frame = CGRectMake(_statusBarView.frame.origin.x, _statusBarView.frame.origin.y, _statusBarView.frame.size.width, 20.f);
         _statusBarView.backgroundColor = [UIColor clearColor];
-//        ((UIImageView *)_statusBarView).backgroundColor = [UIColor clearColor];
-//        ((UIImageView *)_statusBarView).backgroundColor = kAppRedColor;
         [self.view addSubview:_statusBarView];
-        //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
-        
+
         _nSpaceNavY = 0;
         
     }
+    [self.navigationItem setTitleView:_navView];
+
 }
 
 
 -(void)customNavigationBarWithImage:(NSString *)image{
 
-    UIImageView *navIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, _nSpaceNavY, self.view.width, 64 - _nSpaceNavY)];
-    navIV.tag = 98;
-    [self.view addSubview:navIV];
-    [self reloadImage];
-    
-    _navView = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, StatusbarSize, 320, 44.f)];
-    ((UIImageView *)_navView).backgroundColor = [UIColor clearColor];
-    [self.view addSubview:_navView];
-    _navView.userInteractionEnabled = YES;
-    
     UIImageView *topImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:image]];
     topImage.center = _navView.center;
     [_navView addSubview:topImage];
     topImage.frame = CGRectMake(kScreenWidth/2-50, 8, 100, 28);
-    [self.navigationItem setTitleView:_navView];
 }
 
 -(void)customNavigationBarWithTitle:(NSString *)title {
-
-    UIImageView *navIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, _nSpaceNavY, self.view.width, 64 - _nSpaceNavY)];
-    navIV.tag = 98;
-    [self.view addSubview:navIV];
-    [self reloadImage];
-    
-    
-    _navView = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, StatusbarSize, kScreenWidth, 44.f)];
-    //    ((UIImageView *)_navView).backgroundColor = [UIColor clearColor];
-//    ((UIImageView *)_navView).backgroundColor = COLOR(0xe6, 0x32, 0x14);
-    [self.view addSubview:_navView];
-    _navView.userInteractionEnabled = YES;
-    
     //设置标题
     
     aTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenBounds.size.width/2 - 120,  (_navView.height - 40)/2, 240.0f, 40.0f)];
@@ -120,8 +98,6 @@
     aTitleLabel.textColor = COLOR(56, 56, 56);
     aTitleLabel.tag = 1022;
     [_navView addSubview:aTitleLabel];
-    //    [aTitleLabel release];
-    [self.navigationItem setTitleView:_navView];
 }
 
 -(void)customNavigationTitle:(NSString *)title {
