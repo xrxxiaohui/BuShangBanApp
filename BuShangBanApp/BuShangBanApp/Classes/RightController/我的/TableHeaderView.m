@@ -80,7 +80,7 @@
 
 - (UIButton *)settingBtn {
     if ( !_settingBtn ) {
-        _settingBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+        _settingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_settingBtn setImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
         [_settingBtn addTarget:[[MineViewController alloc] init] action:@selector(settingBtn:) forControlEvents:UIControlEventTouchUpInside];
         _settingBtn.size=CGSizeMake(44, 44);

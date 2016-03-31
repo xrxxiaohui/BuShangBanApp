@@ -56,7 +56,7 @@
     [self.view addSubview:navIV];
     [self reloadImage];
 
-    _navView = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, StatusbarSize, 320, 44.f)];
+    _navView = [[UIImageView alloc] initWithFrame:CGRectMake(0.f, StatusbarSize, self.view.width, 44.f)];
     ((UIImageView *)_navView).backgroundColor = [UIColor clearColor];
     [self.view addSubview:_navView];
     _navView.userInteractionEnabled = YES;

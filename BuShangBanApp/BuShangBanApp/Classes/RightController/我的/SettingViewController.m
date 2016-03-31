@@ -143,12 +143,16 @@
 
 - (UIButton *)saveOrEditBtn {
     if ( !_saveOrEditBtn ) {
-        _saveOrEditBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+        _saveOrEditBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_saveOrEditBtn setImage:[UIImage imageNamed:@"save_selected"] forState:UIControlStateNormal];
         [_saveOrEditBtn setImage:[UIImage imageNamed:@"save_nomal"] forState:UIControlStateSelected];
+        [_saveOrEditBtn setImage:[UIImage imageNamed:@"save_nomal"] forState:UIControlStateHighlighted];
+
         _saveOrEditBtn.backgroundColor=[UIColor clearColor];
         [_saveOrEditBtn addTarget:self action:@selector(saveOrEditInfo:) forControlEvents:UIControlEventTouchUpInside];
-        _saveOrEditBtn.selected = YES;
+//        _saveOrEditBtn.selected = YES;
+        _saveOrEditBtn.userInteractionEnabled = YES;
+        
         [_saveOrEditBtn sizeToFit];
     }
     return _saveOrEditBtn;
