@@ -51,7 +51,6 @@ static MainTabViewController *main;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeLoginOrRigistView) name:@"LoginSuccess" object:nil];
 
 
-
     if ( [[[UIDevice currentDevice] systemVersion] floatValue] >= 6 ) {
         [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
     }
@@ -96,8 +95,7 @@ static MainTabViewController *main;
 }
 
 - (void)addLoginOrRigistView {
-    if (!_loginOrRegistVC)
-    {
+    if ( !_loginOrRegistVC ) {
         _loginOrRegistVC = [[LoginOrRegistViewController alloc] init];
         [_tabController.view addSubview:_loginOrRegistVC.view];
     }
@@ -220,10 +218,9 @@ static MainTabViewController *main;
     [[APIRequestManager sharedInstance] postDeviceTokenReq];
 }
 
--(void)dealloc {
+- (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
 
 
 @end

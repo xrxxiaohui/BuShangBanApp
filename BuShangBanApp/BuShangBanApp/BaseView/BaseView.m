@@ -10,6 +10,14 @@
 
 @implementation BaseView
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor=backgroundCoor;
+    }
+    return self;
+}
 
 -(void)refreshUI {
     

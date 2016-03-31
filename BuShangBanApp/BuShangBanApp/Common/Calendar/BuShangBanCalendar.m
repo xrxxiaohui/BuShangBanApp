@@ -1,6 +1,6 @@
 #import "BuShangBanCalendar.h"
 #import "BuShangBanCalendarItem.h"
-#import "MineViewController.h"
+#import "SettingViewController.h"
 
 #define Weekdays @[@"日", @"一", @"二", @"三", @"四", @"五", @"六"]
 
@@ -29,7 +29,6 @@ static NSDateFormatter *dateFormattor;
         [self setupWeekHeader];
         [self setupCalendarItems];
         [self setupScrollView];
-
         [self setFrame:[UIScreen mainScreen].bounds];
         [self addSubview:self.btn];
         self.backgroundColor = [UIColor grayColor];
@@ -49,7 +48,7 @@ static NSDateFormatter *dateFormattor;
         _btn.layer.cornerRadius = 5.f;
         _btn.clipsToBounds = YES;
         [_btn setTitle:@" 确  定 " forState:UIControlStateNormal];
-//        [_btn addTarget:[[MineViewController alloc] init] action:@selector(hideCalendar:) forControlEvents:UIControlEventTouchUpInside];
+        [_btn addTarget:[[SettingViewController alloc] init] action:@selector(hideCalendar:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_btn];
     }
     return _btn;

@@ -115,7 +115,8 @@ static FileManager *fileManagerInstance = nil;
 }
 
 
-- (void)__info:(NSDictionary *)info infoBlock:(Info)infoBlock {
+- (void)__info:(NSDictionary *)info infoBlock:(Info)infoBlock
+{
     infoBlock([[info objectForKey:@"error"] boolValue], [NSString stringWithFormat:@"%@:%@", [info objectForKey:@"path"], [info objectForKey:@"reason"]]);
 }
 @end

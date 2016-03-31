@@ -11,13 +11,13 @@
 #import "TableHeaderView.h"
 #import "SettingViewController.h"
 #import "SliderViewController.h"
-#import "FileManager.h"
+#import "UserAccountManager.h"
 
 @interface MineViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) NSArray *titleArray;
-@property(nonatomic, strong) NSArray *contentArray;
+@property(nonatomic, strong) NSMutableArray *contentArray;
 @property(nonatomic, strong) TableHeaderView *headerView;
 
 @end
@@ -30,12 +30,26 @@
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     _titleArray = @[@"所在地", @"生日", @"职业", @"兴趣"];
+    _contentArray = [NSMutableArray arrayWithArray:@[@"", @"", @"", @""]];
 
 //    if (_user.isLogin) {
-    _contentArray = @[@"", @"", @"", @""];
-//         _contentArray=@[_user.address,_user.birthDay,_user.UserExtend.occupation,_user.UserExtend.interest];
+//        NSDictionary *infoDic = [[UserAccountManager sharedInstance] getCurrentUserInfo];
+//        if (infoDic) {
+//            _contentArray=[NSMutableArray arrayWithArray:
+//                       @[[infoDic objectForKey:@"address"],[infoDic objectForKey:@"birthDay"],
+//                         [infoDic objectForKey:@"occupation"],[infoDic objectForKey:@"interest"]]];
+//           _user.avatar =[infoDic objectForKey:@"avator"];
+//            _user.nickName=[infoDic objectForKey:@"nickName"];
+//            _user.UserExtend.myLabel=[infoDic objectForKey:@"myLabel"];
+//            _user.UserExtend.experience=[infoDic objectForKey:@"experience"];
+//        }
 //    }
     [self.view addSubview:self.tableView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
 }
 
 - (void)settingBtn:(UIButton *)btn {
@@ -48,14 +62,14 @@
 - (TableHeaderView *)headerView {
     if ( !_headerView ) {
         _headerView = [[TableHeaderView alloc] init];
-        UIImage *image = [UIImage imageWithContentsOfFile:_user.avatar];
+        UIImage *image = _user.avatar;
         if ( !image ) {
             image = [UIImage imageNamed:@"Default avatar"];
         }
         [_headerView.headImageBtn setBackgroundImage:image forState:UIControlStateNormal];
 
 //        [_headerView  descriptionLabelWithText:_user.UserExtend.experience];
-//        [_headerView nickNameLabelWithNickName:_user.nickname label:_user.UserExtend.myLabel];
+//        [_headerView nickNameLabelWithNickName:_user.nickName label:_user.UserExtend.myLabel];
 
         [_headerView descriptionLabelWithText:@"前36kr老编辑zuo，五年媒体经验"];
         [_headerView nickNameLabelWithNickName:@"老编辑" label:@"不上班创始人"];
@@ -67,6 +81,7 @@
     if ( !_tableView ) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenHeight, kScreenHeight) style:UITableViewStyleGrouped];
         _tableView.tableHeaderView = self.headerView;
+        _tableView.backgroundColor = backgroundCoor;
         _tableView.delegate = self;
         _tableView.dataSource = self;
     }
@@ -81,8 +96,8 @@
 
 - (TableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TableViewCell *cell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
-    if (_user.isLogin)
-       return  cell;
+    if ( _user.isLogin )
+        return cell;
     cell.textLabel.text = _titleArray[indexPath.row];
     cell.contentTF.text = _contentArray[indexPath.row];
     if ( indexPath.row == 0 ) {
@@ -92,7 +107,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

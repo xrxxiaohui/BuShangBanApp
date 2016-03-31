@@ -12,5 +12,5 @@
 
 - (void)setHeadImage:(UIButton *)btn;
 
-- (void)tapEvent:(UITapGestureRecognizer *)tap;
+- (void)hideCalendar:(UIButton *)btn;
 @end
