@@ -29,7 +29,7 @@ AppDelegate *_appDelegate = nil;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    [self initializePlat:launchOptions];
+//    [self initializePlat:launchOptions];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // 通过版本切换引导页主页
     [self.window switchRootViewController];
@@ -47,6 +47,15 @@ AppDelegate *_appDelegate = nil;
                       clientKey:[infoConfigDic objectForKey:@"AVOSCloudAppKey"]];
     [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
+#ifdef DEBUG
+    [AVAnalytics setAnalyticsEnabled:NO];
+    [AVOSCloud setAllLogsEnabled:YES];
+#endif
+    [AVOSCloud setLastModifyEnabled:YES];
+    [AVOSCloud setNetworkTimeoutInterval:30];
+    [[AVInstallation currentInstallation] saveInBackground];
+
+
     //    微信  微博
     [ShareSDK registerApp:@"1701171842" activePlatforms:@[@(SSDKPlatformTypeSinaWeibo), @(SSDKPlatformTypeWechat)] onImport:^(SSDKPlatformType platformType) {
                 platformType == SSDKPlatformTypeWechat ? [ShareSDKConnector connectWeChat:[WXApi class]] : nil;
@@ -63,6 +72,7 @@ AppDelegate *_appDelegate = nil;
                                                                              @"shareSDKWeChatAppID"] appSecret:[infoConfigDic objectForKey:@"shareSDKWeChatappSecret"]] : nil;
           }];
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

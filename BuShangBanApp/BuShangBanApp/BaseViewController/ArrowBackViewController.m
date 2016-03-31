@@ -17,7 +17,6 @@
     _navHeight = 64.0f;
     
     //左侧返回
-    
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setFrame:CGRectMake(7.5f, (self.navView.height - 40)/2, 40, 40)];
     [btn setImage:[UIImage imageNamed:@"returnPic"] forState:UIControlStateNormal];

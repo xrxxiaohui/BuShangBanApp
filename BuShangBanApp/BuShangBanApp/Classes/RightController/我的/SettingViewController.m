@@ -146,6 +146,7 @@
         [_saveOrEditBtn setImage:[UIImage imageNamed:@"save_selected"] forState:UIControlStateSelected];
         _saveOrEditBtn.backgroundColor=[UIColor clearColor];
         [_saveOrEditBtn addTarget:self action:@selector(saveOrEditInfo:) forControlEvents:UIControlEventTouchUpInside];
+
         [_saveOrEditBtn sizeToFit];
     }
     return _saveOrEditBtn;

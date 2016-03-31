@@ -102,7 +102,8 @@
             //            [self setAbroadArray:[_activifyData objectForKey:@"results"]];
             //            [self.tableView reloadData];
         }
-        
+        [_mainTableView.header endRefreshing];
+
     } failureBlock:^(SSLXResultRequest *failReq){
         
         NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
@@ -110,7 +111,7 @@
         if (_errorMsg) {
             [_mainTableView.header endRefreshing];
             [MBProgressHUD showError:_errorMsg];
-            
+
         }
         else {
             [MBProgressHUD showError:kMBProgressErrorTitle];
