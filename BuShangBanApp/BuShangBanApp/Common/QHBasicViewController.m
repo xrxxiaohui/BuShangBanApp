@@ -142,19 +142,17 @@
 -(void)defaultLeftItem
 {
     UIButton *sender=[UIButton buttonWithType:UIButtonTypeCustom];
-    [sender setBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [sender setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     [sender addTarget:self action:@selector(popToLeft) forControlEvents:UIControlEventTouchUpInside];
-    sender.size=sender.currentBackgroundImage.size;
-    sender.left = 10;
+    sender.size=CGSizeMake(44, 44);
     sender.top = (_navView.height - sender.height)/2;
     [_navView addSubview:sender];
 }
 
 -(void)customRightItemWithBtn:(UIButton *)sender {
-    
-    sender.left = kScreenWidth - sender.width - 16;
+    sender.size=CGSizeMake(44, 44);
+    sender.left = kScreenWidth - sender.width;
     sender.top = (_navView.height - sender.height)/2;
-    
     [_navView addSubview:sender];
 }
 

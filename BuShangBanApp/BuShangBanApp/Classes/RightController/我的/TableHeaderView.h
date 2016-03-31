@@ -10,9 +10,13 @@
 #import "ScreenAdapt.h"
 #import "UIView+Frame.h"
 
+#define adapt  [[[ScreenAdapt alloc]init] adapt]
+#define tableHeaderViewHeight 200
+
 @interface TableHeaderView : BaseView
 @property(nonatomic, strong) UIImageView *bgImageView;
 @property(nonatomic, strong) UIButton *headImageBtn;
+//@property(nonatomic,strong)UIVisualEffectView *blurView;
 
 - (void)nickNameLabelWithNickName:(NSString *)nickName label:(NSString *)label;
 

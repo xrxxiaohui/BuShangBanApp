@@ -28,6 +28,7 @@
     UIImage *_headImage;
     NSIndexPath *_indexPath;
     TableViewCell *_cell;
+    CGPoint _point;
 }
 
 - (void)viewDidLoad {
@@ -63,23 +64,17 @@
 
 -(void)keyBoardWillShow:(NSNotification *)notification
 {
-    if (_indexPath.row>2)
-    {
-        NSDictionary *dic=[notification userInfo];
-        NSValue *aValue = [dic objectForKey:UIKeyboardFrameEndUserInfoKey];
-        CGRect keyBoardRect=[aValue CGRectValue];
-        [UIView animateWithDuration:0.5 animations:^{
-            _tableView.bottom=keyBoardRect.origin.y;
-        }];
-    }
+    NSDictionary *dic=[notification userInfo];
+    CGFloat duration=[[dic objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    CGRect keyBoardRect=[[dic objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    if (keyBoardRect.origin.y<_cell.bottom+64.f)
+        [UIView animateWithDuration:duration animations:^{_tableView.top=keyBoardRect.origin.y-_cell.bottom;}];
     [self.view addSubview:self.grayMaskView];
 }
 
 -(void)keyBoardWillHide:(NSNotification *)notification
 {
-    [UIView animateWithDuration:0.5 animations:^{
-        _tableView.top=64.f;
-    }];
+    [UIView animateWithDuration:0.5 animations:^{_tableView.top=64.f;}];
     [self hideGrayMaskView];
 }
 
@@ -91,14 +86,17 @@
 {
     [self.tableView endEditing:YES];
     
-    switch (_indexPath.row) {
-        case 6:
-            _contentArray[_indexPath.row]=_cell.profileTextView.text;
-            break;
-        default:
-            _contentArray[_indexPath.row]=_cell.contentTF.text;
-            break;
+    if (_indexPath.row == 6)
+    {
+        _contentArray[_indexPath.row]=_cell.profileTextView.text;
+        _cell.profileTextView.userInteractionEnabled=NO;
     }
+    else
+    {
+        _contentArray[_indexPath.row]=_cell.contentTF.text;
+        _cell.contentTF.userInteractionEnabled=NO;
+    }
+    
     [_grayMaskView removeFromSuperview];
     _grayMaskView = nil;
 }
@@ -112,11 +110,11 @@
 - (void)saveOrEditInfo:(UIButton *)sender {
     [self.view endEditing:YES];
     if (sender.selected) {
-        _tableView.userInteractionEnabled=YES;
+        _tableView.userInteractionEnabled=NO;
     }
     else
     {
-        _tableView.userInteractionEnabled=NO;
+        _tableView.userInteractionEnabled=YES;
 //        NSMutableDictionary *infoDic=[[NSMutableDictionary alloc]init];
 //        NSArray *keys=@[@"address",@"birthDay",@"occupation",@"interest",@"nickname",@"IDsign",@"profile"];
 //        
@@ -143,12 +141,11 @@
 
 - (UIButton *)saveOrEditBtn {
     if ( !_saveOrEditBtn ) {
-        _saveOrEditBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-        [_saveOrEditBtn setImage:[UIImage imageNamed:@"save_selected"] forState:UIControlStateNormal];
-        [_saveOrEditBtn setImage:[UIImage imageNamed:@"save_nomal"] forState:UIControlStateSelected];
+        _saveOrEditBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_saveOrEditBtn setImage:[UIImage imageNamed:@"save_nomal"] forState:UIControlStateNormal];
+        [_saveOrEditBtn setImage:[UIImage imageNamed:@"save_selected"] forState:UIControlStateSelected];
         _saveOrEditBtn.backgroundColor=[UIColor clearColor];
         [_saveOrEditBtn addTarget:self action:@selector(saveOrEditInfo:) forControlEvents:UIControlEventTouchUpInside];
-        _saveOrEditBtn.selected = YES;
         [_saveOrEditBtn sizeToFit];
     }
     return _saveOrEditBtn;
@@ -183,8 +180,7 @@
     return _tableView;
 }
 
--(BuShangBanCalendar *)calendar
-{
+-(BuShangBanCalendar *)calendar{
     if (!_calendar) {
         _calendar=[[BuShangBanCalendar alloc]initWithCurrentDate:[NSDate date]];
         [self.view addSubview:_calendar];
@@ -198,8 +194,7 @@
     return [_titleArray[section] count];
 }
 
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return [_titleArray count];
 }
 
@@ -253,9 +248,7 @@
     else return 44.f;
 }
 
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if(section == 0)
         return nil;
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 44)];
@@ -265,24 +258,21 @@
     label.backgroundColor=backgroundCoor;
     label.text=@"基本资料";
     [label sizeToFit];
-    [view addSubview:label];
     label.centerY=view.centerY;
     label.left=12.f;
+    [view addSubview:label];
     return view;
 }
 
--(CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
+-(CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return (section == 0 ? 12.f:44.f);
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.01;
 }
 
--(void)textFieldDidBeginEditing:(UITextField *)textField
-{
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
     if (_indexPath.row == 1||_indexPath.row == 0) 
         [textField resignFirstResponder];
     switch (_indexPath.row)
@@ -311,13 +301,10 @@
             [textField becomeFirstResponder];
             break;
         }
-            
     }
-    
 }
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField endEditing:YES];
     return YES;
 }

@@ -9,8 +9,7 @@
 #import "TableHeaderView.h"
 #import "MineViewController.h"
 
-#define adapt  [[[ScreenAdapt alloc]init] adapt]
-#define tableHeaderViewHeight 200
+
 
 @interface TableHeaderView ()
 
@@ -36,7 +35,7 @@
 - (void)nickNameLabelWithNickName:(NSString *)nickName label:(NSString *)label {
     if ( !_nickNameLabel ) {
         _nickNameLabel = [[UILabel alloc] init];
-        nickName = [NSString stringWithFormat:@"%@   |   ", nickName];
+        nickName = [NSString stringWithFormat:@"%@  |  ", nickName];
 
         NSDictionary *nickNameDic =
                 @{NSForegroundColorAttributeName : nomalTextColor, NSFontAttributeName : [UIFont fontWithName:fontName size:15.f]};
@@ -68,11 +67,9 @@
     }
 }
 
-
 - (UIImageView *)bgImageView {
     if ( !_bgImageView ) {
-        _bgImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-        _bgImageView.size = self.size;
+        _bgImageView = [[UIImageView alloc] initWithFrame:self.bounds];
         _bgImageView.image = [UIImage imageNamed:@"bg"];
     }
     return _bgImageView;
@@ -80,11 +77,11 @@
 
 - (UIButton *)settingBtn {
     if ( !_settingBtn ) {
-        _settingBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+        _settingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_settingBtn setImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
         [_settingBtn addTarget:[[MineViewController alloc] init] action:@selector(settingBtn:) forControlEvents:UIControlEventTouchUpInside];
         _settingBtn.size=CGSizeMake(44, 44);
-        _settingBtn.left = kScreenWidth - _settingBtn.width - 10;
+        _settingBtn.left = kScreenWidth - _settingBtn.width;
         _settingBtn.top = 33.f;
     }
     return _settingBtn;
@@ -105,7 +102,15 @@
     return _headImageBtn;
 }
 
-
+//-(UIVisualEffectView *)blurView
+//{
+//    if (!_blurView) {
+//        _blurView=[[UIVisualEffectView alloc]initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+//        _blurView.frame=self.frame;
+//        [self.bgImageView addSubview:_blurView];
+//    }
+//    return _blurView;
+//}
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [super touchesEnded:touches withEvent:event];
     [self endEditing:YES];

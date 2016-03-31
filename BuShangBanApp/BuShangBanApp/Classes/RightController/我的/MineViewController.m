@@ -13,12 +13,13 @@
 #import "SliderViewController.h"
 #import "UserAccountManager.h"
 
-@interface MineViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface MineViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate,UIScrollViewDelegate>
 
 @property(nonatomic, strong) UITableView *tableView;
 @property(nonatomic, strong) NSArray *titleArray;
 @property(nonatomic, strong) NSMutableArray *contentArray;
 @property(nonatomic, strong) TableHeaderView *headerView;
+
 
 @end
 
@@ -59,9 +60,10 @@
 
 #pragma mark --- 懒加载 ---
 
+
 - (TableHeaderView *)headerView {
     if ( !_headerView ) {
-        _headerView = [[TableHeaderView alloc] init];
+        _headerView = [[TableHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, tableHeaderViewHeight * adapt.scaleHeight)];
         UIImage *image = _user.avatar;
         if ( !image ) {
             image = [UIImage imageNamed:@"Default avatar"];
@@ -96,6 +98,7 @@
 
 - (TableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TableViewCell *cell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
+    cell.userInteractionEnabled=NO;
     if ( _user.isLogin )
         return cell;
     cell.textLabel.text = _titleArray[indexPath.row];
@@ -114,4 +117,23 @@
     return 44.f;
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGPoint offset = scrollView.contentOffset;
+    CGSize size=_headerView.size;
+    float scale =size.height/size.width;
+    if (offset.y < 0)
+    {
+        _headerView.bgImageView.height=tableHeaderViewHeight *adapt.scaleHeight -offset.y;
+        _headerView.bgImageView.width=_headerView.bgImageView.height/scale;
+        _headerView.bgImageView.top=offset.y;
+        _headerView.bgImageView.centerX=self.view.centerX;
+//        _headerView.blurView.height=tableHeaderViewHeight *adapt.scaleHeight -offset.y;
+    }
+//    else
+//    {
+//        [_headerView.blurView removeFromSuperview];
+//        _headerView.blurView=nil;
+//    }
+}
 @end

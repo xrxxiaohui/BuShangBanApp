@@ -80,6 +80,7 @@
     _headBtn.left = self.width - 58.f * adapt.scaleWidth-12;
 }
 
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
