@@ -115,7 +115,7 @@
     
     aTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenBounds.size.width/2 - 120,  (_navView.height - 40)/2, 240.0f, 40.0f)];
     aTitleLabel.text = title;
-    aTitleLabel.font = [UIFont systemFontOfSize:16];
+    aTitleLabel.font = [UIFont fontWithName:fontName size:16];
     aTitleLabel.textAlignment = NSTextAlignmentCenter;
     aTitleLabel.backgroundColor = [UIColor clearColor];
     //    aTitleLabel.adjustsFontSizeToFitWidth = YES;

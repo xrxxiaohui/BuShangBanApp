@@ -14,24 +14,26 @@
 @implementation TableViewCell
 
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if ( self ) {
-        self.textLabel.font = [UIFont systemFontOfSize:14];
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self ) {
+         self.textLabel.font = [UIFont fontWithName:fontName size:14.f];
     }
     return self;
 }
 
+
+
 - (UITextField *)contentTF {
     if ( !_contentTF ) {
         _contentTF = [[UITextField alloc] init];
-        _contentTF.size = CGSizeMake(150 * adapt.scaleWidth, 30);
+        _contentTF.size = CGSizeMake(150 , 30);
         _contentTF.font = [UIFont fontWithName:@"PingFang TC" size:14];
         _contentTF.centerY = self.centerY;
-        _contentTF.left = kScreenWidth - 160.f * adapt.scaleWidth;
+        _contentTF.left = kScreenWidth - 160.f * adapt.scaleWidth-14.f;
         _contentTF.textAlignment = NSTextAlignmentRight;
         _contentTF.borderStyle = UITextBorderStyleNone;
-        _contentTF.font = [UIFont systemFontOfSize:14];
         _contentTF.textColor = [UIColor colorWithHexString:@"#7c7c7c"];
         _contentTF.userInteractionEnabled = NO;
         _contentTF.returnKeyType = UIReturnKeyDone;
@@ -57,7 +59,9 @@
     if ( !_profileTextView ) {
         _profileTextView = [[UITextView alloc] init];
         _profileTextView.userInteractionEnabled = NO;
-        _profileTextView.size = CGSizeMake(265 * adapt.scaleWidth, 86);
+        _profileTextView.size = CGSizeMake(272 * adapt.scaleWidth, 86);
+        _profileTextView.left =kScreenWidth -272 * adapt.scaleWidth-12;
+        _profileTextView.top = 8.f;
         _profileTextView.backgroundColor = [UIColor colorWithHexString:@"#f2f2f2"];
         _profileTextView.font = [UIFont fontWithName:fontName size:14];
         _profileTextView.textColor = [UIColor colorWithHexString:@"#383838"];
@@ -69,12 +73,11 @@
     return _profileTextView;
 }
 
-- (void)layoutSubviews {
+-(void)layoutSubviews
+{
     [super layoutSubviews];
-    _profileTextView.left = 100 * adapt.scaleWidth;
-    _profileTextView.top = 8.f;
     _headBtn.top = 11.f;
-    _headBtn.left = self.width - 70.f * adapt.scaleWidth;
+    _headBtn.left = self.width - 58.f * adapt.scaleWidth-12;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

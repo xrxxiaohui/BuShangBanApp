@@ -39,7 +39,7 @@
         nickName = [NSString stringWithFormat:@"%@   |   ", nickName];
 
         NSDictionary *nickNameDic =
-                @{NSForegroundColorAttributeName : nomalTextColor, NSFontAttributeName : nomalFont};
+                @{NSForegroundColorAttributeName : nomalTextColor, NSFontAttributeName : [UIFont fontWithName:fontName size:15.f]};
         NSDictionary *labelDic =
                 @{NSForegroundColorAttributeName : placeHoldTextColor, NSFontAttributeName : smallerFont};
 
