@@ -57,9 +57,7 @@
     [[SliderViewController sharedSliderController].navigationController pushViewController:[[SettingViewController alloc] init] animated:YES];
 }
 
-
 #pragma mark --- 懒加载 ---
-
 
 - (TableHeaderView *)headerView {
     if ( !_headerView ) {
@@ -73,7 +71,7 @@
 //        [_headerView  descriptionLabelWithText:_user.UserExtend.experience];
 //        [_headerView nickNameLabelWithNickName:_user.nickName label:_user.UserExtend.myLabel];
 
-        [_headerView descriptionLabelWithText:@"前36kr老编辑zuo，五年媒体经验"];
+        [_headerView descriptionLabelWithText:@"前36kr老编辑zuo 五年媒体经验"];
         [_headerView nickNameLabelWithNickName:@"老编辑" label:@"不上班创始人"];
     }
     return _headerView;

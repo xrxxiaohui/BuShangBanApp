@@ -24,6 +24,7 @@
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     [self customLeftItemWithBtn:btn];
+    
 }
 
 -(void)toReturn{

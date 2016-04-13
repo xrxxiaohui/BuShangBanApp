@@ -17,7 +17,7 @@
 //#define kBaseUrl @"http://apitemp.shunshunliuxue.com" // apitemp
 
 #warning -  警告！警告！！危险！！危险！！！ 用的是测试地址
-#define kBaseUrl @"http://apitest.shunshunliuxue.com" // apitest
+#define kBaseUrl @"https://leancloud.cn:443/1.1/classes/" // apitest
 
 
 static id _instance;
@@ -78,9 +78,10 @@ static id _instance;
     
         NSDictionary *_nsDic  = [successRequest.responseString objectFromJSONString];//[super parseJsonRequest:request];
         // 保证是字典类型
-        if (_nsDic && [_nsDic isKindOfClass:[NSDictionary class]] && [[_nsDic valueForKeyPath:@"result.status"] isKindOfClass:[NSString class]]) {
+//        if (_nsDic && [_nsDic isKindOfClass:[NSDictionary class]] && [[_nsDic valueForKeyPath:@"result.status"] isKindOfClass:[NSString class]])
+        if (_nsDic && [_nsDic isKindOfClass:[NSDictionary class]] ){
             
-            if ([[_nsDic valueForKeyPath:@"result.status"] isEqualToString:@"01"]) {
+//            if ([[_nsDic valueForKeyPath:@"result.status"] isEqualToString:@"01"]) {
                 if (successResult) {
                     
                     successResult((SSLXResultRequest *)successRequest);
@@ -89,15 +90,15 @@ static id _instance;
                         // 缓存数据
                         [[KVStoreManager sharedInstance] cacheRespondString:successRequest.responseString withRequestUrl:baseRequest.requestUrl withParams:baseRequest.requestArgument];
                     }
-                }
+//                }
             }
-            else if ([[_nsDic valueForKeyPath:@"result.status"] isEqualToString:@"00"]) {
-                
-                if ([[UserAccountManager sharedInstance] checkLogin]) {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kLoginOutNotification object:nil];
-                }
-                
-            }
+//            else if ([[_nsDic valueForKeyPath:@"result.status"] isEqualToString:@"00"]) {
+//                
+//                if ([[UserAccountManager sharedInstance] checkLogin]) {
+//                    [[NSNotificationCenter defaultCenter] postNotificationName:kLoginOutNotification object:nil];
+//                }
+//                
+//            }
             else {
             
                 if (failureResult) {

@@ -86,7 +86,14 @@ static MainTabViewController *main;
     _shadowView = [[UIControl alloc] initWithFrame:CGRectMake(0, self.view.height - _tabController.tabBar.height, _tabController.tabBar.width, _tabController.tabBar.height)];
     [_shadowView addTarget:self action:@selector(shadowViewClick:) forControlEvents:UIControlEventTouchUpInside];
     [_shadowView setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.3f]];
-    [_shadowView setAlpha:0];
+    [_shadowView setAlpha:0.01];
+    
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+    UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
+    
+    effectview.frame = CGRectMake(0, 0, _tabController.tabBar.width, _tabController.tabBar.height);
+    
+    [_shadowView addSubview:effectview];
     [self.view addSubview:_shadowView];
 
 
@@ -107,6 +114,7 @@ static MainTabViewController *main;
 }
 
 - (void)shadowViewClick:(UIControl *)control {
+    
 }
 
 //-(void)pushToDemoExample {
@@ -181,7 +189,6 @@ static MainTabViewController *main;
             case 3: {
                 //我的
                 item = [[UITabBarItem alloc] initWithTitle:@"我的" image:nil tag:3];
-
                 [item setImage:[[QHCommonUtil imageNamed:@"personal_icon_nomal"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
                 [item setSelectedImage:[[QHCommonUtil imageNamed:@"personal_icon_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
 
@@ -189,11 +196,12 @@ static MainTabViewController *main;
             }
 
         }
-        [item setTitleTextAttributes:@{NSForegroundColorAttributeName : COLOR(7, 139, 109), NSFontAttributeName : [UIFont systemFontOfSize:10]} forState:UIControlStateHighlighted];
+        [item setTitleTextAttributes:@{NSForegroundColorAttributeName : COLOR(7, 139, 109), NSFontAttributeName : [UIFont systemFontOfSize:10]} forState:UIControlStateSelected];
         [item setTitleTextAttributes:@{NSForegroundColorAttributeName : kTabBtnNormalColor, NSFontAttributeName : [UIFont systemFontOfSize:10]} forState:UIControlStateNormal];
 
         viewController.tabBarItem = item;
         [arD addObject:viewController];
+        
     }];
     _tabController.viewControllers = arD;
 }

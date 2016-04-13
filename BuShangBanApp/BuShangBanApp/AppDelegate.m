@@ -29,7 +29,7 @@ AppDelegate *_appDelegate = nil;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-//    [self initializePlat:launchOptions];
+    [self initializePlat:launchOptions];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // 通过版本切换引导页主页
     [self.window switchRootViewController];
@@ -42,20 +42,40 @@ AppDelegate *_appDelegate = nil;
     NSDictionary *infoConfigDic = [[NSDictionary alloc] initWithContentsOfFile:infoConfigPath];
     
     //    leanCloud
-    [AVOSCloud setApplicationId:
-                       [infoConfigDic objectForKey:@"AVOSCloudAPPID"]
-                      clientKey:[infoConfigDic objectForKey:@"AVOSCloudAppKey"]];
+//    [AVOSCloud setApplicationId:
+//                       [infoConfigDic objectForKey:@"AVOSCloudAPPID"]
+//                      clientKey:[infoConfigDic objectForKey:@"AVOSCloudAppKey"]];
+//    [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+
+//#ifdef DEBUG
+//    [AVAnalytics setAnalyticsEnabled:NO];
+//    [AVOSCloud setAllLogsEnabled:YES];
+//#endif
+//    [AVOSCloud setLastModifyEnabled:YES];
+//    [AVOSCloud setNetworkTimeoutInterval:30];
+//    [[AVInstallation currentInstallation] saveInBackground];
+    
+    //打开统计开关
+    [AVAnalytics setAnalyticsEnabled:YES];
+    //跟踪统计应用的打开情况
     [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
-#ifdef DEBUG
-    [AVAnalytics setAnalyticsEnabled:NO];
-    [AVOSCloud setAllLogsEnabled:YES];
-#endif
-    [AVOSCloud setLastModifyEnabled:YES];
-    [AVOSCloud setNetworkTimeoutInterval:30];
-    [[AVInstallation currentInstallation] saveInBackground];
+    [AVOSCloud setApplicationId:@"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz" clientKey:@"MDOagSCTlLw9A6fkrcaphlB8"];
 
-
+    
+//    AVObject *post = [AVObject objectWithClassName:@"TestObject"];
+//    [post setObject:@"Hello World!" forKey:@"words"];
+//    [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        if (succeeded) {
+//            // 保存成功了！
+//            NSLog(@"保存成功了！");
+//        }else{
+//        
+//            NSLog(@"保shibai!!!!!!!!!!");
+//        }
+//    }];
+    
+    
     //    微信  微博
     [ShareSDK registerApp:@"1701171842" activePlatforms:@[@(SSDKPlatformTypeSinaWeibo), @(SSDKPlatformTypeWechat)] onImport:^(SSDKPlatformType platformType) {
                 platformType == SSDKPlatformTypeWechat ? [ShareSDKConnector connectWeChat:[WXApi class]] : nil;
@@ -72,7 +92,6 @@ AppDelegate *_appDelegate = nil;
                                                                              @"shareSDKWeChatAppID"] appSecret:[infoConfigDic objectForKey:@"shareSDKWeChatappSecret"]] : nil;
           }];
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

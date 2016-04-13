@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>AppName</key>
-	<string>不上班</string>
+	<string>bushangban</string>
 	<key>AVOSCloudAppKey</key>
-	<string>mXwoweBSOHik4EIc08sqNS74</string>
+	<string>MDOagSCTlLw9A6fkrcaphlB8</string>
 	<key>AVOSCloudAPPID</key>
-	<string>nGMwvSdTXNj4qXYHtkzkYaKU-gzGzoHsz</string>
+	<string>fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz</string>
 	<key>AVOSCloudMasterKey</key>
-	<string>Wyb47mypvygQVJSdyF5uXIUI</string>
+	<string>5HuFJiGS7F9daaWM5r9wHRVx</string>
 	<key>shareSDKSinaWeiboAppKey</key>
 	<string>1701171842</string>
 	<key>shareSDKWeChatappSecret</key>

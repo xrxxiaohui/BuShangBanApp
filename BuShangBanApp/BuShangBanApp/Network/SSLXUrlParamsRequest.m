@@ -77,11 +77,12 @@
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URL];
     request.HTTPMethod = @"GET";
     
-//        [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-//        [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
 //        [request addValue: myEmail forHTTPHeaderField:@"user-email"];
 //        [request addValue: mySessionToken forHTTPHeaderField:@"user-token"];
-    
+    [request addValue: @"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz" forHTTPHeaderField:@"X-LC-Id"];
+    [request addValue: @"MDOagSCTlLw9A6fkrcaphlB8" forHTTPHeaderField:@"X-LC-Key"];
     
     NSError *error = nil;
     

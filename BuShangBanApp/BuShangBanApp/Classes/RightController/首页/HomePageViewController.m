@@ -9,6 +9,7 @@
 #import "HomePageViewController.h"
 #import "SliderViewController.h"
 #import "MJRefresh.h"
+#import <AVOSCloud/AVOSCloud.h>
 
 @interface HomePageViewController ()<UITableViewDataSource,UITableViewDelegate> {
     
@@ -34,7 +35,7 @@
     [self initData];
     
     [self createTabelView];
-    //    [self fetchData];
+        [self fetchData];
 }
 
 -(void)initData{
@@ -51,7 +52,7 @@
 
 
     CGFloat height = kScreenHeight - 44;
-    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 65, self.view.width, height) style:UITableViewStylePlain];
+    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 65, self.view.width, height) style:UITableViewStyleGrouped];
     
     _mainTableView.delegate = self;
     _mainTableView.dataSource = self;
@@ -85,7 +86,7 @@
     
     // 请求
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
-    [_urlParamsReq setUrlString:@"/case/api/get_gonglue/"];
+    [_urlParamsReq setUrlString:@"Featured?limit=3&&order=-sort&&"];
     
     NSDictionary *_tempParam = @{@"bid":@"888888"};
     [_urlParamsReq setParamsDict:_tempParam];
@@ -93,16 +94,20 @@
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
         
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
-        NSDictionary *_resultInfo = [_successInfo objectForKey:@"result"];
-        NSDictionary *_businessData = [_resultInfo objectForKey:@"businessData"];
-        NSDictionary *_activifyData  = [_businessData objectForKey:@"get_gonglue"];
+        NSArray *_resultArray = [[_successInfo objectForKey:@"results"] safeArray];
+//        NSDictionary *_businessData = [_resultInfo objectForKey:@"businessData"];
+//        NSDictionary *_activifyData  = [_businessData objectForKey:@"get_gonglue"];
+//        
+//        
+//        if ([[_activifyDataa objectForKey:@"results"] isKindOfClass:[NSArray class]]) {
+//            
+//            //            [self setAbroadArray:[_activifyData objectForKey:@"results"]];
+//            //            [self.tableView reloadData];
+//        }
+        _dataArray =[NSMutableArray arrayWithArray:_resultArray];
         
-        if ([[_activifyData objectForKey:@"results"] isKindOfClass:[NSArray class]]) {
-            
-            //            [self setAbroadArray:[_activifyData objectForKey:@"results"]];
-            //            [self.tableView reloadData];
-        }
         [_mainTableView.header endRefreshing];
+        [_mainTableView reloadData];
 
     } failureBlock:^(SSLXResultRequest *failReq){
         
@@ -130,15 +135,15 @@
     if(section == 0)
         return 1;
     else
-        return 3;
+        return [_dataArray count];
 }
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
-        return 0;
-    }else{
+    if (section == 1) {
         return 40;
+    }else{
+        return 0.5;
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -160,7 +165,10 @@
         if (cell == nil) {
             cell = [[HomeHeadViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
         }
-        
+
+        cell.selected = YES;
+        [cell setDataArray:_dataArray];
+        [cell refreshUI];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else{
@@ -170,7 +178,6 @@
         if (cell == nil) {
             cell = [[HomePageContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
         }
-        
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -218,8 +225,6 @@
 //    }
     
     
-    
-    
     static NSString *cellIndentifier = @"detailCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
     if (cell == nil) {
@@ -235,8 +240,10 @@
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
+    [AVAnalytics event:@"homePageList_click"];
     BaseWebViewController *baseWebView = [[BaseWebViewController alloc] init];
     baseWebView.isTestWeb = YES;
+    
     [[SliderViewController sharedSliderController].navigationController pushViewController:baseWebView animated:YES ];
 
 
@@ -272,10 +279,10 @@
 //        default:
 //            break;
 //    }
-    
-    }
-    return _sectionHeaderView;
+        return _sectionHeaderView;
 
+    }
+    return nil;
 }
 
 

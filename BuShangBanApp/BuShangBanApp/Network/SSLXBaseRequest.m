@@ -13,7 +13,7 @@
 
 // 全部请求都用Post请求
 - (YTKRequestMethod)requestMethod {
-    return YTKRequestMethodPost;
+    return YTKRequestMethodGet;
 }
 
 -(void)setIsNeedCacheRespond:(BOOL)isNeedCacheRespond {

@@ -49,6 +49,7 @@
 						   green:((CGFloat)arc4random()) / (CGFloat)RAND_MAX 
 							blue:((CGFloat)arc4random()) / (CGFloat)RAND_MAX 
 						   alpha:1.0];
+    
 }
 
 
