@@ -150,8 +150,19 @@
 }
 
 -(void)refreshUI {
+//    related_post
+
+    NSString *imageString = [[self.dataInfo objectForKey:@"image"] safeString];
+    [_centerImageView sd_setImageWithURL:[NSURL URLWithString:imageString] placeholderImage:[UIImage imageNamed:@"place"]];
+    NSString *titleString = [[self.dataInfo valueForKeyPath:@"related_post.title"] safeString];
+    [_mainTitleLabel setText:titleString];
+    
+    NSString *summaryString = [[self.dataInfo valueForKeyPath:@"related_post.summary"] safeString];
+    [_mainContentLabel setText:summaryString];
+    
     
 }
+
 
 +(CGFloat)getCellHeight {
     

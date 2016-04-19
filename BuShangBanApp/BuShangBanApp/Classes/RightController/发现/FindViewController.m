@@ -8,6 +8,8 @@
 
 #import "FindViewController.h"
 #import "FindView.h"
+#import "DataListViewController.h"
+#import "SliderViewController.h"
 
 @interface FindViewController ()
 
@@ -22,7 +24,16 @@
     [self.view addSubview:findView];
 }
 
-- (void)clickEvent:(UIButton *)btn {
+- (void)clickEvent:(UIButton *)button {
+   
+    DataListViewController *dataListViewController = [[DataListViewController alloc] init];
+    NSDictionary *tempDic = [NSDictionary dictionaryWithObjectsAndKeys:@"技术",@"1000",@"产品",@"1001",@"设计",@"1002",@"投资",@"1003",@"管理",@"1004",@"媒体",@"1005",@"市场",@"1006",@"运营",@"1007",@"热门",@"1008", nil];
+    NSString *tagString = [NSString stringWithFormat:@"%ld",button.tag];
+    dataListViewController.listTitle = [tempDic objectForKey:tagString];
+    [[SliderViewController sharedSliderController].navigationController pushViewController:dataListViewController animated:YES];
+    
+    
+  /*
     switch (btn.tag) {
         case 1000:
 
@@ -57,6 +68,7 @@
         default:
             break;
     }
+   */
 }
 
 - (void)didReceiveMemoryWarning {

@@ -15,6 +15,8 @@
     
     UITableView *_mainTableView;
     NSMutableArray *_dataArray;
+    NSMutableArray *_homeListdataArray;
+
     int page;
 }
 
@@ -27,20 +29,23 @@
     self.view.backgroundColor = COLOR(249, 249, 249);
 //    [self customNavigationBarWithTitle:@"不上班"];
     [self customNavigationBarWithImage:@"logo"];
-//    UIButton *mentionButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [mentionButton setFrame:CGRectMake(self.navView.width - 60, (self.navView.height - 40)/2, 60, 40)];
-//    [mentionButton setImage:[UIImage imageNamed:@"newSearch"] forState:UIControlStateNormal];
-//    [self customRightItemWithBtn:mentionButton];
+    UIButton *mentionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [mentionButton setFrame:CGRectMake(self.navView.width - 60, (self.navView.height - 40)/2, 60, 40)];
+    [mentionButton setImage:[UIImage imageNamed:@"History"] forState:UIControlStateNormal];
+    [self customRightItemWithBtn:mentionButton];
     
     [self initData];
     
     [self createTabelView];
-        [self fetchData];
+    [self fetchData];
+    
+    [self fetchHomeListData];
 }
 
 -(void)initData{
      page = 1;
     _dataArray = [[NSMutableArray alloc] init];
+    _homeListdataArray= [[NSMutableArray alloc] init];
 }
 
 -(void)createTabelView{
@@ -68,6 +73,7 @@
     lineImageView1.backgroundColor = COLOR(0xd9, 0xd9, 0xd9);
     [lineImageView1 setFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth, 1)];
     [self.view addSubview:lineImageView1];
+    
 }
 
 -(void)loadNewData{
@@ -82,14 +88,62 @@
     [self fetchData];
 }
 
+
+//https://leancloud.cn:443/1.1/classes/_Status?limit=10&&order=-createdAt&include=related_post&keys=-related_post.body
+
+-(void)fetchHomeListData {
+
+    // 请求
+    SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
+    [_urlParamsReq setUrlString:@"_Status?limit=10&&order=-createdAt&include=related_post&keys=-related_post.body"];
+    
+    NSDictionary *_tempParam = @{@"bid":@"888888"};
+    
+    [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
+        
+        NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
+        NSArray *_resultArray = [[_successInfo objectForKey:@"results"] safeArray];
+        //        NSDictionary *_businessData = [_resultInfo objectForKey:@"businessData"];
+        //        NSDictionary *_activifyData  = [_businessData objectForKey:@"get_gonglue"];
+        //
+        //
+        //        if ([[_activifyDataa objectForKey:@"results"] isKindOfClass:[NSArray class]]) {
+        //
+        //            //            [self setAbroadArray:[_activifyData objectForKey:@"results"]];
+        //            //            [self.tableView reloadData];
+        //        }
+        _homeListdataArray =[NSMutableArray arrayWithArray:_resultArray];
+        
+        [_mainTableView.header endRefreshing];
+        [_mainTableView reloadData];
+        
+    } failureBlock:^(SSLXResultRequest *failReq){
+        
+        NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
+        NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
+        if (_errorMsg) {
+            [_mainTableView.header endRefreshing];
+            [MBProgressHUD showError:_errorMsg];
+            
+        }
+        else {
+            [MBProgressHUD showError:kMBProgressErrorTitle];
+            [_mainTableView.header endRefreshing];
+        }
+    }];
+
+}
+
 -(void)fetchData {
     
     // 请求
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
     [_urlParamsReq setUrlString:@"Featured?limit=3&&order=-sort&&"];
     
+//    NSDictionary *_tempParam = @{@"bid":@"888888"};
+//    [_urlParamsReq setParamsDict:_tempParam];
+    
     NSDictionary *_tempParam = @{@"bid":@"888888"};
-    [_urlParamsReq setParamsDict:_tempParam];
     
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
         
@@ -135,7 +189,7 @@
     if(section == 0)
         return 1;
     else
-        return [_dataArray count];
+        return [_homeListdataArray count];
 }
 
 
@@ -166,7 +220,6 @@
             cell = [[HomeHeadViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
         }
 
-        cell.selected = YES;
         [cell setDataArray:_dataArray];
         [cell refreshUI];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -178,6 +231,12 @@
         if (cell == nil) {
             cell = [[HomePageContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
         }
+        
+        NSDictionary *tempDic = [[_homeListdataArray objectAtIndex:indexPath.row] safeDictionary];
+        [cell setDataInfo:tempDic];
+        [cell refreshUI];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -257,7 +316,7 @@
         [_sectionHeaderView setBackgroundColor:COLOR(249, 249, 249)];
     
         UIImageView *normalImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Community"]];
-        [normalImageView setFrame:CGRectMake(kScreenWidth/2-124, 10, 248, 20)];
+        [normalImageView setFrame:CGRectMake(kScreenWidth/2-124, 0, 248, 20)];
         [_sectionHeaderView addSubview:normalImageView];
     
 //    UIView *_redPenciLine = [[UIView alloc] initWithFrame:CGRectMake(4, 10, 2, 13)];

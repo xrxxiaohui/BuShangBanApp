@@ -21,8 +21,6 @@
 
 @end
 
-
-
 @implementation HomeHeadViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -33,8 +31,6 @@
         _leftBigImageView = [[UIButton alloc] init];
         _leftBigImageView.frame = CGRectMake(0, 0, kScreenWidth*260/414, kScreenWidth/414*260);
         _leftBigImageView.tag = 0;
-
-//        UIImage *finalImage = [self cuverImage:[UIImage imageNamed:@"1.jpg"] andRect:_leftBigImageView.frame];
 
         [_leftBigImageView.imageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
         _leftBigImageView.imageView.contentMode =  UIViewContentModeScaleAspectFill;
@@ -86,7 +82,6 @@
         [_rightUpLabel setFont:[UIFont systemFontOfSize:16]];
         [_rightUpImageView addSubview:_rightUpLabel];
 
-        /////////////////////////////////////////
         _rightDownLabel = [[UILabel alloc] init];
         [_rightDownLabel setFrame:CGRectMake(0, _rightDownImageView.bottom-34-kScreenWidth/414*130, _rightDownImageView.width, 34)];
         [_rightDownLabel setTextColor:[UIColor whiteColor]];
@@ -95,10 +90,6 @@
         _rightDownLabel.shadowColor = [UIColor colorWithWhite:0.1 alpha:0.8];
         [_rightDownLabel setFont:[UIFont systemFontOfSize:16]];
         [_rightDownImageView addSubview:_rightDownLabel];
-
-//        [_leftBigLabel setText:@"  程序员的黄金时代"];
-//        [_rightUpLabel setText:@"  看我美不美"];
-//        [_rightDownLabel setText:@"  我就不上班"];
 
     }
     
@@ -125,12 +116,9 @@
         NSString *largeImageString1 = [rightUpDataDic valueForKeyPath:@"feature_image.large"];
         NSString *largeImageString2 = [rightDownDataDic valueForKeyPath:@"feature_image.large"];
 
-        
-
         [_leftBigImageView sd_setImageWithURL:[NSURL URLWithString:largeImageString] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"260"]];
         [_rightUpImageView sd_setImageWithURL:[NSURL URLWithString:largeImageString1] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"154"]];
         [_rightDownImageView sd_setImageWithURL:[NSURL URLWithString:largeImageString2] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"154"]];
-
     
         [self addJianBianColor:_leftBigLabel];
         [self addJianBianColor:_rightUpLabel];
@@ -142,11 +130,6 @@
         
     }
     
-    
-    
-//    [_leftBigLabel setText:@"程序员的黄金时代"];
-//    [_rightUpLabel setText:@"看我美不美"];
-//    [_rightDownLabel setText:@"不上班呀不上班"];
     
 }
 

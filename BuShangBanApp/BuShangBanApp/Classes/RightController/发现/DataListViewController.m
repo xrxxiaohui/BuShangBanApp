@@ -16,7 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self customNavigationBarWithTitle:@"发现"];
+    if(self.listTitle)
+        [self customNavigationBarWithTitle:self.listTitle];
+    else
+        [self customNavigationBarWithTitle:@"发现"];
+
 }
 
 - (void)didReceiveMemoryWarning {

@@ -52,6 +52,7 @@
 		A33447F71CA290860006C8A3 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A33447F51CA290860006C8A3 /* 3.jpg */; };
 		A33447F91CA290940006C8A3 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A33447F81CA290940006C8A3 /* 2.jpg */; };
 		A33447FF1CA29BAF0006C8A3 /* Icon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A33447FE1CA29BAF0006C8A3 /* Icon.pdf */; };
+		A376843D1CC4B4A600D4C546 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A376843C1CC4B4A600D4C546 /* MessageTableViewCell.m */; };
 		A376A7E91CA00F6400B4F9BF /* HomeHeadViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A376A7E61CA00F6400B4F9BF /* HomeHeadViewCell.m */; };
 		A376A7EA1CA00F6400B4F9BF /* HomePageContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A376A7E81CA00F6400B4F9BF /* HomePageContentCell.m */; };
 		A376A7ED1CA00F9000B4F9BF /* DataListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A376A7EC1CA00F9000B4F9BF /* DataListViewController.m */; };
@@ -285,6 +286,8 @@
 		A33447F51CA290860006C8A3 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		A33447F81CA290940006C8A3 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		A33447FE1CA29BAF0006C8A3 /* Icon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Icon.pdf; sourceTree = "<group>"; };
+		A376843B1CC4B4A600D4C546 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
+		A376843C1CC4B4A600D4C546 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		A376A7E51CA00F6400B4F9BF /* HomeHeadViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeHeadViewCell.h; sourceTree = "<group>"; };
 		A376A7E61CA00F6400B4F9BF /* HomeHeadViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeHeadViewCell.m; sourceTree = "<group>"; };
 		A376A7E71CA00F6400B4F9BF /* HomePageContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageContentCell.h; sourceTree = "<group>"; };
@@ -1002,6 +1005,8 @@
 			children = (
 				A377D14D1C99575D00C779A7 /* MessageViewController.h */,
 				A377D14E1C99575D00C779A7 /* MessageViewController.m */,
+				A376843B1CC4B4A600D4C546 /* MessageTableViewCell.h */,
+				A376843C1CC4B4A600D4C546 /* MessageTableViewCell.m */,
 			);
 			path = "消息";
 			sourceTree = "<group>";
@@ -1641,6 +1646,7 @@
 				A39CD29B1C9950A300F0D8EE /* LeftViewController.m in Sources */,
 				A39CD3C51C99529400F0D8EE /* HomePageViewController.m in Sources */,
 				049EF2431CA38FCE00C1D68A /* MineViewController.m in Sources */,
+				A376843D1CC4B4A600D4C546 /* MessageTableViewCell.m in Sources */,
 				A3FD04401C99397A00E84A0B /* UIViewController+MLTransition.m in Sources */,
 				049EF27C1CA3ED0400C1D68A /* BuShangBanImagePicker.m in Sources */,
 				A377D1B11C995EB900C779A7 /* WechatShareView.m in Sources */,

@@ -148,7 +148,8 @@
     }
     if([self isEqualToString:@"null"])
         return YES;
-    
+    if([self isEqualToString:@"(null)"])
+        return YES;
     return NO;
 }
 
