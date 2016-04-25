@@ -1,21 +1,24 @@
 //
-//  TableHeaderView.h
+//  MineSectionHeaderView.h
 //  BuShangBanApp
 //
-//  Created by mac on 16/3/23.
+//  Created by mac on 16/4/20.
 //  Copyright © 2016年 Zuo. All rights reserved.
 //
 
-#import "BaseView.h"
+
+
 #import "ScreenAdapt.h"
 #import "UIView+Frame.h"
 
 #define adapt  [[[ScreenAdapt alloc]init] adapt]
-#define tableHeaderViewHeight 200
+#define sectionHeaderViewHeight 200
 
-@interface TableHeaderView : BaseView
+@interface MineSectionHeaderView : UICollectionReusableView
+
 @property(nonatomic, strong) UIImageView *bgImageView;
 @property(nonatomic, strong) UIButton *headImageBtn;
+@property(nonatomic, strong) UIButton *settingBtn;
 //@property(nonatomic,strong)UIVisualEffectView *blurView;
 
 - (void)nickNameLabelWithNickName:(NSString *)nickName label:(NSString *)label;

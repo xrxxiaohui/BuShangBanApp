@@ -1,20 +1,17 @@
 //
-//  TableViewCell.h
+//  BasicInformationCell.h
 //  BuShangBanApp
 //
-//  Created by mac on 16/3/22.
+//  Created by mac on 16/4/19.
 //  Copyright © 2016年 Zuo. All rights reserved.
 //
 
 
-
-@interface TableViewCell : UITableViewCell
+@interface BasicInformationCell : UITableViewCell
 
 @property(strong, nonatomic) UITextField *contentTF;
 
 @property(nonatomic, strong) UIButton *headBtn;
 
-@property(nonatomic, strong) UITextView *profileTextView;
-
-
 @end
+

@@ -7,12 +7,12 @@
 //
 
 #import "OccupationSelectorView.h"
-#define kScreenHeight [UIScreen mainScreen].bounds.size.height
-#define kScreenWidth [UIScreen mainScreen].bounds.size.width
 
 @interface OccupationSelectorView()<UIPickerViewDelegate,UIPickerViewDataSource>
 
-@property(nonatomic,strong)UIPickerView *occupationSelector;
+@property(nonatomic,strong)UIView *backgroundView;
+@property(nonatomic,weak)UIPickerView *occupationSelector;
+
 @property(nonatomic,strong)NSArray *dataSource;
 
 @property(nonatomic,strong)UIButton *okBtn;
@@ -28,12 +28,17 @@
     self = [super initWithFrame:frame];
     if (self) {
         if (self) {
-            self.frame=CGRectMake(0, kScreenHeight, kScreenWidth, kScreenHeight);
+            self.frame=CGRectMake(0,0, kScreenWidth, kScreenHeight);
+            self.backgroundColor=[UIColor grayColor];
+            self.backgroundView=[[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight-250, kScreenWidth, 250)];
+            self.backgroundView.backgroundColor=[UIColor whiteColor];
+            self.backgroundView.layer.cornerRadius=10.f;
+            [self addSubview:self.backgroundView];
             _dataSource=@[@"创  作",@"运  营",@"产  品",@"技  术",@"设  计",@"投  资",@"商务市场销售",@"行  政"];
-            self.backgroundColor=[UIColor greenColor];
             [self.occupationSelector selectRow:INT32_C(self.dataSource.count/2) inComponent:0 animated:YES];
-            _okBtn = [self btnWithTitle:@"取 消" tag:1001 x:10];
-            _cancelBtn= [self btnWithTitle:@"确 定" tag:1000 x:kScreenWidth-44-10];
+            _contentText=self.dataSource[INT32_C(self.dataSource.count/2)];
+            _cancelBtn= [self btnWithTitle:@"取 消" tag:1001 x:10];
+            _okBtn = [self btnWithTitle:@"确 定" tag:1000 x:kScreenWidth-44-10];
         }
     }
     return self;
@@ -43,17 +48,9 @@
     UIWindow *win = [[UIApplication sharedApplication] keyWindow];
     [win addSubview:self];
     [UIView animateWithDuration:0.3 animations:^{
-        CGRect rect=self.occupationSelector.frame;
-        rect.origin.y=kScreenHeight-200;
-        self.occupationSelector.frame=rect;
-        
-        CGRect okBtnRect=_okBtn.frame;
-        okBtnRect.size.height=30;
-        _okBtn.frame=okBtnRect;
-        
-        CGRect cancelBtnRect=_cancelBtn.frame;
-        cancelBtnRect.size.height=30;
-        _cancelBtn.frame=cancelBtnRect;
+        self.occupationSelector.top=40;
+        _okBtn.height=30;
+        _cancelBtn.height=30;
         [self layoutIfNeeded];
     }];
 }
@@ -61,25 +58,20 @@
 - (void)hide {
     [UIView animateWithDuration:0.3 animations:^{
         self.alpha = 0;
-        CGRect rect=self.occupationSelector.frame;
-        rect.origin.y=kScreenHeight;
-        self.occupationSelector.frame=rect;
-        
-        CGRect okBtnRect=_okBtn.frame;
-        okBtnRect.size.height=0;
-        _okBtn.frame=okBtnRect;
-        
-        CGRect cancelBtnRect=_cancelBtn.frame;
-        cancelBtnRect.size.height=0;
-        _cancelBtn.frame=cancelBtnRect;
-        
+        self.occupationSelector.top=240;
+        _okBtn.height=0;
+        _cancelBtn.height=0;
         [self layoutIfNeeded];
     } completion:^(BOOL finished) { [self removeFromSuperview]; }];
 }
 
 -(void)clickEvent:(UIButton *)sender
 {
-    if (sender.tag == 1000)
+    if (!_contentText)
+        _contentText=_dataSource[INT32_C(self.dataSource.count/2)];
+    if (sender.tag == 1001)
+         _contentText=nil;
+    else
         if (_occupationSelectorBlock)
             _occupationSelectorBlock(self,_contentText);
     [self hide];
@@ -88,29 +80,28 @@
 
 -(UIButton *)btnWithTitle:(NSString *)title tag:(NSInteger)tag x:(CGFloat )x
 {
-    UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *btn=[UIButton buttonWithType:UIButtonTypeSystem];
     [btn addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
     [btn setTitle:title forState:UIControlStateNormal];
     btn.titleLabel.font=[UIFont systemFontOfSize:15];
-    btn.backgroundColor=[UIColor greenColor];
     btn.layer.cornerRadius=4.f;
     btn.clipsToBounds=YES;
     btn.tag=tag;
-    btn.frame=CGRectMake(x, kScreenHeight-200 +10, 44, 0);
-    [self addSubview:btn];
+    btn.frame=CGRectMake(x,5, 44, 0);
+    [self.backgroundView addSubview:btn];
     return btn;
 }
 
 -(UIPickerView *)occupationSelector
 {
     if (!_occupationSelector) {
-        _occupationSelector=[[UIPickerView alloc]initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 200)];
-        _occupationSelector.delegate=self;
-        _occupationSelector.dataSource=self;
-        _occupationSelector.layer.cornerRadius=10.f;
-        _occupationSelector.backgroundColor=[UIColor grayColor];
-        _occupationSelector.alpha=0.8;
-        [self addSubview:_occupationSelector];
+        UIPickerView *pickView=[[UIPickerView alloc]initWithFrame:CGRectMake(0,200, kScreenWidth, 200)];
+        pickView.delegate=self;
+        pickView.dataSource=self;
+        pickView.layer.cornerRadius=10.f;
+        pickView.backgroundColor=[UIColor whiteColor];
+        _occupationSelector=pickView;
+        [self.backgroundView addSubview:_occupationSelector];
     }
     return _occupationSelector;
 }
@@ -143,7 +134,7 @@
         pickerLabel = [[UILabel alloc] init];
         pickerLabel.minimumScaleFactor = 8.0;
         pickerLabel.adjustsFontSizeToFitWidth = YES;
-        //        pickerLabel.font=[UIFont fontWithName:@"Ping Fang" size:20];
+        pickerLabel.font=[UIFont fontWithName:fontName size:20];
         [pickerLabel setTextAlignment:NSTextAlignmentCenter];
         [pickerLabel setBackgroundColor:[UIColor clearColor]];
     }

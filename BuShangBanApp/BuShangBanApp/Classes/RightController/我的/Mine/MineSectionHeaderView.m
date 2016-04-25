@@ -1,30 +1,28 @@
 //
-//  TableHeaderView.m
+//  MineSectionHeaderView.m
 //  BuShangBanApp
 //
-//  Created by mac on 16/3/23.
+//  Created by mac on 16/4/20.
 //  Copyright © 2016年 Zuo. All rights reserved.
 //
 
-#import "TableHeaderView.h"
+#import "MineSectionHeaderView.h"
 #import "MineViewController.h"
 
 
+@interface MineSectionHeaderView ()
 
-@interface TableHeaderView ()
-
-@property(nonatomic, strong) UIButton *settingBtn;
 @property(nonatomic, strong) UILabel *nickNameLabel;
 @property(nonatomic, strong) UILabel *descriptionLabel;
 
 @end
 
-@implementation TableHeaderView
+@implementation MineSectionHeaderView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if ( self ) {
-        self.frame = CGRectMake(0, 0, kScreenWidth, tableHeaderViewHeight * adapt.scaleHeight);
+        self.frame = CGRectMake(0, 0, kScreenWidth, sectionHeaderViewHeight * adapt.scaleHeight);
         [self addSubview:self.bgImageView];
         [self addSubview:self.headImageBtn];
         [self addSubview:self.settingBtn];
@@ -36,16 +34,16 @@
     if ( !_nickNameLabel ) {
         _nickNameLabel = [[UILabel alloc] init];
         nickName = [NSString stringWithFormat:@"%@  |  ", nickName];
-
+        
         NSDictionary *nickNameDic =
-                @{NSForegroundColorAttributeName : nomalTextColor, NSFontAttributeName : [UIFont fontWithName:fontName size:15.f]};
+        @{NSForegroundColorAttributeName : nomalTextColor, NSFontAttributeName : [UIFont fontWithName:fontName size:15.f]};
         NSDictionary *labelDic =
-                @{NSForegroundColorAttributeName : placeHoldTextColor, NSFontAttributeName : smallerFont};
-
+        @{NSForegroundColorAttributeName : placeHoldTextColor, NSFontAttributeName : smallerFont};
+        
         NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:nickName attributes:nickNameDic];
         [attr appendAttributedString:[[NSAttributedString alloc] initWithString:label attributes:labelDic]];
         _nickNameLabel.attributedText = attr;
-
+        
         [_nickNameLabel sizeToFit];
         _nickNameLabel.centerX = self.centerX;
         _nickNameLabel.top = 128.f * adapt.scaleHeight;
@@ -101,7 +99,6 @@
     }
     return _headImageBtn;
 }
-
 //-(UIVisualEffectView *)blurView
 //{
 //    if (!_blurView) {
