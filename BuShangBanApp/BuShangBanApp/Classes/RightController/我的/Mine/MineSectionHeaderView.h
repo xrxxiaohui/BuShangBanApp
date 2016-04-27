@@ -19,10 +19,14 @@
 @property(nonatomic, strong) UIImageView *bgImageView;
 @property(nonatomic, strong) UIButton *headImageBtn;
 @property(nonatomic, strong) UIButton *settingBtn;
+
+@property(nonatomic,strong)UILabel *focusMeLabel;
+@property(nonatomic,strong)UILabel *myFocusLabel;
+
 //@property(nonatomic,strong)UIVisualEffectView *blurView;
 
 - (void)nickNameLabelWithNickName:(NSString *)nickName label:(NSString *)label;
 
-- (void)descriptionLabelWithText:(NSString *)text;
+-(UILabel *)labelWithLable:(UILabel *)label  Titlt:(NSString *)title digit:(int)digit ;
 
 @end
