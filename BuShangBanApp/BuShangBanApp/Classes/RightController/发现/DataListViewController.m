@@ -13,14 +13,21 @@
 @end
 
 @implementation DataListViewController
+{
+    NSString *_title;
+}
+
+-(instancetype)initWithTitle:(NSString *)titile
+{
+    if (self=[super init]) {
+        _title=titile;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if(self.listTitle)
-        [self customNavigationBarWithTitle:self.listTitle];
-    else
-        [self customNavigationBarWithTitle:@"发现"];
-
+    [self customNavigationBarWithTitle:_title];
 }
 
 - (void)didReceiveMemoryWarning {

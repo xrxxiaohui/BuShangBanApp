@@ -6,8 +6,8 @@
 //  Copyright © 2016年 Zuo. All rights reserved.
 //
 
-#import "QHBasicViewController.h"
+#import "BasicViewController.h"
 
-@interface RegistViewController : QHBasicViewController
+@interface RegistViewController :BasicViewController
 
 @end

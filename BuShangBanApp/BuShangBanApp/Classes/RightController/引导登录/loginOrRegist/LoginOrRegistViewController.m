@@ -69,7 +69,7 @@
     _user.nickName=user.nickname;
     _user.UserExtend.profile=user.aboutMe;
     _user.birthDay=user.birthday;
-    _user.avatar=user.icon;
+//    _user.avatar=user.icon;
     _user.gender=(BuShangBanGender)user.gender;
 }
 

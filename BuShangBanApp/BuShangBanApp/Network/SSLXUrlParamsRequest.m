@@ -99,9 +99,7 @@
                                           JSONObjectWithData:data
                                           options:kNilOptions
                                           error:&error];
-                    
                     NSLog(@"json: %@",json);
-                    
                 }
             }
             
@@ -156,7 +154,7 @@
 //  @{@"c":@"1111",@"b":@"222",@"a":@"3333",@"sign":_tempSignKey};
     
     if (_baseParams) {
-        
+
         NSMutableDictionary *_tempParams = [[NSMutableDictionary alloc] initWithDictionary:_baseParams];
         [_tempParams addEntriesFromDictionary:[_paramDic copy]];
         

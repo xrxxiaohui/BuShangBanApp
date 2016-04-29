@@ -12,6 +12,7 @@ typedef void (^BirthdayPickerBlock)(BirthdayPickerView *view,NSString *contentTe
 @interface BirthdayPickerView : UIView
 
 @property(nonatomic,copy)BirthdayPickerBlock birthdayPickerBlock;
+@property( nonatomic,strong)NSString *contentString;
 
 - (void)show;
 

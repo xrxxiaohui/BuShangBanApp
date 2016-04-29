@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BootstrapViewController">
             <connections>
+                <outlet property="labelTopConstraint" destination="fcG-CO-GdU" id="VJf-3w-JiI"/>
+                <outlet property="nextBtn" destination="Wfn-Qc-YbB" id="Rqa-oF-RxH"/>
+                <outlet property="nextBtnBottomConstraint" destination="1RK-FY-B3B" id="1ks-pi-p97"/>
+                <outlet property="promptLabel" destination="imO-4v-Gsk" id="4aX-ys-kCc"/>
+                <outlet property="promptLabelTopConstarin" destination="i5M-Pr-FkT" id="0yB-Kj-zPd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +19,41 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imO-4v-Gsk">
+                    <rect key="frame" x="0.0" y="66" width="600" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="KQe-Oa-giW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="PingFangSC-Thin" family="PingFang SC" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wfn-Qc-YbB">
+                    <rect key="frame" x="228" y="466" width="144" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="IAv-Vf-Dqh"/>
+                        <constraint firstAttribute="width" constant="144" id="bU0-JT-uEJ"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="Next step">
+                        <attributedString key="attributedTitle"/>
+                    </state>
+                    <connections>
+                        <action selector="clickEvent:" destination="-1" eventType="touchUpInside" id="G7H-rZ-rRr"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Wfn-Qc-YbB" secondAttribute="bottom" constant="90" id="1RK-FY-B3B"/>
+                <constraint firstItem="imO-4v-Gsk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4MV-uU-UwF"/>
+                <constraint firstItem="Wfn-Qc-YbB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Pcw-dy-GCq"/>
+                <constraint firstItem="imO-4v-Gsk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="66" id="fcG-CO-GdU"/>
+                <constraint firstAttribute="trailing" secondItem="imO-4v-Gsk" secondAttribute="trailing" id="ge1-EE-ycd"/>
+            </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="Next step" width="140" height="44"/>
+    </resources>
 </document>

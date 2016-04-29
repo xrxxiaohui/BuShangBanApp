@@ -139,20 +139,25 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UIStoryboard *UserProtocal=[UIStoryboard storyboardWithName:@"UserProtocal" bundle:nil];
+    [[SliderViewController sharedSliderController].navigationController pushViewController:[UserProtocal instantiateViewControllerWithIdentifier:@"UserProtocal"] animated:YES];
+    
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if(indexPath.section == 1 && indexPath.row == 0)
     {
+        UIStoryboard *UserProtocal=[UIStoryboard storyboardWithName:@"UserProtocal" bundle:nil];
+        [[SliderViewController sharedSliderController].navigationController pushViewController:[UserProtocal                      instantiateViewControllerWithIdentifier:@"UserProtocal"] animated:YES];
     }
     else if(indexPath.section == 1 && indexPath.row == 1)
     {
-         //    [[SliderViewController sharedSliderController].navigationController pushViewController:[[BasicInformationViewController alloc] init] animated:YES];
+       
     }
-    else if(indexPath.section == 2 && indexPath.row == 0)
-    {
-         //    [[SliderViewController sharedSliderController].navigationController pushViewController:[[BasicInformationViewController alloc] init] animated:YES];
+    else if(indexPath.section == 2 && indexPath.row == 0){
+        
     }
     else if(indexPath.section == 2 && indexPath.row == 1)
     {
+        
     }
 }
 

@@ -13,7 +13,6 @@
 @interface MineSectionHeaderView ()
 
 @property(nonatomic, strong) UILabel *nickNameLabel;
-@property(nonatomic, strong) UILabel *descriptionLabel;
 
 @end
 
@@ -26,9 +25,57 @@
         [self addSubview:self.bgImageView];
         [self addSubview:self.headImageBtn];
         [self addSubview:self.settingBtn];
+        _focusMeLabel=[[UILabel alloc]initWithFrame:CGRectMake(126*adapt.scaleWidth, 162*adapt.scaleHeight, 80, 14)];
+        _focusMeLabel.tag=10000;
+        [self addSubview:_focusMeLabel];
+        
+        [self __shapeLayerWithStartPoint:CGPointMake(kScreenWidth/2, 168*adapt.scaleHeight) endPoint:CGPointMake(kScreenWidth/2, 168*adapt.scaleHeight+12)];
+        
+        _myFocusLabel=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth/2+14*adapt.scaleWidth, 162*adapt.scaleHeight, 80, 14)];
+        _myFocusLabel.tag=10001;
+        [self addSubview:_myFocusLabel];
     }
     return self;
 }
+
+
+- (CAShapeLayer *)__shapeLayerWithStartPoint:(CGPoint)startPoint endPoint:(CGPoint)endPoint
+{
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    shapeLayer.lineWidth = 1.0f;
+    shapeLayer.strokeColor=[UIColor colorWithHexString:@"d9d9d9"].CGColor;
+    shapeLayer.lineCap   = kCALineCapRound;
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:startPoint];
+    [path addLineToPoint:endPoint];
+    shapeLayer.path = path.CGPath;
+    [self.layer addSublayer:shapeLayer];
+    return shapeLayer;
+}
+
+-(UILabel *)labelWithLable:(UILabel *)label  Titlt:(NSString *)title digit:(int)digit 
+{
+    NSDictionary *placeHoldTextDic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:10],NSForegroundColorAttributeName:placeHoldTextColor};
+    NSMutableAttributedString *mutableAttributedString =[[NSMutableAttributedString alloc]initWithString:title attributes:placeHoldTextDic];
+
+    NSDictionary *nomalTextDic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:14],NSForegroundColorAttributeName:nomalTextColor};
+    [mutableAttributedString appendAttributedString:[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"  %d",digit] attributes:nomalTextDic]];
+    label.attributedText=mutableAttributedString;
+    [label sizeToFit];
+    return label;
+}
+
+
+
+-(UIButton *)btnWithTitle:(NSString *)title
+{
+    UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:title forState:UIControlStateNormal];
+    
+    return btn;
+    
+}
+
 
 - (void)nickNameLabelWithNickName:(NSString *)nickName label:(NSString *)label {
     if ( !_nickNameLabel ) {
@@ -36,7 +83,7 @@
         nickName = [NSString stringWithFormat:@"%@  |  ", nickName];
         
         NSDictionary *nickNameDic =
-        @{NSForegroundColorAttributeName : nomalTextColor, NSFontAttributeName : [UIFont fontWithName:fontName size:15.f]};
+        @{NSForegroundColorAttributeName : placeHoldTextColor, NSFontAttributeName : [UIFont fontWithName:fontName size:15.f]};
         NSDictionary *labelDic =
         @{NSForegroundColorAttributeName : placeHoldTextColor, NSFontAttributeName : smallerFont};
         
@@ -51,20 +98,6 @@
     }
 }
 
-- (void)descriptionLabelWithText:(NSString *)text {
-    if ( !_descriptionLabel ) {
-        _descriptionLabel = [[UILabel alloc] init];
-        
-        _descriptionLabel.font = smallerFont;
-        _descriptionLabel.textColor = placeHoldTextColor;
-        _descriptionLabel.text = text;
-        [_descriptionLabel sizeToFit];
-        _descriptionLabel.centerX = self.centerX;
-        _descriptionLabel.top = 163.f * adapt.scaleHeight;
-        [self addSubview:_descriptionLabel];
-    }
-}
-
 - (UIImageView *)bgImageView {
     if ( !_bgImageView ) {
         _bgImageView = [[UIImageView alloc] initWithFrame:self.bounds];
@@ -74,11 +107,10 @@
 }
 
 - (UIButton *)settingBtn {
-    if ( !_settingBtn ) {
+    if (!_settingBtn ) {
         _settingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_settingBtn setImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
         [_settingBtn addTarget:[[MineViewController alloc] init] action:@selector(settingBtn:) forControlEvents:UIControlEventTouchUpInside];
-        _settingBtn.size=CGSizeMake(44, 44);
+        _settingBtn.size=CGSizeMake(50, 50);
         _settingBtn.left = kScreenWidth - _settingBtn.width;
         _settingBtn.top = 33.f;
     }

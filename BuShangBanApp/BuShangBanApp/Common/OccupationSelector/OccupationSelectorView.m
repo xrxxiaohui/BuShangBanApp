@@ -10,6 +10,8 @@
 
 @interface OccupationSelectorView()<UIPickerViewDelegate,UIPickerViewDataSource>
 
+@property(nonatomic,strong)UIView *bgView;
+
 @property(nonatomic,strong)UIView *backgroundView;
 @property(nonatomic,weak)UIPickerView *occupationSelector;
 
@@ -29,14 +31,21 @@
     if (self) {
         if (self) {
             self.frame=CGRectMake(0,0, kScreenWidth, kScreenHeight);
-            self.backgroundColor=[UIColor grayColor];
+            self.backgroundColor=[UIColor clearColor];
+            
+            self.bgView=[[UIView alloc]initWithFrame:self.bounds];
+            self.bgView.backgroundColor=[UIColor blackColor];
+            self.bgView.alpha=0.4;
+            [self addSubview:self.bgView];
+            
             self.backgroundView=[[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight-250, kScreenWidth, 250)];
             self.backgroundView.backgroundColor=[UIColor whiteColor];
             self.backgroundView.layer.cornerRadius=10.f;
             [self addSubview:self.backgroundView];
+            
             _dataSource=@[@"创  作",@"运  营",@"产  品",@"技  术",@"设  计",@"投  资",@"商务市场销售",@"行  政"];
-            [self.occupationSelector selectRow:INT32_C(self.dataSource.count/2) inComponent:0 animated:YES];
-            _contentText=self.dataSource[INT32_C(self.dataSource.count/2)];
+            [self.occupationSelector selectRow:INT32_C(_dataSource.count/2) inComponent:0 animated:YES];
+            _contentText=self.dataSource[INT32_C(_dataSource.count/2)];
             _cancelBtn= [self btnWithTitle:@"取 消" tag:1001 x:10];
             _okBtn = [self btnWithTitle:@"确 定" tag:1000 x:kScreenWidth-44-10];
         }
@@ -67,13 +76,10 @@
 
 -(void)clickEvent:(UIButton *)sender
 {
-    if (!_contentText)
-        _contentText=_dataSource[INT32_C(self.dataSource.count/2)];
-    if (sender.tag == 1001)
-         _contentText=nil;
-    else
-        if (_occupationSelectorBlock)
-            _occupationSelectorBlock(self,_contentText);
+    if (sender.tag == 1000)
+        _contentString=_contentText;
+    if (_occupationSelectorBlock)
+        _occupationSelectorBlock(self,_contentString);
     [self hide];
 }
 

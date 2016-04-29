@@ -11,6 +11,7 @@
 @interface BirthdayPickerView()<UIPickerViewDelegate,UIPickerViewDataSource>
 
 @property(nonatomic,strong)UIView *backgroundView;
+@property(nonatomic,strong)UIView *bgView;
 
 @property(nonatomic,weak)UIPickerView *birthdaySelector;
 
@@ -38,9 +39,13 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.frame=CGRectMake(0,0, kScreenWidth, kScreenHeight);
-        self.backgroundColor=[UIColor grayColor];
+        self.backgroundColor=[UIColor clearColor];
+        self.bgView=[[UIView alloc]initWithFrame:self.bounds];
+        self.bgView.backgroundColor=[UIColor blackColor];
+        self.bgView.alpha=0.4;
+        [self addSubview:self.bgView];
         
-        self.backgroundView=[[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight-250, kScreenWidth, 250)];
+        self.backgroundView=[[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight-240, kScreenWidth, 240)];
         self.backgroundView.backgroundColor=[UIColor whiteColor];
         self.backgroundView.layer.cornerRadius=10.f;
         [self addSubview:self.backgroundView];
@@ -98,27 +103,17 @@
         _okBtn.height=0;
         _cancelBtn.height=0;
         [self layoutIfNeeded];
-    } completion:^(BOOL finished) { [self removeFromSuperview]; }];
+    } completion:^(BOOL finished) {
+        [self removeFromSuperview];
+    }];
 }
 
 -(void)clickEvent:(UIButton *)sender
 {
-    if (!_yearText)
-        _yearText=self.yearArray[INT32_C(self.yearArray.count/2)];
-    if (!_monthText)
-        _monthText=self.monthArray[0];
-    if (!_dayText)
-        _dayText=self.dayArray[0];
-    
-    if (sender.tag == 1001)
-    {
-        _yearText=nil;
-        _monthText=nil;
-        _dayText=nil;
-    }
-    else
-        if (_birthdayPickerBlock)
-            _birthdayPickerBlock(self,[NSString stringWithFormat:@"%@.%@.%@",_yearText,_monthText,_dayText]);
+    if (sender.tag == 1000)
+        _contentString=[NSString stringWithFormat:@"%@.%@.%@",_yearText,_monthText,_dayText];
+    if (_birthdayPickerBlock)
+        _birthdayPickerBlock(self,_contentString);
     [self hide];
 }
 

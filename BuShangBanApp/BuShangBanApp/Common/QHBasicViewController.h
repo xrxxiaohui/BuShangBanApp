@@ -54,4 +54,5 @@ typedef void(^actionBlock)(void);
 -(void)customRightItemWithBtn:(UIButton *)sender;
 -(void)customNavigationBarWithImage:(NSString *)image;
 
+-(void)popToLeft;
 @end

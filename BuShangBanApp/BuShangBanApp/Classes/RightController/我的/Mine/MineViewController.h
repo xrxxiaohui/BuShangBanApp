@@ -6,7 +6,7 @@
 //  Copyright © 2016年 Zuo. All rights reserved.
 //
 
-#import "MineSectionHeaderView.h"
+@class MineSectionHeaderView;
 
 @interface MineViewController : QHBasicViewController
 

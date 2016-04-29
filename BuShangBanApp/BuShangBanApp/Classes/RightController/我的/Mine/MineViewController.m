@@ -12,6 +12,9 @@
 #import "SettingViewController.h"
 #import "OtherViewController.h"
 
+#import "BootstrapViewController.h"
+#import "LoginViewController.h"
+
 
 
 @interface MineViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -22,7 +25,35 @@
 @implementation MineViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.collectionView.backgroundColor=bgColor;
+
+    //https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24
+    
+    
+    SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
+    [_urlParamsReq setUrlString:@"_User/570387b3ebcb7d005b196d24"];
+    
+//    NSDictionary *_tempParam = @{@"bid":@"888888"};
+    
+    [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
+        
+        NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
+        
+        NSLog(@"********************%@",_successInfo);
+    } failureBlock:^(SSLXResultRequest *failReq){
+        NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
+        NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
+        if (_errorMsg) {
+    
+             NSLog(@"********************%@",_errorMsg);
+            
+        }
+        else {
+            [MBProgressHUD showError:kMBProgressErrorTitle];
+    
+        }
+
+    }];
+
 }
 
 -(void)settingBtn:(UIButton *)btn
@@ -36,12 +67,13 @@
     if (!_collectionView) {
         UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc]init];
         [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
-        layout.minimumLineSpacing=0.5f;
-        layout.minimumInteritemSpacing=0.5f;
+        layout.minimumLineSpacing=1.5f;
+        layout.minimumInteritemSpacing=1.f;
         
-        _collectionView=[[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:layout];
+        _collectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth+200-18) collectionViewLayout:layout];
         [_collectionView registerClass:[MineCell class] forCellWithReuseIdentifier:@"MineCell"];
         [_collectionView registerClass:[MineSectionHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header"];
+        _collectionView.backgroundColor=[UIColor colorWithHexString:@"d9d9d9"];
         _collectionView.delegate=self;
         _collectionView.dataSource=self;
         [self.view addSubview:_collectionView];
@@ -60,15 +92,15 @@
         
         [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:@"设计" attributes:dimDic]];
         [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:@"男,23岁" attributes:dimDic]];
-        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:@"浙江，杭州" attributes:dimDic]];
+        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:@"浙江杭州" attributes:dimDic]];
         
         NSMutableAttributedString *articalAttr=[[NSMutableAttributedString alloc]initWithString:@"文章篇" attributes:dimDic];
-        NSAttributedString *articalInsertAttr=[[NSAttributedString alloc]initWithString:@"9" attributes:blackDic];
+        NSAttributedString *articalInsertAttr=[[NSAttributedString alloc]initWithString:@" 9 " attributes:blackDic];
         [articalAttr insertAttributedString:articalInsertAttr atIndex:2];
         [_titleDataSource addObject:articalAttr];
         
         NSMutableAttributedString *detailedListAttr=[[NSMutableAttributedString alloc]initWithString:@"清单篇" attributes:dimDic];
-        NSAttributedString *detailedListInsertAttr=[[NSAttributedString alloc]initWithString:@"0" attributes:blackDic];
+        NSAttributedString *detailedListInsertAttr=[[NSAttributedString alloc]initWithString:@" 0 " attributes:blackDic];
         [detailedListAttr insertAttributedString:detailedListInsertAttr atIndex:2];
         [_titleDataSource addObject:detailedListAttr];
         
@@ -85,10 +117,9 @@
     if (!_imageDataSource)
     {
         _imageDataSource=[NSMutableArray arrayWithCapacity:9];
-        
         [_imageDataSource addObject:[UIImage imageNamed:@"men"]];
         [_imageDataSource addObject:[UIImage imageNamed:@"female"]];
-        [_imageDataSource addObject:[UIImage imageNamed:@"article"]];
+        [_imageDataSource addObject:[UIImage imageNamed:@"location"]];
         [_imageDataSource addObject:[UIImage imageNamed:@"article"]];
         [_imageDataSource addObject:[UIImage imageNamed:@"detailed list"]];
         [_imageDataSource addObject:[UIImage imageNamed:@"activity"]];
@@ -119,6 +150,9 @@
     CGSize size=cell.contentImageView.image.size;
     cell.contentImageView.size=CGSizeMake(size.width *adapt.scaleWidth, size.height *adapt.scaleHeight);
     cell.contentLabel.attributedText=self.titleDataSource[indexPath.row];
+    if (indexPath.row == 4 || indexPath.row == 5) {
+        cell.backgroundColor=[UIColor colorWithHexString:@"f5f5f5"];
+    }
     return cell;
 }
 
@@ -129,7 +163,7 @@
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(-19, 0, 0, 0);
+    return UIEdgeInsetsMake(-18, 0, 0, 0);
 }
 
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -137,9 +171,11 @@
     UICollectionReusableView *reusableView=nil;
     if (kind == UICollectionElementKindSectionHeader) {
     MineSectionHeaderView *sectionHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header" forIndexPath:indexPath];
+    [sectionHeaderView.settingBtn setImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
     UIImage *  image = [UIImage imageNamed:@"Default avatar"];
     [sectionHeaderView.headImageBtn setBackgroundImage:image forState:UIControlStateNormal];
-    [sectionHeaderView descriptionLabelWithText:@"前36kr老编辑zuo 五年媒体经验"];
+    [sectionHeaderView labelWithLable:sectionHeaderView.focusMeLabel Titlt:@"关注我" digit:100];
+    [sectionHeaderView labelWithLable:sectionHeaderView.myFocusLabel Titlt:@"我关注" digit:234];
     [sectionHeaderView nickNameLabelWithNickName:@"老编辑" label:@"不上班创始人"];
     reusableView=sectionHeaderView;
     }
@@ -148,9 +184,8 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==3) {
+    if (indexPath.row==3)
         [[SliderViewController sharedSliderController].navigationController pushViewController:[[OtherViewController alloc] init] animated:YES];
-    }
 }
 
 @end

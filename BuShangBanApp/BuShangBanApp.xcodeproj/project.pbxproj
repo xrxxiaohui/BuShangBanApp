@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0419C3611CD10AA60020750C /* BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0419C3601CD10AA60020750C /* BasicViewController.m */; };
 		0419C3651CD10B650020750C /* BootstrapThriViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0419C3631CD10B650020750C /* BootstrapThriViewController.m */; };
-		0419C3661CD10B650020750C /* BootstrapThriViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0419C3641CD10B650020750C /* BootstrapThriViewController.xib */; };
 		042884421CD08D3000C08212 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042884411CD08D3000C08212 /* LoginViewController.m */; };
 		042884451CD0943300C08212 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042884441CD0943300C08212 /* RegistViewController.m */; };
 		042884571CD0B7ED00C08212 /* InvitedCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042884551CD0B7ED00C08212 /* InvitedCodeViewController.m */; };
@@ -18,9 +17,7 @@
 		042884831CD0C85900C08212 /* BootstrapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0428847E1CD0C85900C08212 /* BootstrapViewController.m */; };
 		042884841CD0C85900C08212 /* BootstrapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0428847F1CD0C85900C08212 /* BootstrapViewController.xib */; };
 		042884881CD0CBEA00C08212 /* BootstrapOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042884861CD0CBEA00C08212 /* BootstrapOneViewController.m */; };
-		042884891CD0CBEA00C08212 /* BootstrapOneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042884871CD0CBEA00C08212 /* BootstrapOneViewController.xib */; };
 		0428848D1CD0D3AD00C08212 /* BootstrapTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0428848B1CD0D3AD00C08212 /* BootstrapTwoViewController.m */; };
-		0428848E1CD0D3AD00C08212 /* BootstrapTwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0428848C1CD0D3AD00C08212 /* BootstrapTwoViewController.xib */; };
 		042B099E1CA42D1A003A533D /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 042B099D1CA42D1A003A533D /* libz.tbd */; };
 		042B09A01CA42DFC003A533D /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042B099F1CA42DFC003A533D /* JavaScriptCore.framework */; };
 		042B09A21CA42E09003A533D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042B09A11CA42E09003A533D /* ImageIO.framework */; };
@@ -232,7 +229,6 @@
 		0419C3601CD10AA60020750C /* BasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicViewController.m; sourceTree = "<group>"; };
 		0419C3621CD10B650020750C /* BootstrapThriViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BootstrapThriViewController.h; sourceTree = "<group>"; };
 		0419C3631CD10B650020750C /* BootstrapThriViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BootstrapThriViewController.m; sourceTree = "<group>"; };
-		0419C3641CD10B650020750C /* BootstrapThriViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BootstrapThriViewController.xib; sourceTree = "<group>"; };
 		042884401CD08D3000C08212 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		042884411CD08D3000C08212 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		042884431CD0943300C08212 /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewController.h; sourceTree = "<group>"; };
@@ -248,10 +244,8 @@
 		0428847F1CD0C85900C08212 /* BootstrapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BootstrapViewController.xib; sourceTree = "<group>"; };
 		042884851CD0CBEA00C08212 /* BootstrapOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BootstrapOneViewController.h; sourceTree = "<group>"; };
 		042884861CD0CBEA00C08212 /* BootstrapOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BootstrapOneViewController.m; sourceTree = "<group>"; };
-		042884871CD0CBEA00C08212 /* BootstrapOneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BootstrapOneViewController.xib; sourceTree = "<group>"; };
 		0428848A1CD0D3AD00C08212 /* BootstrapTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BootstrapTwoViewController.h; sourceTree = "<group>"; };
 		0428848B1CD0D3AD00C08212 /* BootstrapTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BootstrapTwoViewController.m; sourceTree = "<group>"; };
-		0428848C1CD0D3AD00C08212 /* BootstrapTwoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BootstrapTwoViewController.xib; sourceTree = "<group>"; };
 		042B099D1CA42D1A003A533D /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		042B099F1CA42DFC003A533D /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		042B09A11CA42E09003A533D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -638,13 +632,10 @@
 				0428847F1CD0C85900C08212 /* BootstrapViewController.xib */,
 				042884851CD0CBEA00C08212 /* BootstrapOneViewController.h */,
 				042884861CD0CBEA00C08212 /* BootstrapOneViewController.m */,
-				042884871CD0CBEA00C08212 /* BootstrapOneViewController.xib */,
 				0428848A1CD0D3AD00C08212 /* BootstrapTwoViewController.h */,
 				0428848B1CD0D3AD00C08212 /* BootstrapTwoViewController.m */,
-				0428848C1CD0D3AD00C08212 /* BootstrapTwoViewController.xib */,
 				0419C3621CD10B650020750C /* BootstrapThriViewController.h */,
 				0419C3631CD10B650020750C /* BootstrapThriViewController.m */,
-				0419C3641CD10B650020750C /* BootstrapThriViewController.xib */,
 			);
 			path = Bootstrap;
 			sourceTree = "<group>";
@@ -1607,8 +1598,6 @@
 				A3FD03F51C99190700E84A0B /* Assets.xcassets in Resources */,
 				049EF2481CA3900A00C1D68A /* infoConfig.plist in Resources */,
 				042884841CD0C85900C08212 /* BootstrapViewController.xib in Resources */,
-				0428848E1CD0D3AD00C08212 /* BootstrapTwoViewController.xib in Resources */,
-				0419C3661CD10B650020750C /* BootstrapThriViewController.xib in Resources */,
 				A3FD04591C993CF100E84A0B /* MBProgressHUD.bundle in Resources */,
 				049EF2761CA3904200C1D68A /* ShareSDK.bundle in Resources */,
 				049EF1E51CA38D8D00C1D68A /* AddressChoicePickerView.xib in Resources */,
@@ -1618,7 +1607,6 @@
 				A3FD03F31C99190700E84A0B /* Main.storyboard in Resources */,
 				A38A86041CA4CA9000582AD5 /* Launch Screen.storyboard in Resources */,
 				A33447F71CA290860006C8A3 /* 3.jpg in Resources */,
-				042884891CD0CBEA00C08212 /* BootstrapOneViewController.xib in Resources */,
 				049EF26F1CA3904200C1D68A /* ShareSDKUI.bundle in Resources */,
 				04E3E4901CCF8FF8000FD2DF /* UserProtocal.storyboard in Resources */,
 				049EF2741CA3904200C1D68A /* read_me.txt in Resources */,

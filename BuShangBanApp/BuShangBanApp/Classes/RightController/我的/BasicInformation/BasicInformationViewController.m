@@ -246,6 +246,7 @@
             }
             case 3:
             {
+                self.birthdaySelectorView.contentString=textField.text;
                 self.birthdaySelectorView.birthdayPickerBlock=^(BirthdayPickerView *view,NSString *contentText){
                     _contentArray[_indexPath.row]=contentText;
                     textField.text= _contentArray[_indexPath.row];
@@ -254,6 +255,7 @@
             }
             case 4:
             {
+                self.occupationSelectorView.contentString=textField.text;
                 self.occupationSelectorView.occupationSelectorBlock=^(OccupationSelectorView *view,NSString *contentText){
                     _contentArray[_indexPath.row]=contentText;
                     textField.text= _contentArray[_indexPath.row];
