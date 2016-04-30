@@ -125,6 +125,16 @@
     [_navView addSubview:sender];
 }
 
+-(void)dissmissLeftItem
+{
+    UIButton *sender=[UIButton buttonWithType:UIButtonTypeCustom];
+    [sender setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [sender addTarget:self action:@selector(dismissToLeft) forControlEvents:UIControlEventTouchUpInside];
+    sender.size=CGSizeMake(44, 44);
+    sender.top = (_navView.height - sender.height)/2;
+    [_navView addSubview:sender];
+}
+
 -(void)customRightItemWithBtn:(UIButton *)sender {
     sender.size=CGSizeMake(44, 44);
     sender.left = kScreenWidth - sender.width;
@@ -310,6 +320,11 @@
 -(void)popToLeft
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)dismissToLeft{
+
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)observerReloadImage:(NSNotificationCenter *)notif
