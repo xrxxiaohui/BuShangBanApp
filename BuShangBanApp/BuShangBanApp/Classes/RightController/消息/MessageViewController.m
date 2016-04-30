@@ -9,6 +9,7 @@
 #import "MessageViewController.h"
 #import "MessageTableViewCell.h"
 #import "MJRefresh.h"
+#import "LoginViewController.h"
 #import "BaseWebViewController.h"
 
 @interface MessageViewController ()<UITableViewDataSource,UITableViewDelegate>{
@@ -29,6 +30,8 @@
     [self customNavigationBarWithTitle:@"消息"];
     
     self.view.backgroundColor = [UIColor yellowColor];
+    
+    [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
     
     [self initData];
     

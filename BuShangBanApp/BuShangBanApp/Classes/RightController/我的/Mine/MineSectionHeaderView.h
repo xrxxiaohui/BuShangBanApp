@@ -6,8 +6,6 @@
 //  Copyright © 2016年 Zuo. All rights reserved.
 //
 
-
-
 #import "ScreenAdapt.h"
 #import "UIView+Frame.h"
 
@@ -21,6 +19,7 @@
 @property(nonatomic, strong) UIButton *settingBtn;
 
 @property(nonatomic,strong)UILabel *focusMeLabel;
+
 @property(nonatomic,strong)UILabel *myFocusLabel;
 
 //@property(nonatomic,strong)UIVisualEffectView *blurView;

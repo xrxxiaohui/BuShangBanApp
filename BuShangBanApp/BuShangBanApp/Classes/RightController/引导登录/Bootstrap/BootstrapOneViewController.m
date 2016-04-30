@@ -9,10 +9,12 @@
 #import "BootstrapOneViewController.h"
 #import "BuShangBanImagePicker.h"
 
+#define adapt  [[[ScreenAdapt alloc]init] adapt]
+
 @interface BootstrapOneViewController ()
 
 @property (strong, nonatomic)  UIButton *headBtn;
-@property(strong,nonatomic)UIButton *photoBtn;
+@property (strong, nonatomic)  UIButton *photoBtn;
 @property (strong, nonatomic)  UIButton *maleBtn;
 @property (strong, nonatomic)  UIButton *femaleBtn;
 @property (strong, nonatomic)  UITextField *nickNameTF;
@@ -91,9 +93,15 @@
     return btn;
 }
 
+
 -(UITextField *)__textFieldWithTextField:(UITextField *)textField imageNamed:(NSString *)imageNamed placeHolder:(NSString *)placeHolder
 {
-    textField.leftView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:imageNamed]];
+    UIImage *image=[UIImage imageNamed:imageNamed];
+    UIImageView *imageView=[[UIImageView alloc]initWithImage:image];
+    imageView.frame=CGRectMake(0, 0,image.size.width, image.size.height);
+    UIView *leftView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, image.size.width+8, image.size.height)];
+    [leftView addSubview:imageView];
+    textField.leftView=leftView;
     textField.leftViewMode=UITextFieldViewModeAlways;
     textField.borderStyle=UITextBorderStyleNone;
     textField.font=[UIFont fontWithName:@"PingFang SC-Light" size:14];
@@ -114,5 +122,10 @@
     shapeLayer.path = path.CGPath;
     [self.view.layer addSublayer:shapeLayer];
     return shapeLayer;
+}
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+    [self.view endEditing:YES];
 }
 @end

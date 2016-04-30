@@ -41,9 +41,9 @@
 
 -(void)__createUI
 {
-    _widthSpace=(kScreenWidth-3*72)/4;
+    _widthSpace=(kScreenWidth-3*72*adapt.scaleWidth)/4;
     _heigntSpace=56 * adapt.scaleHeight;;
-    _top=118 * adapt.scaleHeight;
+    _top=90 * adapt.scaleHeight;
     _left=_widthSpace;
     
     _technologyBtn=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -70,18 +70,18 @@
             _left = _widthSpace + ((UIButton *)btnArray[i]).right;
     }
     
-    CGFloat margin=(kScreenWidth-2*72)/3;
+    CGFloat margin=(kScreenWidth-2*72*adapt.scaleWidth)/3;
     _contentBtn.left=margin;
     _investBtn.left=_contentBtn.right+margin;
 }
 
 -(UIButton *)__btn:(UIButton *)btn title:(NSString *)title  image:(UIImage *)image tag:(NSInteger)tag {
-    btn.frame=CGRectMake(_left, _top, 72, 72);
+    btn.frame=CGRectMake(_left, _top, 72 *adapt.scaleWidth, 72 *adapt.scaleWidth);
+    [btn setTitleColor:[UIColor colorWithHexString:@"383838"] forState:UIControlStateNormal];
     [btn setTitle:title forState:UIControlStateNormal];
     [btn setTitle:@"" forState:UIControlStateSelected];
-    [btn setImage:image forState:UIControlStateNormal];
-//    [btn setBackgroundImage:image forState:UIControlStateSelected];
-//    [btn setBackgroundImage:[UIImage imageNamed:@"72x72"] forState:UIControlStateNormal];
+    [btn setBackgroundImage:image forState:UIControlStateSelected];
+    [btn setBackgroundImage:[UIImage imageNamed:@"72x72"] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(__clickEvent:) forControlEvents:UIControlEventTouchUpInside];
     btn.tag=tag;
     [self.view addSubview:btn];
@@ -93,6 +93,12 @@
     if (_tempButton.selected)
         _tempButton.selected=!_tempButton.selected;
     _tempButton=sender;
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+    [self.view endEditing:YES];
 }
 
 @end

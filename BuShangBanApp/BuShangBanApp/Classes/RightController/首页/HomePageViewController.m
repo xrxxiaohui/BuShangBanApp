@@ -11,7 +11,6 @@
 #import "MJRefresh.h"
 #import <AVOSCloud/AVOSCloud.h>
 
-
 @interface HomePageViewController ()<UITableViewDataSource,UITableViewDelegate> {
     
     UITableView *_mainTableView;
@@ -104,8 +103,6 @@
         
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
         NSArray *_resultArray = [[_successInfo objectForKey:@"results"] safeArray];
-        
-        
         //        NSDictionary *_businessData = [_resultInfo objectForKey:@"businessData"];
         //        NSDictionary *_activifyData  = [_businessData objectForKey:@"get_gonglue"];
         //

@@ -29,7 +29,7 @@
     
     NSDictionary *dic=@{@"1000":@"产品",@"1001":@"技术",@"1002":@"技术", @"1003":@"市场", @"1004":@"运营", @"1005":@"创业",@"1006": @"大公司", @"1007":@"干货",@"1008": @"热门"};
     
-    DataListViewController *dataListViewController = [[DataListViewController alloc] initWithTitle:[dic objectForKey:[NSString stringWithFormat:@"%ld",button.tag]]];
+    DataListViewController *dataListViewController = [[DataListViewController alloc] initWithTitle:[dic objectForKey:[NSString stringWithFormat:@"%ld",(long)button.tag]]];
     [[SliderViewController sharedSliderController].navigationController pushViewController:dataListViewController animated:YES];
     
     

@@ -25,6 +25,8 @@
 
 @property(nonatomic,strong)UIPageViewController *pageViewController;
 @property(nonatomic,strong)NSArray *viewControllerS;
+@property(nonatomic,strong)NSArray *titleArray;
+
 @end
 
 @implementation BootstrapViewController
@@ -39,18 +41,19 @@
 -(void)__initUI
 {
     _currentIndex=0;
+    self.viewControllerS=@[[[BootstrapOneViewController alloc]init],[[BootstrapTwoViewController alloc]init],[[BootstrapThriViewController alloc]init]];
+    self.titleArray=@[@"请问您是？",@"上班的时候你是？",@"不上班你关注？"];
+    
     self.labelTopConstraint.constant*=adapt.scaleHeight;
     self.nextBtnBottomConstraint.constant*=adapt.scaleHeight;
     
     self.promptLabel.font=[UIFont fontWithName:@"PingFang SC Light" size:16];
     self.promptLabel.textColor=nomalTextColor;
-    self.promptLabel.text=@"请问您是？";
+    self.promptLabel.text=self.titleArray[0];
     
     [self.nextBtn setTitle:@"下一步" forState:UIControlStateNormal];
     self.nextBtn.titleLabel.font=[UIFont fontWithName:@"PingFang SC Light" size:16];
-    
-    self.viewControllerS=@[[[BootstrapOneViewController alloc]init],[[BootstrapTwoViewController alloc]init],[[BootstrapThriViewController alloc]init]];
-    
+
     self.pageViewController=[[UIPageViewController alloc]initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
      navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     self.pageViewController.view.frame=self.view.bounds;
@@ -63,14 +66,20 @@
 
 - (IBAction)clickEvent:(UIButton *)sender {
     _currentIndex++;
-    if (_currentIndex<[_viewControllerS count])
+    if (_currentIndex<[_viewControllerS count]){
         [self.pageViewController setViewControllers:@[_viewControllerS[_currentIndex]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+        self.promptLabel.text=self.titleArray[_currentIndex];
+    }
     if(_currentIndex==[_viewControllerS count]-1)
         [self.nextBtn setTitle:@"进入" forState:UIControlStateNormal];
     if(_currentIndex==[_viewControllerS count])
-       [self dismissViewControllerAnimated:YES completion:nil];
+        [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 
-
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+    [self.view endEditing:YES];
+}
 @end

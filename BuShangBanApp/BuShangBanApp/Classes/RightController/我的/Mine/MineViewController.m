@@ -4,7 +4,7 @@
 //
 //  Created by Zuo on 16/3/16.
 //  Copyright © 2016年 Zuo. All rights reserved.
-//
+
 
 #import "MineViewController.h"
 #import "MineCell.h"
@@ -12,10 +12,10 @@
 #import "SettingViewController.h"
 #import "OtherViewController.h"
 
-#import "BootstrapViewController.h"
 #import "LoginViewController.h"
 
 
+//https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24
 
 @interface MineViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -25,35 +25,17 @@
 @implementation MineViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    //https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24
     
+    [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
     
-    SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
-    [_urlParamsReq setUrlString:@"_User/570387b3ebcb7d005b196d24"];
-    
-//    NSDictionary *_tempParam = @{@"bid":@"888888"};
-    
-    [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
-        
-        NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
-        
-        NSLog(@"********************%@",_successInfo);
-    } failureBlock:^(SSLXResultRequest *failReq){
-        NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
-        NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
-        if (_errorMsg) {
-    
-             NSLog(@"********************%@",_errorMsg);
-            
-        }
-        else {
-            [MBProgressHUD showError:kMBProgressErrorTitle];
-    
-        }
-
-    }];
-
+//    AFHTTPSessionManager  *sessionManager=[AFHTTPSessionManager manager];
+//    NSDictionary *dic=@{@"bid":@"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz"};
+//    
+//    [sessionManager POST:@"https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24" parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+//        NSLog(@"*************%@",responseObject);
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        NSLog(@"*************%@",error);
+//    }];
 }
 
 -(void)settingBtn:(UIButton *)btn

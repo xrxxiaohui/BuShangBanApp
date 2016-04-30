@@ -43,7 +43,7 @@
 {
     _widthSpace=(kScreenWidth-3*96*adapt.scaleWidth)/4;
     _heigntSpace=32 * adapt.scaleHeight;;
-    _top=108 * adapt.scaleHeight;
+    _top=90 * adapt.scaleHeight;
     _left=_widthSpace;
     
     _personalInterestBtn=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -55,7 +55,7 @@
     _famousSynopsisBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     
     NSArray *imageNameArray=@[@"个人兴趣",@"大公司",@"行业干货",@"技能get",@"新产品",@"投资创业",@"大牛语录"];
-    _titleArray=@[@"个人兴趣",@"大公司",@"行业干货",@"技能get",@"新产品",@"投资创业",@"大牛语录"];
+                _titleArray=@[@"个人兴趣",@"大公司",@"行业干货",@"技能get",@"新产品",@"投资创业",@"大牛语录"];
     NSArray *btnArray  =[NSArray arrayWithObjects:_personalInterestBtn,_bigCompany,_practicalBtn,_skillGetBtn,_productBtn,_investBtn,_famousSynopsisBtn, nil];
     
     for (int i=0; _titleArray.count>i; i++)
@@ -74,6 +74,7 @@
 -(UIButton *)__btn:(UIButton *)btn title:(NSString *)title  image:(UIImage *)image tag:(NSInteger)tag {
     btn.frame=CGRectMake(_left, _top, 96*adapt.scaleWidth, 96*adapt.scaleWidth);
     [btn setTitle:title forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor colorWithHexString:@"383838"] forState:UIControlStateNormal];
     [btn setTitle:@"" forState:UIControlStateSelected];
     [btn setBackgroundImage:image forState:UIControlStateSelected];
     [btn setBackgroundImage:[UIImage imageNamed:@"96x96"] forState:UIControlStateNormal];
@@ -95,5 +96,11 @@
             [ _selectedItems addObject:_titleArray[index]];
     }
     sender.selected=!sender.selected;
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+    [self.view endEditing:YES];
 }
 @end

@@ -10,6 +10,9 @@
 #import "LoginViewController.h"
 #import "InvitedCodeViewController.h"
 #import "UserProtocalViewController.h"
+#import "BootstrapViewController.h"
+#import <AVOSCloud/AVOSCloud.h>
+
 
 @interface RegistViewController ()
 {
@@ -28,29 +31,10 @@
 @end
 
 @implementation RegistViewController
-{
-    CGFloat _bottom;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self __initView];
-}
-
-
--(void)showKeyBoard:(NSNotification *)noti
-{
-    CGRect frame=[[noti userInfo][UIKeyboardFrameBeginUserInfoKey] CGRectValue];
-    if (frame.origin.y>_contentView.bottom) {
-        _bottom=_contentView.bottom;
-        _contentView.bottom=frame.origin.y;
-    }
-}
-
--(void)hideKeyBoard:(NSNotification *)noti
-{
-    if (_bottom != 0)
-        _contentView.bottom=_bottom;
 }
 
 -(void)__initView
@@ -60,12 +44,12 @@
     [_loginBtn addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
     _loginBtn.titleLabel.font=[UIFont fontWithName:@"PingFang TC-Light" size:14];
     [_loginBtn setTitleColor:[UIColor colorWithHexString:@"383838"] forState:UIControlStateNormal];
-    _loginBtn.frame=CGRectMake(kScreenWidth-60, 33, 44, 44);
+    _loginBtn.frame=CGRectMake(kScreenWidth-60, 20, 44,44);
     _loginBtn.tag=1001;
     [self.view addSubview:_loginBtn];
     
     _accountTF=[self textFieldWithPlaceHolder:@"手机号/邮箱" imageNamed:@"phone number"];
-    _accountTF.top=_contentView.top;
+    
     [self shapeLayerWithStartPoint:CGPointMake(_accountTF.left, _accountTF.bottom) endPoint:CGPointMake(_accountTF.right, _accountTF.bottom)];
     
     _verificationCodeTF=[self textFieldWithPlaceHolder:@"验证码" imageNamed:@"Verification code"];
@@ -76,7 +60,7 @@
     [self shapeLayerWithStartPoint:CGPointMake(_verificationCodeTF.left, _verificationCodeTF.bottom) endPoint:CGPointMake(_verificationCodeTF.right, _verificationCodeTF.bottom)];
     
     _getCodeBtn=[self buttonWithImageName:@"Get button" tag:1002 frame:CGRectMake(_verificationCodeTF.right+20, 0, 80, 30) title:@"获取验证码"];
-    _getCodeBtn.titleLabel.font=[UIFont fontWithName:@"PingFang TC-Light" size:10];
+    _getCodeBtn.titleLabel.font=[UIFont fontWithName:fontName size:10];
     _getCodeBtn.bottom=_verificationCodeTF.bottom;
     [_contentView addSubview:_getCodeBtn];
     
@@ -97,11 +81,10 @@
     [_inivitBtn setImage:[UIImage imageNamed:@"problem"] forState:UIControlStateNormal];
     [_inivitBtn addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
     _inivitBtn.size=CGSizeMake(44, 44);
-    _inivitBtn.right=_inivitTF.right;
+    _inivitBtn.right=_inivitTF.right+13;
     _inivitBtn.bottom=_inivitTF.bottom;
     _inivitBtn.tag=1006;
-    [self.view addSubview:_inivitBtn];
-    
+    [_contentView addSubview:_inivitBtn];
     
     [self shapeLayerWithStartPoint:CGPointMake(_inivitTF.left, _inivitTF.bottom) endPoint:CGPointMake(_inivitTF.right, _inivitTF.bottom)];
     
@@ -110,19 +93,26 @@
     _registBtn.centerX=self.view.centerX;
     [_contentView addSubview:_registBtn];
     
+    _contentView.height=_registBtn.bottom;
+    
     _readedBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    [_readedBtn setTitleColor:[UIColor colorWithHexString:@"383838"] forState:UIControlStateNormal];
     [_readedBtn setImage:[UIImage imageNamed:@"方框"] forState:UIControlStateNormal];
     [_readedBtn setImage:[UIImage imageNamed:@"勾选"] forState:UIControlStateSelected];
     [_readedBtn addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
-    [_readedBtn setTitle:@"我已阅读并同意不上班" forState:UIControlStateNormal];
-    _readedBtn.titleLabel.font=[UIFont fontWithName:@"PingFang" size:10];
-    _readedBtn.titleEdgeInsets=UIEdgeInsetsMake(0,10, 0, 0);
-    _readedBtn.bottom=self.view.bottom-20;
-    [_readedBtn sizeToFit];
+    
+    NSDictionary *dic1=@{NSFontAttributeName:[UIFont fontWithName:fontName size:10],
+                        NSForegroundColorAttributeName:[UIColor colorWithHexString:@"383838"]};
+    NSAttributedString *attr1=[[NSAttributedString alloc] initWithString:@"我已阅读并同意不上班" attributes:dic1];
+    [_readedBtn setAttributedTitle:attr1 forState:UIControlStateNormal];
+    _readedBtn.titleEdgeInsets=UIEdgeInsetsMake(0,3,0,0);
+    _readedBtn.size=CGSizeMake(120, [UIImage imageNamed:@"方框"].size.height);
+    _readedBtn.bottom=kScreenHeight-20;
     _readedBtn.tag=1004;
     [self.view addSubview:_readedBtn];
     
     _userProtocalBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    [_userProtocalBtn addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
     NSDictionary *dic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:10],
                         NSForegroundColorAttributeName:[UIColor colorWithHexString:@"4a90e2"]};
     NSAttributedString *attr=[[NSAttributedString alloc] initWithString:@"用户协议" attributes:dic];
@@ -132,6 +122,7 @@
     [self.view addSubview:_userProtocalBtn];
     _readedBtn.left=(kScreenWidth-_userProtocalBtn.width-_readedBtn.width)/2;
     _userProtocalBtn.left=_readedBtn.right;
+    _userProtocalBtn.bottom=kScreenHeight-12;
 }
 
 -(void)clickEvent:(UIButton *)sender
@@ -140,36 +131,48 @@
     __block BOOL success=NO;
     switch (sender.tag) {
         case 1000:
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self.navigationController popToRootViewControllerAnimated:YES];
             break;
         case 1001:
-            [self presentViewController:[[LoginViewController alloc]init] animated:YES completion:nil];
+             [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
+//            [self presentViewController:[[LoginViewController alloc]init] animated:YES completion:nil];
             break;
         case 1002:
-            //发送验证码
-            break;
-        case 1003:
-            if([self __check])
-            {
-                AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-                [manager GET:@"https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-                    
-                    if(![_verificationCodeTF.text isEqualToString:@""])
-                        [MBProgressHUD showError:@"验证码不对"];
-                    else if(![_inivitTF.text isEqualToString:@""])
-                        [MBProgressHUD showError:@"验证码不对"];
-                    else if(@"")
-                        [MBProgressHUD showError:@"这个账号已经注册过"];
-                    else
-                        success=YES;
-                } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                    [MBProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
-                }];
-                if (success)
+        {
+            [AVOSCloud requestSmsCodeWithPhoneNumber:_accountTF.text appName:nil operation:nil timeToLive:10 callback:^(BOOL succeeded, NSError *error) {
+                if (succeeded)
                 {
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                    NSDictionary *dic=@{};
-                    [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"UserInfo"];
+                    [MBProgressHUD showSuccess:@"发送成功,请稍等"];
+                    [_verificationCodeTF becomeFirstResponder];
+                }
+                else
+                    [MBProgressHUD showError:[NSString stringWithFormat:@"error:%ld",(long)error.code]];
+            }];
+            break;
+        }
+        case 1003:
+//            if([self __check])
+            {
+//                AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//                [manager GET:@"https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//                    
+////                    if(![_verificationCodeTF.text isEqualToString:@""])
+////                        [MBProgressHUD showError:@"验证码不对"];
+////                    else if(![_inivitTF.text isEqualToString:@""])
+////                        [MBProgressHUD showError:@"验证码不对"];
+////                    else if(@"")
+////                        [MBProgressHUD showError:@"这个账号已经注册过"];
+////                    else
+//                        success=YES;
+//                } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//                    [MBProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
+//                }];
+//                if (success)
+                {
+                    [[SliderViewController sharedSliderController].navigationController pushViewController:[[BootstrapViewController alloc] init] animated:YES];
+
+//                    NSDictionary *dic=@{};
+//                    [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"UserInfo"];
                 }
             }
             break;
@@ -179,12 +182,14 @@
         case 1005:
         {
             UIStoryboard *UserProtocal=[UIStoryboard storyboardWithName:@"UserProtocal" bundle:nil];
-            [self presentViewController:[UserProtocal                instantiateViewControllerWithIdentifier:@"UserProtocal"] animated:YES completion:nil];
+            [[SliderViewController sharedSliderController].navigationController pushViewController:[UserProtocal                instantiateViewControllerWithIdentifier:@"UserProtocal"]  animated:YES];
             break;
         }
         case 1006:
-            [self presentViewController:[[InvitedCodeViewController alloc]init] animated:YES completion:nil];
+        {
+            [[SliderViewController sharedSliderController].navigationController pushViewController:[[InvitedCodeViewController alloc] init] animated:YES];
             break;
+        }
     }
 }
 -(BOOL)__check

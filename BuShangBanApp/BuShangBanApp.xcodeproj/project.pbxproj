@@ -12,7 +12,6 @@
 		042884421CD08D3000C08212 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042884411CD08D3000C08212 /* LoginViewController.m */; };
 		042884451CD0943300C08212 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042884441CD0943300C08212 /* RegistViewController.m */; };
 		042884571CD0B7ED00C08212 /* InvitedCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042884551CD0B7ED00C08212 /* InvitedCodeViewController.m */; };
-		042884581CD0B7ED00C08212 /* InvitedCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 042884561CD0B7ED00C08212 /* InvitedCodeViewController.xib */; };
 		0428845E1CD0C5E900C08212 /* UserProtocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0428845D1CD0C5E900C08212 /* UserProtocalViewController.m */; };
 		042884831CD0C85900C08212 /* BootstrapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0428847E1CD0C85900C08212 /* BootstrapViewController.m */; };
 		042884841CD0C85900C08212 /* BootstrapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0428847F1CD0C85900C08212 /* BootstrapViewController.xib */; };
@@ -22,6 +21,7 @@
 		042B09A01CA42DFC003A533D /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042B099F1CA42DFC003A533D /* JavaScriptCore.framework */; };
 		042B09A21CA42E09003A533D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042B09A11CA42E09003A533D /* ImageIO.framework */; };
 		042B09CE1CA5A082003A533D /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B09CD1CA5A082003A533D /* FileManager.m */; };
+		04317A5D1CD3D1DE00948A88 /* InvitedCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04317A5C1CD3D1DE00948A88 /* InvitedCodeViewController.xib */; };
 		044DAE1D1CA7E89F0058A319 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049EF24D1CA3904200C1D68A /* ShareSDK.framework */; };
 		049EF1E41CA38D8D00C1D68A /* AddressChoicePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF1D51CA38D8D00C1D68A /* AddressChoicePickerView.m */; };
 		049EF1E51CA38D8D00C1D68A /* AddressChoicePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049EF1D61CA38D8D00C1D68A /* AddressChoicePickerView.xib */; };
@@ -236,7 +236,6 @@
 		0428844F1CD0AFC100C08212 /* MineSectionHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineSectionHeaderView.h; sourceTree = "<group>"; };
 		042884541CD0B7ED00C08212 /* InvitedCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitedCodeViewController.h; sourceTree = "<group>"; };
 		042884551CD0B7ED00C08212 /* InvitedCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitedCodeViewController.m; sourceTree = "<group>"; };
-		042884561CD0B7ED00C08212 /* InvitedCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvitedCodeViewController.xib; sourceTree = "<group>"; };
 		0428845C1CD0C5E900C08212 /* UserProtocalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProtocalViewController.h; sourceTree = "<group>"; };
 		0428845D1CD0C5E900C08212 /* UserProtocalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProtocalViewController.m; sourceTree = "<group>"; };
 		0428847D1CD0C85900C08212 /* BootstrapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BootstrapViewController.h; sourceTree = "<group>"; };
@@ -251,6 +250,7 @@
 		042B09A11CA42E09003A533D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		042B09CC1CA5A082003A533D /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
 		042B09CD1CA5A082003A533D /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
+		04317A5C1CD3D1DE00948A88 /* InvitedCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvitedCodeViewController.xib; sourceTree = "<group>"; };
 		049EF1D41CA38D8D00C1D68A /* AddressChoicePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressChoicePickerView.h; sourceTree = "<group>"; };
 		049EF1D51CA38D8D00C1D68A /* AddressChoicePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressChoicePickerView.m; sourceTree = "<group>"; };
 		049EF1D61CA38D8D00C1D68A /* AddressChoicePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressChoicePickerView.xib; sourceTree = "<group>"; };
@@ -674,7 +674,7 @@
 				042884441CD0943300C08212 /* RegistViewController.m */,
 				042884541CD0B7ED00C08212 /* InvitedCodeViewController.h */,
 				042884551CD0B7ED00C08212 /* InvitedCodeViewController.m */,
-				042884561CD0B7ED00C08212 /* InvitedCodeViewController.xib */,
+				04317A5C1CD3D1DE00948A88 /* InvitedCodeViewController.xib */,
 				0419C35F1CD10AA60020750C /* BasicViewController.h */,
 				0419C3601CD10AA60020750C /* BasicViewController.m */,
 			);
@@ -1594,7 +1594,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A33447F91CA290940006C8A3 /* 2.jpg in Resources */,
-				042884581CD0B7ED00C08212 /* InvitedCodeViewController.xib in Resources */,
 				A3FD03F51C99190700E84A0B /* Assets.xcassets in Resources */,
 				049EF2481CA3900A00C1D68A /* infoConfig.plist in Resources */,
 				042884841CD0C85900C08212 /* BootstrapViewController.xib in Resources */,
@@ -1616,6 +1615,7 @@
 				A33447F61CA290860006C8A3 /* 1.jpg in Resources */,
 				049EF2321CA38F5700C1D68A /* AboutUserProtocalViewController.xib in Resources */,
 				A377D1A21C995E3000C779A7 /* MJRefresh.bundle in Resources */,
+				04317A5D1CD3D1DE00948A88 /* InvitedCodeViewController.xib in Resources */,
 				049EF1E61CA38D8D00C1D68A /* area.plist in Resources */,
 				A33447FF1CA29BAF0006C8A3 /* Icon.pdf in Resources */,
 				A38A86081CA4CB4400582AD5 /* launchImage@3x.png in Resources */,
@@ -1874,6 +1874,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1918,6 +1919,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
