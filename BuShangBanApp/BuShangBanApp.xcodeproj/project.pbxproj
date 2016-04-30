@@ -51,6 +51,8 @@
 		049EF2761CA3904200C1D68A /* ShareSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 049EF26A1CA3904200C1D68A /* ShareSDK.bundle */; };
 		049EF2771CA3904200C1D68A /* ShareSDKConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049EF26B1CA3904200C1D68A /* ShareSDKConnector.framework */; };
 		049EF27C1CA3ED0400C1D68A /* BuShangBanImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF27B1CA3ED0400C1D68A /* BuShangBanImagePicker.m */; };
+		04DE3E851CD4BE7A00D9244B /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DE3E841CD4BE7A00D9244B /* DetailViewController.m */; };
+		04DE3E881CD4DA0F00D9244B /* ArticalInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DE3E871CD4DA0F00D9244B /* ArticalInfo.m */; };
 		04E3E4181CCE3633000FD2DF /* BasicInformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E3E3FC1CCE3633000FD2DF /* BasicInformationCell.m */; };
 		04E3E4191CCE3633000FD2DF /* BasicInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E3E3FE1CCE3633000FD2DF /* BasicInformationViewController.m */; };
 		04E3E41A1CCE3633000FD2DF /* EditInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E3E4001CCE3633000FD2DF /* EditInformationViewController.m */; };
@@ -310,6 +312,10 @@
 		049EF26B1CA3904200C1D68A /* ShareSDKConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDKConnector.framework; sourceTree = "<group>"; };
 		049EF27A1CA3ED0400C1D68A /* BuShangBanImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuShangBanImagePicker.h; sourceTree = "<group>"; };
 		049EF27B1CA3ED0400C1D68A /* BuShangBanImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuShangBanImagePicker.m; sourceTree = "<group>"; };
+		04DE3E831CD4BE7A00D9244B /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		04DE3E841CD4BE7A00D9244B /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		04DE3E861CD4DA0F00D9244B /* ArticalInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticalInfo.h; sourceTree = "<group>"; };
+		04DE3E871CD4DA0F00D9244B /* ArticalInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticalInfo.m; sourceTree = "<group>"; };
 		04E3E3FB1CCE3633000FD2DF /* BasicInformationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicInformationCell.h; sourceTree = "<group>"; };
 		04E3E3FC1CCE3633000FD2DF /* BasicInformationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicInformationCell.m; sourceTree = "<group>"; };
 		04E3E3FD1CCE3633000FD2DF /* BasicInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicInformationViewController.h; sourceTree = "<group>"; };
@@ -1118,6 +1124,8 @@
 			children = (
 				A376A7EB1CA00F9000B4F9BF /* DataListViewController.h */,
 				A376A7EC1CA00F9000B4F9BF /* DataListViewController.m */,
+				04DE3E831CD4BE7A00D9244B /* DetailViewController.h */,
+				04DE3E841CD4BE7A00D9244B /* DetailViewController.m */,
 				049EF2351CA38FA000C1D68A /* FindView.h */,
 				049EF2361CA38FA000C1D68A /* FindView.m */,
 				049EF2371CA38FA000C1D68A /* FindViewController.h */,
@@ -1266,6 +1274,8 @@
 				A3FD04251C99386700E84A0B /* QHBasicViewController.m */,
 				042B09CC1CA5A082003A533D /* FileManager.h */,
 				042B09CD1CA5A082003A533D /* FileManager.m */,
+				04DE3E861CD4DA0F00D9244B /* ArticalInfo.h */,
+				04DE3E871CD4DA0F00D9244B /* ArticalInfo.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1803,8 +1813,10 @@
 				A3FD045C1C993CF100E84A0B /* UIView+Frame.m in Sources */,
 				04E3E4201CCE3633000FD2DF /* OtherViewController.m in Sources */,
 				A3FD04A21C99403E00E84A0B /* HelloWorldReq.pb.m in Sources */,
+				04DE3E851CD4BE7A00D9244B /* DetailViewController.m in Sources */,
 				049EF1E41CA38D8D00C1D68A /* AddressChoicePickerView.m in Sources */,
 				A3FD04961C993EB900E84A0B /* NSDictionary+Utility.m in Sources */,
+				04DE3E881CD4DA0F00D9244B /* ArticalInfo.m in Sources */,
 				A39CD3391C99512900F0D8EE /* APIRequestManager.m in Sources */,
 				A3FD043E1C99397A00E84A0B /* MLBlackTransition.m in Sources */,
 				A39CD1761C99508700F0D8EE /* SSNewFeatureViewController.m in Sources */,

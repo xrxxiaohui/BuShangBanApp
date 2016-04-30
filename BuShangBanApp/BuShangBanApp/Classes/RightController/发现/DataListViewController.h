@@ -10,6 +10,6 @@
 
 @interface DataListViewController : ArrowBackViewController
 
--(instancetype)initWithTitle:(NSString *)titile;
+-(instancetype)initWithTitle:(NSString *)titile objectID:(NSString *)objectID;
 
 @end

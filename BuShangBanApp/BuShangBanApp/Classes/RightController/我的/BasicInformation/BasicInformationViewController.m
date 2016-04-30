@@ -14,8 +14,13 @@
 #import "BirthdayPickerView.h"
 #import "AddressChoicePickerView.h"
 #import "EditInformationViewController.h"
+#import "User.h"
+
+#define userURL @"443/1.1/classes/_User/570387b3ebcb7d005b196d24"
 
 @interface BasicInformationViewController ()<UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate,EditInformationDelegate>
+
+@property(nonatomic,strong)User *user;
 
 @property(strong, nonatomic) UITableView *tableView;
 @property(nonatomic, strong) NSArray *titleArray;
@@ -43,9 +48,8 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    _titleArray=[NSArray arrayWithObjects:@[@"头像"],@[@"昵称", @"身份签名",@"所在地",@"生日", @"职业", @"兴趣"], @[@"电话号码",@"电子邮件" ],nil];
-    _contentArray = [NSMutableArray arrayWithArray:@[@[@""],@[@"创业先生", @"创业中的人",@"北京",@"1990.03.03", @"无业游民", @"产品,聊天,创业"], @[@"13051699286",@"m13051699286@163.com"]]];
-    [self.view addSubview:self.tableView];
+    
+    [self __initData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -53,6 +57,54 @@
     [self customNavigationBarWithTitle:@"基本资料"];
     [self defaultLeftItem];
 }
+
+
+-(void)__initData
+{
+    self.user=[[User alloc]init];
+    _titleArray=[NSArray arrayWithObjects:@[@"头像"],@[@"昵称", @"身份签名",@"所在地",@"生日", @"职业", @"兴趣"], @[@"电话号码",@"电子邮件" ],nil];
+    _contentArray =[NSMutableArray array];
+    SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
+    [_urlParamsReq setUrlString:userURL];
+    [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
+        
+        NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
+        
+        NSLog(@"******%@",_successInfo);
+        
+        self.user.city_name=_successInfo[@"city_name"];
+        self.user.birthDay=_successInfo[@"birthday"];
+        self.user.mobilePhoneNumber=_successInfo[@"mobilePhoneNumber"];
+        self.user.interest=_successInfo[@"interest"];
+        self.user.username=_successInfo[@"username"];
+        self.user.profession=_successInfo[@"profession"];
+        self.user.sex = _successInfo[@"sex"];
+        self.user.email=_successInfo[@"email"];
+        self.user.label=_successInfo[@"title"];
+        self.user.avatar=_successInfo[@"avatar"];
+        self.user.avatarImageURL=[NSURL URLWithString:self.user.avatar[@"url"]];
+        
+        
+        
+        [self.contentArray addObject:@[@""]];
+        [self.contentArray addObject:@[_successInfo[@"username"], _successInfo[@"title"],_successInfo[@"city_name"],
+        @"1993,1,1",_successInfo[@"profession"],[self.user.interest componentsJoinedByString:@","]]];
+        [self.contentArray addObject:@[_successInfo[@"mobilePhoneNumber"],_successInfo[@"email"]]];
+        
+//        _contentArray = [NSMutableArray arrayWithArray:@[@[@""],@[_successInfo[@"username"], _successInfo[@"title"],_successInfo[@"city_name"],_successInfo[@"birthday"],_successInfo[@"profession"],[self.user.interest componentsJoinedByString:@","]], @[_successInfo[@"mobilePhoneNumber"],_successInfo[@"email"]]]];
+        
+        self.tableView.backgroundColor=bgColor;
+    } failureBlock:^(SSLXResultRequest *failReq){
+        
+        NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
+        NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
+        if (_errorMsg)
+            [MBProgressHUD showError:_errorMsg];
+        else
+            [MBProgressHUD showError:kMBProgressErrorTitle];
+    }];
+}
+
 
 #pragma mark  ---- event ----
 
@@ -97,7 +149,7 @@
         [btn setBackgroundImage:image forState:UIControlStateNormal];
         btn.layer.cornerRadius = btn.width / 2;
         btn.clipsToBounds = YES;
-        _user.avatar=[btn snapshotImage];
+        _user.avatarImage=[btn snapshotImage];
     }];
 }
 
@@ -124,11 +176,10 @@
     if ( !_tableView )
     {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth,kScreenHeight) style:UITableViewStyleGrouped];
-        _tableView.backgroundColor=COLOR(249, 249, 249);
-        _tableView.backgroundColor=bgColor;
         _tableView.contentSize=CGSizeMake(kScreenWidth, 180+44*7+12<kScreenHeight?180+44*7+12:kScreenHeight);
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        [self.view addSubview:self.tableView];
     }
     return _tableView;
 }

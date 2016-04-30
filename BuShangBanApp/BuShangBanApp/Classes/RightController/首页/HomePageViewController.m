@@ -103,7 +103,7 @@
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
     
     NSDictionary *_tempParam = @{@"bid":@"888888"};
-    
+    [_urlParamsReq setUrlString:@"_Status?limit=10&&order=-createdAt&include=related_post&keys=-related_post.body"];
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
         
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
@@ -240,8 +240,6 @@
         NSDictionary *tempDic = [[_homeListdataArray objectAtIndex:indexPath.row] safeDictionary];
         [cell setDataInfo:tempDic];
         [cell refreshUI];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
 

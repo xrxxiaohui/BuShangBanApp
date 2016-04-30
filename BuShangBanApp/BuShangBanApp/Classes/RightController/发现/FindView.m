@@ -24,16 +24,18 @@
 }
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    self.frame = CGRectMake(0, 64, kScreenWidth, 448 * adapt.scaleHeight);
-    if ( self ) {
+    self.frame = CGRectMake(0, 64, kScreenWidth, 448 * adapt.scaleHeight+marginTop);
+    if ( self )
+    {
         self.backgroundColor = [UIColor whiteColor];
-        NSArray *nomalImageArray = @[@"产品",@"设计", @"技术", @"市场", @"运营", @"创业", @"大公司", @"干货", @"热门"];
+        NSArray *nomalImageArray = @[@"产品3",@"设计3", @"技术3", @"市场3", @"运营3", @"创业3", @"大公司3", @"干货3", @"热门3"];
         NSArray *titleArray = @[@"产品",@"设计", @"技术", @"市场", @"运营", @"创业", @"大公司", @"干货", @"热门"];
 
         _left = marginLeft;
         _top = marginTop;
 
-        for (int i = 0; i < 9; i++ ) {
+        for (int i = 0; i < 9; i++ )
+        {
             UIButton *btn = [self __buttonWithNomalImage:[UIImage imageNamed:nomalImageArray[i]]  tag:TAG + i];
             btn.left = _left;
             btn.top = _top;
@@ -45,6 +47,7 @@
             else
                 _left = marginLeft + btn.right;
         }
+        
     }
     return self;
 }

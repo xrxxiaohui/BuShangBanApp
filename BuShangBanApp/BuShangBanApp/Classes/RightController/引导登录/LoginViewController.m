@@ -40,16 +40,14 @@
     
     _accountTF=[self textFieldWithPlaceHolder:@"手机号/邮箱" imageNamed:@"phone number"];
     
-    [self shapeLayerWithStartPoint:CGPointMake(_accountTF.left, _accountTF.bottom-5) endPoint:CGPointMake(_accountTF.right, _accountTF.bottom-5)];
-    
     _passWordTF=[self textFieldWithPlaceHolder:@"密码" imageNamed:@"password"];
     _passWordTF.top=_accountTF.bottom;
     
-    [self shapeLayerWithStartPoint:CGPointMake(_passWordTF.left, _passWordTF.bottom-5) endPoint:CGPointMake(_passWordTF.right, _passWordTF.bottom-5)];
+    [self shapeLayerWithStartPoint:CGPointMake(_accountTF.left, _accountTF.bottom-8) endPoint:CGPointMake(_accountTF.right, _accountTF.bottom-8)];
+    [self shapeLayerWithStartPoint:CGPointMake(_passWordTF.left, _passWordTF.bottom-8) endPoint:CGPointMake(_passWordTF.right, _passWordTF.bottom-8)];
     
     _loginBtn=[self buttonWithImageName:@"Button" tag:1002 frame:CGRectMake(0, _passWordTF.bottom+74, 300, 44) title:@"登录"];
     _loginBtn.centerX=self.view.centerX;
-    
     [_contentView addSubview:_loginBtn];
     
     _contentView.height=_loginBtn.bottom;
@@ -75,30 +73,27 @@
     switch (sender.tag) {
         case 1000:
             [self.navigationController popToRootViewControllerAnimated:YES];
-//            [self dismissViewControllerAnimated:YES completion:nil];
             break;
         case 1001:
             [[SliderViewController sharedSliderController].navigationController pushViewController:[[RegistViewController alloc] init] animated:YES];
-//            [self presentViewController:[[RegistViewController alloc]init] animated:YES completion:nil];
             break;
         case 1002:
         {
-            if ([self __check])
-            {
+//            if ([self __check])
+//            {
 //                AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
 //                [manager GET:@"https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
 //                    
 //                    if([_accountTF.text isEqualToString:@" " ] &&  [_passWordTF.text  isEqualToString: @" "] )
 //                    {
                         [self.navigationController popToRootViewControllerAnimated:YES];
-//                        [self dismissViewControllerAnimated:YES completion:nil];
 //                    }
 //                    else
 //                        [MBProgressHUD showError:@"账号或密码不对"];
 //                } failure:^(NSURLSessionDataTask *task, NSError *error) {
 //                    [MBProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
 //                }]; 
-            }
+//            }
             break;
         }
     }

@@ -50,14 +50,10 @@
     
     _accountTF=[self textFieldWithPlaceHolder:@"手机号/邮箱" imageNamed:@"phone number"];
     
-    [self shapeLayerWithStartPoint:CGPointMake(_accountTF.left, _accountTF.bottom) endPoint:CGPointMake(_accountTF.right, _accountTF.bottom)];
-    
     _verificationCodeTF=[self textFieldWithPlaceHolder:@"验证码" imageNamed:@"Verification code"];
     _verificationCodeTF.keyboardType=UIKeyboardTypeNumberPad;
     _verificationCodeTF.top=_accountTF.bottom;
     _verificationCodeTF.width=200;
-    
-    [self shapeLayerWithStartPoint:CGPointMake(_verificationCodeTF.left, _verificationCodeTF.bottom) endPoint:CGPointMake(_verificationCodeTF.right, _verificationCodeTF.bottom)];
     
     _getCodeBtn=[self buttonWithImageName:@"Get button" tag:1002 frame:CGRectMake(_verificationCodeTF.right+20, 0, 80, 30) title:@"获取验证码"];
     _getCodeBtn.titleLabel.font=[UIFont fontWithName:fontName size:10];
@@ -67,12 +63,10 @@
     _passWordTF=[self textFieldWithPlaceHolder:@"密码" imageNamed:@"password"];
     _passWordTF.top=_getCodeBtn.bottom;
     
-    [self shapeLayerWithStartPoint:CGPointMake(_passWordTF.left, _passWordTF.bottom) endPoint:CGPointMake(_passWordTF.right, _passWordTF.bottom)];
-    
     _passWordAgainTF=[self textFieldWithPlaceHolder:@"再次输入密码" imageNamed:@"password again"];
     _passWordAgainTF.top=_passWordTF.bottom;
     
-    [self shapeLayerWithStartPoint:CGPointMake(_passWordAgainTF.left, _passWordAgainTF.bottom) endPoint:CGPointMake(_passWordAgainTF.right, _passWordAgainTF.bottom)];
+    [self shapeLayerWithStartPoint:CGPointMake(_passWordAgainTF.left, _passWordAgainTF.bottom-8) endPoint:CGPointMake(_passWordAgainTF.right, _passWordAgainTF.bottom-8)];
     
     _inivitTF=[self textFieldWithPlaceHolder:@"邀请码" imageNamed:@"Invitation code"];
     _inivitTF.top=_passWordAgainTF.bottom;
@@ -86,7 +80,10 @@
     _inivitBtn.tag=1006;
     [_contentView addSubview:_inivitBtn];
     
-    [self shapeLayerWithStartPoint:CGPointMake(_inivitTF.left, _inivitTF.bottom) endPoint:CGPointMake(_inivitTF.right, _inivitTF.bottom)];
+    [self shapeLayerWithStartPoint:CGPointMake(_accountTF.left, _accountTF.bottom-8) endPoint:CGPointMake(_accountTF.right, _accountTF.bottom-8)];
+    [self shapeLayerWithStartPoint:CGPointMake(_verificationCodeTF.left, _verificationCodeTF.bottom-8) endPoint:CGPointMake(_verificationCodeTF.right, _verificationCodeTF.bottom-8)];
+    [self shapeLayerWithStartPoint:CGPointMake(_passWordTF.left, _passWordTF.bottom-8) endPoint:CGPointMake(_passWordTF.right, _passWordTF.bottom-8)];
+    [self shapeLayerWithStartPoint:CGPointMake(_inivitTF.left, _inivitTF.bottom-8) endPoint:CGPointMake(_inivitTF.right, _inivitTF.bottom-8)];
     
     _registBtn=[self buttonWithImageName:@"Button" tag:1003 frame:CGRectMake(0,0, 300, 44) title:@"注册"];
     _registBtn.top=_inivitTF.bottom+64;
@@ -135,7 +132,6 @@
             break;
         case 1001:
              [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
-//            [self presentViewController:[[LoginViewController alloc]init] animated:YES completion:nil];
             break;
         case 1002:
         {

@@ -54,7 +54,7 @@
     _investBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     _famousSynopsisBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     
-    NSArray *imageNameArray=@[@"个人兴趣",@"大公司",@"行业干货",@"技能get",@"新产品",@"投资创业",@"大牛语录"];
+    NSArray *imageNameArray=@[@"个人兴趣",@"大公司3",@"行业干货",@"技能get",@"新产品",@"投资创业",@"大牛语录"];
                 _titleArray=@[@"个人兴趣",@"大公司",@"行业干货",@"技能get",@"新产品",@"投资创业",@"大牛语录"];
     NSArray *btnArray  =[NSArray arrayWithObjects:_personalInterestBtn,_bigCompany,_practicalBtn,_skillGetBtn,_productBtn,_investBtn,_famousSynopsisBtn, nil];
     

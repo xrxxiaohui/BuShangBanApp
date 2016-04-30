@@ -63,8 +63,8 @@
     self.placeTF.centerX=self.view.centerX;
     self.placeTF.top=self.nickNameTF.bottom;
     
-    [self __shapeLayerWithStartPoint:CGPointMake(self.nickNameTF.left, self.nickNameTF.bottom-5) endPoint:CGPointMake(self.nickNameTF.right, self.nickNameTF.bottom-5)];
-    [self __shapeLayerWithStartPoint:CGPointMake(self.placeTF.left, self.placeTF.bottom-5) endPoint:CGPointMake(self.placeTF.right, self.placeTF.bottom-5)];
+    [self __shapeLayerWithStartPoint:CGPointMake(self.nickNameTF.left, self.nickNameTF.bottom-8) endPoint:CGPointMake(self.nickNameTF.right, self.nickNameTF.bottom-8)];
+    [self __shapeLayerWithStartPoint:CGPointMake(self.placeTF.left, self.placeTF.bottom-8) endPoint:CGPointMake(self.placeTF.right, self.placeTF.bottom-8)];
 }
 
 -(void)__clickEvent:(UIButton *)btn

@@ -43,7 +43,7 @@
             self.backgroundView.layer.cornerRadius=10.f;
             [self addSubview:self.backgroundView];
             
-            _dataSource=@[@"创  作",@"运  营",@"产  品",@"技  术",@"设  计",@"投  资",@"商务市场销售",@"行  政"];
+            _dataSource=@[@"创作",@"运营",@"产品",@"技术",@"设计",@"投资",@"市场",@"行政"];
             [self.occupationSelector selectRow:INT32_C(_dataSource.count/2) inComponent:0 animated:YES];
             _contentText=self.dataSource[INT32_C(_dataSource.count/2)];
             _cancelBtn= [self btnWithTitle:@"取 消" tag:1001 x:10];

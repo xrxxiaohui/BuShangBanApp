@@ -11,31 +11,98 @@
 #import "MineSectionHeaderView.h"
 #import "SettingViewController.h"
 #import "OtherViewController.h"
-
 #import "LoginViewController.h"
+#import "User.h"
 
 
-//https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24
+
+#define userURL @"_User/570387b3ebcb7d005b196d24"
+#define articalURL @"Post?where=%7B%22author%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22_User%22%2C%22objectId%22%3A%22570387b3ebcb7d005b196d24%22%7D%7D&count=1&limit=0"
+
+#define  aboutMe @"/1.1/users/570387b3ebcb7d005b196d24/followersAndFollowees?limit=0&count=1"
 
 @interface MineViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property(nonatomic,strong)UICollectionView *collectionView;
+@property(nonatomic,strong)NSArray *array;
+
+@property(nonatomic,strong)User *user;
+
 @end
+
+//https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24  用户信息
+//https://leancloud.cn:443/1.1/classes/Post?where=%7B%22author%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22_User%22%2C%22objectId%22%3A%22570387b3ebcb7d005b196d24%22%7D%7D&count=1&limit=0 文章数
+//https://leancloud.cn/1.1/users/570387b3ebcb7d005b196d24/followersAndFollowees?limit=0&count=1 关注我的和我关注的
 
 @implementation MineViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
+//    [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
+    [self __loadData];
+
+}
+
+
+-(void)__loadData {
+    self.user=[[User alloc]init];
     
-//    AFHTTPSessionManager  *sessionManager=[AFHTTPSessionManager manager];
-//    NSDictionary *dic=@{@"bid":@"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz"};
-//    
-//    [sessionManager POST:@"https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24" parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-//        NSLog(@"*************%@",responseObject);
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        NSLog(@"*************%@",error);
+    
+//    SSLXUrlParamsRequest *_urlParamsReq2 = [[SSLXUrlParamsRequest alloc] init];
+//    [_urlParamsReq2 setUrlString:aboutMe];
+//    [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq2 successBlock:^(SSLXResultRequest *successReq){
+//        NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
+//        
+//        NSLog(@"*************aboutMe:%@",_successInfo);
+//        
+//    } failureBlock:^(SSLXResultRequest *failReq){
+//        NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
+//        NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
+//        _errorMsg? [MBProgressHUD showError:_errorMsg]: [MBProgressHUD showError:kMBProgressErrorTitle];
 //    }];
+    
+    
+    
+    SSLXUrlParamsRequest *_urlParamsReq1 = [[SSLXUrlParamsRequest alloc] init];
+    [_urlParamsReq1 setUrlString:articalURL];
+    [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq1 successBlock:^(SSLXResultRequest *successReq){
+        NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
+        self.user.artcailCount=_successInfo[@"count"];
+    } failureBlock:^(SSLXResultRequest *failReq){
+        NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
+        NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
+        
+        _errorMsg? [MBProgressHUD showError:_errorMsg]: [MBProgressHUD showError:kMBProgressErrorTitle];
+    }];
+    
+    
+    
+    SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
+    [_urlParamsReq setUrlString:userURL];
+    [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
+        
+        NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
+        
+        self.user.city_name=_successInfo[@"city_name"];
+        self.user.mobilePhoneNumber=_successInfo[@"mobilePhoneNumber"];
+        self.user.interest=_successInfo[@"interest"];
+        self.user.username=_successInfo[@"username"];
+        self.user.profession=_successInfo[@"profession"];
+        self.user.sex = _successInfo[@"sex"];
+        self.user.email=_successInfo[@"email"];
+        self.user.label=_successInfo[@"title"];
+        self.user.avatar=_successInfo[@"avatar"];
+        self.user.avatarImageURL=[NSURL URLWithString:self.user.avatar[@"url"]];
+        
+        self.collectionView.backgroundColor=bgColor;
+        
+    } failureBlock:^(SSLXResultRequest *failReq){
+        
+        NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
+        NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
+        _errorMsg? [MBProgressHUD showError:_errorMsg]: [MBProgressHUD showError:kMBProgressErrorTitle];
+    }];
+    
 }
 
 -(void)settingBtn:(UIButton *)btn
@@ -66,18 +133,20 @@
 -(NSMutableArray *)titleDataSource
 {
     if (!_titleDataSource) {
+        
         _titleDataSource=[NSMutableArray arrayWithCapacity:9];
         NSDictionary *blackDic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:20],
                                  NSForegroundColorAttributeName:[UIColor colorWithHexString:@"000000"]};
         NSDictionary *dimDic=@{NSFontAttributeName:smallerFont,
-                                        NSForegroundColorAttributeName:[UIColor colorWithHexString:@"808080"]};
+                               NSForegroundColorAttributeName:[UIColor colorWithHexString:@"808080"]};
         
-        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:@"设计" attributes:dimDic]];
-        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:@"男,23岁" attributes:dimDic]];
-        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:@"浙江杭州" attributes:dimDic]];
+        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:self.user.profession attributes:dimDic]];
+        
+        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@,23岁",([self.user.sex integerValue] ==1?@"男":@"女")] attributes:dimDic]];
+        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:self.user.city_name attributes:dimDic]];
         
         NSMutableAttributedString *articalAttr=[[NSMutableAttributedString alloc]initWithString:@"文章篇" attributes:dimDic];
-        NSAttributedString *articalInsertAttr=[[NSAttributedString alloc]initWithString:@" 9 " attributes:blackDic];
+        NSAttributedString *articalInsertAttr=[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@" %@ ",self.user.artcailCount] attributes:blackDic];
         [articalAttr insertAttributedString:articalInsertAttr atIndex:2];
         [_titleDataSource addObject:articalAttr];
         
@@ -99,9 +168,9 @@
     if (!_imageDataSource)
     {
         _imageDataSource=[NSMutableArray arrayWithCapacity:9];
-        [_imageDataSource addObject:[UIImage imageNamed:@"men"]];
-        [_imageDataSource addObject:[UIImage imageNamed:@"female"]];
-        [_imageDataSource addObject:[UIImage imageNamed:@"location"]];
+        [_imageDataSource addObject:[UIImage imageNamed:self.user.profession]];
+        [_imageDataSource addObject:[UIImage imageNamed:([self.user.sex integerValue] ==1?@"men":@"female")]];
+        [_imageDataSource addObject:[UIImage imageNamed:@"location_big"]];
         [_imageDataSource addObject:[UIImage imageNamed:@"article"]];
         [_imageDataSource addObject:[UIImage imageNamed:@"detailed list"]];
         [_imageDataSource addObject:[UIImage imageNamed:@"activity"]];
@@ -152,14 +221,20 @@
 {
     UICollectionReusableView *reusableView=nil;
     if (kind == UICollectionElementKindSectionHeader) {
-    MineSectionHeaderView *sectionHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header" forIndexPath:indexPath];
-    [sectionHeaderView.settingBtn setImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
-    UIImage *  image = [UIImage imageNamed:@"Default avatar"];
-    [sectionHeaderView.headImageBtn setBackgroundImage:image forState:UIControlStateNormal];
-    [sectionHeaderView labelWithLable:sectionHeaderView.focusMeLabel Titlt:@"关注我" digit:100];
-    [sectionHeaderView labelWithLable:sectionHeaderView.myFocusLabel Titlt:@"我关注" digit:234];
-    [sectionHeaderView nickNameLabelWithNickName:@"老编辑" label:@"不上班创始人"];
-    reusableView=sectionHeaderView;
+        MineSectionHeaderView *sectionHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header" forIndexPath:indexPath];
+        [sectionHeaderView.settingBtn setImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
+        
+        if(self.user.avatarImageURL)
+//            [self.user.avatarImage sd_setImageWithURL:self.user.avatarImageURL];
+//        else
+            self.user.avatarImage = [UIImage imageNamed:@"Default avatar"];
+        
+    
+        [sectionHeaderView.headImageBtn setBackgroundImage:self.user.avatarImage forState:UIControlStateNormal];
+        [sectionHeaderView labelWithLable:sectionHeaderView.focusMeLabel Titlt:@"关注我" digit:100];
+        [sectionHeaderView labelWithLable:sectionHeaderView.myFocusLabel Titlt:@"我关注" digit:234];
+        [sectionHeaderView nickNameLabelWithNickName:self.user.username label:self.self.user.label];
+        reusableView=sectionHeaderView;
     }
     return reusableView;
 }
@@ -169,5 +244,6 @@
     if (indexPath.row==3)
         [[SliderViewController sharedSliderController].navigationController pushViewController:[[OtherViewController alloc] init] animated:YES];
 }
+
 
 @end

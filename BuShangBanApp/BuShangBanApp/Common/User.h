@@ -10,7 +10,7 @@
 
 @interface UserList : NSObject
 
-@property(nonatomic, copy) NSString *avatar;
+
 @property(nonatomic, assign) NSUInteger mid;
 @property(nonatomic, copy) NSString *nickname;
 
@@ -96,10 +96,11 @@ typedef NS_ENUM(NSUInteger, BuShangBanGender){
 @property(nonatomic, copy) NSString *isLogin;
 @property(nonatomic, copy) NSString *isRigist;
 @property(nonatomic, copy) NSString *isRigisted;
+
+
 @property(nonatomic, copy) NSString* mid;
 @property(nonatomic, assign) NSUInteger age;
 @property(nonatomic, copy) NSString *address;
-@property(nonatomic, strong) UIImage *avatar;
 @property(nonatomic, copy) NSString *constellation;
 @property(nonatomic, assign) BuShangBanGender gender;
 @property(nonatomic, copy) NSString *groups;
@@ -112,8 +113,9 @@ typedef NS_ENUM(NSUInteger, BuShangBanGender){
 @property(nonatomic, copy) NSString *xingming;
 @property(nonatomic, copy) NSString *distance;
 @property(nonatomic, copy) NSString *extension;
-@property(nonatomic, copy) NSString *mobile;
+
 @property(nonatomic, copy) NSDate *birthDay;
+
 @property(nonatomic, assign) NSUInteger noteCount;
 @property(nonatomic, assign) NSUInteger favCount;
 @property(nonatomic, assign) CGFloat latitude;
@@ -121,4 +123,22 @@ typedef NS_ENUM(NSUInteger, BuShangBanGender){
 @property(nonatomic, strong) UserExtension *UserExtend;
 @property(nonatomic, copy) NSURL *avatarImageURL;
 
+
+@property(nonatomic,copy)NSString *focusMeNumber;
+@property(nonatomic,copy)NSString *myFocusNumber;
+@property(nonatomic,copy)NSString *mobilePhoneNumber;
+@property(nonatomic,copy)NSString *city_name;
+
+@property(nonatomic,copy)NSString *email;
+@property(nonatomic, copy) NSString *mobile;
+
+@property(nonatomic,strong)NSArray *interest;
+@property(nonatomic,copy)NSString *sex;
+@property(nonatomic,copy)NSString *profession;
+@property(nonatomic,copy)NSString *label;
+
+@property(nonatomic, strong) NSDictionary *avatar;
+@property(nonatomic, strong) UIImage *avatarImage;
+
+@property(nonatomic,copy)NSString *artcailCount;
 @end

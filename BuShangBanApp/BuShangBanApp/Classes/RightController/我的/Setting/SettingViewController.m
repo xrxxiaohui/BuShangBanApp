@@ -15,7 +15,7 @@
 
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)NSMutableArray *dataSource;
-
+@property(nonatomic,strong)User *user;
 @end
 
 @implementation SettingViewController
@@ -27,6 +27,7 @@
     [super viewDidLoad];
     self.tableView.backgroundColor=bgColor;
 }
+
 
 -(void)viewWillAppear:(BOOL)animated
 {

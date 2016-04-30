@@ -55,8 +55,8 @@
     _contentBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     _investBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     
-    NSArray *imageNameArray=@[@"技术2",@"产品2",@"设计2",@"运营2",@"行政2",@"市场2",@"内容2",@"投资2"];
-    NSArray *titleArray=@[@"技术",@"产品",@"设计",@"运营",@"行政",@"市场",@"内容",@"投资"];
+    NSArray *imageNameArray=@[@"技术2",@"产品2",@"设计2",@"运营2",@"行政2",@"市场2",@"创作2",@"投资2"];
+    NSArray *titleArray=@[@"技术",@"产品",@"设计",@"运营",@"行政",@"市场",@"创作",@"投资"];
     NSArray *btnArray  =[NSArray arrayWithObjects:_technologyBtn,_productBtn,_designBtn,_operationBtn,_administrationBtn,_marketBtn,_contentBtn,_investBtn, nil];
     
     for (int i=0; titleArray.count>i; i++)
