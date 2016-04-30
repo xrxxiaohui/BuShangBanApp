@@ -193,6 +193,7 @@
 
 #define kNeedRefreshMessageNotification @"NeedRefreshMessageNotification"
 
+#define kDefaultBiLi kScreenWidth/414
 
 #define DCBlockRun(block) if (block) { block(); }
 

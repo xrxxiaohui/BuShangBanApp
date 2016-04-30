@@ -47,10 +47,9 @@
 
         self.backgroundColor = [UIColor whiteColor];
         _leftUpButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_leftUpButton setFrame:CGRectMake(12, 0, 34, 40)];
+        [_leftUpButton setFrame:CGRectMake(12+12, 12, 34, 40)];
         [_leftUpButton setImage:[UIImage imageNamed:@"greenBackground"] forState:UIControlStateNormal];
 //        [_leftUpButton setTitle:@"设计" forState:UIControlStateNormal];
-        [self.contentView addSubview:_leftUpButton];
         
         _leftUpLabel = [[UILabel alloc] init];
         [_leftUpLabel setFont:[UIFont boldSystemFontOfSize:14]];
@@ -60,19 +59,20 @@
         [_leftUpButton addSubview:_leftUpLabel];
         
         _rightAvarButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_rightAvarButton setFrame:CGRectMake(kScreenWidth-12-28, 16, 28, 28)];
+        [_rightAvarButton setFrame:CGRectMake(kScreenWidth-24-28, 198, 28, 28)];
 //        [_rightAvarButton setImage:[UIImage imageNamed:@"greenBackground"] forState:UIControlStateNormal];
         [self.contentView addSubview:_rightAvarButton];
         [_rightAvarButton.layer setMasksToBounds:YES];
         _rightAvarButton.layer.cornerRadius = 14;
         [_rightAvarButton setBackgroundColor:[UIColor blackColor]];
-        [self.contentView addSubview:_rightAvarButton];
         
         _centerImageView = [[UIImageView alloc] init];
         [_centerImageView setImage:[UIImage imageNamed:@"tree.jpeg"]];
-        [_centerImageView setFrame:CGRectMake(12, 60, kScreenWidth-24, 200)];
+        [_centerImageView setFrame:CGRectMake(12, 12, kScreenWidth-24, 200)];
         [self.contentView addSubview:_centerImageView];
-        
+        [self.contentView addSubview:_leftUpButton];
+        [self.contentView addSubview:_rightAvarButton];
+
         _redPencilLine = [[UIView alloc] initWithFrame:CGRectMake(12, _centerImageView.bottom+13, 2, 16)];
         [_redPencilLine setBackgroundColor:kAppRedColor];
         [self.contentView addSubview:_redPencilLine];
@@ -83,7 +83,6 @@
         [_mainTitleLabel setTextColor:COLOR(58, 58, 58)];
         [_mainTitleLabel setFrame:CGRectMake(20, _centerImageView.bottom+14, kScreenWidth-40, 16)];
         [self.contentView addSubview:_mainTitleLabel];
-        
         
         _mainContentLabel = [[UILabel alloc] init];
         [_mainContentLabel setText:@"无论创业还是职场，总会有一时流行的东西，然后若有一天你也想站在顶端受人尊敬，那么最好的办法就是提高自己！"];
@@ -133,7 +132,6 @@
         [self.contentView addSubview:_shareNumLabel];
 
 
-
         UIImageView *lineImageView1 = [[UIImageView alloc] init];
         lineImageView1.backgroundColor = kCommonBottomLineColor;
         [lineImageView1 setFrame:CGRectMake(0, _shareButton.bottom+8, kScreenWidth, 0.5)];
@@ -153,13 +151,12 @@
 //    related_post
 
     NSString *imageString = [[self.dataInfo objectForKey:@"image"] safeString];
-    [_centerImageView sd_setImageWithURL:[NSURL URLWithString:imageString] placeholderImage:[UIImage imageNamed:@"place"]];
+//    [_centerImageView sd_setImageWithURL:[NSURL URLWithString:imageString] placeholderImage:[UIImage imageNamed:@"place"]];
     NSString *titleString = [[self.dataInfo valueForKeyPath:@"related_post.title"] safeString];
     [_mainTitleLabel setText:titleString];
     
     NSString *summaryString = [[self.dataInfo valueForKeyPath:@"related_post.summary"] safeString];
     [_mainContentLabel setText:summaryString];
-    
     
 }
 

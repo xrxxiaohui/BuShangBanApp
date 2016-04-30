@@ -39,9 +39,10 @@
 //    if (self.isTestWeb) {
 //        [self setWebUrl:@"http://www.baidu.com"];
 //    }
-    self.webUrl = @"https://www.baidu.com";
+    self.webUrl = @"http://wangchaotest.duapp.com/2/index.html";
     NSURLRequest *_request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.webUrl]];
     [_webView loadRequest:_request];
+    
 }
 
 -(void)customWebView {

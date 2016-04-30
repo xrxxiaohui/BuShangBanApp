@@ -7,131 +7,148 @@
 //
 
 #import "MineViewController.h"
-#import "TableViewCell.h"
-#import "TableHeaderView.h"
+#import "MineCell.h"
+#import "MineSectionHeaderView.h"
 #import "SettingViewController.h"
-#import "SliderViewController.h"
-#import "UserAccountManager.h"
-
-@interface MineViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate,UIScrollViewDelegate>
-
-@property(nonatomic, strong) UITableView *tableView;
-@property(nonatomic, strong) NSArray *titleArray;
-@property(nonatomic, strong) NSMutableArray *contentArray;
-@property(nonatomic, strong) TableHeaderView *headerView;
 
 
+
+@interface MineViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+
+@property(nonatomic,strong)UICollectionView *collectionView;
 @end
 
-@implementation MineViewController {
-    TableViewCell *_cell;
-    NSIndexPath *_indexPath;
-}
+@implementation MineViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    _titleArray = @[@"所在地", @"生日", @"职业", @"兴趣"];
-    _contentArray = [NSMutableArray arrayWithArray:@[@"", @"", @"", @""]];
-
-//    if (_user.isLogin) {
-//        NSDictionary *infoDic = [[UserAccountManager sharedInstance] getCurrentUserInfo];
-//        if (infoDic) {
-//            _contentArray=[NSMutableArray arrayWithArray:
-//                       @[[infoDic objectForKey:@"address"],[infoDic objectForKey:@"birthDay"],
-//                         [infoDic objectForKey:@"occupation"],[infoDic objectForKey:@"interest"]]];
-//           _user.avatar =[infoDic objectForKey:@"avator"];
-//            _user.nickName=[infoDic objectForKey:@"nickName"];
-//            _user.UserExtend.myLabel=[infoDic objectForKey:@"myLabel"];
-//            _user.UserExtend.experience=[infoDic objectForKey:@"experience"];
-//        }
-//    }
-    [self.view addSubview:self.tableView];
+    self.collectionView.backgroundColor=COLOR(249, 249, 249);
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-
-}
-
-- (void)settingBtn:(UIButton *)btn {
+-(void)settingBtn:(UIButton *)btn
+{
     [[SliderViewController sharedSliderController].navigationController pushViewController:[[SettingViewController alloc] init] animated:YES];
 }
 
-#pragma mark --- 懒加载 ---
-
-- (TableHeaderView *)headerView {
-    if ( !_headerView ) {
-        _headerView = [[TableHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, tableHeaderViewHeight * adapt.scaleHeight)];
-        UIImage *image = _user.avatar;
-        if ( !image ) {
-            image = [UIImage imageNamed:@"Default avatar"];
-        }
-        [_headerView.headImageBtn setBackgroundImage:image forState:UIControlStateNormal];
-
-//        [_headerView  descriptionLabelWithText:_user.UserExtend.experience];
-//        [_headerView nickNameLabelWithNickName:_user.nickName label:_user.UserExtend.myLabel];
-
-        [_headerView descriptionLabelWithText:@"前36kr老编辑zuo 五年媒体经验"];
-        [_headerView nickNameLabelWithNickName:@"老编辑" label:@"不上班创始人"];
+#pragma mark -- 懒加载 --
+-(UICollectionView *)collectionView
+{
+    if (!_collectionView) {
+        UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc]init];
+        [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
+        layout.minimumLineSpacing=0.5f;
+        layout.minimumInteritemSpacing=0.5f;
+        
+        _collectionView=[[UICollectionView alloc]initWithFrame:self.view.bounds collectionViewLayout:layout];
+        [_collectionView registerClass:[MineCell class] forCellWithReuseIdentifier:@"MineCell"];
+        [_collectionView registerClass:[MineSectionHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header"];
+        _collectionView.delegate=self;
+        _collectionView.dataSource=self;
+        [self.view addSubview:_collectionView];
     }
-    return _headerView;
+    return _collectionView;
 }
 
-- (UITableView *)tableView {
-    if ( !_tableView ) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenHeight, kScreenHeight) style:UITableViewStyleGrouped];
-        _tableView.tableHeaderView = self.headerView;
-        _tableView.backgroundColor = backgroundCoor;
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
+-(NSMutableArray *)titleDataSource
+{
+    if (!_titleDataSource) {
+        _titleDataSource=[NSMutableArray arrayWithCapacity:9];
+        NSDictionary *blackDic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:20],
+                                 NSForegroundColorAttributeName:[UIColor colorWithHexString:@"000000"]};
+        NSDictionary *dimDic=@{NSFontAttributeName:smallerFont,
+                                        NSForegroundColorAttributeName:[UIColor colorWithHexString:@"808080"]};
+        
+        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:@"设计" attributes:dimDic]];
+        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:@"男,23岁" attributes:dimDic]];
+        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:@"浙江，杭州" attributes:dimDic]];
+        
+        NSMutableAttributedString *articalAttr=[[NSMutableAttributedString alloc]initWithString:@"文章篇" attributes:dimDic];
+        NSAttributedString *articalInsertAttr=[[NSAttributedString alloc]initWithString:@"9" attributes:blackDic];
+        [articalAttr insertAttributedString:articalInsertAttr atIndex:2];
+        [_titleDataSource addObject:articalAttr];
+        
+        NSMutableAttributedString *detailedListAttr=[[NSMutableAttributedString alloc]initWithString:@"清单篇" attributes:dimDic];
+        NSAttributedString *detailedListInsertAttr=[[NSAttributedString alloc]initWithString:@"0" attributes:blackDic];
+        [detailedListAttr insertAttributedString:detailedListInsertAttr atIndex:2];
+        [_titleDataSource addObject:detailedListAttr];
+        
+        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:@"活动" attributes:dimDic]];
+        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:@"联系方式" attributes:dimDic]];
+        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:@" " attributes:dimDic]];
+        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:@" " attributes:dimDic]];
     }
-    return _tableView;
+    return _titleDataSource;
 }
 
-#pragma mark --- delegate ---
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+-(NSMutableArray *)imageDataSource
+{
+    if (!_imageDataSource)
+    {
+        _imageDataSource=[NSMutableArray arrayWithCapacity:9];
+        
+        [_imageDataSource addObject:[UIImage imageNamed:@"men"]];
+        [_imageDataSource addObject:[UIImage imageNamed:@"female"]];
+        [_imageDataSource addObject:[UIImage imageNamed:@"article"]];
+        [_imageDataSource addObject:[UIImage imageNamed:@"article"]];
+        [_imageDataSource addObject:[UIImage imageNamed:@"detailed list"]];
+        [_imageDataSource addObject:[UIImage imageNamed:@"activity"]];
+        [_imageDataSource addObject:[UIImage imageNamed:@"wechat"]];
+        [_imageDataSource addObject:[[UIImage alloc]init]];
+        [_imageDataSource addObject:[[UIImage alloc]init]];
+    }
+    return _imageDataSource;
 }
 
-- (TableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TableViewCell *cell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
-    cell.userInteractionEnabled=NO;
-    if ( _user.isLogin )
-        return cell;
-    cell.textLabel.text = _titleArray[indexPath.row];
-    cell.contentTF.text = _contentArray[indexPath.row];
-    if ( indexPath.row == 0 ) {
-        cell.contentTF.delegate = self;
-    }
+
+#pragma mark -- 代理 --
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.imageDataSource.count;
+}
+
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(kScreenWidth/3-1, kScreenWidth/3-1);
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    MineCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"MineCell" forIndexPath:indexPath];
+    cell.contentImageView.image=self.imageDataSource[indexPath.row];
+    cell.contentImageView.size=cell.contentImageView.image.size;
+    cell.contentLabel.attributedText=self.titleDataSource[indexPath.row];
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44.f;
-}
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    CGPoint offset = scrollView.contentOffset;
-    CGSize size=_headerView.size;
-    float scale =size.height/size.width;
-    if (offset.y < 0)
-    {
-        _headerView.bgImageView.height=tableHeaderViewHeight *adapt.scaleHeight -offset.y;
-        _headerView.bgImageView.width=_headerView.bgImageView.height/scale;
-        _headerView.bgImageView.top=offset.y;
-        _headerView.bgImageView.centerX=self.view.centerX;
-//        _headerView.blurView.height=tableHeaderViewHeight *adapt.scaleHeight -offset.y;
-    }
-//    else
-//    {
-//        [_headerView.blurView removeFromSuperview];
-//        _headerView.blurView=nil;
-//    }
+    return CGSizeMake(kScreenWidth, 200);
 }
+
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(-19, 0, 0, 0);
+}
+
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *reusableView=nil;
+    if (kind == UICollectionElementKindSectionHeader) {
+    MineSectionHeaderView *sectionHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header" forIndexPath:indexPath];
+    UIImage *  image = [UIImage imageNamed:@"Default avatar"];
+    [sectionHeaderView.headImageBtn setBackgroundImage:image forState:UIControlStateNormal];
+    [sectionHeaderView descriptionLabelWithText:@"前36kr老编辑zuo 五年媒体经验"];
+    [sectionHeaderView nickNameLabelWithNickName:@"老编辑" label:@"不上班创始人"];
+    reusableView=sectionHeaderView;
+    }
+    return reusableView;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row==3) {
+    NSLog(@"**********************************************************************************************************");
+    }
+}
+
 @end

@@ -10,7 +10,6 @@
 
 @interface SettingViewController : QHBasicViewController
 
-- (void)setHeadImage:(UIButton *)btn;
+-(void)btnEvent;
 
-- (void)hideCalendar:(UIButton *)btn;
 @end

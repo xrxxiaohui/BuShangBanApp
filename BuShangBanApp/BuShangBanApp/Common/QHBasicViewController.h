@@ -44,7 +44,8 @@ typedef void(^actionBlock)(void);
 
 - (void)addObserver;
 
-
+-(void)dissmissLeftItem;
+-(void)popToLeft;
 -(void)defaultLeftItem;
 
 // custom view method

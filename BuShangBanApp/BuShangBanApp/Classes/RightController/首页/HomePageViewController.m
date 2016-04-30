@@ -10,6 +10,7 @@
 #import "SliderViewController.h"
 #import "MJRefresh.h"
 #import <AVOSCloud/AVOSCloud.h>
+#import "SuggestPageViewController.h"
 
 @interface HomePageViewController ()<UITableViewDataSource,UITableViewDelegate> {
     
@@ -32,14 +33,20 @@
     UIButton *mentionButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [mentionButton setFrame:CGRectMake(self.navView.width - 60, (self.navView.height - 40)/2, 60, 40)];
     [mentionButton setImage:[UIImage imageNamed:@"History"] forState:UIControlStateNormal];
+    [mentionButton addTarget:self action:@selector(presentSuggestView) forControlEvents:UIControlEventTouchUpInside];
     [self customRightItemWithBtn:mentionButton];
     
     [self initData];
-    
     [self createTabelView];
     [self fetchData];
     
     [self fetchHomeListData];
+}
+
+-(void)presentSuggestView{
+
+    SuggestPageViewController *suggestPageViewController = [[SuggestPageViewController alloc] init];
+    [[SliderViewController sharedSliderController].navigationController presentViewController:suggestPageViewController animated:YES completion:nil];
 }
 
 -(void)initData{
@@ -205,7 +212,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 260*kScreenWidth/414;
+        return 276*kScreenWidth/414;
     }else{
     
         return [HomePageContentCell getCellHeight];
@@ -237,7 +244,6 @@
         [cell refreshUI];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
 
@@ -315,7 +321,9 @@
     if(section == 1){
         [_sectionHeaderView setBackgroundColor:COLOR(249, 249, 249)];
     
-        UIImageView *normalImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Community"]];
+//        UIImageView *normalImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Community"]];
+        UIImageView *normalImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"reading"]];
+
         [normalImageView setFrame:CGRectMake(kScreenWidth/2-124, 0, 248, 20)];
         [_sectionHeaderView addSubview:normalImageView];
     
