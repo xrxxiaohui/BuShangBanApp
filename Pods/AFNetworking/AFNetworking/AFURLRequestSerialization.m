@@ -397,14 +397,25 @@ forHTTPHeaderField:(NSString *)field
 
     NSMutableURLRequest *mutableRequest = [[NSMutableURLRequest alloc] initWithURL:url];
     mutableRequest.HTTPMethod = method;
-
+    
+    [mutableRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [mutableRequest addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    //        [request addValue: myEmail forHTTPHeaderField:@"user-email"];
+    //        [request addValue: mySessionToken forHTTPHeaderField:@"user-token"];
+    [mutableRequest addValue: @"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz" forHTTPHeaderField:@"X-LC-Id"];
+    [mutableRequest addValue: @"MDOagSCTlLw9A6fkrcaphlB8" forHTTPHeaderField:@"X-LC-Key"];
+    
     for (NSString *keyPath in AFHTTPRequestSerializerObservedKeyPaths()) {
         if ([self.mutableObservedChangedKeyPaths containsObject:keyPath]) {
             [mutableRequest setValue:[self valueForKeyPath:keyPath] forKey:keyPath];
         }
     }
+    
+    NSMutableDictionary *tempDic  = [NSMutableDictionary dictionaryWithDictionary:parameters];
+    [tempDic setObject:@"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz" forKey:@"X-LC-Id"];
+    [tempDic setObject:@"MDOagSCTlLw9A6fkrcaphlB8" forKey:@"X-LC-Key"];
 
-    mutableRequest = [[self requestBySerializingRequest:mutableRequest withParameters:parameters error:error] mutableCopy];
+    mutableRequest = [[self requestBySerializingRequest:mutableRequest withParameters:tempDic error:error] mutableCopy];
 
 	return mutableRequest;
 }
@@ -558,6 +569,13 @@ forHTTPHeaderField:(NSString *)field
         if (![mutableRequest valueForHTTPHeaderField:@"Content-Type"]) {
             [mutableRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
         }
+        if (![mutableRequest valueForHTTPHeaderField:@"X-LC-Id"]) {
+            [mutableRequest setValue:@"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz" forHTTPHeaderField:@"X-LC-Id"];
+        }
+        if (![mutableRequest valueForHTTPHeaderField:@"X-LC-Key"]) {
+            [mutableRequest setValue:@"MDOagSCTlLw9A6fkrcaphlB8" forHTTPHeaderField:@"X-LC-Key"];
+        }
+        
         [mutableRequest setHTTPBody:[query dataUsingEncoding:self.stringEncoding]];
     }
 

@@ -26,10 +26,10 @@
 
 - (void)clickEvent:(UIButton *)button {
    
-    DataListViewController *dataListViewController = [[DataListViewController alloc] init];
-    NSDictionary *tempDic = [NSDictionary dictionaryWithObjectsAndKeys:@"技术",@"1000",@"产品",@"1001",@"设计",@"1002",@"投资",@"1003",@"管理",@"1004",@"媒体",@"1005",@"市场",@"1006",@"运营",@"1007",@"热门",@"1008", nil];
-    NSString *tagString = [NSString stringWithFormat:@"%ld",button.tag];
-    dataListViewController.listTitle = [tempDic objectForKey:tagString];
+    
+    NSDictionary *dic=@{@"1000":@"产品",@"1001":@"技术",@"1002":@"技术", @"1003":@"市场", @"1004":@"运营", @"1005":@"创业",@"1006": @"大公司", @"1007":@"干货",@"1008": @"热门"};
+    
+    DataListViewController *dataListViewController = [[DataListViewController alloc] initWithTitle:[dic objectForKey:[NSString stringWithFormat:@"%ld",(long)button.tag]]];
     [[SliderViewController sharedSliderController].navigationController pushViewController:dataListViewController animated:YES];
     
     

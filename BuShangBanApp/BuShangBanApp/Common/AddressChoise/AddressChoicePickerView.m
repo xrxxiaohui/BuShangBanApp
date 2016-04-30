@@ -185,7 +185,7 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     if (component == PROVINCE_COMPONENT) {
         self.selectedProvince = [self.province objectAtIndex:row];
-        NSDictionary *tmp = [NSDictionary dictionaryWithDictionary:[self.areaDic objectForKey:[NSString stringWithFormat:@"%ld", row]]];
+        NSDictionary *tmp = [NSDictionary dictionaryWithDictionary:[self.areaDic objectForKey:[NSString stringWithFormat:@"%ld", (long)row]]];
         NSDictionary *dic = [NSDictionary dictionaryWithDictionary:[tmp objectForKey:self.selectedProvince]];
         NSArray *cityArray = [dic allKeys];
         NSArray *sortedArray = [cityArray sortedArrayUsingComparator:^(id obj1, id obj2) {
@@ -218,7 +218,7 @@
 
     }
     else if (component == CITY_COMPONENT) {
-        NSString *provinceIndex = [NSString stringWithFormat:@"%ld", [self.province indexOfObject:self.selectedProvince]];
+        NSString *provinceIndex = [NSString stringWithFormat:@"%ld", (unsigned long)[self.province indexOfObject:self.selectedProvince]];
         NSDictionary *tmp = [NSDictionary dictionaryWithDictionary:[self.areaDic objectForKey:provinceIndex]];
         NSDictionary *dic = [NSDictionary dictionaryWithDictionary:[tmp objectForKey:self.selectedProvince]];
         NSArray *dicKeyArray = [dic allKeys];

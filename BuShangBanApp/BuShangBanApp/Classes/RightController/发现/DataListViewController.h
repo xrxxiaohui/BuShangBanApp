@@ -10,6 +10,6 @@
 
 @interface DataListViewController : ArrowBackViewController
 
-@property (nonatomic,copy) NSString *listTitle;//controller的title
+-(instancetype)initWithTitle:(NSString *)titile;
 
 @end

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InvitedCodeViewController">
+            <connections>
+                <outlet property="groupInivitBtn" destination="LRp-vL-W7I" id="v9v-ni-6ER"/>
+                <outlet property="personalInivitBtn" destination="NaM-yv-pMJ" id="RHf-IR-HhU"/>
+                <outlet property="textView1" destination="d6L-Au-e8p" id="LjM-Zt-Wsx"/>
+                <outlet property="textView2" destination="dxO-hV-han" id="cmV-LR-9Do"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="不上班™是一个互联网人的媒体社区，目前正在公测中。为了保证用户的体验和内容的质量，我们定向发放了一批邀请码给我们的潜在用户，只有输入邀请码才能成为不上班App的注册用户，享受评论、发表文章、私信、群聊等功能。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="d6L-Au-e8p" userLabel="TextView1">
+                    <rect key="frame" x="46" y="146" width="508" height="100"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="JFI-Pj-BJf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="没有邀请码的用户也可以访问不上班App内的所有视频、文章，收到系统推送通知。我们将在今年下半年开放向所有用户注册。如果您是互联网的重度用户和从业者，也可以向我们申请邀请码。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dxO-hV-han" userLabel="TextView2">
+                    <rect key="frame" x="46" y="215" width="508" height="100"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="3nX-XM-7AY"/>
+                        <constraint firstAttribute="width" constant="240" id="PDC-9h-bud"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="PDC-9h-bud"/>
+                        </mask>
+                    </variation>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="获取邀请码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqg-Rf-lV0">
+                    <rect key="frame" x="0.0" y="100" width="600" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NaM-yv-pMJ">
+                    <rect key="frame" x="0.0" y="355" width="600" height="29"/>
+                    <state key="normal">
+                        <attributedString key="attributedTitle">
+                            <fragment content="个体邀请码申请">
+                                <attributes>
+                                    <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </state>
+                    <connections>
+                        <action selector="clickEvent:" destination="-1" eventType="touchUpInside" id="H7n-zW-HUW"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRp-vL-W7I">
+                    <rect key="frame" x="0.0" y="424" width="600" height="30"/>
+                    <state key="normal" title="集体邀请码申请"/>
+                    <connections>
+                        <action selector="clickEvent:" destination="-1" eventType="touchUpInside" id="6EO-do-jyU"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="lqg-Rf-lV0" secondAttribute="trailing" id="3cP-7j-pn0"/>
+                <constraint firstAttribute="trailing" secondItem="d6L-Au-e8p" secondAttribute="trailing" constant="46" id="BOd-5e-oyv"/>
+                <constraint firstItem="LRp-vL-W7I" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Diz-7p-AcE"/>
+                <constraint firstItem="d6L-Au-e8p" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="46" id="KSB-fh-XxY"/>
+                <constraint firstItem="d6L-Au-e8p" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="146" id="Q7U-7L-59h"/>
+                <constraint firstItem="lqg-Rf-lV0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="XmP-GL-fuf"/>
+                <constraint firstItem="NaM-yv-pMJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="crx-ea-CtV"/>
+                <constraint firstAttribute="trailing" secondItem="LRp-vL-W7I" secondAttribute="trailing" id="eIk-hm-Lhx"/>
+                <constraint firstItem="dxO-hV-han" firstAttribute="top" secondItem="d6L-Au-e8p" secondAttribute="bottom" constant="-31" id="gPm-J6-gB5"/>
+                <constraint firstItem="dxO-hV-han" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="46" id="iSZ-jl-4Rf"/>
+                <constraint firstItem="NaM-yv-pMJ" firstAttribute="top" secondItem="dxO-hV-han" secondAttribute="bottom" constant="40" id="mYw-JT-9Eo"/>
+                <constraint firstAttribute="trailing" secondItem="NaM-yv-pMJ" secondAttribute="trailing" id="tZh-9O-XwO"/>
+                <constraint firstItem="LRp-vL-W7I" firstAttribute="top" secondItem="NaM-yv-pMJ" secondAttribute="bottom" constant="40" id="ttN-xN-j14"/>
+                <constraint firstAttribute="trailing" secondItem="dxO-hV-han" secondAttribute="trailing" constant="46" id="wz9-v6-6IA"/>
+                <constraint firstItem="lqg-Rf-lV0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zF5-cC-sQ8"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

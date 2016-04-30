@@ -9,9 +9,15 @@
 #import "BasicInformationViewController.h"
 #import "BasicInformationCell.h"
 #import "BuShangBanImagePicker.h"
+<<<<<<< HEAD
 #import "BuShangBanCalendar.h"
 #import "AddressChoicePickerView.h"
 //#import "OccupationSelectorView.h"
+=======
+#import "BirthdayPickerView.h"
+#import "AddressChoicePickerView.h"
+#import "OccupationSelectorView.h"
+>>>>>>> 631fb96176c49484a20f939c338bac2508d197c6
 #import "EditInformationViewController.h"
 
 @interface BasicInformationViewController ()<UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate,EditInformationDelegate>
@@ -20,8 +26,14 @@
 @property(nonatomic, strong) NSArray *titleArray;
 @property(nonatomic, strong) NSMutableArray *contentArray;
 @property(nonatomic, strong) UIView *grayMaskView;
+<<<<<<< HEAD
 @property(nonatomic, strong) BuShangBanCalendar *calendar;
 //@property(nonatomic, weak)OccupationSelectorView *occupationSelectorView;
+=======
+@property(nonatomic,weak)BirthdayPickerView *birthdaySelectorView;
+
+@property(nonatomic, weak)OccupationSelectorView *occupationSelectorView;
+>>>>>>> 631fb96176c49484a20f939c338bac2508d197c6
 @property(nonatomic, strong)EditInformationViewController *editInformationViewController;
 @end
 
@@ -74,6 +86,7 @@
 -(void)hideGrayMaskView
 {
     [self.tableView endEditing:YES];
+<<<<<<< HEAD
     //    if (_indexPath.row == 6)
     //    {
     //        _contentArray[_indexPath.row]=_cell.profileTextView.text;
@@ -85,13 +98,22 @@
         _cell.contentTF.userInteractionEnabled=NO;
     }
     
+=======
+    _contentArray[_indexPath.row]=_cell.contentTF.text;
+    _cell.contentTF.userInteractionEnabled=NO;
+>>>>>>> 631fb96176c49484a20f939c338bac2508d197c6
     [_grayMaskView removeFromSuperview];
     _grayMaskView = nil;
 }
 
 - (void)hideCalendar:(UIButton *)btn{
+<<<<<<< HEAD
     [_calendar removeFromSuperview];;
     _calendar=nil;
+=======
+    [_birthdaySelectorView removeFromSuperview];;
+    _birthdaySelectorView=nil;
+>>>>>>> 631fb96176c49484a20f939c338bac2508d197c6
 }
 
 - (void)setHeadImage:(UIButton *)btn {
@@ -127,7 +149,11 @@
     if ( !_tableView )
     {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth,kScreenHeight) style:UITableViewStyleGrouped];
+<<<<<<< HEAD
         _tableView.backgroundColor=COLOR(249, 249, 249);
+=======
+        _tableView.backgroundColor=bgColor;
+>>>>>>> 631fb96176c49484a20f939c338bac2508d197c6
         _tableView.contentSize=CGSizeMake(kScreenWidth, 180+44*7+12<kScreenHeight?180+44*7+12:kScreenHeight);
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -135,6 +161,7 @@
     return _tableView;
 }
 
+<<<<<<< HEAD
 -(BuShangBanCalendar *)calendar{
     if (!_calendar) {
         BuShangBanCalendar *calendar=[[BuShangBanCalendar alloc]initWithCurrentDate:[NSDate date]];
@@ -154,6 +181,29 @@
 //    }
 //    return _occupationSelectorView;
 //}
+=======
+
+-(BirthdayPickerView *)birthdaySelectorView{
+    if(!_birthdaySelectorView)
+    {
+        BirthdayPickerView * birthdaySelectorView=[[BirthdayPickerView alloc]init];
+        [self.view addSubview:birthdaySelectorView];
+        [birthdaySelectorView show];
+        _birthdaySelectorView=birthdaySelectorView;
+    }
+    return _birthdaySelectorView;
+}
+-(OccupationSelectorView *)occupationSelectorView{
+    if(!_occupationSelectorView)
+    {
+        OccupationSelectorView * selectorView=[[OccupationSelectorView alloc]init];
+        [self.view addSubview:selectorView];
+        [selectorView show];
+        _occupationSelectorView=selectorView;
+    }
+    return _occupationSelectorView;
+}
+>>>>>>> 631fb96176c49484a20f939c338bac2508d197c6
 
 #pragma mark -- delegate --
 
@@ -183,14 +233,30 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+<<<<<<< HEAD
     if (indexPath.section == 0 && indexPath.row == 0) {
+=======
+    _cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (indexPath.section == 0 )
+    {
+>>>>>>> 631fb96176c49484a20f939c338bac2508d197c6
         [self setHeadImage:_cell.headBtn];
         if (_cell.headBtn.currentImage == nil)
             [_cell.headBtn setImage:[UIImage imageNamed:@"Default avatar"] forState:UIControlStateNormal];
         return;
     }
+<<<<<<< HEAD
     _cell = [tableView cellForRowAtIndexPath:indexPath];
     _editInformationViewController=[[EditInformationViewController alloc]initWithTitle:_cell.textLabel.text];
+=======
+    else if(indexPath.section == 1  && (indexPath.row == 2 || indexPath.row ==3 || indexPath.row == 4) )
+    {
+        _indexPath=indexPath;
+        [self textFieldDidBeginEditing:_cell.contentTF];
+        return;
+    }
+    _editInformationViewController=[[EditInformationViewController alloc]initWithContentInfor:@[_cell.textLabel.text,_cell.contentTF.text]];
+>>>>>>> 631fb96176c49484a20f939c338bac2508d197c6
     _editInformationViewController.delegate=self;
     [[SliderViewController sharedSliderController].navigationController pushViewController:self.editInformationViewController animated:YES];
 }
@@ -209,7 +275,11 @@
     UILabel *label=[[UILabel alloc]init];
     label.font=[UIFont fontWithName:fontName size:12];
     label.textColor=placeHoldTextColor;
+<<<<<<< HEAD
     label.backgroundColor=COLOR(249, 249, 249);
+=======
+    label.backgroundColor=bgColor;
+>>>>>>> 631fb96176c49484a20f939c338bac2508d197c6
     label.text=section==1?@"基本资料":@"联系方式";
     [label sizeToFit];
     label.centerY=view.centerY;
@@ -245,19 +315,36 @@
             }
             case 3:
             {
+<<<<<<< HEAD
                 NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
                 [formatter setDateFormat:@"yyyy-MM-dd"];
                 _contentArray[_indexPath.row]=[NSString stringWithFormat:@"%@",[formatter stringFromDate:self.calendar.date]];
                 textField.text= _contentArray[_indexPath.row];
+=======
+                self.birthdaySelectorView.contentString=textField.text;
+                self.birthdaySelectorView.birthdayPickerBlock=^(BirthdayPickerView *view,NSString *contentText){
+                    _contentArray[_indexPath.row]=contentText;
+                    textField.text= _contentArray[_indexPath.row];
+                };
+>>>>>>> 631fb96176c49484a20f939c338bac2508d197c6
                 break;
             }
             case 4:
             {
+<<<<<<< HEAD
 //                self.occupationSelectorView.occupationSelectorBlock=^(OccupationSelectorView *view,NSString *contentText){
 //                    _contentArray[_indexPath.row]=contentText;
 //                    textField.text= _contentArray[_indexPath.row];
 //                };
 //                break;
+=======
+                self.occupationSelectorView.contentString=textField.text;
+                self.occupationSelectorView.occupationSelectorBlock=^(OccupationSelectorView *view,NSString *contentText){
+                    _contentArray[_indexPath.row]=contentText;
+                    textField.text= _contentArray[_indexPath.row];
+                };
+                break;
+>>>>>>> 631fb96176c49484a20f939c338bac2508d197c6
             }
         }
     }
@@ -268,8 +355,12 @@
     return YES;
 }
 
+<<<<<<< HEAD
 
 -(void)EditInformationWithContentString:(NSString *)contentString
+=======
+-(void)editInformationWithContentString:(NSString *)contentString
+>>>>>>> 631fb96176c49484a20f939c338bac2508d197c6
 {
     if ([_cell.textLabel.text isEqual:@"兴趣"] && ![_cell.contentTF.text isEqual:@""] && _cell.contentTF.text!=nil )
         _cell.contentTF.text=[NSString stringWithFormat:@"%@,%@",_cell.contentTF.text,contentString];
