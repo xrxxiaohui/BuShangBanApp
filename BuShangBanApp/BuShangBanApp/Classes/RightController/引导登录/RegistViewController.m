@@ -128,7 +128,7 @@
 -(void)clickEvent:(UIButton *)sender
 {
     [super clickEvent:sender];
-    __block BOOL success=NO;
+//    __block BOOL success=NO;
     switch (sender.tag) {
         case 1000:
             [self.navigationController popToRootViewControllerAnimated:YES];

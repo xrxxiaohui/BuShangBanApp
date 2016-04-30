@@ -49,7 +49,6 @@
 }
 
 -(void)createTabelView{
-
     UIImageView *lineImageView = [[UIImageView alloc] init];
     lineImageView.backgroundColor = COLOR(0xd9, 0xd9, 0xd9);
     [lineImageView setFrame:CGRectMake(0, 64, kScreenWidth, 1)];
@@ -95,7 +94,6 @@
 
     // 请求
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
-    [_urlParamsReq setUrlString:@"_Status?limit=10&&order=-createdAt&include=related_post&keys=-related_post.body"];
     
     NSDictionary *_tempParam = @{@"bid":@"888888"};
     
