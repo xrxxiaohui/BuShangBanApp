@@ -16,6 +16,7 @@
     if (self=[super initWithFrame:frame]) {
         _headImageView=[[UIImageView alloc]initWithFrame:CGRectMake(12,11, 58, 58)];
         _headImageView.layer.cornerRadius=29.f;
+        _headImageView.clipsToBounds=YES;
         [self addSubview:_headImageView];
         
         _titleLabel=[[UILabel alloc]initWithFrame:CGRectMake(90, 22, 100, 15)];

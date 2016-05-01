@@ -10,6 +10,8 @@
 
 @interface SettingViewController : QHBasicViewController
 
+
+-(instancetype)initWithImageURL:(NSURL *)imageURL;
 -(void)btnEvent;
 
 @end

@@ -32,16 +32,11 @@
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq1 successBlock:^(SSLXResultRequest *successReq){
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
         self.articalInfoArray=_successInfo[@"results"];
-        
-       self.articalInfoArray=[self __sortContentWithkeys:@[@"产品",@"设计",@"技术",@"市场",@"运营",@"创业",@"大公司",@"媒体",@"默认分类"]];
-        
-    } failureBlock:^(SSLXResultRequest *failReq){
+        self.articalInfoArray=[self __sortContentWithkeys:@[@"产品",@"设计",@"技术",@"市场",@"运营",@"创业",@"大公司",@"媒体",@"默认分类"]];}
+    failureBlock:^(SSLXResultRequest *failReq){
         NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
         NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
-        
-        _errorMsg? [MBProgressHUD showError:_errorMsg]: [MBProgressHUD showError:kMBProgressErrorTitle];
-    }];
-    
+        _errorMsg? [MBProgressHUD showError:_errorMsg]: [MBProgressHUD showError:kMBProgressErrorTitle];}];
 }
 
 -(NSMutableArray*)__sortContentWithkeys:(NSArray *)keys

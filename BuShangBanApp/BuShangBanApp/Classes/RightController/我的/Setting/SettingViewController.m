@@ -21,6 +21,15 @@
 @implementation SettingViewController
 {
     NSString *_detailtext;
+    NSURL * _imageURL;
+}
+
+
+
+-(instancetype)initWithImageURL:(NSURL *)imageURL{
+    if(self =[super init])
+        _imageURL=imageURL;
+    return self;
 }
 
 - (void)viewDidLoad {
@@ -74,7 +83,7 @@
 {
     if (indexPath.section == 0) {
         SettingCell *settingCell=[[SettingCell alloc]init];
-        settingCell.headImageView.image=[UIImage imageNamed:@"Default avatar"];
+        [settingCell.headImageView sd_setImageWithURL:_imageURL];
         settingCell.titleLabel.text=self.dataSource[indexPath.section][indexPath.row];
         settingCell.detailTitleLabel.text=_detailtext;
         return settingCell;

@@ -16,7 +16,7 @@
 #import "EditInformationViewController.h"
 #import "User.h"
 
-#define userURL @"443/1.1/classes/_User/570387b3ebcb7d005b196d24"
+#define userURL @"_User/570387b3ebcb7d005b196d24"
 
 @interface BasicInformationViewController ()<UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate,EditInformationDelegate>
 
@@ -70,8 +70,6 @@
         
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
         
-        NSLog(@"******%@",_successInfo);
-        
         self.user.city_name=_successInfo[@"city_name"];
         self.user.birthDay=_successInfo[@"birthday"];
         self.user.mobilePhoneNumber=_successInfo[@"mobilePhoneNumber"];
@@ -84,24 +82,16 @@
         self.user.avatar=_successInfo[@"avatar"];
         self.user.avatarImageURL=[NSURL URLWithString:self.user.avatar[@"url"]];
         
-        
-        
         [self.contentArray addObject:@[@""]];
         [self.contentArray addObject:@[_successInfo[@"username"], _successInfo[@"title"],_successInfo[@"city_name"],
         @"1993,1,1",_successInfo[@"profession"],[self.user.interest componentsJoinedByString:@","]]];
         [self.contentArray addObject:@[_successInfo[@"mobilePhoneNumber"],_successInfo[@"email"]]];
         
-//        _contentArray = [NSMutableArray arrayWithArray:@[@[@""],@[_successInfo[@"username"], _successInfo[@"title"],_successInfo[@"city_name"],_successInfo[@"birthday"],_successInfo[@"profession"],[self.user.interest componentsJoinedByString:@","]], @[_successInfo[@"mobilePhoneNumber"],_successInfo[@"email"]]]];
-        
         self.tableView.backgroundColor=bgColor;
     } failureBlock:^(SSLXResultRequest *failReq){
-        
         NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
         NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
-        if (_errorMsg)
-            [MBProgressHUD showError:_errorMsg];
-        else
-            [MBProgressHUD showError:kMBProgressErrorTitle];
+        _errorMsg? [MBProgressHUD showError:_errorMsg]: [MBProgressHUD showError:kMBProgressErrorTitle];
     }];
 }
 
@@ -222,8 +212,13 @@
     cell.textLabel.text = self.titleArray[indexPath.section][indexPath.row];
     if (indexPath.section == 0 )
     {
-        UIImage * image = [UIImage imageNamed:@"Default avatar"];
-        [cell.headBtn setBackgroundImage:image forState:UIControlStateNormal];
+        UIImageView *imageView=[[UIImageView alloc]init];
+        if(self.user.avatarImageURL)
+            [imageView sd_setImageWithURL:self.user.avatarImageURL completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                [cell.headBtn setBackgroundImage:image forState:UIControlStateNormal];
+            }];
+        else
+            [cell.headBtn setBackgroundImage:[UIImage imageNamed:@"Default avatar"] forState:UIControlStateNormal];
     }
     else
     {

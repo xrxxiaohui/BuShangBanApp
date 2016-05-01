@@ -122,7 +122,7 @@ typedef NS_ENUM(NSUInteger, BuShangBanGender){
 @property(nonatomic, assign) CGFloat longitude;
 @property(nonatomic, strong) UserExtension *UserExtend;
 @property(nonatomic, copy) NSURL *avatarImageURL;
-
+@property(nonatomic, strong) UIImageView *avatarImageView;
 
 @property(nonatomic,copy)NSString *focusMeNumber;
 @property(nonatomic,copy)NSString *myFocusNumber;

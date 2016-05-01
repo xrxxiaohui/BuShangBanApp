@@ -8,7 +8,7 @@
 
 #import "LoginOrRegistViewController.h"
 #import "LoginViewOrRegistView.h"
-#import "AboutUserProtocalViewController.h"
+//#import "AboutUserProtocalViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import <ShareSDK/ShareSDK.h>
 #import "WXApi.h"
@@ -217,8 +217,8 @@
         btn.selected = !btn.selected;
     }
     else if (btn.tag == 1002) {
-        AboutUserProtocalViewController *about = [[AboutUserProtocalViewController alloc] init];
-        [self.navigationController pushViewController:about animated:YES];
+//        AboutUserProtocalViewController *about = [[AboutUserProtocalViewController alloc] init];
+//        [self.navigationController pushViewController:about animated:YES];
     }
 }
 

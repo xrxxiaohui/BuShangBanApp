@@ -60,7 +60,7 @@
         _tabelView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64) style:UITableViewStylePlain];
         _tabelView.delegate=self;
         _tabelView.dataSource=self;
-        [_tabelView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"HomePageContentCell"];
+        [_tabelView registerClass:[HomePageContentCell class] forCellReuseIdentifier:@"HomePageContentCell"];
         [self.view addSubview:_tabelView];
     }
     return _tabelView;
@@ -71,13 +71,12 @@
     return self.results.count;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+-(HomePageContentCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIndentifier = @"HomePageContentCell";
     HomePageContentCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
-    if (cell == nil) {
+    if (cell == nil)
         cell = [[HomePageContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
-    }
     NSDictionary *tempDic = [[self.results objectAtIndex:indexPath.row] safeDictionary];
     [cell setDataInfo:tempDic];
     [cell refreshUI];
@@ -92,7 +91,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-        return [HomePageContentCell getCellHeight];
+    return [HomePageContentCell getCellHeight];
 }
 
 @end

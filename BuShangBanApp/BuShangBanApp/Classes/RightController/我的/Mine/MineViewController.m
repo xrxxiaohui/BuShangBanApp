@@ -35,6 +35,7 @@
 //https://leancloud.cn/1.1/users/570387b3ebcb7d005b196d24/followersAndFollowees?limit=0&count=1 关注我的和我关注的
 
 @implementation MineViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -46,7 +47,6 @@
 
 -(void)__loadData {
     self.user=[[User alloc]init];
-    
     
 //    SSLXUrlParamsRequest *_urlParamsReq2 = [[SSLXUrlParamsRequest alloc] init];
 //    [_urlParamsReq2 setUrlString:aboutMe];
@@ -61,8 +61,6 @@
 //        _errorMsg? [MBProgressHUD showError:_errorMsg]: [MBProgressHUD showError:kMBProgressErrorTitle];
 //    }];
     
-    
-    
     SSLXUrlParamsRequest *_urlParamsReq1 = [[SSLXUrlParamsRequest alloc] init];
     [_urlParamsReq1 setUrlString:articalURL];
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq1 successBlock:^(SSLXResultRequest *successReq){
@@ -71,19 +69,16 @@
     } failureBlock:^(SSLXResultRequest *failReq){
         NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
         NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
-        
         _errorMsg? [MBProgressHUD showError:_errorMsg]: [MBProgressHUD showError:kMBProgressErrorTitle];
     }];
-    
-    
     
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
     [_urlParamsReq setUrlString:userURL];
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
-        
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
         
         self.user.city_name=_successInfo[@"city_name"];
+        self.user.birthDay=_successInfo[@"birthday"];
         self.user.mobilePhoneNumber=_successInfo[@"mobilePhoneNumber"];
         self.user.interest=_successInfo[@"interest"];
         self.user.username=_successInfo[@"username"];
@@ -95,19 +90,17 @@
         self.user.avatarImageURL=[NSURL URLWithString:self.user.avatar[@"url"]];
         
         self.collectionView.backgroundColor=bgColor;
-        
     } failureBlock:^(SSLXResultRequest *failReq){
-        
         NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
         NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
         _errorMsg? [MBProgressHUD showError:_errorMsg]: [MBProgressHUD showError:kMBProgressErrorTitle];
     }];
-    
 }
 
 -(void)settingBtn:(UIButton *)btn
 {
-    [[SliderViewController sharedSliderController].navigationController pushViewController:[[SettingViewController alloc] init] animated:YES];
+    SettingViewController *setVC=[[SettingViewController alloc] initWithImageURL:self.user.avatarImageURL];
+    [[SliderViewController sharedSliderController].navigationController pushViewController:setVC  animated:YES];
 }
 
 #pragma mark -- 懒加载 --
@@ -141,7 +134,6 @@
                                NSForegroundColorAttributeName:[UIColor colorWithHexString:@"808080"]};
         
         [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:self.user.profession attributes:dimDic]];
-        
         [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@,23岁",([self.user.sex integerValue] ==1?@"男":@"女")] attributes:dimDic]];
         [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:self.user.city_name attributes:dimDic]];
         
@@ -223,14 +215,10 @@
     if (kind == UICollectionElementKindSectionHeader) {
         MineSectionHeaderView *sectionHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header" forIndexPath:indexPath];
         [sectionHeaderView.settingBtn setImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
-        
         if(self.user.avatarImageURL)
-//            [self.user.avatarImage sd_setImageWithURL:self.user.avatarImageURL];
-//        else
-            self.user.avatarImage = [UIImage imageNamed:@"Default avatar"];
-        
-    
-        [sectionHeaderView.headImageBtn setBackgroundImage:self.user.avatarImage forState:UIControlStateNormal];
+            [sectionHeaderView.headImageView sd_setImageWithURL:self.user.avatarImageURL];
+        else
+            sectionHeaderView.headImageView.image = [UIImage imageNamed:@"Default avatar"];
         [sectionHeaderView labelWithLable:sectionHeaderView.focusMeLabel Titlt:@"关注我" digit:100];
         [sectionHeaderView labelWithLable:sectionHeaderView.myFocusLabel Titlt:@"我关注" digit:234];
         [sectionHeaderView nickNameLabelWithNickName:self.user.username label:self.self.user.label];

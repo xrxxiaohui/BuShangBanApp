@@ -8,7 +8,7 @@
 
 #import "RegistViewController.h"
 #import "LoginViewController.h"
-#import "InvitedCodeViewController.h"
+#import "InviteCodeViewController.h"
 #import "UserProtocalViewController.h"
 #import "BootstrapViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
@@ -183,7 +183,8 @@
         }
         case 1006:
         {
-            [[SliderViewController sharedSliderController].navigationController pushViewController:[[InvitedCodeViewController alloc] init] animated:YES];
+            UIStoryboard *UserProtocal=[UIStoryboard storyboardWithName:@"InviteCode" bundle:nil];
+            [[SliderViewController sharedSliderController].navigationController pushViewController:[UserProtocal                      instantiateViewControllerWithIdentifier:@"InviteCode"] animated:YES];
             break;
         }
     }

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Invite Code View Controller-->
+        <scene sceneID="QDD-Sh-8Fr">
+            <objects>
+                <viewController storyboardIdentifier="InviteCode" id="V6S-wi-NUJ" customClass="InviteCodeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n0t-zX-2Ut"/>
+                        <viewControllerLayoutGuide type="bottom" id="P3c-CM-EjD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oDr-Ax-CxP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="       不上班™是一个互联网人的媒体社区，目前正在公测中。为了保证用户的体验和内容的质量，我们定向发放了一批邀请码给我们的潜在用户，只有输入邀请码才能成为不上班App的注册用户，享受评论、发表文章、私信、群聊等功能。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Y0A-tw-jKG" userLabel="TextView1">
+                                <rect key="frame" x="20" y="94" width="560" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="EHR-j1-uAC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="        没有邀请码的用户也可以访问不上班App内的所有视频、文章，收到系统推送通知。我们将在今年下半年开放向所有用户注册。如果您是互联网的重度用户和从业者，也可以向我们申请邀请码。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DSk-aK-igD" userLabel="TextView2">
+                                <rect key="frame" x="20" y="204" width="560" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="DDU-sh-7cj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="获取邀请码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgA-X4-jOz">
+                                <rect key="frame" x="258" y="43" width="85" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aV2-WT-jQX">
+                                <rect key="frame" x="248" y="344" width="105" height="29"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="个体邀请码申请">
+                                            <attributes>
+                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="btnClick:" destination="V6S-wi-NUJ" eventType="touchUpInside" id="glj-Or-I0g"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sai-EI-ZA7">
+                                <rect key="frame" x="248" y="413" width="105" height="30"/>
+                                <state key="normal" title="集体邀请码申请"/>
+                                <connections>
+                                    <action selector="btnClick:" destination="V6S-wi-NUJ" eventType="touchUpInside" id="Vph-Is-bxo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Y0A-tw-jKG" firstAttribute="centerX" secondItem="hgA-X4-jOz" secondAttribute="centerX" id="2rT-hc-OrG"/>
+                            <constraint firstItem="Y0A-tw-jKG" firstAttribute="top" secondItem="oDr-Ax-CxP" secondAttribute="top" constant="94" id="9VS-aV-IKQ"/>
+                            <constraint firstItem="Y0A-tw-jKG" firstAttribute="leading" secondItem="DSk-aK-igD" secondAttribute="leading" id="FVU-9B-yUY"/>
+                            <constraint firstItem="Y0A-tw-jKG" firstAttribute="leading" secondItem="oDr-Ax-CxP" secondAttribute="leading" constant="20" id="KEd-iG-6tG"/>
+                            <constraint firstAttribute="trailing" secondItem="Y0A-tw-jKG" secondAttribute="trailing" constant="20" id="fZG-Ug-Me3"/>
+                            <constraint firstItem="aV2-WT-jQX" firstAttribute="top" secondItem="DSk-aK-igD" secondAttribute="bottom" constant="40" id="mzh-TC-zfV"/>
+                            <constraint firstItem="Y0A-tw-jKG" firstAttribute="centerX" secondItem="aV2-WT-jQX" secondAttribute="centerX" id="n4a-Lm-3VB"/>
+                            <constraint firstItem="Y0A-tw-jKG" firstAttribute="trailing" secondItem="DSk-aK-igD" secondAttribute="trailing" id="oMq-1n-FCj"/>
+                            <constraint firstItem="sai-EI-ZA7" firstAttribute="top" secondItem="aV2-WT-jQX" secondAttribute="bottom" constant="40" id="oer-RF-RKI"/>
+                            <constraint firstItem="Y0A-tw-jKG" firstAttribute="centerX" secondItem="sai-EI-ZA7" secondAttribute="centerX" id="pgn-2G-6TC"/>
+                            <constraint firstItem="Y0A-tw-jKG" firstAttribute="top" secondItem="hgA-X4-jOz" secondAttribute="bottom" constant="30" id="pmc-sD-ayf"/>
+                            <constraint firstItem="DSk-aK-igD" firstAttribute="top" secondItem="Y0A-tw-jKG" secondAttribute="bottom" constant="10" id="uSY-ou-Af9"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="82y-QP-kaa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="194" y="338"/>
+        </scene>
+    </scenes>
+</document>

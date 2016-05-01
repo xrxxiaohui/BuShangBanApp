@@ -15,7 +15,7 @@
 @interface MineSectionHeaderView : UICollectionReusableView
 
 @property(nonatomic, strong) UIImageView *bgImageView;
-@property(nonatomic, strong) UIButton *headImageBtn;
+@property(nonatomic, strong) UIImageView *headImageView;
 @property(nonatomic, strong) UIButton *settingBtn;
 
 @property(nonatomic,strong)UILabel *focusMeLabel;

@@ -23,7 +23,7 @@
     if ( self ) {
         self.frame = CGRectMake(0, 0, kScreenWidth, sectionHeaderViewHeight * adapt.scaleHeight);
         [self addSubview:self.bgImageView];
-        [self addSubview:self.headImageBtn];
+        [self addSubview:self.headImageView];
         [self addSubview:self.settingBtn];
         _focusMeLabel=[[UILabel alloc]initWithFrame:CGRectMake(126*adapt.scaleWidth, 162*adapt.scaleHeight, 80, 14)];
         _focusMeLabel.tag=10000;
@@ -71,9 +71,7 @@
 {
     UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitle:title forState:UIControlStateNormal];
-    
     return btn;
-    
 }
 
 
@@ -117,19 +115,16 @@
     return _settingBtn;
 }
 
-- (UIButton *)headImageBtn {
-    if ( !_headImageBtn ) {
-        _headImageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_headImageBtn addTarget:[[MineViewController alloc] init] action:@selector(settingBtn:) forControlEvents:UIControlEventTouchUpInside];
-        _headImageBtn.userInteractionEnabled = NO;
-        _headImageBtn.frame = CGRectMake(0, 50 * adapt.scaleHeight, 58, 58);
-        _headImageBtn.centerX = self.centerX;
-        _headImageBtn.layer.cornerRadius = 29.f;
-        _headImageBtn.clipsToBounds = YES;
-        _headImageBtn.layer.borderWidth = 1.f;
-        _headImageBtn.layer.borderColor = [UIColor colorWithHexString:@"#c6c6c6"].CGColor;
+- (UIImageView *)headImageView {
+    if ( !_headImageView ) {
+        _headImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 50 * adapt.scaleHeight, 58, 58)];
+        _headImageView.centerX = self.centerX;
+        _headImageView.layer.cornerRadius = 29.f;
+        _headImageView.clipsToBounds=YES;
+        _headImageView.layer.borderWidth = 1.f;
+        _headImageView.layer.borderColor = [UIColor colorWithHexString:@"#c6c6c6"].CGColor;
     }
-    return _headImageBtn;
+    return _headImageView;
 }
 //-(UIVisualEffectView *)blurView
 //{
