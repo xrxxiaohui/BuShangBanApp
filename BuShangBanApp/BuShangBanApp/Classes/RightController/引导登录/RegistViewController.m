@@ -57,7 +57,7 @@
     
     _getCodeBtn=[self buttonWithImageName:@"Get button" tag:1002 frame:CGRectMake(_verificationCodeTF.right+20, 0, 80, 30) title:@"获取验证码"];
     _getCodeBtn.titleLabel.font=[UIFont fontWithName:fontName size:10];
-    _getCodeBtn.bottom=_verificationCodeTF.bottom;
+    _getCodeBtn.bottom=_verificationCodeTF.bottom-8;
     [_contentView addSubview:_getCodeBtn];
     
     _passWordTF=[self textFieldWithPlaceHolder:@"密码" imageNamed:@"password"];

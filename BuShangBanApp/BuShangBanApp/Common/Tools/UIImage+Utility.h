@@ -22,4 +22,6 @@
 -(UIImage *)imageWithSquare;
 -(UIImage*)imageCrop:(UIImage*)original;
 
+-(UIColor*)mostColorWithCGColor:(CGImageRef)imageRef;
+
 @end

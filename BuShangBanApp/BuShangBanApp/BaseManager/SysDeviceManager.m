@@ -30,7 +30,6 @@ static id _sysDeviceInstance;
                                      @"deviceid":[CommonHelper deviceIdentifier],
                                      @"appver":APP_VERSION,
                                      @"devicetype":[SysDeviceManager platformString]};
-        
         [_sysDeviceInstance setBaseSysDeviceInfo:baseParams];
         
     });

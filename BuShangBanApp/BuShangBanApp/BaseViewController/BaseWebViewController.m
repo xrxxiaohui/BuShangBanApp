@@ -65,9 +65,9 @@
 
     //右侧消息按钮
     UIButton *shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [shareButton setFrame:CGRectMake(self.navView.width - 40, self.navView.height - 35, 25, 25)];
-    [shareButton setBackgroundImage:[UIImage imageNamed:@"share"] forState:UIControlStateNormal];
-    [shareButton setBackgroundImage:[UIImage imageNamed:@"shareLighted"] forState:UIControlStateHighlighted];
+    [shareButton setFrame:CGRectMake(self.navView.width - 56, self.navView.height -0, 44, 44)];
+    [shareButton setImage:[UIImage imageNamed:@"share"] forState:UIControlStateNormal];
+    [shareButton setImage:[UIImage imageNamed:@"shareLighted"] forState:UIControlStateHighlighted];
     //             [shareButton setTitle:@"分享" forState:UIControlStateNormal];
     [shareButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [shareButton addTarget:self action:@selector(shareBtnClick:) forControlEvents:UIControlEventTouchUpInside];

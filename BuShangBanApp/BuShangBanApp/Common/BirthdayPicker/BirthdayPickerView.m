@@ -12,6 +12,7 @@
 
 @property(nonatomic,strong)UIView *backgroundView;
 @property(nonatomic,strong)UIView *bgView;
+@property(nonatomic,strong)UIView *cornerView;
 
 @property(nonatomic,weak)UIPickerView *birthdaySelector;
 
@@ -45,10 +46,14 @@
         self.bgView.alpha=0.4;
         [self addSubview:self.bgView];
         
+        self.cornerView=[[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight-240, kScreenWidth, 400)];
+        self.cornerView.backgroundColor=[UIColor whiteColor];
+        self.cornerView.layer.cornerRadius=20.f;
+        [self addSubview:self.cornerView];
+        
         self.backgroundView=[[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight-240, kScreenWidth, 240)];
         self.backgroundView.backgroundColor=[UIColor whiteColor];
-        self.backgroundView.layer.cornerRadius=10.f;
-        [self addSubview:self.backgroundView];
+        [self.cornerView addSubview:self.backgroundView];
         
         [self __dataSource];
         
@@ -128,7 +133,7 @@
     btn.clipsToBounds=YES;
     btn.tag=tag;
     btn.frame=CGRectMake(x, 5, 44, 0);
-    [self.backgroundView addSubview:btn];
+    [self.cornerView addSubview:btn];
     return btn;
 }
 
@@ -141,7 +146,7 @@
         pickView.layer.cornerRadius=10.f;
         pickView.backgroundColor=[UIColor clearColor];
         _birthdaySelector=pickView;
-        [self.backgroundView addSubview:_birthdaySelector];
+        [self.cornerView addSubview:_birthdaySelector];
     }
     return _birthdaySelector;
 }

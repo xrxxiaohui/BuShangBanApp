@@ -13,6 +13,8 @@
 @property(nonatomic,strong)UIView *bgView;
 
 @property(nonatomic,strong)UIView *backgroundView;
+
+@property(nonatomic,strong)UIView *cornerView;
 @property(nonatomic,weak)UIPickerView *occupationSelector;
 
 @property(nonatomic,strong)NSArray *dataSource;
@@ -38,10 +40,14 @@
             self.bgView.alpha=0.4;
             [self addSubview:self.bgView];
             
+            self.cornerView=[[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight-250, kScreenWidth, 400)];
+            self.cornerView.backgroundColor=[UIColor whiteColor];
+            self.cornerView.layer.cornerRadius=20.f;
+            [self addSubview:self.cornerView];
+            
             self.backgroundView=[[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight-250, kScreenWidth, 250)];
             self.backgroundView.backgroundColor=[UIColor whiteColor];
-            self.backgroundView.layer.cornerRadius=10.f;
-            [self addSubview:self.backgroundView];
+            [self.cornerView addSubview:self.backgroundView];
             
             _dataSource=@[@"创作",@"运营",@"产品",@"技术",@"设计",@"投资",@"市场",@"行政"];
             [self.occupationSelector selectRow:INT32_C(_dataSource.count/2) inComponent:0 animated:YES];
@@ -94,7 +100,7 @@
     btn.clipsToBounds=YES;
     btn.tag=tag;
     btn.frame=CGRectMake(x,5, 44, 0);
-    [self.backgroundView addSubview:btn];
+    [self.cornerView addSubview:btn];
     return btn;
 }
 
@@ -107,7 +113,7 @@
         pickView.layer.cornerRadius=10.f;
         pickView.backgroundColor=[UIColor whiteColor];
         _occupationSelector=pickView;
-        [self.backgroundView addSubview:_occupationSelector];
+        [self.cornerView addSubview:_occupationSelector];
     }
     return _occupationSelector;
 }
