@@ -6,8 +6,14 @@
 //  Copyright © 2016年 Zuo. All rights reserved.
 //
 
+
+
 #import "LoginViewController.h"
 #import "RegistViewController.h"
+#import "AFHTTPSessionManager.h"
+
+#define URL @"https://leancloud.cn:443/1.1/login?username=xinzhi&password=666666"
+
 
 @interface LoginViewController ()
 {
@@ -23,8 +29,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self __initView];
-    
-    
 }
 
 -(void)__initView
@@ -61,7 +65,7 @@
         return NO;
     }
     if ([_passWordTF.text isEqualToString:@""]){
-        [MBProgressHUD showError:@"账号不能为空"];
+        [MBProgressHUD showError:@"密码不能为空"];
         return NO;
     }
     return YES;
@@ -79,39 +83,29 @@
             break;
         case 1002:
         {
-//            if ([self __check])
-//            {
-//                AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//                [manager GET:@"https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-//                    
-//                    if([_accountTF.text isEqualToString:@" " ] &&  [_passWordTF.text  isEqualToString: @" "] )
-//                    {
-                        [self.navigationController popToRootViewControllerAnimated:YES];
-//                    }
-//                    else
-//                        [MBProgressHUD showError:@"账号或密码不对"];
-//                } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//                    [MBProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
-//                }]; 
-//            }
+            if([self __check])
+            {
+                NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URL]];
+                request.HTTPMethod = @"GET";
+                [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+                [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+                NSDictionary *dic=@{@"password":_passWordTF.text,@"username":_accountTF.text};
+                [request setHTTPBody:[NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:nil]];
+                [request addValue: @"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz" forHTTPHeaderField:@"X-LC-Id"];
+                [request addValue: @"MDOagSCTlLw9A6fkrcaphlB8" forHTTPHeaderField:@"X-LC-Key"];
+                AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+                [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+                    if(error.code ==201)
+                        [MBProgressHUD showError:@"用户名或密码错误"];
+                }];
+                [operation start];
+            }
             break;
         }
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

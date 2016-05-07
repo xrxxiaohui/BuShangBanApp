@@ -96,6 +96,8 @@
             [ _selectedItems addObject:_titleArray[index]];
     }
     sender.selected=!sender.selected;
+    [[NSUserDefaults standardUserDefaults] setObject:_titleArray forKey:@"selectedItems"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

@@ -73,7 +73,13 @@
     if(_currentIndex==[_viewControllerS count]-1)
         [self.nextBtn setTitle:@"进入" forState:UIControlStateNormal];
     if(_currentIndex==[_viewControllerS count])
+    {
         [self.navigationController popToRootViewControllerAnimated:YES];
+        
+        
+        [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedItem"];
+        [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedItems"];
+    }
 }
 
 

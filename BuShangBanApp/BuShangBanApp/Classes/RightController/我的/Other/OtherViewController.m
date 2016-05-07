@@ -176,7 +176,7 @@
 
 -(void)__showCommandTableView
 {
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         self.maskView.alpha=0.4f;
         self.commandTableView.top=kScreenHeight-49*3;
     }];
@@ -184,7 +184,7 @@
 
 -(void)__hideCommandtableView
 {
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         self.maskView.alpha=0.4f;
         self.commandTableView.top=kScreenHeight;
     }completion:^(BOOL finished) {

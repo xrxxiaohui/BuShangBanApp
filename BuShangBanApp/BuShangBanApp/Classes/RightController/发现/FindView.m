@@ -28,9 +28,8 @@
     if ( self )
     {
         self.backgroundColor = [UIColor whiteColor];
-        NSArray *nomalImageArray = @[@"产品3",@"设计3", @"技术3", @"市场3", @"运营3", @"创业3", @"大公司3", @"干货3", @"热门3"];
-        NSArray *titleArray = @[@"产品",@"设计", @"技术", @"市场", @"运营", @"创业", @"大公司", @"干货", @"热门"];
-
+        NSArray *nomalImageArray = @[@"产品3",@"设计3", @"技术3", @"媒体3", @"运营3", @"创业3", @"大公司3", @"同好3", @"热门3"];
+        NSArray *titleArray = @[@"产品",@"设计", @"技术", @"媒体", @"运营&市场", @"创业", @"大公司", @"同好", @"热门"];
         _left = marginLeft;
         _top = marginTop;
 
