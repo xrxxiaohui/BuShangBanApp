@@ -168,9 +168,9 @@
     CAGradientLayer *layer = [CAGradientLayer layer];
     layer.frame = CGRectMake(0, 0, label.width,label.height);
     layer.colors = [NSArray arrayWithObjects:(id)[UIColor clearColor].CGColor, (id)[UIColor colorWithWhite:0 alpha:0.6].CGColor, nil];
-    for (CALayer *sublayer in [label.layer sublayers]) {
+//    for (CALayer *sublayer in [label.layer sublayers]) {
 //        [sublayer removeFromSuperlayer];
-    }
+//    }
     [label.layer insertSublayer:layer atIndex:0];
     
 }

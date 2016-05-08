@@ -28,7 +28,6 @@
 {
     UIButton *_tempButton;
     CGFloat _top;
-    
     CGFloat _left;
     CGFloat _widthSpace;
     CGFloat _heigntSpace;
@@ -69,7 +68,6 @@
         else
             _left = _widthSpace + ((UIButton *)btnArray[i]).right;
     }
-    
     CGFloat margin=(kScreenWidth-2*72*adapt.scaleWidth)/3;
     _contentBtn.left=margin;
     _investBtn.left=_contentBtn.right+margin;
@@ -89,10 +87,16 @@
 }
 
 - (void)__clickEvent:(UIButton *)sender {
-    sender.selected=!sender.selected;
-    if (_tempButton.selected)
-        _tempButton.selected=!_tempButton.selected;
-    _tempButton=sender;
+    if (!sender.selected)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:sender.titleLabel.text forKey:@"selectedItem"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        if (_tempButton.selected)
+            _tempButton.selected=!_tempButton.selected;
+        else
+            _tempButton.selected=!sender.selected;
+        sender.selected=!sender.selected;
+    }
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

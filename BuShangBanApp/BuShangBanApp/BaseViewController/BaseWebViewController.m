@@ -479,7 +479,7 @@ typedef enum : NSInteger {
     //    // 非主时景界面，读取页面的title
     //    if (!self.isMainTravelTime) {
     //        NSString *currentURL = [webView stringByEvaluatingJavaScriptFromString:@"document.location.href"];
-    NSString *webTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+//    NSString *webTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     
 //    if (webTitle&&[webTitle length]>0) {
 //        [self setTitle:webTitle];

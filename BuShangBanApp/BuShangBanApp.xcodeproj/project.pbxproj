@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04125B241CDC6BA60076076C /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 04125B231CDC6BA50076076C /* User.m */; };
+		04125B371CDC945B0076076C /* DataListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04125B361CDC945B0076076C /* DataListTableViewCell.m */; };
 		0419C3611CD10AA60020750C /* BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0419C3601CD10AA60020750C /* BasicViewController.m */; };
 		0419C3651CD10B650020750C /* BootstrapThriViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0419C3631CD10B650020750C /* BootstrapThriViewController.m */; };
 		042345761CD45C5C00E74F4A /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042345751CD45C5C00E74F4A /* SettingViewController.m */; };
@@ -29,7 +31,6 @@
 		049EF1E71CA38D8D00C1D68A /* AreaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF1D91CA38D8D00C1D68A /* AreaObject.m */; };
 		049EF1E91CA38D8D00C1D68A /* ScreenAdapt.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF1DF1CA38D8D00C1D68A /* ScreenAdapt.m */; };
 		049EF1EA1CA38D8D00C1D68A /* UIColor+PPCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF1E11CA38D8D00C1D68A /* UIColor+PPCategory.m */; };
-		049EF1EB1CA38D8D00C1D68A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF1E31CA38D8D00C1D68A /* User.m */; };
 		049EF2331CA38F5700C1D68A /* LoginOrRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF22E1CA38F5700C1D68A /* LoginOrRegistViewController.m */; };
 		049EF2341CA38F5700C1D68A /* LoginViewOrRegistView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF2301CA38F5700C1D68A /* LoginViewOrRegistView.m */; };
 		049EF2391CA38FA000C1D68A /* FindView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF2361CA38FA000C1D68A /* FindView.m */; };
@@ -227,6 +228,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04125B221CDC6BA50076076C /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		04125B231CDC6BA50076076C /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		04125B351CDC945B0076076C /* DataListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataListTableViewCell.h; sourceTree = "<group>"; };
+		04125B361CDC945B0076076C /* DataListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataListTableViewCell.m; sourceTree = "<group>"; };
 		0419C35F1CD10AA60020750C /* BasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicViewController.h; sourceTree = "<group>"; };
 		0419C3601CD10AA60020750C /* BasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicViewController.m; sourceTree = "<group>"; };
 		0419C3621CD10B650020750C /* BootstrapThriViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BootstrapThriViewController.h; sourceTree = "<group>"; };
@@ -265,8 +270,6 @@
 		049EF1DF1CA38D8D00C1D68A /* ScreenAdapt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenAdapt.m; sourceTree = "<group>"; };
 		049EF1E01CA38D8D00C1D68A /* UIColor+PPCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PPCategory.h"; sourceTree = "<group>"; };
 		049EF1E11CA38D8D00C1D68A /* UIColor+PPCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PPCategory.m"; sourceTree = "<group>"; };
-		049EF1E21CA38D8D00C1D68A /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		049EF1E31CA38D8D00C1D68A /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		049EF22D1CA38F5700C1D68A /* LoginOrRegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginOrRegistViewController.h; sourceTree = "<group>"; };
 		049EF22E1CA38F5700C1D68A /* LoginOrRegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginOrRegistViewController.m; sourceTree = "<group>"; };
 		049EF22F1CA38F5700C1D68A /* LoginViewOrRegistView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewOrRegistView.h; sourceTree = "<group>"; };
@@ -631,6 +634,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04125B211CDC6BA50076076C /* User */ = {
+			isa = PBXGroup;
+			children = (
+				04125B221CDC6BA50076076C /* User.h */,
+				04125B231CDC6BA50076076C /* User.m */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		042345771CD45C7300E74F4A /* OccupationSelector */ = {
 			isa = PBXGroup;
 			children = (
@@ -1122,6 +1134,8 @@
 				049EF2361CA38FA000C1D68A /* FindView.m */,
 				049EF2371CA38FA000C1D68A /* FindViewController.h */,
 				049EF2381CA38FA000C1D68A /* FindViewController.m */,
+				04125B351CDC945B0076076C /* DataListTableViewCell.h */,
+				04125B361CDC945B0076076C /* DataListTableViewCell.m */,
 			);
 			path = "发现";
 			sourceTree = "<group>";
@@ -1240,6 +1254,7 @@
 		A3FD041D1C9936D000E84A0B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				04125B211CDC6BA50076076C /* User */,
 				042345771CD45C7300E74F4A /* OccupationSelector */,
 				04E3E4251CCE3655000FD2DF /* BirthdayPicker */,
 				049EF2791CA3ED0400C1D68A /* ImagePicker */,
@@ -1247,8 +1262,6 @@
 				049EF1DC1CA38D8D00C1D68A /* ScreenAdapt */,
 				049EF1E01CA38D8D00C1D68A /* UIColor+PPCategory.h */,
 				049EF1E11CA38D8D00C1D68A /* UIColor+PPCategory.m */,
-				049EF1E21CA38D8D00C1D68A /* User.h */,
-				049EF1E31CA38D8D00C1D68A /* User.m */,
 				A377D1831C995E3000C779A7 /* MJRefresh */,
 				A377D1241C99560A00C779A7 /* YUScreentPoper */,
 				A377D1201C9955C100C779A7 /* GMDCircleLoader */,
@@ -1721,7 +1734,6 @@
 				A377D1AB1C995E3000C779A7 /* UIScrollView+MJExtension.m in Sources */,
 				A377D1421C99560A00C779A7 /* UIWindow+YUBottomPoper.m in Sources */,
 				A377D1411C99560A00C779A7 /* UIView+YUStyle.m in Sources */,
-				049EF1EB1CA38D8D00C1D68A /* User.m in Sources */,
 				0419C3651CD10B650020750C /* BootstrapThriViewController.m in Sources */,
 				049EF1EA1CA38D8D00C1D68A /* UIColor+PPCategory.m in Sources */,
 				A3FD045A1C993CF100E84A0B /* UILabel+Attributed.m in Sources */,
@@ -1729,6 +1741,7 @@
 				04E3E41C1CCE3633000FD2DF /* MineCell.m in Sources */,
 				A3FD04261C99386700E84A0B /* QHBasicViewController.m in Sources */,
 				049EF2391CA38FA000C1D68A /* FindView.m in Sources */,
+				04125B371CDC945B0076076C /* DataListTableViewCell.m in Sources */,
 				A39CD29C1C9950A300F0D8EE /* MainTabViewController.m in Sources */,
 				04E3E41F1CCE3633000FD2DF /* MineViewController.m in Sources */,
 				A3FD04931C993EB900E84A0B /* NSString+JSON.m in Sources */,
@@ -1746,6 +1759,7 @@
 				A377D1A71C995E3000C779A7 /* MJRefreshGifHeader.m in Sources */,
 				04E3E4231CCE3633000FD2DF /* UsingSettingCell.m in Sources */,
 				04E3E4211CCE3633000FD2DF /* SettingCell.m in Sources */,
+				04125B241CDC6BA60076076C /* User.m in Sources */,
 				A3FD04971C993EB900E84A0B /* NSNumber+Utility.m in Sources */,
 				A39CD3301C9950F600F0D8EE /* OneRedViewController.m in Sources */,
 				A3FD04901C993EB900E84A0B /* CommonHelper.m in Sources */,

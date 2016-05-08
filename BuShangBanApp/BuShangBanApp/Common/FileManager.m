@@ -99,17 +99,17 @@ static FileManager *fileManagerInstance = nil;
     if (post) {
         [sessionManager POST:url parameters:dic success:^(NSURLSessionDataTask *_Nonnull task, id _Nonnull responseObject) {
 
-        }            failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
+        }failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
 
         }];
     }
     else {
         [sessionManager GET:url parameters:dic success:^(NSURLSessionDataTask *_Nonnull task, id _Nonnull responseObject) {
 
+            
+        }failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
 
-        }           failure:^(NSURLSessionDataTask *_Nullable task, NSError *_Nonnull error) {
-
-
+            
         }];
     }
 }

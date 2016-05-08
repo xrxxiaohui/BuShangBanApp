@@ -6,8 +6,6 @@
 //  Copyright © 2016年 Zuo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface ArticalInfo : NSObject
 
 

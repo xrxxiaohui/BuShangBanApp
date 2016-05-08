@@ -14,6 +14,15 @@
 #import <AVOSCloud/AVOSCloud.h>
 
 
+//验证邀请码接口 https://leancloud.cn:443/1.1/classes/InvitationCode?where=%7B%22key%22%3A%22bsb%22%7D&limit=1&&order=-updatedAt&&keys=-ACL%2C-createdAt%2C-updatedAt%2C-objectId%2C-count
+
+//获取短信验证码  https://api.leancloud.cn/1.1/requestSmsCode
+#define url @"https://api.leancloud.cn/1.1/requestSmsCode"
+
+#define iniviteURL @"https://leancloud.cn:443/1.1/classes/InvitationCode?where=%7B%22key%22%3A%22bsb%22%7D&limit=1&&order=-updatedAt&&keys=-ACL%2C-createdAt%2C-updatedAt%2C-objectId%2C-count"
+
+
+
 @interface RegistViewController ()
 {
     UIButton *_loginBtn;
@@ -27,13 +36,18 @@
     UIButton *_registBtn;
     UIButton *_readedBtn;
     UIButton *_userProtocalBtn;
+    NSTimer *_cutDownTimer;
 }
 @end
 
-@implementation RegistViewController
+@implementation RegistViewController{
+    NSInteger _totalTime;
+}
 
+    
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _totalTime = 60;
     [self __initView];
 }
 
@@ -53,10 +67,10 @@
     _verificationCodeTF=[self textFieldWithPlaceHolder:@"验证码" imageNamed:@"Verification code"];
     _verificationCodeTF.keyboardType=UIKeyboardTypeNumberPad;
     _verificationCodeTF.top=_accountTF.bottom;
-    _verificationCodeTF.width=200;
+    _verificationCodeTF.width=180;
     
-    _getCodeBtn=[self buttonWithImageName:@"Get button" tag:1002 frame:CGRectMake(_verificationCodeTF.right+20, 0, 80, 30) title:@"获取验证码"];
-    _getCodeBtn.titleLabel.font=[UIFont fontWithName:fontName size:10];
+    _getCodeBtn=[self buttonWithImageName:@"Get button" tag:1002 frame:CGRectMake(_verificationCodeTF.right+20, 0, 100, 30) title:@"获取验证码"];
+    _getCodeBtn.titleLabel.font=[UIFont fontWithName:fontName size:12];
     _getCodeBtn.bottom=_verificationCodeTF.bottom-8;
     [_contentView addSubview:_getCodeBtn];
     
@@ -135,42 +149,62 @@
             break;
         case 1002:
         {
-            [AVOSCloud requestSmsCodeWithPhoneNumber:_accountTF.text appName:nil operation:nil timeToLive:10 callback:^(BOOL succeeded, NSError *error) {
-                if (succeeded)
-                {
-                    [MBProgressHUD showSuccess:@"发送成功,请稍等"];
-                    [_verificationCodeTF becomeFirstResponder];
-                }
-                else
-                    [MBProgressHUD showError:[NSString stringWithFormat:@"error:%ld",(long)error.code]];
+            [self cutDownTimer];
+            
+//            if ([_accountTF.text containsString:@"."]) {
+////                邮箱验证
+//                
+//                
+//            }else
+//            {
+            if ([_accountTF.text isEqualToString:@""])
+                [MBProgressHUD showError:@"号码不能为空"];
+            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+            request.HTTPMethod = @"post";
+            [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+            [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+            NSDictionary *dic=@{@"username":_accountTF.text};
+            [request setHTTPBody:[NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:nil]];
+            [request addValue: @"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz" forHTTPHeaderField:@"X-LC-Id"];
+            [request addValue: @"MDOagSCTlLw9A6fkrcaphlB8" forHTTPHeaderField:@"X-LC-Key"];
+            AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+            [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull        responseObject) {
+                  [MBProgressHUD showError:@"已经发送"];
+            } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+                if(error.code ==201)
+                    [MBProgressHUD showError:@"号码有误"];
             }];
+//            }
             break;
         }
         case 1003:
-//            if([self __check])
+        {
+            if([self __check])
             {
-//                AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//                [manager GET:@"https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-//                    
-////                    if(![_verificationCodeTF.text isEqualToString:@""])
-////                        [MBProgressHUD showError:@"验证码不对"];
-////                    else if(![_inivitTF.text isEqualToString:@""])
-////                        [MBProgressHUD showError:@"验证码不对"];
-////                    else if(@"")
-////                        [MBProgressHUD showError:@"这个账号已经注册过"];
-////                    else
-//                        success=YES;
-//                } failure:^(NSURLSessionDataTask *task, NSError *error) {
-//                    [MBProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
-//                }];
-//                if (success)
+                //                AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+                //                [manager GET:@"https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+                //
+                ////                    if(![_verificationCodeTF.text isEqualToString:@""])
+                ////                        [MBProgressHUD showError:@"验证码不对"];
+                ////                    else if(![_inivitTF.text isEqualToString:@""])
+                ////                        [MBProgressHUD showError:@"验证码不对"];
+                ////                    else if(@"")
+                ////                        [MBProgressHUD showError:@"这个账号已经注册过"];
+                ////                    else
+                //                        success=YES;
+                //                } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                //                    [MBProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
+                //                }];
+                //                if (success)
                 {
                     [[SliderViewController sharedSliderController].navigationController pushViewController:[[BootstrapViewController alloc] init] animated:YES];
-
-//                    NSDictionary *dic=@{};
-//                    [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"UserInfo"];
+                    
+                    //                    NSDictionary *dic=@{};
+                    //                    [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"UserInfo"];
                 }
             }
+            
+        }
             break;
         case 1004:
             _readedBtn.selected=!_readedBtn.selected;
@@ -203,12 +237,81 @@
         [MBProgressHUD showError:@"两次密码不一致"];
         return NO;
     }
-    if([_accountTF.text isEqualToString:@""])
+    
+    if(_passWordTF.text.length<10)
     {
-        [MBProgressHUD showError:@"账号格式不对"];
+        [MBProgressHUD showError:@"密码长度不能小于10"];
         return NO;
     }
+    
+    if ([_accountTF.text containsString:@"."])
+        if(![self __validateEmail:_accountTF.text])
+        {
+            [MBProgressHUD showError:@"邮箱格式不对"];
+            return NO;
+        }
+    else
+        if(![self __validateMobile:_accountTF.text])
+        {
+            [MBProgressHUD showError:@"号码格式不对"];
+            return NO;
+        }
+    
     return YES;
 }
 
+//邮箱
+-(BOOL) __validateEmail:(NSString *)email
+{
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:email];
+}
+
+
+//手机号码验证
+- (BOOL) __validateMobile:(NSString *)mobile
+{
+    //手机号以13， 15，18开头，八个 \d 数字字符
+    NSString *phoneRegex = @"^((13[0-9])|(15[^4,\\D])|(18[0,0-9]))\\d{8}$";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
+    return [phoneTest evaluateWithObject:mobile];
+}
+
+
+-(void)showKeyBoard:(NSNotification *)noti
+{
+    [super showKeyBoard:noti];
+    _loginBtn.hidden=YES;
+    _closeBtn.hidden=YES;
+}
+
+-(void)hideKeyBoard:(NSNotification *)noti
+{
+    [super hideKeyBoard:noti];
+    _loginBtn.hidden=NO;
+    _closeBtn.hidden=NO;
+}
+
+
+- (NSTimer *)cutDownTimer {
+    if (!_cutDownTimer) {
+        _cutDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeCutDown) userInfo:nil repeats:YES];
+    }
+    return _cutDownTimer;
+}
+
+- (void)timeCutDown {
+    [_getCodeBtn setTitle:[NSString stringWithFormat:@"%ld秒", (long) --_totalTime] forState:UIControlStateNormal];
+    _getCodeBtn.alpha = 0.2;
+    _getCodeBtn.userInteractionEnabled=NO;
+    if (_totalTime == 0) {
+        _getCodeBtn.userInteractionEnabled = YES;
+        [_getCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+        _getCodeBtn.alpha = 1;
+        _totalTime = 60;
+        [_cutDownTimer invalidate];
+        _cutDownTimer = nil;
+    }
+}
 @end

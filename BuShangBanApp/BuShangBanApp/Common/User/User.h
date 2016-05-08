@@ -10,7 +10,6 @@
 
 @interface UserList : NSObject
 
-
 @property(nonatomic, assign) NSUInteger mid;
 @property(nonatomic, copy) NSString *nickname;
 

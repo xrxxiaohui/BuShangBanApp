@@ -50,17 +50,7 @@
     [self.view addSubview:_loginViewOrRegistView];
 }
 
-- (void)timeCutDown {
-    [self.loginViewOrRegistView.getConfirmationCodeBtn setTitle:[NSString stringWithFormat:@"%ld秒", (long) --_totalTime] forState:UIControlStateNormal];
-    if (_totalTime == 0) {
-        self.loginViewOrRegistView.getConfirmationCodeBtn.userInteractionEnabled = YES;
-        [self.loginViewOrRegistView.getConfirmationCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-        self.loginViewOrRegistView.getConfirmationCodeBtn.alpha = 1;
-        _totalTime = 60;
-        [_cutDownTimer invalidate];
-        _cutDownTimer = nil;
-    }
-}
+
 
 -(void)getUserInfoWithUser:(SSDKUser *)user
 {
@@ -80,12 +70,7 @@
 
 #pragma mark ---- 懒加载  ----
 
-- (NSTimer *)cutDownTimer {
-    if (!_cutDownTimer) {
-        _cutDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeCutDown) userInfo:nil repeats:YES];
-    }
-    return _cutDownTimer;
-}
+
 
 
 
