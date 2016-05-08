@@ -47,7 +47,7 @@ typedef void(^actionBlock)(void);
 -(void)dissmissLeftItem;
 -(void)popToLeft;
 -(void)defaultLeftItem;
-
+-(void)customRightItemWithBtn1:(UIButton *)sender;
 // custom view method
 -(void)customNavigationTitle:(NSString *)title ;
 -(void)customNavigationBarWithTitle:(NSString *)title ;

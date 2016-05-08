@@ -17,7 +17,8 @@
 //#define kBaseUrl @"http://apitemp.shunshunliuxue.com" // apitemp
 
 #warning -  警告！警告！！危险！！危险！！！ 用的是测试地址
-#define kBaseUrl @"https://leancloud.cn:443/1.1/classes/" // apitest
+//#define kBaseUrl @"https://leancloud.cn:443/1.1/classes/" // apitest
+#define kBaseUrl @"" // apitest
 
 static id _instance;
 

@@ -143,6 +143,13 @@
     [_navView addSubview:sender];
 }
 
+-(void)customRightItemWithBtn1:(UIButton *)sender {
+    sender.size=CGSizeMake(60, 12);
+    sender.left = kScreenWidth - sender.width;
+    sender.top = (_navView.height - sender.height)/2;
+    [_navView addSubview:sender];
+}
+
 -(void)customCertainItemWithBtn:(UIButton *)sender {
     
     sender.left = kScreenWidth - sender.width - 10;
@@ -320,12 +327,35 @@
 
 -(void)popToLeft
 {
-    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
+    NSArray *viewcontrollers=self.navigationController.viewControllers;
+    if (viewcontrollers.count>1) {
+        if ([viewcontrollers objectAtIndex:viewcontrollers.count-1]==self) {
+            //push方式
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
+    else{
+        //present方式
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+
 }
 
 -(void)dismissToLeft{
 
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    NSArray *viewcontrollers=self.navigationController.viewControllers;
+    if (viewcontrollers.count>1) {
+        if ([viewcontrollers objectAtIndex:viewcontrollers.count-1]==self) {
+            //push方式
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
+    else{
+        //present方式
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)observerReloadImage:(NSNotificationCenter *)notif

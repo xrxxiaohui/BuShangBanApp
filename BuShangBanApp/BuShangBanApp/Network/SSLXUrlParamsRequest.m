@@ -75,7 +75,7 @@
     NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:URL];
-    request.HTTPMethod = @"GET";
+    request.HTTPMethod = @"POST";
     
         [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];

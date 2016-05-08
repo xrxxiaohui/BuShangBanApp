@@ -84,7 +84,6 @@ typedef enum : NSInteger {
     recognizer.delegate = self;
     [_webView addGestureRecognizer:recognizer];
     
-    
     [self.view addSubview:_webView];
 }
 
@@ -143,11 +142,9 @@ typedef enum : NSInteger {
     
 }
 
-
 - ( CameraMoveDirection )determineCameraDirectionIfNeeded:( CGPoint )translation
 {
     if (direction != kCameraMoveDirectionNone)
-        
         return direction;
     
     // determine if horizontal swipe only if you meet some minimum velocity
@@ -176,7 +173,6 @@ typedef enum : NSInteger {
     // determine if vertical swipe only if you meet some minimum velocity
     
     else if (fabs(translation.y) > gestureMinimumTranslation)
-        
     {
         
         BOOL gestureVertical = NO;
@@ -272,6 +268,16 @@ typedef enum : NSInteger {
     [_shareNumLabel setTextColor:COLOR(124, 124, 124)];
     [bottomImageView addSubview:_shareNumLabel];
 
+    
+    NSString *likes_count = [NSString stringWithFormat:@"%@",[self.dataDics valueForKeyPath:@"related_post.likes_count"]];
+    [_zanNumLabel setText:likes_count];
+    
+    NSString *share_count = [NSString stringWithFormat:@"%@",[self.dataDics valueForKeyPath:@"related_post.share_count"]];
+    
+    [_shareNumLabel setText:share_count];
+    
+    NSString *comment_count = [NSString stringWithFormat:@"%@",[self.dataDics valueForKeyPath:@"related_post.comment_count"]];
+    [_commentNumLabel setText:comment_count];
 }
 
 -(void)zanButtonClick{
@@ -294,15 +300,20 @@ typedef enum : NSInteger {
 -(void)customRightBtn {
 
     //右侧消息按钮
+    
+    NSString *categoryStr =[[self.dataDics valueForKeyPath:@"related_post.category.name"] safeString];
+
     UIButton *shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [shareButton setFrame:CGRectMake(self.navView.width - 56, self.navView.height -0, 44, 44)];
+    [shareButton setFrame:CGRectMake(self.navView.width - 75, self.navView.height -0, 60, 12)];
 //    [shareButton setImage:[UIImage imageNamed:@"share_nomal"] forState:UIControlStateNormal];
 //    [shareButton setImage:[UIImage imageNamed:@"share_selected"] forState:UIControlStateHighlighted];
     //             [shareButton setTitle:@"分享" forState:UIControlStateNormal];
-    [shareButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [shareButton setTitleColor:COLOR(56, 56, 56) forState:UIControlStateNormal];
     [shareButton addTarget:self action:@selector(shareBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [shareButton.titleLabel setFont:[UIFont systemFontOfSize:12]];
+    [shareButton setTitle:categoryStr forState:UIControlStateNormal];
     
-    [self customRightItemWithBtn:shareButton];
+    [self customRightItemWithBtn1:shareButton];
 }
 
 - (void)shareBtnClick:(id)sender

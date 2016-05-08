@@ -16,7 +16,7 @@
 #import "EditInformationViewController.h"
 #import "User.h"
 
-#define userURL @"_User/570387b3ebcb7d005b196d24"
+#define userURL @"https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24"
 
 @interface BasicInformationViewController ()<UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate,EditInformationDelegate>
 

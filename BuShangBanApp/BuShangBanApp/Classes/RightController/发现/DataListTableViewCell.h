@@ -21,6 +21,7 @@
 @property(nonatomic,strong)UILabel *shareNumLabel;
 @property(nonatomic,strong)UILabel *commentNumLabel;
 @property(nonatomic,strong)UILabel *zanNumLabel;
+@property(nonatomic,strong)UIButton *rightAvarButton;
 
 
 @end

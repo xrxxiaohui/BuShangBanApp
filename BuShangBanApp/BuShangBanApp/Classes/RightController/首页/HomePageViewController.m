@@ -18,6 +18,7 @@
     NSMutableArray *_dataArray;
     NSMutableArray *_homeListdataArray;
 
+    NSString *_ScreenshotsPickPath;
     int page;
 }
 
@@ -43,11 +44,6 @@
     [self fetchHomeListData];
 }
 
--(void)presentSuggestView{
-
-    SuggestPageViewController *suggestPageViewController = [[SuggestPageViewController alloc] init];
-    [[SliderViewController sharedSliderController].navigationController presentViewController:suggestPageViewController animated:YES completion:nil];
-}
 
 -(void)initData{
      page = 1;
@@ -97,26 +93,19 @@
 
 //https://leancloud.cn:443/1.1/classes/_Status?limit=10&&order=-createdAt&include=related_post&keys=-related_post.body
 
+//https://leancloud.cn:443/1.1/classes/_Status?limit=10&&order=-createdAt&include=related_post,related_post.author&keys=-related_post.body
+
 -(void)fetchHomeListData {
 
     // 请求
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
     
     NSDictionary *_tempParam = @{@"bid":@"888888"};
-    [_urlParamsReq setUrlString:@"_Status?limit=10&&order=-createdAt&include=related_post&keys=-related_post.body"];
+    [_urlParamsReq setUrlString:@"https://leancloud.cn:443/1.1/classes/_Status?limit=100&&order=-createdAt&include=related_post,related_post.author&keys=-related_post.body"];
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
         
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
         NSArray *_resultArray = [[_successInfo objectForKey:@"results"] safeArray];
-        //        NSDictionary *_businessData = [_resultInfo objectForKey:@"businessData"];
-        //        NSDictionary *_activifyData  = [_businessData objectForKey:@"get_gonglue"];
-        //
-        //
-        //        if ([[_activifyDataa objectForKey:@"results"] isKindOfClass:[NSArray class]]) {
-        //
-        //            //            [self setAbroadArray:[_activifyData objectForKey:@"results"]];
-        //            //            [self.tableView reloadData];
-        //        }
         _homeListdataArray =[NSMutableArray arrayWithArray:_resultArray];
         
         [_mainTableView.header endRefreshing];
@@ -141,28 +130,14 @@
 
 -(void)fetchData {
     
-    // 请求
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
-    [_urlParamsReq setUrlString:@"Featured?limit=3&&order=-sort&&"];
-    
-//    NSDictionary *_tempParam = @{@"bid":@"888888"};
-//    [_urlParamsReq setParamsDict:_tempParam];
+    [_urlParamsReq setUrlString:@"https://leancloud.cn:443/1.1/classes/Featured?limit=10&&order=-sort&"];
     
     NSDictionary *_tempParam = @{@"bid":@"888888"};
-    
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
         
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
         NSArray *_resultArray = [[_successInfo objectForKey:@"results"] safeArray];
-//        NSDictionary *_businessData = [_resultInfo objectForKey:@"businessData"];
-//        NSDictionary *_activifyData  = [_businessData objectForKey:@"get_gonglue"];
-//        
-//        
-//        if ([[_activifyDataa objectForKey:@"results"] isKindOfClass:[NSArray class]]) {
-//            
-//            //            [self setAbroadArray:[_activifyData objectForKey:@"results"]];
-//            //            [self.tableView reloadData];
-//        }
         _dataArray =[NSMutableArray arrayWithArray:_resultArray];
         
         [_mainTableView.header endRefreshing];
@@ -202,7 +177,7 @@
     if (section == 1) {
         return 40;
     }else{
-        return 0;
+        return 0.01;
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -221,7 +196,7 @@
 
     if (indexPath.section == 0) {
         static NSString *cellIndentifier = @"HomeHeadViewCell";
-        HomeHeadViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+        HomeHeadViewCell *cell = (HomeHeadViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIndentifier];
         if (cell == nil) {
             cell = [[HomeHeadViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
         }
@@ -261,64 +236,14 @@
         return cell;
 
     }
-//    else{
-//        if ([_dataSourceArray[indexPath.row] isKindOfClass:[JZStepListModel class]]) {//章
-//            static NSString *cellIndentifier = @"detailCell10";
-//            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
-//            if (cell == nil) {
-//                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
-//                //下划线
-//                UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 42.5, screen_width, 0.5)];
-//                lineView.backgroundColor = separaterColor;
-//                [cell addSubview:lineView];
-//            }
-//            JZStepListModel *jzStepM = _dataSourceArray[indexPath.row];
-//            cell.textLabel.text = [NSString stringWithFormat:@"第%@章:%@",jzStepM.StepIndex,jzStepM.StepName];
-//            
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            return cell;
-//        }else{//节
-//            static NSString *cellIndentifier = @"detailCell11";
-//            JZCourseClassCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
-//            if (cell == nil) {
-//                cell = [[JZCourseClassCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
-//                //下划线
-//                UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(40, 63.5, screen_width, 0.5)];
-//                lineView.tag = 10;
-//                lineView.backgroundColor = separaterColor;
-//                [cell addSubview:lineView];
-//            }
-//            
-//            JZClassListModel *jzClassM = _dataSourceArray[indexPath.row];
-//            if ([jzClassM.isLast isEqualToString:@"1"]) {
-//                UIView *lineView = (UIView *)[cell viewWithTag:10];
-//                lineView.frame = CGRectMake(0, 63.5, screen_width, 0.5);
-//            }
-//            [cell setJzClassM:jzClassM];
-//            
-//            
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            return cell;
-//        }
-//    }
     
-    
-    static NSString *cellIndentifier = @"detailCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
-    }
-    
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    return cell;
 }
 
 -(void)leftButtonAction{
 
     if(_dataArray.count>0){
     NSDictionary *dataDic = [[_dataArray objectAtIndex:0] safeDictionary];
-    NSString *urlStr = [[dataDic objectForKey:@"related_post"] objectForKey:@"link"];
+    NSString *urlStr = [dataDic objectForKey:@"link"];
     BaseWebViewController *baseWebView = [[BaseWebViewController alloc] init];
     baseWebView.isTestWeb = NO;
     baseWebView.webUrl = urlStr;
@@ -330,7 +255,7 @@
     
     if(_dataArray.count>1){
         NSDictionary *dataDic = [[_dataArray objectAtIndex:1] safeDictionary];
-        NSString *urlStr = [[dataDic objectForKey:@"related_post"] objectForKey:@"link"];
+        NSString *urlStr = [dataDic objectForKey:@"link"];
         BaseWebViewController *baseWebView = [[BaseWebViewController alloc] init];
         baseWebView.isTestWeb = NO;
         baseWebView.webUrl = urlStr;
@@ -342,7 +267,7 @@
     
     if(_dataArray.count>2){
         NSDictionary *dataDic = [[_dataArray objectAtIndex:2] safeDictionary];
-        NSString *urlStr = [[dataDic objectForKey:@"related_post"] objectForKey:@"link"];
+        NSString *urlStr = [dataDic objectForKey:@"link"];
         BaseWebViewController *baseWebView = [[BaseWebViewController alloc] init];
         baseWebView.isTestWeb = NO;
         baseWebView.webUrl = urlStr;
@@ -361,46 +286,67 @@
     BaseWebViewController *baseWebView = [[BaseWebViewController alloc] init];
     baseWebView.isTestWeb = NO;
     baseWebView.webUrl = urlStr;
+    baseWebView.dataDics = dataDic;
     [[SliderViewController sharedSliderController].navigationController pushViewController:baseWebView animated:YES ];
-
-
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    UIView *_sectionHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
-
     if(section == 1){
+        UIView *_sectionHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
         [_sectionHeaderView setBackgroundColor:COLOR(249, 249, 249)];
-//        UIImageView *normalImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Community"]];
         UIImageView *normalImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"reading"]];
 
         [normalImageView setFrame:CGRectMake(kScreenWidth/2-124, 0, 248, 20)];
         [_sectionHeaderView addSubview:normalImageView];
-    
-//    UIView *_redPenciLine = [[UIView alloc] initWithFrame:CGRectMake(4, 10, 2, 13)];
-//    [_redPenciLine setBackgroundColor:kAppRedColor];
-//    [_sectionHeaderView addSubview:_redPenciLine];
-//    
-//    UILabel *_titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(_redPenciLine.right + 2, _redPenciLine.top, 100, _redPenciLine.height)];
-//    [_titleLabel setFont:[UIFont systemFontOfSize:13]];
-//    [_titleLabel setTextColor:COLOR(0x38, 0x3d, 0x49)];
-//    [_sectionHeaderView addSubview:_titleLabel];
-//    switch (section) {
-//        case 0:
-//            [_titleLabel setText:@"热门活动"];
-//            break;
-//        case 1:
-//            [_titleLabel setText:@"过往活动"];
-//            break;
-//            
-//        default:
-//            break;
-//    }
         return _sectionHeaderView;
 
     }
     return nil;
+}
+
+
+-(void)presentSuggestView{
+    
+    [self ScreenShot];
+    SuggestPageViewController *suggestPageViewController = [[SuggestPageViewController alloc] init];
+    [[SliderViewController sharedSliderController].navigationController presentViewController:suggestPageViewController animated:YES completion:nil];
+}
+
+-(void)ScreenShot{
+    //这里因为我需要全屏接图所以直接改了，宏定义iPadWithd为1024，iPadHeight为768，
+    //    UIGraphicsBeginImageContextWithOptions(CGSizeMake(640, 960), YES, 0);     //设置截屏大小
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(kScreenWidth, kScreenHeight), YES, 0);     //设置截屏大小
+    [[self.view layer] renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    CGImageRef imageRef = viewImage.CGImage;
+    //    CGRect rect = CGRectMake(166, 211, 426, 320);//这里可以设置想要截图的区域
+    CGRect rect = CGRectMake(0, 0, kScreenWidth, kScreenHeight);//这里可以设置想要截图的区域
+    CGImageRef imageRefRect =CGImageCreateWithImageInRect(imageRef, rect);
+    UIImage *sendImage = [[UIImage alloc] initWithCGImage:imageRefRect];
+    UIImageWriteToSavedPhotosAlbum(sendImage, nil, nil, nil);//保存图片到照片库
+    NSData *imageViewData = UIImagePNGRepresentation(sendImage);
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *pictureName= [NSString stringWithFormat:@"screenShow.png"];
+    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:pictureName];
+    NSLog(@"截屏路径打印: %@", savedImagePath);
+    //这里我将路径设置为一个全局String，这里做的不好，我自己是为了用而已，希望大家别这么写
+    [self SetPickPath:savedImagePath];
+    
+    [imageViewData writeToFile:savedImagePath atomically:YES];//保存照片到沙盒目录
+    CGImageRelease(imageRefRect);
+}
+
+//设置路径
+- (void)SetPickPath:(NSString *)PickImage {
+    _ScreenshotsPickPath = PickImage;
+}
+//获取路径<这里我就直接用于邮件推送的代码中去了，能达到效果，但肯定有更好的写法>
+- (NSString *)GetPickPath {
+    return _ScreenshotsPickPath;
 }
 
 
