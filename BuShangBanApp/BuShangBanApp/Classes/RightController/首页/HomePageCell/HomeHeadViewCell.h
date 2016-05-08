@@ -9,4 +9,8 @@
 
 @interface HomeHeadViewCell : BaseTableCell
 
+@property (nonatomic, copy) clickBlock leftButtonActionBlock;
+@property (nonatomic, copy) clickBlock rightUpButtonActionBlock;
+@property (nonatomic, copy) clickBlock rightDownActionBlock;
+
 @end

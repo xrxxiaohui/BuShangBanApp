@@ -13,6 +13,7 @@
     float _nSpaceNavY;
     
     UILabel *aTitleLabel;
+    UIImageView *navIV;
 }
 
 @end
@@ -51,7 +52,7 @@
 {
     [super viewDidLoad];
     
-    UIImageView *navIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, _nSpaceNavY, self.view.width, 64 - _nSpaceNavY)];
+    navIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, _nSpaceNavY, self.view.width, 64 - _nSpaceNavY)];
     navIV.tag = 98;
     [self.view addSubview:navIV];
     [self reloadImage];
@@ -153,7 +154,7 @@
 
 - (void)createNavWithTitle:(NSString *)szTitle createMenuItem:(UIView *(^)(int nIndex))menuItem
 {
-    UIImageView *navIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, _nSpaceNavY, self.view.width, 64 - _nSpaceNavY)];
+    navIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, _nSpaceNavY, self.view.width, 64 - _nSpaceNavY)];
     navIV.tag = 98;
     [self.view addSubview:navIV];
     [self reloadImage];
@@ -256,7 +257,7 @@
 
 - (void)createNavWithSearchBar:(NSString *)szTitle createMenuItem:(UIView *(^)(int nIndex))menuItem
 {
-    UIImageView *navIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, _nSpaceNavY, self.view.width, 64 - _nSpaceNavY)];
+    navIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, _nSpaceNavY, self.view.width, 64 - _nSpaceNavY)];
     navIV.tag = 98;
     [self.view addSubview:navIV];
     [self reloadImage];
@@ -313,8 +314,8 @@
         imageName = @"header_bg";
     }
     UIImage *image = [QHCommonUtil imageNamed:imageName];
-    UIImageView *navIV = (UIImageView *)[self.view viewWithTag:98];
-    [navIV setImage:image];
+    UIImageView *navIV1 = (UIImageView *)[self.view viewWithTag:98];
+    [navIV1 setImage:image];
 }
 
 -(void)popToLeft
@@ -337,6 +338,21 @@
 {
     [self reloadImage];
 }
+
+-(void)hiddenNavigationBar{
+
+    _navView.hidden = YES;
+    navIV.hidden = YES;
+   
+}
+
+-(void)nohiddenNavigationBar{
+    
+    _navView.hidden = NO;
+    navIV.hidden = NO;
+    
+}
+
 
 - (void)subReloadImage
 {
