@@ -11,8 +11,9 @@
 #import "LoginViewController.h"
 #import "RegistViewController.h"
 #import "AFHTTPSessionManager.h"
+#import "MainTabViewController.h"
 
-#define URL @"https://leancloud.cn:443/1.1/login?username=xinzhi&password=666666"
+#define URL @"https://leancloud.cn:443/1.1/login?username=%@&password=%@"
 
 
 @interface LoginViewController ()
@@ -74,9 +75,12 @@
 -(void)clickEvent:(UIButton *)sender
 {
     [super clickEvent:sender];
+    NSString *tempUserName = _accountTF.text;
+    NSString *tempPassword = _passWordTF.text;
     switch (sender.tag) {
         case 1000:
             [self.navigationController popToRootViewControllerAnimated:YES];
+            [[MainTabViewController getMain] backToHomeController];
             break;
         case 1001:
             [[SliderViewController sharedSliderController].navigationController pushViewController:[[RegistViewController alloc] init] animated:YES];
@@ -85,22 +89,42 @@
         {
             if([self __check])
             {
-                NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URL]];
-                request.HTTPMethod = @"GET";
-                [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-                [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-                NSDictionary *dic=@{@"password":_passWordTF.text,@"username":_accountTF.text};
-                [request setHTTPBody:[NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:nil]];
-                [request addValue: @"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz" forHTTPHeaderField:@"X-LC-Id"];
-                [request addValue: @"MDOagSCTlLw9A6fkrcaphlB8" forHTTPHeaderField:@"X-LC-Key"];
-                AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-                [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-                    [self.navigationController popToRootViewControllerAnimated:YES];
-                } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-                    if(error.code ==201)
-                        [MBProgressHUD showError:@"用户名或密码错误"];
+                SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
+                NSString *urlString = [NSString stringWithFormat:URL,tempUserName,tempPassword];
+                [_urlParamsReq setUrlString:urlString];
+                [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
+                    
+                    
+                    if ([[successRequest.responseString objectFromJSONString] valueForKey:@"sessionToken"]) {
+                        [MBProgressHUD bwm_showTitle:@"登录成功!" toView:self.view hideAfter:2.0f];
+                        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                        [userDefaults setObject:@"1" forKey:kLoginStatus];
+                        
+//                        [MBProgressHUD bwm_showTitle:[[successRequest.responseString objectFromJSONString] valueForKey:@"err"] toView:self.view hideAfter:2.0f];
+                    }
+//                    else {
+//                        [MBProgressHUD bwm_showTitle:@"验证码发送成功" toView:self.view hideAfter:2.0f];
+//                    }
+                    
+                    NSLog(@"access send sms success, successRequest: %@",[successRequest.responseString objectFromJSONString]);
+                    
+                } failureBlock:^(SSLXResultRequest *failRequest){
+                    
+                    NSLog(@"access send sms fail");
+                    
+                    NSDictionary *_failDict = [failRequest.responseString objectFromJSONString];
+                    NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
+                    if (_errorMsg) {
+                        
+                        [MBProgressHUD showError:_errorMsg];
+                        
+                        //            UIAlertView *_alertView = [[UIAlertView alloc] initWithTitle:nil message:_errorMsg delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+                        //            [_alertView show];
+                    }
+                    else {
+                        [MBProgressHUD showError:kMBProgressErrorTitle];
+                    }
                 }];
-                [operation start];
             }
             break;
         }

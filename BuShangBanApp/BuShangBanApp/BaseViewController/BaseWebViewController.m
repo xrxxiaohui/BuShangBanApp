@@ -10,7 +10,12 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 #import <StoreKit/StoreKit.h>
 #import "WechatShareView.h"
-//#import <ShareSDK/ShareSDK.h>
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+// 弹出分享菜单需要导入的头文件
+#import <ShareSDKUI/ShareSDK+SSUI.h>
+// 自定义分享菜单栏需要导入的头文件
+#import <ShareSDKUI/SSUIShareActionSheetStyle.h>
 
 CGFloat const gestureMinimumTranslation = 2.0 ;
 
@@ -344,7 +349,7 @@ typedef enum : NSInteger {
     UIButton *duanxinButton = [[UIButton alloc] initWithFrame:CGRectMake(47*kScreenWidth/414, 44, 50, 50)];
     UIImage *duanxinImage = [UIImage imageNamed:@"短信"];
     [duanxinButton setBackgroundImage: duanxinImage forState:UIControlStateNormal ];
-    [duanxinButton addTarget:self action:@selector(ShowShareView:)forControlEvents:UIControlEventTouchUpInside];
+    [duanxinButton addTarget:self action:@selector(showShareActionSheet)forControlEvents:UIControlEventTouchUpInside];
     duanxinButton.tag = 0;
     [shareview addSubview:duanxinButton];
     [self.view addSubview:shareview];
@@ -369,7 +374,7 @@ typedef enum : NSInteger {
     UIButton *weixinButton = [[UIButton alloc] initWithFrame:CGRectMake((47+90)*kScreenWidth/414, 44, 50, 50)];
     UIImage *weixinImage = [UIImage imageNamed:@"微信"];
     [weixinButton setBackgroundImage: weixinImage forState:UIControlStateNormal ];
-    [weixinButton addTarget:self action:@selector(ShowShareView:)forControlEvents:UIControlEventTouchUpInside];
+    [weixinButton addTarget:self action:@selector(showShareActionSheet)forControlEvents:UIControlEventTouchUpInside];
     weixinButton.tag = 0;
     [shareview addSubview:weixinButton];
     [self.view addSubview:shareview];
@@ -560,46 +565,54 @@ typedef enum : NSInteger {
 
 //#pragma mark - Share Wechat 
 //
-//- (void)showToWechat:(UIButton *)sender {
+
+//- (void)showShareActionSheet{
+//    /**
+//     * 在简单分享中，只要设置共有分享参数即可分享到任意的社交平台
+//     **/
+//    __weak BaseWebViewController *theController = self;
+//    //1、创建分享参数（必要）
+//    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+////    NSArray* imageArray = @[[UIImage imageNamed:@"shareImg.png"]];
+//    [shareParams SSDKSetupShareParamsByText:@"分享内容"
+//                                     images:nil
+//                                        url:[NSURL URLWithString:@"http://www.mob.com"]
+//                                      title:@"分享标题"
+//                                       type:SSDKContentTypeAuto];
 //    
-//    ShareType type = 0;
-//    switch (sender.tag) {
-//        case 0:
-//            type = ShareTypeWeixiSession;
-//            break;
-//        case 1:
-//            type = ShareTypeWeixiTimeline;
-//            break;
-//        case 2:
-//            type = ShareTypeWeixiFav;
-//            break;
-//        default:
-//            break;
-//    }
+//    //创建分享参数
+//    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
 //    
-//    NSString* path = [[NSBundle mainBundle]pathForResource:@"Icon" ofType:@"png"];
+////    NSArray* imageArray = @[[UIImage imageNamed:@"shareImg.png"]];
 //    
+////    if (imageArray) {
 //    
-//    id<ISSContent> publishContent = [ShareSDK content:self.title defaultContent:nil image:[ShareSDK imageWithPath:path] title:self.shareTitle url:self.shareUrl description:nil mediaType:SSPublishContentMediaTypeNews];
-//    
-//    //2.分享
-//    [ShareSDK showShareViewWithType:type container:nil content:publishContent statusBarTips:YES authOptions:nil shareOptions:nil result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
-//        //如果分享成功
-//        if (state == SSResponseStateSuccess) {
-//            NSLog(@"分享成功");
-//            [self performSelector:@selector(dismissShareView) withObject:nil afterDelay:1.5];
-//            [MBProgressHUD showSuccess:@"分享成功"];
-//            
-//        }else if (state == SSResponseStateFail) {
-//            NSLog(@"分享失败,错误码:%ld,错误描述%@",(long)[error errorCode],[error errorDescription]);
-//            [MBProgressHUD showSuccess:@"分享失败"];
-//            [self performSelector:@selector(dismissShareView) withObject:nil afterDelay:1.5];
-//        }else if (state == SSResponseStateCancel){
-//            NSLog(@"分享取消");
-//            [MBProgressHUD showSuccess:@"分享取消"];
-//            [self performSelector:@selector(dismissShareView) withObject:nil afterDelay:1.5];
-//        }
-//    }];
+//        [shareParams SSDKSetupShareParamsByText:@"分享内容"
+//                                         images:nil
+//                                            url:[NSURL URLWithString:@"http://mob.com"]
+//                                          title:@"分享标题"
+//                                           type:SSDKContentTypeImage];
+//        
+//        [shareParams SSDKSetupWeChatParamsByText:@"分享内容 http://mob.com"
+//                                           title:@"分享标题"
+//                                             url:[NSURL URLWithString:@"http://mob.com"]
+//                                      thumbImage:[UIImage imageNamed:@"shareImg.png"]
+//                                           image:[UIImage imageNamed:@"shareImg.png"]
+//                                    musicFileURL:nil
+//                                         extInfo:nil
+//                                        fileData:nil
+//                                    emoticonData:nil
+//                             sourceFileExtension:nil
+//                                  sourceFileData:nil
+//                                            type:SSDKContentTypeAuto
+//                              forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+//        
+//        
+//        //进行分享
+//        [ShareSDK share:SSDKPlatformTypeWechat
+//             parameters:shareParams
+//         onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+//         }];
 //}
 
 @end

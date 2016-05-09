@@ -12,9 +12,9 @@
 @implementation SSLXBaseRequest
 
 // 全部请求都用Post请求
-- (YTKRequestMethod)requestMethod {
-    return YTKRequestMethodGet;
-}
+//- (YTKRequestMethod)requestMethod {
+//    return YTKRequestMethodGet;
+//}
 
 -(void)setIsNeedCacheRespond:(BOOL)isNeedCacheRespond {
 

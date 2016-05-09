@@ -14,5 +14,5 @@
 + (MainTabViewController *)getMain;
 
 - (void)removeLoginOrRigistView;
-
+- (void)backToHomeController;
 @end

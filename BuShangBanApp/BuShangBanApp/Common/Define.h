@@ -300,4 +300,7 @@
 #define kUserInfoDic @"UserInfoDic"
 #define kPersonalInfoDic @"kPersonalInfoDic"
 #define SaveUserTag @"SaveUserTag"  //问答资讯页
+#define kLoginStatus @"loginStatus" 
+//1已登录
+
 

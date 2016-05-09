@@ -208,6 +208,10 @@ static MainTabViewController *main;
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
 
+    if(tabBarController.selectedIndex==3){
+    
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"judgeLoginStatus" object:nil];
+    }
 }
 
 #pragma mark - PopupView Delegate

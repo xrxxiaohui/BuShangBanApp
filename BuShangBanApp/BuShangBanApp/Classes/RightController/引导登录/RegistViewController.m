@@ -21,8 +21,6 @@
 
 #define iniviteURL @"https://leancloud.cn:443/1.1/classes/InvitationCode?where=%7B%22key%22%3A%22bsb%22%7D&limit=1&&order=-updatedAt&&keys=-ACL%2C-createdAt%2C-updatedAt%2C-objectId%2C-count"
 
-
-
 @interface RegistViewController ()
 {
     UIButton *_loginBtn;
@@ -162,12 +160,11 @@
             SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
             [_urlParamsReq setUrlString:@"https://api.leancloud.cn/1.1/requestSmsCode"];
             NSDictionary *_paramsDict = @{
-                                          @"mobilePhoneNumber":tempString?tempString:@0,
-                                          @"X-LC-Id":@"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz",
-                                          @"X-LC-Key":@"MDOagSCTlLw9A6fkrcaphlB8",
-                                          @"Content-Type":@"application/json"
+                                          @"mobilePhoneNumber":tempString?tempString:@0
                                           };
              [_urlParamsReq setParamsDict:_paramsDict];
+            _urlParamsReq.requestMethod = YTKRequestMethodPost;
+            
 
             [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
                 
@@ -357,7 +354,7 @@
 - (void)timeCutDown {
     [_getCodeBtn setTitle:[NSString stringWithFormat:@"%ld秒", (long) --_totalTime] forState:UIControlStateNormal];
     _getCodeBtn.alpha = 0.2;
-    _getCodeBtn.userInteractionEnabled=NO;
+//    _getCodeBtn.userInteractionEnabled=NO;
     if (_totalTime == 0) {
         _getCodeBtn.userInteractionEnabled = YES;
         [_getCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
