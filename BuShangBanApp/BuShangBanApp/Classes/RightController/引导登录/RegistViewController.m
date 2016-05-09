@@ -57,6 +57,7 @@
     [self.view addSubview:_loginBtn];
     
     _accountTF=[self textFieldWithPlaceHolder:@"手机号/邮箱" imageNamed:@"phone number"];
+    _accountTF.keyboardType=UIKeyboardTypeNumberPad;
     
     _verificationCodeTF=[self textFieldWithPlaceHolder:@"验证码" imageNamed:@"Verification code"];
     _verificationCodeTF.keyboardType=UIKeyboardTypeNumberPad;
@@ -69,10 +70,11 @@
     [_contentView addSubview:_getCodeBtn];
     
     _passWordTF=[self textFieldWithPlaceHolder:@"密码" imageNamed:@"password"];
+    _passWordTF.secureTextEntry=YES;
     _passWordTF.top=_getCodeBtn.bottom;
-
     
     _passWordAgainTF=[self textFieldWithPlaceHolder:@"再次输入密码" imageNamed:@"password again"];
+    _passWordAgainTF.secureTextEntry=YES;
     _passWordAgainTF.top=_passWordTF.bottom;
     
     [self shapeLayerWithStartPoint:CGPointMake(_passWordAgainTF.left, _passWordAgainTF.bottom-8) endPoint:CGPointMake(_passWordAgainTF.right, _passWordAgainTF.bottom-8)];
@@ -135,7 +137,6 @@
 -(void)clickEvent:(UIButton *)sender
 {
     [super clickEvent:sender];
-//    __block BOOL success=NO;
     switch (sender.tag) {
         case 1000:
             [self.navigationController popToRootViewControllerAnimated:YES];
@@ -145,20 +146,13 @@
             break;
         case 1002:
         {
-
             NSString *tempString = [NSString stringWithFormat:@"%@",_accountTF.text];
-
-            if ([tempString isEqualToString:@""]){
-                [MBProgressHUD showError:@"号码不能为空"];
-                return;
-            }
+            [self __checkMobileWithPhone:_accountTF.text];
             [self cutDownTimer];
             
             SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
             [_urlParamsReq setUrlString:@"https://api.leancloud.cn/1.1/requestSmsCode"];
-            NSDictionary *_paramsDict = @{
-                                          @"mobilePhoneNumber":tempString?tempString:@0
-                                          };
+            NSDictionary *_paramsDict = @{  @"mobilePhoneNumber":tempString?tempString:@0   };
              [_urlParamsReq setParamsDict:_paramsDict];
             _urlParamsReq.requestMethod = YTKRequestMethodPost;
             
@@ -230,6 +224,27 @@
         }
     }
 }
+
+-(BOOL)__checkMobileWithPhone:(NSString *)phoneNumber
+{
+    if ([phoneNumber isEqualToString:@""]){
+        [MBProgressHUD showError:@"号码不能为空"];
+        return NO;
+    }
+    if ([phoneNumber length]!=11 ){
+        [MBProgressHUD showError:@"号码长度不为11"];
+        return NO;
+    }
+    if([self __validateMobile:phoneNumber])
+    {
+        [MBProgressHUD showError:@"号码不对"];
+        return NO;
+    }
+    return YES;
+}
+
+
+
 -(BOOL)__check
 {
     NSArray *textFieldArray=[NSArray arrayWithObjects:_accountTF, _verificationCodeTF,_passWordTF,_passWordAgainTF,_inivitTF,nil];
@@ -239,17 +254,19 @@
             return NO;
         }
     }
-    if(![_passWordTF.text isEqualToString:_passWordAgainTF.text])
-    {
-        [MBProgressHUD showError:@"两次密码不一致"];
-        return NO;
-    }
+    
     
     if(_passWordTF.text.length<6)
     {
         [MBProgressHUD showError:@"密码长度不能小于6"];
         return NO;
     }
+    if(![_passWordTF.text isEqualToString:_passWordAgainTF.text])
+    {
+        [MBProgressHUD showError:@"两次密码不一致"];
+        return NO;
+    }
+    
     
     if ([_accountTF.text containsString:@"."])
     {
@@ -260,18 +277,27 @@
         }
     }
     else
-    {
-        if(![self __validateMobile:_accountTF.text])
-        {
-            [MBProgressHUD showError:@"号码格式不对"];
+        if (![self __checkMobileWithPhone:_accountTF.text])
             return NO;
-        }
+    
+    
+    if([_verificationCodeTF.text length]!=6)
+    {
+        [MBProgressHUD showError:@"验证码长度不对"];
+        return NO;
     }
+    if (![self  __verificationCode:_verificationCodeTF.text])
+    {
+        [MBProgressHUD showError:@"验证码格式不对"];
+        return NO;
+    }
+    
+    
     
     if(!_readedBtn.selected)
     {
-        [MBProgressHUD showError:@""];
-        _readedBtn.selected=YES;
+        [MBProgressHUD showError:@"用户协议没有选中"];
+        return NO;
     }
     return YES;
 }
@@ -284,16 +310,21 @@
     return [emailTest evaluateWithObject:email];
 }
 
-
 //手机号码验证
 - (BOOL) __validateMobile:(NSString *)mobile
 {
-    //手机号以13， 15，18开头，八个 \d 数字字符
-    NSString *phoneRegex = @"^((13[0-9])|(15[^4,\\D])|(18[0,0-9]))\\d{8}$";
+    NSString *phoneRegex = @"/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/";
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
     return [phoneTest evaluateWithObject:mobile];
 }
 
+//验证码
+- (BOOL) __verificationCode:(NSString *)verificationCode
+{
+    NSString *codeRegex = @"/d/d/d/d/d/d";
+    NSPredicate *codeTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",codeRegex];
+    return [codeTest evaluateWithObject:verificationCode];
+}
 
 -(void)showKeyBoard:(NSNotification *)noti
 {
@@ -311,9 +342,8 @@
 
 
 - (NSTimer *)cutDownTimer {
-    if (!_cutDownTimer) {
+    if (!_cutDownTimer)
         _cutDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeCutDown) userInfo:nil repeats:YES];
-    }
     return _cutDownTimer;
 }
 

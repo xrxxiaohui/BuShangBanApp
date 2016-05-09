@@ -34,8 +34,6 @@
     
     _fmVC=[[FMViewController alloc]init];
     [self addChildViewController:_fmVC];
-    _fmVC.view.frame=CGRectMake(0,64, kScreenWidth, 0);
-    _fmVC.view.alpha=0;
     [self.view addSubview:_fmVC.view];
     
     UIButton *fmBtn=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -61,6 +59,8 @@
 
 -(void)showFM
 {
+    _fmVC.view.frame=CGRectMake(0,64, kScreenWidth, 0);
+    _fmVC.view.alpha=0;
     [UIView animateWithDuration:0.3 animations:^{
         _fmVC.view.height=40;
         _fmVC.view.alpha=1;
