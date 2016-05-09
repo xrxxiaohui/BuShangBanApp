@@ -328,15 +328,10 @@
     NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:pictureName];
     NSLog(@"截屏路径打印: %@", savedImagePath);
 
-    NSError *error = nil;
-    if([[NSFileManager defaultManager] removeItemAtPath:savedImagePath error:&error])
-    {
-        NSLog(@"文件移除成功");
-    }
-    else {
-        NSLog(@"error=%@", error);
-    }
+    NSFileManager *defaultManager;
+    defaultManager = [NSFileManager defaultManager];
     
+    [defaultManager removeItemAtPath:savedImagePath error:nil];
     
        //这里我将路径设置为一个全局String，这里做的不好，我自己是为了用而已，希望大家别这么写
     [self SetPickPath:savedImagePath];

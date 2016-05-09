@@ -158,13 +158,14 @@
 
 -(void)createBackgroundView{
 
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *pictureName= [NSString stringWithFormat:@"screenShow.png"];
-    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:pictureName];
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    NSString *pictureName= [NSString stringWithFormat:@"screenShow.png"];
+//    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:pictureName];
     
-    UIImage *localImage = [UIImage imageWithContentsOfFile:savedImagePath];
-    UIImageView *backgroungImageView = [[UIImageView alloc] initWithImage:localImage];
+//    UIImage *localImage = [UIImage imageWithContentsOfFile:savedImagePath];
+    
+    UIImageView *backgroungImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cardBackground"]];
     backgroungImageView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     
     UIVisualEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
