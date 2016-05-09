@@ -96,7 +96,7 @@
     
     // 请求
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
-    [_urlParamsReq setUrlString:@"https://leancloud.cn:443/1.1/classes/Message?limit=10&&order=-createdAt&&"];
+    [_urlParamsReq setUrlString:@"https://leancloud.cn:443/1.1/classes/Message?limit=100&&order=-createdAt&&"];
     
     //    NSDictionary *_tempParam = @{@"bid":@"888888"};
     //    [_urlParamsReq setParamsDict:_tempParam];

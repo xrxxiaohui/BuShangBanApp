@@ -123,7 +123,7 @@
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
     
     NSDictionary *_tempParam = @{@"bid":@"888888"};
-    [_urlParamsReq setUrlString:@"https://leancloud.cn:443/1.1/classes/_Status?limit=100&&order=-createdAt&include=related_post,related_post.author&keys=-related_post.body"];
+    [_urlParamsReq setUrlString:@"https://leancloud.cn:443/1.1/classes/_Status?limit=100&&order=-createdAt&include=related_post,related_post.author,related_post.category&keys=-related_post.body"];
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
         
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
@@ -155,7 +155,6 @@
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
     [_urlParamsReq setUrlString:@"https://leancloud.cn:443/1.1/classes/Featured?limit=10&&order=-sort&"];
     
-    NSDictionary *_tempParam = @{@"bid":@"888888"};
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
         
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
@@ -355,7 +354,13 @@
     NSString *pictureName= [NSString stringWithFormat:@"screenShow.png"];
     NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:pictureName];
     NSLog(@"截屏路径打印: %@", savedImagePath);
-    //这里我将路径设置为一个全局String，这里做的不好，我自己是为了用而已，希望大家别这么写
+
+    NSFileManager *defaultManager;
+    defaultManager = [NSFileManager defaultManager];
+    
+    [defaultManager removeItemAtPath:savedImagePath error:nil];
+    
+       //这里我将路径设置为一个全局String，这里做的不好，我自己是为了用而已，希望大家别这么写
     [self SetPickPath:savedImagePath];
     
     [imageViewData writeToFile:savedImagePath atomically:YES];//保存照片到沙盒目录

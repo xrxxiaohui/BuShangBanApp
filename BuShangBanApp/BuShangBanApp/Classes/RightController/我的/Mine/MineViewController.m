@@ -37,8 +37,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(judgeLoginStatus) name:@"judgeLoginStatus" object:nil];
+}
+
+-(void)judgeLoginStatus{
+
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *loginStatus = [userDefaults objectForKey:kLoginStatus];
     
-    [self __loadData];
+    if([loginStatus isEqualToString:@"1"]){
+        //已登录
+        [self __loadData];
+    }else{
+        
+        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
+    }
 
 }
 

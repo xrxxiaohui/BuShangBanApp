@@ -13,4 +13,6 @@
 
 + (MainTabViewController *)getMain;
 
+- (void)backToHomeController;
+
 @end

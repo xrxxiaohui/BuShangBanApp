@@ -99,7 +99,9 @@ static MainTabViewController *main;
     [_tabController setSelectedIndex:0];
 }
 
-
+- (void)removeLoginOrRigistView
+{
+}
 - (void)shadowViewClick:(UIControl *)control {
     
 }
@@ -195,6 +197,10 @@ static MainTabViewController *main;
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
 
+    if(tabBarController.selectedIndex==3){
+    
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"judgeLoginStatus" object:nil];
+    }
 }
 
 #pragma mark - PopupView Delegate

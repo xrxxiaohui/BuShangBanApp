@@ -131,6 +131,7 @@
     _userProtocalBtn.bottom=kScreenHeight-12;
 }
 
+
 -(void)clickEvent:(UIButton *)sender
 {
     [super clickEvent:sender];
@@ -144,7 +145,9 @@
             break;
         case 1002:
         {
-            NSString *tempString = _accountTF.text;
+
+            NSString *tempString = [NSString stringWithFormat:@"%@",_accountTF.text];
+
             if ([tempString isEqualToString:@""]){
                 [MBProgressHUD showError:@"号码不能为空"];
                 return;
@@ -154,12 +157,11 @@
             SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
             [_urlParamsReq setUrlString:@"https://api.leancloud.cn/1.1/requestSmsCode"];
             NSDictionary *_paramsDict = @{
-                                          @"mobilePhoneNumber":tempString?tempString:@0,
-                                          @"X-LC-Id":@"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz",
-                                          @"X-LC-Key":@"MDOagSCTlLw9A6fkrcaphlB8",
-                                          @"Content-Type":@"application/json"
+                                          @"mobilePhoneNumber":tempString?tempString:@0
                                           };
              [_urlParamsReq setParamsDict:_paramsDict];
+            _urlParamsReq.requestMethod = YTKRequestMethodPost;
+            
 
             [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
                 if ([[successRequest.responseString objectFromJSONString] valueForKey:@"err"])

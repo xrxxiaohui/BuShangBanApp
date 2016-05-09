@@ -44,9 +44,7 @@
     // 请求
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
     [_urlParamsReq setUrlString:@"https://leancloud.cn:443/1.1/classes/Post?limit=1&&order=-featured_at&&keys=-body&include=author"];
-    
-    NSDictionary *_tempParam = @{@"bid":@"888888"};
-    
+        
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
         
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
@@ -160,13 +158,14 @@
 
 -(void)createBackgroundView{
 
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *pictureName= [NSString stringWithFormat:@"screenShow.png"];
-    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:pictureName];
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    NSString *pictureName= [NSString stringWithFormat:@"screenShow.png"];
+//    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:pictureName];
     
-    UIImage *localImage = [UIImage imageWithContentsOfFile:savedImagePath];
-    UIImageView *backgroungImageView = [[UIImageView alloc] initWithImage:localImage];
+//    UIImage *localImage = [UIImage imageWithContentsOfFile:savedImagePath];
+    
+    UIImageView *backgroungImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cardBackground"]];
     backgroungImageView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     
     UIVisualEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];

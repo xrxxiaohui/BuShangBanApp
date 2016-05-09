@@ -150,7 +150,7 @@
     NSString *_tempSignKey = [[_tempString copy] md5String];
     
     NSMutableDictionary *_paramDic = [[NSMutableDictionary alloc] initWithDictionary:self.paramsDict];
-    [_paramDic addEntriesFromDictionary:@{@"sign":_tempSignKey}];
+//    [_paramDic addEntriesFromDictionary:@{@"sign":_tempSignKey}];
 //  @{@"c":@"1111",@"b":@"222",@"a":@"3333",@"sign":_tempSignKey};
     
     if (_baseParams) {

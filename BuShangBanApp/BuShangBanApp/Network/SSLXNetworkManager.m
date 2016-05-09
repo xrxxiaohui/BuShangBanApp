@@ -110,14 +110,15 @@ static id _instance;
         
     } failure:^(YTKBaseRequest *failRequest){
     
-//        NSDictionary *_nsDic  = [failRequest.responseString objectFromJSONString];
-        // 保证是字典类型
-//        if (_nsDic && [_nsDic isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *_nsDic  = [failRequest.responseString objectFromJSONString];
+//         保证是字典类型
+        if (_nsDic && [_nsDic isKindOfClass:[NSDictionary class]]) {
         
             if (failureResult) {
                 failureResult((SSLXResultRequest *)failRequest);
             }
-//        }
+//            [MBProgressHUD showError:[NSString stringWithFormat:@"%@",[_nsDic objectForKey:@"error"]]];
+        }
         
         
     }];

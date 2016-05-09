@@ -11,8 +11,8 @@
 #import "LoginViewController.h"
 #import "RegistViewController.h"
 #import "AFHTTPSessionManager.h"
-
-#define URL @"https://leancloud.cn:443/1.1/login?username=xinzhi&password=666666"
+#import "MainTabViewController.h"
+#define URL @"https://leancloud.cn:443/1.1/login?username=%@&password=%@"
 
 
 @interface LoginViewController ()
@@ -78,10 +78,13 @@
 -(void)clickEvent:(UIButton *)sender
 {
     [super clickEvent:sender];
+    NSString *tempUserName = _accountTF.text;
+    NSString *tempPassword = _passWordTF.text;
     switch (sender.tag) {
         case 1000:
         {
             [self.navigationController popToRootViewControllerAnimated:YES];
+            [[MainTabViewController getMain] backToHomeController];
             [[NSNotificationCenter defaultCenter]postNotificationName:@"gotoFirstPage" object:nil];
             break;
         }
@@ -92,26 +95,32 @@
         {
             if([self __check])
             {
-                NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:URL]];
-                request.HTTPMethod = @"GET";
-                [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-                [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-                NSDictionary *dic=@{@"password":_passWordTF.text,@"username":_accountTF.text};
-                [request setHTTPBody:[NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:nil]];
-                [request addValue: @"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz" forHTTPHeaderField:@"X-LC-Id"];
-                [request addValue: @"MDOagSCTlLw9A6fkrcaphlB8" forHTTPHeaderField:@"X-LC-Key"];
-                AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-                [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-                    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"Loginned"];
-                    [[NSUserDefaults standardUserDefaults] synchronize];
-                    [self.navigationController popToRootViewControllerAnimated:YES];
-                } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-                    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"Loginned"];
-                    [[NSUserDefaults standardUserDefaults] synchronize];
-                    if(error.code ==201)
-                        [MBProgressHUD showError:@"用户名或密码错误"];
+                SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
+                    NSString *urlString = [NSString stringWithFormat:URL,tempUserName,tempPassword];
+                    [_urlParamsReq setUrlString:urlString];
+                    [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
+                    
+                    if ([[successRequest.responseString objectFromJSONString] valueForKey:@"sessionToken"]) {
+                        [MBProgressHUD bwm_showTitle:@"登录成功!" toView:self.view hideAfter:2.0f];
+                        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                        [userDefaults setObject:@"1" forKey:kLoginStatus];
+                        
+                        }
+                    
+                } failureBlock:^(SSLXResultRequest *failRequest){
+                                        
+                    NSDictionary *_failDict = [failRequest.responseString objectFromJSONString];
+                    NSString *_errorMsg = [_failDict objectForKey:@"error"];
+                    if (_errorMsg) {
+                        
+                        [MBProgressHUD showError:_errorMsg];
+                        
+                
+                    }
+                    else {
+                        [MBProgressHUD showError:kMBProgressErrorTitle];
+                    }
                 }];
-                [operation start];
             }
             break;
         }

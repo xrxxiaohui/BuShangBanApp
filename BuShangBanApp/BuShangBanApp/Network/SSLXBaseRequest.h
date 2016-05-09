@@ -13,5 +13,7 @@
 
 @property (nonatomic, assign) BOOL isNeedCacheRespond;
 @property (nonatomic, copy) NSString *cacheRespondString;
+@property (nonatomic, assign) YTKRequestMethod requestMethod;
+
 
 @end
