@@ -9,10 +9,8 @@
 
 @interface MainTabViewController : QHBasicViewController
 
-@property(nonatomic, retain) UITabBarController *tabController;;
+@property(nonatomic, retain) UITabBarController *tabController;
 
 + (MainTabViewController *)getMain;
-
-- (void)removeLoginOrRigistView;
 
 @end

@@ -14,14 +14,9 @@
 #import <AVOSCloud/AVOSCloud.h>
 #import "AccessSendSmsApi.h"
 
-//验证邀请码接口 https://leancloud.cn:443/1.1/classes/InvitationCode?where=%7B%22key%22%3A%22bsb%22%7D&limit=1&&order=-updatedAt&&keys=-ACL%2C-createdAt%2C-updatedAt%2C-objectId%2C-count
-
-//获取短信验证码  https://api.leancloud.cn/1.1/requestSmsCode
 #define requestSmsCode @"https://api.leancloud.cn/1.1/requestSmsCode"
 
 #define iniviteURL @"https://leancloud.cn:443/1.1/classes/InvitationCode?where=%7B%22key%22%3A%22bsb%22%7D&limit=1&&order=-updatedAt&&keys=-ACL%2C-createdAt%2C-updatedAt%2C-objectId%2C-count"
-
-
 
 @interface RegistViewController ()
 {
@@ -44,7 +39,6 @@
     NSInteger _totalTime;
 }
 
-    
 - (void)viewDidLoad {
     [super viewDidLoad];
     _totalTime = 60;
@@ -76,6 +70,7 @@
     
     _passWordTF=[self textFieldWithPlaceHolder:@"密码" imageNamed:@"password"];
     _passWordTF.top=_getCodeBtn.bottom;
+
     
     _passWordAgainTF=[self textFieldWithPlaceHolder:@"再次输入密码" imageNamed:@"password again"];
     _passWordAgainTF.top=_passWordTF.bottom;
@@ -150,15 +145,12 @@
         case 1002:
         {
             NSString *tempString = _accountTF.text;
-
             if ([tempString isEqualToString:@""]){
                 [MBProgressHUD showError:@"号码不能为空"];
                 return;
             }
             [self cutDownTimer];
             
-            
-//            AccessSendSmsApi *_accessSendSmsApi = [[AccessSendSmsApi alloc] initWithUserPhone:tempString];
             SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
             [_urlParamsReq setUrlString:@"https://api.leancloud.cn/1.1/requestSmsCode"];
             NSDictionary *_paramsDict = @{
@@ -170,14 +162,10 @@
              [_urlParamsReq setParamsDict:_paramsDict];
 
             [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
-                
-                if ([[successRequest.responseString objectFromJSONString] valueForKey:@"err"]) {
-                    
+                if ([[successRequest.responseString objectFromJSONString] valueForKey:@"err"])
                     [MBProgressHUD bwm_showTitle:[[successRequest.responseString objectFromJSONString] valueForKey:@"err"] toView:self.view hideAfter:2.0f];
-                }
-                else {
+                else
                     [MBProgressHUD bwm_showTitle:@"验证码发送成功" toView:self.view hideAfter:2.0f];
-                }
                 
                 NSLog(@"access send sms success, successRequest: %@",[successRequest.responseString objectFromJSONString]);
                 
@@ -187,47 +175,12 @@
                 
                 NSDictionary *_failDict = [failRequest.responseString objectFromJSONString];
                 NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
-                if (_errorMsg) {
-                    
+                if (_errorMsg)
                     [MBProgressHUD showError:_errorMsg];
-                    
-                    //            UIAlertView *_alertView = [[UIAlertView alloc] initWithTitle:nil message:_errorMsg delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
-                    //            [_alertView show];
-                }
-                else {
+                else
                     [MBProgressHUD showError:kMBProgressErrorTitle];
-                }
             }];
             
-//        }else{
-//            
-//            [MBProgressHUD showError:@"请输入正确手机号"];
-//            return;
-//        }
-            
-//            if ([_accountTF.text containsString:@"."]) {
-////                邮箱验证
-//                
-//                
-//            }else
-//            {
-
-//            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
-//            request.HTTPMethod = @"POST";
-//            [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-//            [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-//            NSDictionary *dic=@{@"username":_accountTF.text};
-//            [request setHTTPBody:[NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:nil]];
-//            [request addValue: @"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz" forHTTPHeaderField:@"X-LC-Id"];
-//            [request addValue: @"MDOagSCTlLw9A6fkrcaphlB8" forHTTPHeaderField:@"X-LC-Key"];
-//            AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-//            [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull        responseObject) {
-//                  [MBProgressHUD showError:@"已经发送"];
-//            } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
-//                if(error.code ==201)
-//                    [MBProgressHUD showError:@"号码有误"];
-//            }];
-//            }
             break;
         }
         case 1003:
@@ -256,7 +209,6 @@
                     //                    [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"UserInfo"];
                 }
             }
-            
         }
             break;
         case 1004:
@@ -291,7 +243,7 @@
         return NO;
     }
     
-    if(_passWordTF.text.length<7)
+    if(_passWordTF.text.length<6)
     {
         [MBProgressHUD showError:@"密码长度不能小于6"];
         return NO;
@@ -363,6 +315,7 @@
     return _cutDownTimer;
 }
 
+//倒计时
 - (void)timeCutDown {
     [_getCodeBtn setTitle:[NSString stringWithFormat:@"%ld秒", (long) --_totalTime] forState:UIControlStateNormal];
     _getCodeBtn.alpha = 0.2;

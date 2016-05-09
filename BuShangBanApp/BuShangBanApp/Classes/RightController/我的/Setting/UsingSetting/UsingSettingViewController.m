@@ -139,12 +139,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-<<<<<<< HEAD
-=======
-//    UIStoryboard *UserProtocal=[UIStoryboard storyboardWithName:@"UserProtocal" bundle:nil];
-//    [[SliderViewController sharedSliderController].navigationController pushViewController:[UserProtocal instantiateViewControllerWithIdentifier:@"UserProtocal"] animated:YES];
-    
->>>>>>> 0726e0d4630677a7dca14192f6882e2059a96847
+
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if(indexPath.section == 1 && indexPath.row == 0)
     {

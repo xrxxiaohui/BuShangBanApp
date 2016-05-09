@@ -43,9 +43,9 @@
     [self.view addSubview:_registBtn];
     
     _accountTF=[self textFieldWithPlaceHolder:@"手机号/邮箱" imageNamed:@"phone number"];
-    
     _passWordTF=[self textFieldWithPlaceHolder:@"密码" imageNamed:@"password"];
     _passWordTF.top=_accountTF.bottom;
+    
     
     [self shapeLayerWithStartPoint:CGPointMake(_accountTF.left, _accountTF.bottom-8) endPoint:CGPointMake(_accountTF.right, _accountTF.bottom-8)];
     [self shapeLayerWithStartPoint:CGPointMake(_passWordTF.left, _passWordTF.bottom-8) endPoint:CGPointMake(_passWordTF.right, _passWordTF.bottom-8)];
@@ -66,6 +66,10 @@
     }
     if ([_passWordTF.text isEqualToString:@""]){
         [MBProgressHUD showError:@"密码不能为空"];
+        return NO;
+    }
+    if ([_passWordTF.text length]<6) {
+        [MBProgressHUD showError:@"密码不能小于6位"];
         return NO;
     }
     return YES;
@@ -98,8 +102,12 @@
                 [request addValue: @"MDOagSCTlLw9A6fkrcaphlB8" forHTTPHeaderField:@"X-LC-Key"];
                 AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
                 [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+                    [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"Loginned"];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
                     [self.navigationController popToRootViewControllerAnimated:YES];
                 } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
+                    [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"Loginned"];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
                     if(error.code ==201)
                         [MBProgressHUD showError:@"用户名或密码错误"];
                 }];
