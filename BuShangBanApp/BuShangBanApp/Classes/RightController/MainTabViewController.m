@@ -15,7 +15,6 @@
 #import "LocationManager.h"
 #import "APIRequestManager.h"
 
-
 #import "HomePageViewController.h"
 #import "FindViewController.h"
 #import "MessageViewController.h"
@@ -93,10 +92,6 @@ static MainTabViewController *main;
     
     [_shadowView addSubview:effectview];
     [self.view addSubview:_shadowView];
-
-
-//    [self addLoginOrRigistView];
-
 }
 
 -(void)gotoFirstpage
