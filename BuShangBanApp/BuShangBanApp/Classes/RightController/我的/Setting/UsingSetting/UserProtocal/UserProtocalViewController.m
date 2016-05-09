@@ -10,6 +10,7 @@
 
 @interface UserProtocalViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end
 
@@ -19,10 +20,7 @@
     [super viewDidLoad];
     [self customNavigationBarWithTitle:@"用户协议"];
     [self defaultLeftItem];
+    self.textView.editable=NO;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 @end

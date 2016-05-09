@@ -76,8 +76,11 @@
     [super clickEvent:sender];
     switch (sender.tag) {
         case 1000:
+        {
             [self.navigationController popToRootViewControllerAnimated:YES];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"gotoFirstPage" object:nil];
             break;
+        }
         case 1001:
             [[SliderViewController sharedSliderController].navigationController pushViewController:[[RegistViewController alloc] init] animated:YES];
             break;

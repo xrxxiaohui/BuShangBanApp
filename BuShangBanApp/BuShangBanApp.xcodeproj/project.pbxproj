@@ -24,6 +24,7 @@
 		042B09A01CA42DFC003A533D /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042B099F1CA42DFC003A533D /* JavaScriptCore.framework */; };
 		042B09A21CA42E09003A533D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042B09A11CA42E09003A533D /* ImageIO.framework */; };
 		042B09CE1CA5A082003A533D /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B09CD1CA5A082003A533D /* FileManager.m */; };
+		0447E4681CE0569C0002EADF /* FMView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447E4671CE0569C0002EADF /* FMView.m */; };
 		044DAE1D1CA7E89F0058A319 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049EF24D1CA3904200C1D68A /* ShareSDK.framework */; };
 		049EF1E41CA38D8D00C1D68A /* AddressChoicePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF1D51CA38D8D00C1D68A /* AddressChoicePickerView.m */; };
 		049EF1E51CA38D8D00C1D68A /* AddressChoicePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049EF1D61CA38D8D00C1D68A /* AddressChoicePickerView.xib */; };
@@ -259,6 +260,8 @@
 		042B09A11CA42E09003A533D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		042B09CC1CA5A082003A533D /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
 		042B09CD1CA5A082003A533D /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
+		0447E4661CE0569C0002EADF /* FMView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMView.h; sourceTree = "<group>"; };
+		0447E4671CE0569C0002EADF /* FMView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMView.m; sourceTree = "<group>"; };
 		049EF1D41CA38D8D00C1D68A /* AddressChoicePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressChoicePickerView.h; sourceTree = "<group>"; };
 		049EF1D51CA38D8D00C1D68A /* AddressChoicePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressChoicePickerView.m; sourceTree = "<group>"; };
 		049EF1D61CA38D8D00C1D68A /* AddressChoicePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressChoicePickerView.xib; sourceTree = "<group>"; };
@@ -1150,6 +1153,8 @@
 				A3B12B4B1CC8757F008F0CD4 /* SuggestPageViewController.m */,
 				A3B12B501CC98D3C008F0CD4 /* JuXingView.h */,
 				A3B12B511CC98D3C008F0CD4 /* JuXingView.m */,
+				0447E4661CE0569C0002EADF /* FMView.h */,
+				0447E4671CE0569C0002EADF /* FMView.m */,
 			);
 			path = "首页";
 			sourceTree = "<group>";
@@ -1717,6 +1722,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				049EF2341CA38F5700C1D68A /* LoginViewOrRegistView.m in Sources */,
+				0447E4681CE0569C0002EADF /* FMView.m in Sources */,
 				04E3E4191CCE3633000FD2DF /* BasicInformationViewController.m in Sources */,
 				A3FD043F1C99397A00E84A0B /* MLTransitionAnimation.m in Sources */,
 				A39CD3461C9951C500F0D8EE /* SUNSlideSwitchView1.m in Sources */,

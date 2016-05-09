@@ -57,11 +57,8 @@
     NSMutableArray *arr=[NSMutableArray new];
     for(int i=0;i<self.articalInfoArray.count; i++)
         for(NSDictionary *dic in self.articalInfoArray)
-        {
-            NSLog(@"%@",dic[@"name"]);
             if ([dic[@"name"] isEqualToString:keys[i]])
                 [arr addObject:dic];
-        }
     return arr;
 }
 

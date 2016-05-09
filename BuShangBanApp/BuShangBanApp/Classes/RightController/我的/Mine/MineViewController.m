@@ -15,7 +15,6 @@
 #import "User.h"
 
 
-
 #define userURL @"_User/570387b3ebcb7d005b196d24"
 #define articalURL @"Post?where=%7B%22author%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22_User%22%2C%22objectId%22%3A%22570387b3ebcb7d005b196d24%22%7D%7D&count=1&limit=0"
 
@@ -39,11 +38,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
-    [self __loadData];
-
+//    if([[[NSUserDefaults standardUserDefaults]objectForKey:@"Loginned"] boolValue])
+//    {
+        [self __loadData];
+//    }
+//    else
+//    {
+    
+//    }
 }
 
+-(void)gotoFirstpage
+{
+
+}
 
 -(void)__loadData {
     self.user=[[User alloc]init];
