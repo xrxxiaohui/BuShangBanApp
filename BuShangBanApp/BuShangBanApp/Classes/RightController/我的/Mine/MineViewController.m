@@ -37,7 +37,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self __loadData];
+
 }
 
 -(void)gotoFirstpage
