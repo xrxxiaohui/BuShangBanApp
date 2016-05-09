@@ -68,6 +68,9 @@
 		04E3E4901CCF8FF8000FD2DF /* UserProtocal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04E3E48D1CCF8FF8000FD2DF /* UserProtocal.storyboard */; };
 		16F4E9FC092DB9729036DE5C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84061A76B715983FD7DDC680 /* libPods.a */; };
 		A30012B81CA3A12A00BD6FAD /* 750*1334.png in Resources */ = {isa = PBXBuildFile; fileRef = A30012B71CA3A12A00BD6FAD /* 750*1334.png */; };
+		A32DCB6A1CDF3DEA000D463A /* SuggestListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A32DCB691CDF3DEA000D463A /* SuggestListViewController.m */; };
+		A32DCB6D1CDF425D000D463A /* SuggestListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A32DCB6C1CDF425D000D463A /* SuggestListCell.m */; };
+		A32DCB701CDFEF16000D463A /* AccessSendSmsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = A32DCB6F1CDFEF16000D463A /* AccessSendSmsApi.m */; };
 		A33447F61CA290860006C8A3 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A33447F41CA290860006C8A3 /* 1.jpg */; };
 		A33447F71CA290860006C8A3 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A33447F51CA290860006C8A3 /* 3.jpg */; };
 		A33447F91CA290940006C8A3 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A33447F81CA290940006C8A3 /* 2.jpg */; };
@@ -343,6 +346,12 @@
 		106682B18EE7A803C07A5F8E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		84061A76B715983FD7DDC680 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A30012B71CA3A12A00BD6FAD /* 750*1334.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "750*1334.png"; sourceTree = "<group>"; };
+		A32DCB681CDF3DEA000D463A /* SuggestListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestListViewController.h; sourceTree = "<group>"; };
+		A32DCB691CDF3DEA000D463A /* SuggestListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestListViewController.m; sourceTree = "<group>"; };
+		A32DCB6B1CDF425D000D463A /* SuggestListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestListCell.h; sourceTree = "<group>"; };
+		A32DCB6C1CDF425D000D463A /* SuggestListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestListCell.m; sourceTree = "<group>"; };
+		A32DCB6E1CDFEF16000D463A /* AccessSendSmsApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessSendSmsApi.h; sourceTree = "<group>"; };
+		A32DCB6F1CDFEF16000D463A /* AccessSendSmsApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessSendSmsApi.m; sourceTree = "<group>"; };
 		A33447F41CA290860006C8A3 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		A33447F51CA290860006C8A3 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		A33447F81CA290940006C8A3 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
@@ -715,6 +724,8 @@
 		049EF2291CA38F5700C1D68A /* loginOrRegist */ = {
 			isa = PBXGroup;
 			children = (
+				A32DCB6E1CDFEF16000D463A /* AccessSendSmsApi.h */,
+				A32DCB6F1CDFEF16000D463A /* AccessSendSmsApi.m */,
 				049EF22D1CA38F5700C1D68A /* LoginOrRegistViewController.h */,
 				049EF22E1CA38F5700C1D68A /* LoginOrRegistViewController.m */,
 				049EF22F1CA38F5700C1D68A /* LoginViewOrRegistView.h */,
@@ -1151,6 +1162,10 @@
 				A39CD3971C99529400F0D8EE /* HomePageViewController.m */,
 				A3B12B4A1CC8757F008F0CD4 /* SuggestPageViewController.h */,
 				A3B12B4B1CC8757F008F0CD4 /* SuggestPageViewController.m */,
+				A32DCB681CDF3DEA000D463A /* SuggestListViewController.h */,
+				A32DCB691CDF3DEA000D463A /* SuggestListViewController.m */,
+				A32DCB6B1CDF425D000D463A /* SuggestListCell.h */,
+				A32DCB6C1CDF425D000D463A /* SuggestListCell.m */,
 				A3B12B501CC98D3C008F0CD4 /* JuXingView.h */,
 				A3B12B511CC98D3C008F0CD4 /* JuXingView.m */,
 				0447E4661CE0569C0002EADF /* FMView.h */,
@@ -1760,6 +1775,7 @@
 				A3B12B4C1CC8757F008F0CD4 /* SuggestPageViewController.m in Sources */,
 				A39CD32E1C9950F600F0D8EE /* BaseViewController.m in Sources */,
 				A376A7E91CA00F6400B4F9BF /* HomeHeadViewCell.m in Sources */,
+				A32DCB701CDFEF16000D463A /* AccessSendSmsApi.m in Sources */,
 				A377D1461C99560A00C779A7 /* YUDarkGlassView.m in Sources */,
 				A3FD048F1C993EB900E84A0B /* NSMutableArray+TDSafeMutableArray.m in Sources */,
 				A377D1A71C995E3000C779A7 /* MJRefreshGifHeader.m in Sources */,
@@ -1803,6 +1819,7 @@
 				049EF1E91CA38D8D00C1D68A /* ScreenAdapt.m in Sources */,
 				A3FD044B1C993C9100E84A0B /* UIViewExt.m in Sources */,
 				A376A7EA1CA00F6400B4F9BF /* HomePageContentCell.m in Sources */,
+				A32DCB6D1CDF425D000D463A /* SuggestListCell.m in Sources */,
 				A3FD045D1C993CF100E84A0B /* UIWindow+Extension.m in Sources */,
 				04E3E4281CCE3655000FD2DF /* BirthdayPickerView.m in Sources */,
 				A377D1A81C995E3000C779A7 /* MJRefreshHeader.m in Sources */,
@@ -1821,6 +1838,7 @@
 				A376A7ED1CA00F9000B4F9BF /* DataListViewController.m in Sources */,
 				A39CD3411C99514C00F0D8EE /* BaseTableCell.m in Sources */,
 				A3FD045C1C993CF100E84A0B /* UIView+Frame.m in Sources */,
+				A32DCB6A1CDF3DEA000D463A /* SuggestListViewController.m in Sources */,
 				04E3E4201CCE3633000FD2DF /* OtherViewController.m in Sources */,
 				A3FD04A21C99403E00E84A0B /* HelloWorldReq.pb.m in Sources */,
 				04DE3E851CD4BE7A00D9244B /* DetailViewController.m in Sources */,

@@ -131,7 +131,6 @@
         [_shareNumLabel setTextColor:COLOR(124, 124, 124)];
         [self.contentView addSubview:_shareNumLabel];
 
-
         UIImageView *lineImageView1 = [[UIImageView alloc] init];
         lineImageView1.backgroundColor = kCommonBottomLineColor;
         [lineImageView1 setFrame:CGRectMake(0, _shareButton.bottom+8, kScreenWidth, 0.5)];
@@ -139,7 +138,7 @@
 
         UIView *grayView = [[UIView alloc] init];
         [grayView setBackgroundColor:COLOR(249, 249, 249)];
-        [grayView setFrame:CGRectMake(0, _shareButton.bottom+8.5, kScreenWidth, 12)];
+        [grayView setFrame:CGRectMake(0, _shareButton.bottom+8.5, kScreenWidth, 12.5)];
         [self.contentView addSubview:grayView];
         
     }
@@ -151,13 +150,28 @@
 //    related_post
 
     NSString *imageString = [[self.dataInfo objectForKey:@"image"] safeString];
-//    [_centerImageView sd_setImageWithURL:[NSURL URLWithString:imageString] placeholderImage:[UIImage imageNamed:@"place"]];
+    [_centerImageView sd_setImageWithURL:[NSURL URLWithString:imageString] placeholderImage:[UIImage imageNamed:@"place"]];
     NSString *titleString = [[self.dataInfo valueForKeyPath:@"related_post.title"] safeString];
     [_mainTitleLabel setText:titleString];
     
     NSString *summaryString = [[self.dataInfo valueForKeyPath:@"related_post.summary"] safeString];
     [_mainContentLabel setText:summaryString];
     
+    NSString *avatarString = [[self.dataInfo valueForKeyPath:@"related_post.author.avatar.url"] safeString];
+    [_rightAvarButton sd_setImageWithURL:[NSURL URLWithString:avatarString]  forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"authoravar"] options:SDWebImageRefreshCached];
+
+    NSString *likes_count = [NSString stringWithFormat:@"%@",[self.dataInfo valueForKeyPath:@"related_post.likes_count"]];
+    [_zanNumLabel setText:likes_count];
+    
+    NSString *share_count = [NSString stringWithFormat:@"%@",[self.dataInfo valueForKeyPath:@"related_post.share_count"]];
+    
+    [_shareNumLabel setText:share_count];
+    
+    NSString *comment_count = [NSString stringWithFormat:@"%@",[self.dataInfo valueForKeyPath:@"related_post.comment_count"]];
+    [_commentNumLabel setText:comment_count];
+    
+    NSString *categoryStr =[[self.dataInfo valueForKeyPath:@"related_post.category.name"] safeString];
+    NSLog(@"-----%@",categoryStr);
 }
 
 

@@ -96,7 +96,7 @@
     
     // 请求
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
-    [_urlParamsReq setUrlString:@"Message?limit=10&&order=-createdAt&&"];
+    [_urlParamsReq setUrlString:@"https://leancloud.cn:443/1.1/classes/Message?limit=10&&order=-createdAt&&"];
     
     //    NSDictionary *_tempParam = @{@"bid":@"888888"};
     //    [_urlParamsReq setParamsDict:_tempParam];
@@ -179,6 +179,7 @@
     
     NSDictionary *tempDic = [[_dataArray objectAtIndex:indexPath.row] safeDictionary];
     NSString *urlString = [tempDic objectForKey:@"link"];
+    baseWebView.isTestWeb = YES;
     baseWebView.webUrl = urlString;
     [[SliderViewController sharedSliderController].navigationController pushViewController:baseWebView animated:YES ];
     

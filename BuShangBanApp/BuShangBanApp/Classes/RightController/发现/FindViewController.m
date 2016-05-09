@@ -13,7 +13,7 @@
 
 //https://leancloud.cn:443/1.1/classes/PostCategory?order=-sort&&keys=-ACL%2C-createdAt%2C-updatedAt
 
-#define URL @"PostCategory?order=-sort&&keys=-ACL%2C-createdAt%2C-updatedAt"
+#define URL @"https://leancloud.cn:443/1.1/classes/PostCategory?order=-sort&&keys=-ACL%2C-createdAt%2C-updatedAt"
 
 @interface FindViewController ()
 @property(nonatomic,strong)NSDictionary *dic;

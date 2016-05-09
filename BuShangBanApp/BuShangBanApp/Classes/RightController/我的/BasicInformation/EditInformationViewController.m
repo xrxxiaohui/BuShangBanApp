@@ -49,6 +49,7 @@
 -(void)popToLeft
 {
     [self.delegate editInformationWithContentString:_editInformationTextField.text];
+    
     [super popToLeft];
 }
 

@@ -12,10 +12,10 @@
 #import "SettingViewController.h"
 #import "OtherViewController.h"
 
-#define userURL @"_User/570387b3ebcb7d005b196d24"
-#define articalURL @"Post?where=%7B%22author%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22_User%22%2C%22objectId%22%3A%22570387b3ebcb7d005b196d24%22%7D%7D&count=1&limit=0"
+#define userURL @"https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24"
+#define articalURL @"https://leancloud.cn:443/1.1/classes/Post?where=%7B%22author%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22_User%22%2C%22objectId%22%3A%22570387b3ebcb7d005b196d24%22%7D%7D&count=1&limit=0"
 
-#define  aboutMe @"/1.1/users/570387b3ebcb7d005b196d24/followersAndFollowees?limit=0&count=1"
+#define  aboutMe @"https://leancloud.cn/1.1/users/570387b3ebcb7d005b196d24/followersAndFollowees?limit=0&count=1"
 
 @interface OtherViewController()<UITableViewDelegate,UITableViewDataSource,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 

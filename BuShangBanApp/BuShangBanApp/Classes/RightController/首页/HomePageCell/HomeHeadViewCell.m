@@ -40,7 +40,8 @@
         _leftBigImageView.imageView.contentMode =  UIViewContentModeScaleAspectFill;
         _leftBigImageView.imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         _leftBigImageView.imageView.clipsToBounds  = YES;
-        
+        [_leftBigImageView addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+
         _leftBigImageView.clipsToBounds = YES;
         
         [self.contentView addSubview:_leftBigImageView];
@@ -54,6 +55,7 @@
         _rightUpImageView.imageView.contentMode =  UIViewContentModeScaleAspectFill;
         _rightUpImageView.imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         _rightUpImageView.imageView.clipsToBounds  = YES;
+        [_rightUpImageView addTarget:self action:@selector(rightUpButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 
         [self.contentView addSubview:_rightUpImageView];
         
@@ -66,7 +68,8 @@
         _rightDownImageView.imageView.contentMode =  UIViewContentModeScaleAspectFill;
         _rightDownImageView.imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         _rightDownImageView.imageView.clipsToBounds  = YES;
-        
+        [_rightDownImageView addTarget:self action:@selector(rightDownButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+
         [self.contentView addSubview:_rightDownImageView];
         
         //////////////////////左边label背景图/////////////////////
@@ -97,6 +100,8 @@
         
         
         //////////////////////////////////////////
+        
+        
         _rightUpLabel = [[UILabel alloc] init];
         [_rightUpLabel setFrame:CGRectMake(0, _rightUpImageView.bottom-34, _rightUpImageView.width, 34)];
         [_rightUpLabel setTextColor:[UIColor whiteColor]];
@@ -151,7 +156,6 @@
         
         [_leftBigLabel setText:[NSString stringWithFormat:@"  %@",titleString]];
         [_leftSmallLabel setText:[NSString stringWithFormat:@"  %@",briefString]];
-        
         [_rightUpLabel setText:[NSString stringWithFormat:@"  %@",titleString1]];
         [_rightDownLabel setText:[NSString stringWithFormat:@"  %@",titleString2]];
         
@@ -178,6 +182,20 @@
     UIImage *image1=[UIImage imageWithCGImage:imageRef];
     return image1;
 }
+
+-(void)leftButtonClick:(UIButton *)sender {
+    
+    DCBlockRun(_leftButtonActionBlock)
+}
+-(void)rightUpButtonClick:(UIButton *)sender {
+    
+    DCBlockRun(_rightUpButtonActionBlock)
+}
+-(void)rightDownButtonClick:(UIButton *)sender {
+    
+    DCBlockRun(_rightDownActionBlock)
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

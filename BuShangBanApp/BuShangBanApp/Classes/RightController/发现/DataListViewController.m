@@ -12,7 +12,7 @@
 
 //https://leancloud.cn:443/1.1/classes/Post?where=%7B%22category%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22PostCagegory%22%2C%22objectId%22%3A%22571eae66c4c9710056d94de6%22%7D%7D&&&order=-sort&&keys=-body
 
-#define URL @"Post?where=%7B%22category%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22PostCagegory%22%2C%22objectId%22%3A%22571eae66c4c9710056d94de6%22%7D%7D&&&order=-sort&&keys=-body"
+#define URL @"https://leancloud.cn:443/1.1/classes/Post?where=%7B%22category%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22PostCagegory%22%2C%22objectId%22%3A%22571eae66c4c9710056d94de6%22%7D%7D&&&order=-sort&&keys=-body&include=author"
 
 @interface DataListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -22,6 +22,8 @@
 @property(nonatomic,strong)NSMutableArray *URLArray;
 @property(nonatomic,strong)NSMutableArray *imageURLArray;
 @property(nonatomic,strong)NSMutableArray *profileArray;
+@property(nonatomic,strong)NSMutableArray *avarArray;
+
 @end
 
 
@@ -39,6 +41,7 @@
         self.titleArray=[NSMutableArray array];
         self.profileArray=[NSMutableArray array];
         self.imageURLArray=[NSMutableArray array];
+        self.avarArray=[NSMutableArray array];
     }
     return self;
 }
@@ -65,10 +68,13 @@
         for (NSDictionary *dic in self.results)
         {
 //            if ([dic[@"author"][@"objectId"] isEqualToString:_objectID])
+             NSString *avatarString = [[dic valueForKeyPath:@"author.avatar.url"] safeString];
+            
             [self.URLArray addObject:dic[@"link"]];
             [self.titleArray addObject:dic[@"title"]];
             [self.profileArray addObject:dic[@"summary"]];
             [self.imageURLArray addObject:dic[@"feature_image"]];
+            [self.avarArray addObject:avatarString];
         }
         self.tabelView.backgroundColor=bgColor;
     } failureBlock:^(SSLXResultRequest *failReq){
@@ -106,6 +112,8 @@
     [cell.leftUpLabel sizeToFit];
     cell.mainContentLabel.text=self.profileArray[indexPath.row];
     cell.mainTitleLabel.text=self.titleArray[indexPath.row];
+    [cell.centerImageView sd_setImageWithURL:[NSURL URLWithString:self.imageURLArray[indexPath.row]] placeholderImage:[UIImage imageNamed:@"place"]];
+    [cell.rightAvarButton sd_setImageWithURL:[NSURL URLWithString:self.avarArray[indexPath.row]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"authoravar"] options:SDWebImageRefreshCached];
     return cell;
 }
 
