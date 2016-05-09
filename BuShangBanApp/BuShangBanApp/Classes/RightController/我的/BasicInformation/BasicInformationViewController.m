@@ -306,12 +306,10 @@
                     _contentArray[_indexPath.row]=contentText;
                     textField.text= _contentArray[_indexPath.row];
                 };
-
                 break;
             }
             case 4:
             {
-
                 self.occupationSelectorView.contentString=textField.text;
                 self.occupationSelectorView.occupationSelectorBlock=^(OccupationSelectorView *view,NSString *contentText){
                     _contentArray[_indexPath.row]=contentText;
@@ -331,10 +329,10 @@
 
 -(void)editInformationWithContentString:(NSString *)contentString
 {
-    if ([_cell.textLabel.text isEqual:@"兴趣"] && ![_cell.contentTF.text isEqual:@""] && _cell.contentTF.text!=nil )
-        _cell.contentTF.text=[NSString stringWithFormat:@"%@,%@",_cell.contentTF.text,contentString];
-    else if(![contentString isEqual:@"  "] && contentString!=nil )
-        _cell.contentTF.text=contentString;
+//    if ([_cell.textLabel.text isEqual:@"兴趣"] && ![_cell.contentTF.text isEqual:@""] )
+//        _cell.contentTF.text=[NSString stringWithFormat:@"%@,%@",_cell.contentTF.text,contentString];
+//    else if(![contentString isEqual:@"  "] && contentString!=nil )
+    _cell.contentTF.text=contentString;
     _editInformationViewController=nil;
 }
 @end

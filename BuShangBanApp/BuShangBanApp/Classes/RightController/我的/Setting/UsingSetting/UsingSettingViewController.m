@@ -139,9 +139,6 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIStoryboard *UserProtocal=[UIStoryboard storyboardWithName:@"UserProtocal" bundle:nil];
-    [[SliderViewController sharedSliderController].navigationController pushViewController:[UserProtocal instantiateViewControllerWithIdentifier:@"UserProtocal"] animated:YES];
-    
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if(indexPath.section == 1 && indexPath.row == 0)
     {
@@ -153,11 +150,11 @@
        
     }
     else if(indexPath.section == 2 && indexPath.row == 0){
-        
+        [MBProgressHUD showError:@"聊天记录已清空"];
     }
     else if(indexPath.section == 2 && indexPath.row == 1)
     {
-        
+        [MBProgressHUD showError:@"缓存已清空"];
     }
 }
 
