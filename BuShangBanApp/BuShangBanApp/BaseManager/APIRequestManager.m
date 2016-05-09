@@ -61,11 +61,11 @@ static id _apiRequestInstance;
     
 //    CLLocationCoordinate2D _tempCoordinate = [LocationManager Instance].location.coordinate;
     
-    NSDictionary *_coordinateInfo = [[KVStoreManager sharedInstance] getObjWithKey:@"AddressCoordinate"];
-    NSString *_longitudeString = [NSString stringWithFormat:@"%@",[_coordinateInfo objectForKey:@"Longitude"]];
-    NSString *_latitudeString = [NSString stringWithFormat:@"%@",[_coordinateInfo objectForKey:@"Latitude"]];
-    
-    NSDictionary *_addressInfo = [[KVStoreManager sharedInstance] getObjWithKey:@"AddressDictionary"];
+//    NSDictionary *_coordinateInfo = [[KVStoreManager sharedInstance] getObjWithKey:@"AddressCoordinate"];
+//    NSString *_longitudeString = [NSString stringWithFormat:@"%@",[_coordinateInfo objectForKey:@"Longitude"]];
+//    NSString *_latitudeString = [NSString stringWithFormat:@"%@",[_coordinateInfo objectForKey:@"Latitude"]];
+//    
+//    NSDictionary *_addressInfo = [[KVStoreManager sharedInstance] getObjWithKey:@"AddressDictionary"];
     
 //    <__NSArrayI 0x134ec6ff0>(
 //                             SubLocality,
@@ -79,28 +79,28 @@ static id _apiRequestInstance;
 //                             City
 //                             )
     
-    NSDictionary *_tempParam = @{@"bid":@"888888",@"token":SafeForString([[UserAccountManager sharedInstance] getCurrentToken]),@"cid":SafeForString(_tempTokenString)/*,@"platform":@"ios"*/,@"longitude":SafeForString(_longitudeString),@"latitude":SafeForString(_latitudeString),@"province":SafeForString([_addressInfo objectForKey:@"State"]),@"city":SafeForString([_addressInfo objectForKey:@"City"]),@"sublocality":SafeForString([_addressInfo objectForKey:@"SubLocality"]),@"street":SafeForString([_addressInfo objectForKey:@"Street"])};//@{@"token":tokenStr};
-    
-    NSMutableArray *_subScibeArray = [[NSMutableArray alloc] initWithCapacity:0];
-    
-    if ([[_addressInfo objectForKey:@"State"] isKindOfClass:[NSString class]]) {
-        [_subScibeArray addObject:SafeForString([_addressInfo objectForKey:@"State"])];
-    }
-    if ([[_addressInfo objectForKey:@"City"] isKindOfClass:[NSString class]]) {
-        [_subScibeArray addObject:SafeForString([_addressInfo objectForKey:@"City"])];
-    }
-    if ([[_addressInfo objectForKey:@"SubLocality"] isKindOfClass:[NSString class]]) {
-        [_subScibeArray addObject:SafeForString([_addressInfo objectForKey:@"SubLocality"])];
-    }
-    if ([[_addressInfo objectForKey:@"Street"] isKindOfClass:[NSString class]]) {
-        [_subScibeArray addObject:SafeForString([_addressInfo objectForKey:@"Street"])];
-    }
-    
-    if ([[_subScibeArray copy] count] > 0) {
-       // [MiPushSDK subscribe:[[_subScibeArray copy] componentsJoinedByString:@","]];
-    }
-    
-    [_urlParamsReq setParamsDict:_tempParam];
+//    NSDictionary *_tempParam = @{@"bid":@"888888",@"token":SafeForString([[UserAccountManager sharedInstance] getCurrentToken]),@"cid":SafeForString(_tempTokenString)/*,@"platform":@"ios"*/,@"longitude":SafeForString(_longitudeString),@"latitude":SafeForString(_latitudeString),@"province":SafeForString([_addressInfo objectForKey:@"State"]),@"city":SafeForString([_addressInfo objectForKey:@"City"]),@"sublocality":SafeForString([_addressInfo objectForKey:@"SubLocality"]),@"street":SafeForString([_addressInfo objectForKey:@"Street"])};//@{@"token":tokenStr};
+//    
+//    NSMutableArray *_subScibeArray = [[NSMutableArray alloc] initWithCapacity:0];
+//    
+//    if ([[_addressInfo objectForKey:@"State"] isKindOfClass:[NSString class]]) {
+//        [_subScibeArray addObject:SafeForString([_addressInfo objectForKey:@"State"])];
+//    }
+//    if ([[_addressInfo objectForKey:@"City"] isKindOfClass:[NSString class]]) {
+//        [_subScibeArray addObject:SafeForString([_addressInfo objectForKey:@"City"])];
+//    }
+//    if ([[_addressInfo objectForKey:@"SubLocality"] isKindOfClass:[NSString class]]) {
+//        [_subScibeArray addObject:SafeForString([_addressInfo objectForKey:@"SubLocality"])];
+//    }
+//    if ([[_addressInfo objectForKey:@"Street"] isKindOfClass:[NSString class]]) {
+//        [_subScibeArray addObject:SafeForString([_addressInfo objectForKey:@"Street"])];
+//    }
+//    
+//    if ([[_subScibeArray copy] count] > 0) {
+//       // [MiPushSDK subscribe:[[_subScibeArray copy] componentsJoinedByString:@","]];
+//    }
+//    
+//    [_urlParamsReq setParamsDict:_tempParam];
     
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
         

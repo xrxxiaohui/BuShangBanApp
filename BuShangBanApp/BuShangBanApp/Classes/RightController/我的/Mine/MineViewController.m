@@ -14,7 +14,9 @@
 #import "LoginViewController.h"
 #import "User.h"
 
-
+//https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24  用户信息
+//https://leancloud.cn:443/1.1/classes/Post?where=%7B%22author%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22_User%22%2C%22objectId%22%3A%22570387b3ebcb7d005b196d24%22%7D%7D&count=1&limit=0 文章数
+//https://leancloud.cn/1.1/users/570387b3ebcb7d005b196d24/followersAndFollowees?limit=0&count=1 关注我的和我关注的
 
 #define userURL @"https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24"
 #define articalURL @"https://leancloud.cn:443/1.1/classes/Post?where=%7B%22author%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22_User%22%2C%22objectId%22%3A%22570387b3ebcb7d005b196d24%22%7D%7D&count=1&limit=0"
@@ -30,15 +32,11 @@
 
 @end
 
-//https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24  用户信息
-//https://leancloud.cn:443/1.1/classes/Post?where=%7B%22author%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22_User%22%2C%22objectId%22%3A%22570387b3ebcb7d005b196d24%22%7D%7D&count=1&limit=0 文章数
-//https://leancloud.cn/1.1/users/570387b3ebcb7d005b196d24/followersAndFollowees?limit=0&count=1 关注我的和我关注的
 
 @implementation MineViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(judgeLoginStatus) name:@"judgeLoginStatus" object:nil];
 }
 
@@ -56,6 +54,12 @@
     }
 
 }
+
+-(void)gotoFirstpage
+{
+
+}
+
 -(void)__loadData {
     self.user=[[User alloc]init];
     
@@ -240,8 +244,7 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==3)
-        [[SliderViewController sharedSliderController].navigationController pushViewController:[[OtherViewController alloc] init] animated:YES];
+    
 }
 
 

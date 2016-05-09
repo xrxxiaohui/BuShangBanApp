@@ -134,6 +134,7 @@
     _userProtocalBtn.bottom=kScreenHeight-12;
 }
 
+
 -(void)clickEvent:(UIButton *)sender
 {
     [super clickEvent:sender];
@@ -147,7 +148,7 @@
             break;
         case 1002:
         {
-            NSString *tempString = _accountTF.text;
+            NSString *tempString = [NSString stringWithFormat:@"%@",_accountTF.text];
 
             if ([tempString isEqualToString:@""]){
                 [MBProgressHUD showError:@"号码不能为空"];
@@ -288,25 +289,34 @@
         return NO;
     }
     
-    if(_passWordTF.text.length<10)
+    if(_passWordTF.text.length<7)
     {
-        [MBProgressHUD showError:@"密码长度不能小于10"];
+        [MBProgressHUD showError:@"密码长度不能小于6"];
         return NO;
     }
     
     if ([_accountTF.text containsString:@"."])
+    {
         if(![self __validateEmail:_accountTF.text])
         {
             [MBProgressHUD showError:@"邮箱格式不对"];
             return NO;
         }
+    }
     else
+    {
         if(![self __validateMobile:_accountTF.text])
         {
             [MBProgressHUD showError:@"号码格式不对"];
             return NO;
         }
+    }
     
+    if(!_readedBtn.selected)
+    {
+        [MBProgressHUD showError:@""];
+        _readedBtn.selected=YES;
+    }
     return YES;
 }
 

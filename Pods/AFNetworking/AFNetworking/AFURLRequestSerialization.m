@@ -398,8 +398,8 @@ forHTTPHeaderField:(NSString *)field
     NSMutableURLRequest *mutableRequest = [[NSMutableURLRequest alloc] initWithURL:url];
     mutableRequest.HTTPMethod = method;
     
-    [mutableRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [mutableRequest addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+//    [mutableRequest addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//    [mutableRequest addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     //        [request addValue: myEmail forHTTPHeaderField:@"user-email"];
     //        [request addValue: mySessionToken forHTTPHeaderField:@"user-token"];
     [mutableRequest addValue: @"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz" forHTTPHeaderField:@"X-LC-Id"];
@@ -411,11 +411,11 @@ forHTTPHeaderField:(NSString *)field
         }
     }
     
-    NSMutableDictionary *tempDic  = [NSMutableDictionary dictionaryWithDictionary:parameters];
-    [tempDic setObject:@"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz" forKey:@"X-LC-Id"];
-    [tempDic setObject:@"MDOagSCTlLw9A6fkrcaphlB8" forKey:@"X-LC-Key"];
-
-    mutableRequest = [[self requestBySerializingRequest:mutableRequest withParameters:tempDic error:error] mutableCopy];
+//    NSMutableDictionary *tempDic  = [NSMutableDictionary dictionaryWithDictionary:parameters];
+//    [tempDic setObject:@"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz" forKey:@"X-LC-Id"];
+//    [tempDic setObject:@"MDOagSCTlLw9A6fkrcaphlB8" forKey:@"X-LC-Key"];
+//
+    mutableRequest = [[self requestBySerializingRequest:mutableRequest withParameters:parameters error:error] mutableCopy];
 
 	return mutableRequest;
 }
@@ -566,9 +566,9 @@ forHTTPHeaderField:(NSString *)field
         if (!query) {
             query = @"";
         }
-        if (![mutableRequest valueForHTTPHeaderField:@"Content-Type"]) {
-            [mutableRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-        }
+//        if (![mutableRequest valueForHTTPHeaderField:@"Content-Type"]) {
+//            [mutableRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//        }
         if (![mutableRequest valueForHTTPHeaderField:@"X-LC-Id"]) {
             [mutableRequest setValue:@"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz" forHTTPHeaderField:@"X-LC-Id"];
         }
@@ -579,7 +579,18 @@ forHTTPHeaderField:(NSString *)field
             [mutableRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
         }
         
+        if (![mutableRequest valueForHTTPHeaderField:@"Content-Type"]) {
+            [mutableRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        }
         
+        NSData *jsonData = [NSJSONSerialization
+                            dataWithJSONObject:parameters options:NSJSONWritingPrettyPrinted error:&error];
+        if ([jsonData length] > 0){
+            NSLog(@"Successfully serialized the dictionary into data.");
+            //NSData转换为String
+            query = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            NSLog(@"JSON String = %@", query);
+        }
         
         [mutableRequest setHTTPBody:[query dataUsingEncoding:self.stringEncoding]];
     }

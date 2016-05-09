@@ -44,9 +44,7 @@
     // 请求
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
     [_urlParamsReq setUrlString:@"https://leancloud.cn:443/1.1/classes/Post?limit=1&&order=-featured_at&&keys=-body&include=author"];
-    
-    NSDictionary *_tempParam = @{@"bid":@"888888"};
-    
+        
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
         
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];

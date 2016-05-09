@@ -61,6 +61,10 @@
         [self.occupationSelector selectRow:[_currentMonth integerValue] inComponent:1 animated:YES];
         [self.occupationSelector selectRow:[_currentDay integerValue] inComponent:2 animated:YES];
         
+        self.yearText=self.yearArray[self.yearArray.count/2];
+        self.monthText=_currentMonth;
+        self.dayText=_currentDay;
+        
         _cancelBtn= [self __btnWithTitle:@"取 消" tag:1001 x:10];
         _okBtn = [self __btnWithTitle:@"确 定" tag:1000 x:kScreenWidth-44-10];
     }

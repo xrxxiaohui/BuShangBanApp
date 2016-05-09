@@ -9,6 +9,8 @@
 #import "InviteCodeViewController.h"
 
 @interface InviteCodeViewController ()
+@property (weak, nonatomic) IBOutlet UITextView *textView1;
+@property (weak, nonatomic) IBOutlet UITextView *textView2;
 
 @end
 
@@ -18,6 +20,8 @@
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
     self.title=@"邀请码";
+    self.textView1.editable=NO;
+    self.textView2.editable=NO;
 }
 - (IBAction)btnClick:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];

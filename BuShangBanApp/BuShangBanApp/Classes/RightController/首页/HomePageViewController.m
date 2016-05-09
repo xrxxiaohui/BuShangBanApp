@@ -90,11 +90,6 @@
     [self fetchData];
 }
 
-
-//https://leancloud.cn:443/1.1/classes/_Status?limit=10&&order=-createdAt&include=related_post&keys=-related_post.body
-
-//https://leancloud.cn:443/1.1/classes/_Status?limit=10&&order=-createdAt&include=related_post,related_post.author&keys=-related_post.body
-
 -(void)fetchHomeListData {
 
     // 请求
@@ -133,7 +128,6 @@
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
     [_urlParamsReq setUrlString:@"https://leancloud.cn:443/1.1/classes/Featured?limit=10&&order=-sort&"];
     
-    NSDictionary *_tempParam = @{@"bid":@"888888"};
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
         
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
@@ -333,7 +327,18 @@
     NSString *pictureName= [NSString stringWithFormat:@"screenShow.png"];
     NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:pictureName];
     NSLog(@"截屏路径打印: %@", savedImagePath);
-    //这里我将路径设置为一个全局String，这里做的不好，我自己是为了用而已，希望大家别这么写
+
+    NSError *error = nil;
+    if([[NSFileManager defaultManager] removeItemAtPath:savedImagePath error:&error])
+    {
+        NSLog(@"文件移除成功");
+    }
+    else {
+        NSLog(@"error=%@", error);
+    }
+    
+    
+       //这里我将路径设置为一个全局String，这里做的不好，我自己是为了用而已，希望大家别这么写
     [self SetPickPath:savedImagePath];
     
     [imageViewData writeToFile:savedImagePath atomically:YES];//保存照片到沙盒目录

@@ -24,12 +24,7 @@ static id _sysDeviceInstance;
         
         _sysDeviceInstance = [[SysDeviceManager alloc] init];
         
-        NSDictionary *baseParams = @{@"platform":@"ios",
-                                     @"sysver":[UIDevice currentDevice].systemVersion,
-                                     @"channel":APP_CHANNEL,
-                                     @"deviceid":[CommonHelper deviceIdentifier],
-                                     @"appver":APP_VERSION,
-                                     @"devicetype":[SysDeviceManager platformString]};
+        NSDictionary *baseParams = @{};
         [_sysDeviceInstance setBaseSysDeviceInfo:baseParams];
         
     });

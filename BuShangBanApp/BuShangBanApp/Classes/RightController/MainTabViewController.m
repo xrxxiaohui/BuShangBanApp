@@ -49,7 +49,7 @@ static MainTabViewController *main;
     [super viewDidLoad];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeLoginOrRigistView) name:@"LoginSuccess" object:nil];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoFirstpage) name:@"gotoFirstPage" object:nil];
 
     if ( [[[UIDevice currentDevice] systemVersion] floatValue] >= 6 ) {
         [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
@@ -99,6 +99,11 @@ static MainTabViewController *main;
 
 //    [self addLoginOrRigistView];
 
+}
+
+-(void)gotoFirstpage
+{
+    [_tabController setSelectedIndex:0];
 }
 
 - (void)addLoginOrRigistView {

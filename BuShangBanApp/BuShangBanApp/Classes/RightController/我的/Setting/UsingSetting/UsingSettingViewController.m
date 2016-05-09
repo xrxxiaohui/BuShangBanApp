@@ -153,11 +153,11 @@
        
     }
     else if(indexPath.section == 2 && indexPath.row == 0){
-        
+        [MBProgressHUD showError:@"聊天记录已清空"];
     }
     else if(indexPath.section == 2 && indexPath.row == 1)
     {
-        
+        [MBProgressHUD showError:@"缓存已清空"];
     }
 }
 

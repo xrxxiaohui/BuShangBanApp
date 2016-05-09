@@ -17,6 +17,8 @@
     UITableView *_mainTableView;
     NSMutableArray *_dataArray;
     int page;
+    BOOL _logined;
+    BOOL _hasPush;
 }
 
 @end
@@ -28,14 +30,37 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self customNavigationBarWithTitle:@"消息"];
-    
-    self.view.backgroundColor = [UIColor yellowColor];
-    
-    [self initData];
-    [self createTabelView];
-    [self fetchData];
+//<<<<<<< HEAD
+//    
+//    self.view.backgroundColor = [UIColor yellowColor];
+//    
+//    [self initData];
+//    [self createTabelView];
+//    [self fetchData];
+//=======
+//    [[NSNotificationCenter defaultCenter]postNotificationName:@"gotoFirstPage" object:nil];
+    _logined =[[[NSUserDefaults standardUserDefaults]objectForKey:@"Loginned"] boolValue] ;
+    if(!_logined)
+    {
+        _hasPush=YES;
+        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
+    }
+    else
+    {
+        self.view.backgroundColor = [UIColor yellowColor];
+        [self initData];
+        [self createTabelView];
+        [self fetchData];
+    }
+//>>>>>>> 7072ceed0cabe37811d67a19de74bf59dc26b3dc
 }
 
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    if(!_hasPush)
+        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
+}
 
 -(void)initData{
     page = 1;
@@ -67,7 +92,7 @@
     lineImageView1.backgroundColor = COLOR(0xd9, 0xd9, 0xd9);
     [lineImageView1 setFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth, 1)];
     [self.view addSubview:lineImageView1];
-    
+
 }
 
 -(void)loadNewData{

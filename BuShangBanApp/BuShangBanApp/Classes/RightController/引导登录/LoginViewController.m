@@ -79,9 +79,12 @@
     NSString *tempPassword = _passWordTF.text;
     switch (sender.tag) {
         case 1000:
+        {
             [self.navigationController popToRootViewControllerAnimated:YES];
             [[MainTabViewController getMain] backToHomeController];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"gotoFirstPage" object:nil];
             break;
+        }
         case 1001:
             [[SliderViewController sharedSliderController].navigationController pushViewController:[[RegistViewController alloc] init] animated:YES];
             break;
@@ -90,30 +93,22 @@
             if([self __check])
             {
                 SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
-                NSString *urlString = [NSString stringWithFormat:URL,tempUserName,tempPassword];
-                [_urlParamsReq setUrlString:urlString];
-                [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
-                    
+                    NSString *urlString = [NSString stringWithFormat:URL,tempUserName,tempPassword];
+                    [_urlParamsReq setUrlString:urlString];
+                    [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
                     
                     if ([[successRequest.responseString objectFromJSONString] valueForKey:@"sessionToken"]) {
                         [MBProgressHUD bwm_showTitle:@"登录成功!" toView:self.view hideAfter:2.0f];
                         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                         [userDefaults setObject:@"1" forKey:kLoginStatus];
                         
-//                        [MBProgressHUD bwm_showTitle:[[successRequest.responseString objectFromJSONString] valueForKey:@"err"] toView:self.view hideAfter:2.0f];
-                    }
-//                    else {
-//                        [MBProgressHUD bwm_showTitle:@"验证码发送成功" toView:self.view hideAfter:2.0f];
-//                    }
-                    
-                    NSLog(@"access send sms success, successRequest: %@",[successRequest.responseString objectFromJSONString]);
+                        
+                        }
                     
                 } failureBlock:^(SSLXResultRequest *failRequest){
-                    
-                    NSLog(@"access send sms fail");
-                    
+                                        
                     NSDictionary *_failDict = [failRequest.responseString objectFromJSONString];
-                    NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
+                    NSString *_errorMsg = [_failDict objectForKey:@"error"];
                     if (_errorMsg) {
                         
                         [MBProgressHUD showError:_errorMsg];
