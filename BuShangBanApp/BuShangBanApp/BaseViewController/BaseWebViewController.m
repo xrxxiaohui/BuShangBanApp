@@ -16,6 +16,7 @@
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 // 自定义分享菜单栏需要导入的头文件
 #import <ShareSDKUI/SSUIShareActionSheetStyle.h>
+#import "DataListViewController.h"
 
 CGFloat const gestureMinimumTranslation = 2.0 ;
 
@@ -47,7 +48,9 @@ typedef enum : NSInteger {
     UILabel *_zanNumLabel;
     CameraMoveDirection direction;
     UIView *bottomViews;
+    NSString *categoryStr;
 }
+
 @property (nonatomic, retain) UIView *backgroundViews;
 @property (nonatomic, retain) UIView *shareView;
 
@@ -306,7 +309,7 @@ typedef enum : NSInteger {
 
     //右侧消息按钮
     
-    NSString *categoryStr =[[self.dataDics valueForKeyPath:@"related_post.category.name"] safeString];
+    categoryStr =[[self.dataDics valueForKeyPath:@"related_post.category.name"] safeString];
 
     UIButton *shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [shareButton setFrame:CGRectMake(self.navView.width - 75, self.navView.height -0, 60, 12)];
@@ -314,11 +317,18 @@ typedef enum : NSInteger {
 //    [shareButton setImage:[UIImage imageNamed:@"share_selected"] forState:UIControlStateHighlighted];
     //             [shareButton setTitle:@"分享" forState:UIControlStateNormal];
     [shareButton setTitleColor:COLOR(56, 56, 56) forState:UIControlStateNormal];
-    [shareButton addTarget:self action:@selector(shareBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [shareButton addTarget:self action:@selector(toArticalPage:) forControlEvents:UIControlEventTouchUpInside];
     [shareButton.titleLabel setFont:[UIFont systemFontOfSize:12]];
     [shareButton setTitle:categoryStr forState:UIControlStateNormal];
     
     [self customRightItemWithBtn1:shareButton];
+}
+
+-(void)toArticalPage:(id)sender{
+
+    DataListViewController *dataListViewController = [[DataListViewController alloc] initWithTitle:categoryStr objectID:@""];
+    [[SliderViewController sharedSliderController].navigationController pushViewController:dataListViewController animated:YES];
+
 }
 
 - (void)shareBtnClick:(id)sender
