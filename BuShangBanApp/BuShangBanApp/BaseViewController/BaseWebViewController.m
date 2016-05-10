@@ -398,7 +398,7 @@ typedef enum : NSInteger {
     
     UIImage *friendsButtonImage = [UIImage imageNamed:@"朋友圈"];
     [friendsButton setBackgroundImage: friendsButtonImage forState:UIControlStateNormal ];
-    [friendsButton addTarget:self action:@selector(ShowShareView:)forControlEvents:UIControlEventTouchUpInside];
+//    [friendsButton addTarget:self action:@selector(ShowShareView:)forControlEvents:UIControlEventTouchUpInside];
     friendsButton.tag = 1;
     [shareview addSubview:friendsButton];
     
@@ -421,7 +421,7 @@ typedef enum : NSInteger {
     sinaButton  = [[UIButton alloc] initWithFrame:CGRectMake((138+180)*kScreenWidth/414, 44, 50, 50)];
     UIImage *sinaButtonImage = [UIImage imageNamed:@"微博"];
     [sinaButton setBackgroundImage: sinaButtonImage forState:UIControlStateNormal ];
-    [sinaButton addTarget:self action:@selector(ShowShareView:)forControlEvents:UIControlEventTouchUpInside];
+//    [sinaButton addTarget:self action:@selector(ShowShareView:)forControlEvents:UIControlEventTouchUpInside];
     sinaButton.tag = 2;
     [shareview addSubview:sinaButton];
     
