@@ -98,11 +98,14 @@
                     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
                     
                     if ([[successRequest.responseString objectFromJSONString] valueForKey:@"sessionToken"]) {
-                        [MBProgressHUD bwm_showTitle:@"登录成功!" toView:self.view hideAfter:2.0f];
-                        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-                        [userDefaults setObject:@"1" forKey:kLoginStatus];
+                            [MBProgressHUD bwm_showTitle:@"登录成功!" toView:self.view hideAfter:2.0f];
+                            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                            [userDefaults setObject:@"1" forKey:kLoginStatus];
                         
-                        
+                            [self.navigationController popToRootViewControllerAnimated:YES];
+
+                            [[NSNotificationCenter defaultCenter] postNotificationName:@"judgeLoginStatus" object:nil];
+
                         }
                     
                 } failureBlock:^(SSLXResultRequest *failRequest){

@@ -566,6 +566,54 @@ typedef enum : NSInteger {
 //#pragma mark - Share Wechat 
 //
 
+-(void)showShareActionSheet{
+
+    /**
+     * 在定制平台内容分享中，除了设置共有的分享参数外，还可以为特定的社交平台进行内容定制，
+     * 如：其他平台分享的内容为“分享内容”，但微信需要在原有的“分享内容”文字后面加入一条链接，则可以如下做法：
+     **/
+    
+    //创建分享参数
+    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+    
+//    NSArray* imageArray = @[[UIImage imageNamed:@"shareImg.png"]];
+    
+//    if (imageArray) {
+    
+        [shareParams SSDKSetupShareParamsByText:@"分享内容"
+                                         images:nil
+                                            url:[NSURL URLWithString:@"http://mob.com"]
+                                          title:@"分享标题"
+                                           type:SSDKContentTypeImage];
+        
+        [shareParams SSDKSetupWeChatParamsByText:@"分享内容 http://mob.com"
+                                           title:@"分享标题"
+                                             url:[NSURL URLWithString:@"http://mob.com"]
+                                      thumbImage:[UIImage imageNamed:@"shareImg.png"]
+                                           image:[UIImage imageNamed:@"shareImg.png"]
+                                    musicFileURL:nil
+                                         extInfo:nil
+                                        fileData:nil
+                                    emoticonData:nil
+                             sourceFileExtension:nil
+                                  sourceFileData:nil
+                                            type:SSDKContentTypeAuto
+                              forPlatformSubType:SSDKPlatformSubTypeWechatSession];
+        
+        
+        //进行分享
+        [ShareSDK share:SSDKPlatformTypeWechat
+             parameters:shareParams
+         onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+         }];
+}
+
+
+
+//}
+
+
+
 //- (void)showShareActionSheet{
 //    /**
 //     * 在简单分享中，只要设置共有分享参数即可分享到任意的社交平台
