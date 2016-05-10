@@ -8,4 +8,6 @@
 
 @interface BootstrapTwoViewController : UIViewController
 
+@property(nonatomic,copy)NSString *selectedItem;
+
 @end

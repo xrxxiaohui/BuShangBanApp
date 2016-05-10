@@ -7,5 +7,10 @@
 //
 
 @interface BootstrapOneViewController : UIViewController
-
+@property (strong, nonatomic)  UIButton *headBtn;
+@property (strong, nonatomic)  UIButton *photoBtn;
+@property (strong, nonatomic)  UIButton *maleBtn;
+@property (strong, nonatomic)  UIButton *femaleBtn;
+@property (strong, nonatomic)  UITextField *nickNameTF;
+@property (strong, nonatomic)  UITextField *placeTF;
 @end

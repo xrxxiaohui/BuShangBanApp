@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Invite Code View Controller-->
@@ -41,12 +42,6 @@
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="获取邀请码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgA-X4-jOz">
-                                <rect key="frame" x="258" y="43" width="85" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aV2-WT-jQX">
                                 <rect key="frame" x="248" y="344" width="105" height="29"/>
                                 <state key="normal">
@@ -64,19 +59,41 @@
                             </button>
                             <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sai-EI-ZA7">
                                 <rect key="frame" x="248" y="413" width="105" height="30"/>
-                                <state key="normal" title="集体邀请码申请"/>
+                                <state key="normal" title="企业邀请码申请"/>
                                 <connections>
                                     <action selector="btnClick:" destination="V6S-wi-NUJ" eventType="touchUpInside" id="Vph-Is-bxo"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cpv-NO-b5j">
+                                <rect key="frame" x="5" y="20" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="kwj-r6-5U1"/>
+                                    <constraint firstAttribute="width" constant="44" id="rCj-27-4oo"/>
+                                </constraints>
+                                <state key="normal" image="back"/>
+                                <connections>
+                                    <action selector="btnClick:" destination="V6S-wi-NUJ" eventType="touchUpInside" id="bKi-Vy-JHp"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="获取邀请码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgA-X4-jOz">
+                                <rect key="frame" x="258" y="23" width="85" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Y0A-tw-jKG" firstAttribute="centerX" secondItem="hgA-X4-jOz" secondAttribute="centerX" id="2rT-hc-OrG"/>
                             <constraint firstItem="Y0A-tw-jKG" firstAttribute="top" secondItem="oDr-Ax-CxP" secondAttribute="top" constant="94" id="9VS-aV-IKQ"/>
+                            <constraint firstItem="hgA-X4-jOz" firstAttribute="top" secondItem="n0t-zX-2Ut" secondAttribute="bottom" constant="5" id="F7I-YK-OE0"/>
                             <constraint firstItem="Y0A-tw-jKG" firstAttribute="leading" secondItem="DSk-aK-igD" secondAttribute="leading" id="FVU-9B-yUY"/>
+                            <constraint firstItem="Cpv-NO-b5j" firstAttribute="leading" secondItem="oDr-Ax-CxP" secondAttribute="leading" constant="5" id="HBz-VR-c8P"/>
                             <constraint firstItem="Y0A-tw-jKG" firstAttribute="leading" secondItem="oDr-Ax-CxP" secondAttribute="leading" constant="20" id="KEd-iG-6tG"/>
+                            <constraint firstItem="hgA-X4-jOz" firstAttribute="top" secondItem="n0t-zX-2Ut" secondAttribute="bottom" constant="10" id="Xd3-bi-uzP"/>
                             <constraint firstAttribute="trailing" secondItem="Y0A-tw-jKG" secondAttribute="trailing" constant="20" id="fZG-Ug-Me3"/>
+                            <constraint firstItem="Cpv-NO-b5j" firstAttribute="top" secondItem="n0t-zX-2Ut" secondAttribute="bottom" id="lG9-gT-Z6c"/>
+                            <constraint firstItem="Cpv-NO-b5j" firstAttribute="leading" secondItem="oDr-Ax-CxP" secondAttribute="leadingMargin" constant="2" id="mcz-QX-hKk"/>
                             <constraint firstItem="aV2-WT-jQX" firstAttribute="top" secondItem="DSk-aK-igD" secondAttribute="bottom" constant="40" id="mzh-TC-zfV"/>
                             <constraint firstItem="Y0A-tw-jKG" firstAttribute="centerX" secondItem="aV2-WT-jQX" secondAttribute="centerX" id="n4a-Lm-3VB"/>
                             <constraint firstItem="Y0A-tw-jKG" firstAttribute="trailing" secondItem="DSk-aK-igD" secondAttribute="trailing" id="oMq-1n-FCj"/>
@@ -84,7 +101,17 @@
                             <constraint firstItem="Y0A-tw-jKG" firstAttribute="centerX" secondItem="sai-EI-ZA7" secondAttribute="centerX" id="pgn-2G-6TC"/>
                             <constraint firstItem="Y0A-tw-jKG" firstAttribute="top" secondItem="hgA-X4-jOz" secondAttribute="bottom" constant="30" id="pmc-sD-ayf"/>
                             <constraint firstItem="DSk-aK-igD" firstAttribute="top" secondItem="Y0A-tw-jKG" secondAttribute="bottom" constant="10" id="uSY-ou-Af9"/>
+                            <constraint firstItem="Cpv-NO-b5j" firstAttribute="leading" secondItem="oDr-Ax-CxP" secondAttribute="leading" constant="10" id="yej-0S-YZY"/>
+                            <constraint firstItem="hgA-X4-jOz" firstAttribute="top" secondItem="n0t-zX-2Ut" secondAttribute="bottom" constant="3" id="z8s-y3-Cbz"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="mcz-QX-hKk"/>
+                                <exclude reference="yej-0S-YZY"/>
+                                <exclude reference="F7I-YK-OE0"/>
+                                <exclude reference="Xd3-bi-uzP"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="groupBtn" destination="sai-EI-ZA7" id="Wwt-jp-nT9"/>
@@ -98,4 +125,7 @@
             <point key="canvasLocation" x="194" y="338"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="back" width="22" height="22"/>
+    </resources>
 </document>

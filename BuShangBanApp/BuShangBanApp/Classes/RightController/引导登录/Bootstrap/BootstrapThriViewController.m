@@ -30,7 +30,6 @@
     CGFloat _left;
     CGFloat _widthSpace;
     CGFloat _heigntSpace;
-    NSMutableArray *_selectedItems;
 }
 
 - (void)viewDidLoad {
@@ -96,8 +95,6 @@
             [ _selectedItems addObject:_titleArray[index]];
     }
     sender.selected=!sender.selected;
-    [[NSUserDefaults standardUserDefaults] setObject:_titleArray forKey:@"selectedItems"];
-    [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

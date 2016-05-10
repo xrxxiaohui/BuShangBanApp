@@ -8,16 +8,20 @@
 
 //https://leancloud.cn:443/1.1/classes/InvitationCode?where=%7B%22key%22%3A%22bsb%22%7D&limit=1&&order=-updatedAt&&keys=-ACL%2C-createdAt%2C-updatedAt%2C-objectId%2C-count
 
-#import "InviteCodeViewController.h"
+//个人邀请码 http://bushangban.duapp.com/invitationCode/invitationCode/personalInvitationCode.html
+
+//企业邀请码申请 http://bushangban.duapp.com/invitationCode/invitationCode/companyInvitationCode.html
 
 #define URL @"https://leancloud.cn:443/1.1/classes/InvitationCode?where=%7B%22key%22%3A%22bsb%22%7D&limit=1&&order=-updatedAt&&keys=-ACL%2C-createdAt%2C-updatedAt%2C-objectId%2C-count"
+
+#import "InviteCodeViewController.h"
 
 @interface InviteCodeViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *textView1;
 @property (weak, nonatomic) IBOutlet UITextView *textView2;
 @property (weak, nonatomic) IBOutlet UIButton *personalBtn;
 @property (weak, nonatomic) IBOutlet UIButton *groupBtn;
-
+@property(nonatomic,weak)UIWebView *webView;
 @end
 
 @implementation InviteCodeViewController
@@ -31,7 +35,8 @@
 }
 
 - (IBAction)btnClick:(UIButton *)sender {
-    if (sender.tag == 1000) {
+    if (sender.tag == 1000){
+//        [self __loadWebViewWithURL:@"http://bushangban.duapp.com/invitationCode/invitationCode/personalInvitationCode.html"];
         SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
         [_urlParamsReq setUrlString:URL];
         [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
@@ -43,6 +48,7 @@
             _errorMsg?[MBProgressHUD showError:_errorMsg]:[MBProgressHUD showError:kMBProgressErrorTitle];
         }];
     }else if(sender.tag == 1001){
+//         [self __loadWebViewWithURL:@"http://bushangban.duapp.com/invitationCode/invitationCode/companyInvitationCode.html"];
         SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
         [_urlParamsReq setUrlString:URL];
         [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
@@ -54,7 +60,26 @@
             _errorMsg?[MBProgressHUD showError:_errorMsg]:[MBProgressHUD showError:kMBProgressErrorTitle];
         }];
     }
-    [self.navigationController popViewControllerAnimated:YES];
+    else if(sender.tag ==1003)
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+-(void)__loadWebViewWithURL:(NSString *)url
+{
+    if (!_webView) {
+        UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 66, kScreenWidth, kScreenHeight-66)];
+        [webView setScalesPageToFit:YES];
+        [webView setContentMode:UIViewContentModeTop];
+        _webView=webView;
+        [self.view addSubview:_webView];
+        NSURLRequest *_request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+        [_webView loadRequest:_request];
+    }else
+    {
+        [_webView removeFromSuperview];
+    }
 }
 
 @end

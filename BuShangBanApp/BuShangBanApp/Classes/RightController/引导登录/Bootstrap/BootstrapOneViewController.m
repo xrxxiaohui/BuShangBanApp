@@ -13,13 +13,6 @@
 
 @interface BootstrapOneViewController ()
 
-@property (strong, nonatomic)  UIButton *headBtn;
-@property (strong, nonatomic)  UIButton *photoBtn;
-@property (strong, nonatomic)  UIButton *maleBtn;
-@property (strong, nonatomic)  UIButton *femaleBtn;
-@property (strong, nonatomic)  UITextField *nickNameTF;
-@property (strong, nonatomic)  UITextField *placeTF;
-
 @end
 
 @implementation BootstrapOneViewController
@@ -47,6 +40,7 @@
     [self __btn:self.maleBtn imageName:@"man_nomal" tag:1001];
     [self.maleBtn setImage:[UIImage imageNamed:@"men_selected"] forState:UIControlStateSelected];
     self.maleBtn.frame=CGRectMake(kScreenWidth/2-44, self.headBtn.bottom+30, 44, 44);
+    self.maleBtn.selected=YES;
    
     self.femaleBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     [self __btn:self.femaleBtn imageName:@"female_nomal" tag:1002];
@@ -104,7 +98,7 @@
     textField.leftView=leftView;
     textField.leftViewMode=UITextFieldViewModeAlways;
     textField.borderStyle=UITextBorderStyleNone;
-    textField.font=[UIFont fontWithName:@"PingFang SC-Light" size:14];
+    textField.font=[UIFont fontWithName:fontName size:14];
     textField.placeholder=placeHolder;
     [self.view addSubview:textField];
     return textField;
