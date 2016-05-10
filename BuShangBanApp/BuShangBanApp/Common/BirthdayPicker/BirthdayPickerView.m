@@ -78,9 +78,11 @@
     [formatter setDateFormat:@"yyyy,MM,dd"];
     NSString *dateTime = [formatter stringFromDate:date];
     NSArray *dateArr=[dateTime componentsSeparatedByString:@","];
-    _currentYear=dateArr[0];
-    _currentMonth=dateArr[1];
-    _currentDay=dateArr[2];
+    _currentYear=[NSString stringWithString:dateArr[0]];
+    _currentMonth=[NSString stringWithString:dateArr[1]];
+    _currentDay=[NSString stringWithString:dateArr[2]];
+    
+    _contentString=[NSString stringWithFormat:@"%@.%@.%@",_currentYear,_currentMonth,_currentDay];
     
     self.yearArray=[NSMutableArray array];
     self.monthArray=[NSMutableArray array];
@@ -120,7 +122,7 @@
 -(void)clickEvent:(UIButton *)sender
 {
     if (sender.tag == 1000)
-        _contentString=[NSString stringWithFormat:@"%@.%@.%@",_yearText,_monthText,_dayText];
+        _contentString=[NSString stringWithFormat:@"%@,%@,%@",_yearText,_monthText,_dayText];
     if (_birthdayPickerBlock)
         _birthdayPickerBlock(self,_contentString);
     [self hide];

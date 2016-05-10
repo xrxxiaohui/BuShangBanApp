@@ -8,4 +8,6 @@
 
 @interface BootstrapThriViewController : UIViewController
 
+@property(nonatomic,strong)NSMutableArray *selectedItems;
+
 @end

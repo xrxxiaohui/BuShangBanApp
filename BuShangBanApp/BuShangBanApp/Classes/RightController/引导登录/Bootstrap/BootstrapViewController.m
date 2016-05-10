@@ -31,6 +31,7 @@
 @implementation BootstrapViewController
 {
     NSInteger _currentIndex;
+    NSMutableDictionary *_mutableDic;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,6 +40,7 @@
 
 -(void)__initUI
 {
+    _mutableDic=[NSMutableDictionary dictionary];
     _currentIndex=0;
     self.viewControllerS=@[[[BootstrapOneViewController alloc]init],[[BootstrapTwoViewController alloc]init],[[BootstrapThriViewController alloc]init]];
     self.titleArray=@[@"请问您是？",@"上班的时候你是？",@"不上班你关注？"];
@@ -91,8 +93,14 @@
         [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"Loginned"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-        [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedItem"];
-        [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedItems"];
+        
+        NSDictionary *dic=@{@"sex":((BootstrapOneViewController *)_viewControllerS[0]).maleBtn.selected?@"男":@"女",
+                            @"city_name":((BootstrapOneViewController *)_viewControllerS[0]).placeTF.text,@"username":((BootstrapOneViewController *)_viewControllerS[0]).nickNameTF.text,
+            @"profession":((BootstrapTwoViewController *)_viewControllerS[1]).selectedItem,
+            @"interest":((BootstrapThriViewController *)_viewControllerS[2]).selectedItems};
+        
+        
+        
     }
 }
 

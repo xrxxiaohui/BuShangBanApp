@@ -93,8 +93,7 @@
             _tempButton.selected=!_tempButton.selected;
         sender.selected=!sender.selected;
         _tempButton=sender;
-        [[NSUserDefaults standardUserDefaults] setObject:sender.titleLabel.text forKey:@"selectedItem"];
-        [[NSUserDefaults standardUserDefaults]synchronize];
+        self.selectedItem=[NSString stringWithString:sender.titleLabel.text];
     }
     else
         sender.selected=!sender.selected;

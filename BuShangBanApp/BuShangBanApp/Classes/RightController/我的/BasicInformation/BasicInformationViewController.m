@@ -18,6 +18,10 @@
 
 #define userURL @"https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24"
 
+#define saveInformationURL  @"https://api.leancloud.cn/1.1/users/570387b3ebcb7d005b196d24"
+
+#define uploadImageURL @"https://api.leancloud.cn/1.1/files/570387b3ebcb7d005b196d24.jpeg"
+
 @interface BasicInformationViewController ()<UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate,EditInformationDelegate>
 
 @property(nonatomic,strong)User *user;
@@ -31,7 +35,6 @@
 
 @property(nonatomic,weak)BirthdayPickerView *birthdaySelectorView;
 
-
 @property(nonatomic, strong)EditInformationViewController *editInformationViewController;
 @end
 
@@ -41,6 +44,8 @@
     NSIndexPath *_indexPath;
     BasicInformationCell *_cell;
     CGPoint _point;
+    NSMutableDictionary *_mutableDic;
+    NSString *_objectID;
 }
 
 - (void)viewDidLoad
@@ -68,6 +73,7 @@
 -(void)__initData
 {
     self.user=[[User alloc]init];
+    _mutableDic =[NSMutableDictionary dictionary];
     _titleArray=[NSArray arrayWithObjects:@[@"头像"],@[@"昵称", @"身份签名",@"所在地",@"生日", @"职业", @"兴趣"], @[@"电话号码",@"电子邮件" ],nil];
     _contentArray =[NSMutableArray array];
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
@@ -146,6 +152,13 @@
         btn.layer.cornerRadius = btn.width / 2;
         btn.clipsToBounds = YES;
         _user.avatarImage=[btn snapshotImage];
+        
+        [_mutableDic setValue:_objectID forKey:@"objectId"];
+        
+        SSLXUrlParamsRequest *_urlParamsReq=[[SSLXUrlParamsRequest alloc]init];
+        
+        
+        
     }];
 }
 
@@ -169,6 +182,21 @@
 -(void)saveInformation:(UIButton *)sender
 {
     
+    
+    SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
+    _urlParamsReq.requestMethod =  YTKRequestMethodPut;
+    [_urlParamsReq setParamsDict:_mutableDic];
+    [_urlParamsReq setUrlString:saveInformationURL];
+    
+    [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
+    
+        NSLog(@"*********%@",successRequest.responseJSONObject);
+        
+        
+    } failureBlock:^(SSLXResultRequest *failRequest){
+        NSString *_errorMsg = [[failRequest.responseString objectFromJSONString] objectForKey:@"error"];
+        _errorMsg?[MBProgressHUD showError:_errorMsg]:[MBProgressHUD showError:kMBProgressErrorTitle];
+    }];
 }
 
 #pragma mark ---- 懒加载 ----
@@ -244,7 +272,6 @@
     _cell = [tableView cellForRowAtIndexPath:indexPath];
     if (indexPath.section == 0 )
     {
-
         [self setHeadImage:_cell.headBtn];
         if (_cell.headBtn.currentImage == nil)
             [_cell.headBtn setImage:[UIImage imageNamed:@"Default avatar"] forState:UIControlStateNormal];
@@ -256,7 +283,9 @@
         _indexPath=indexPath;
         [self textFieldDidBeginEditing:_cell.contentTF];
         return;
-    }
+    }else if(indexPath.section == 2  && indexPath.row == 0)
+        return;
+    
     _editInformationViewController=[[EditInformationViewController alloc]initWithContentInfor:@[_cell.textLabel.text,_cell.contentTF.text]];
     _editInformationViewController.delegate=self;
     [[SliderViewController sharedSliderController].navigationController pushViewController:self.editInformationViewController animated:YES];
@@ -305,7 +334,8 @@
                 addressChoice.block=^(AddressChoicePickerView *view, UIButton *btn, AreaObject *locate)
                 {
                     _contentArray[_indexPath.row]=[NSString stringWithFormat:@"%@",locate];
-                    textField.text= _contentArray[_indexPath.row];
+                    textField.text= [NSString stringWithString:_contentArray[_indexPath.row]];
+                    [_mutableDic setValue:[NSString stringWithString:_contentArray[_indexPath.row]] forKey:@"city_name"];
                 };
                 [addressChoice show];
                 break;
@@ -315,7 +345,8 @@
                 self.birthdaySelectorView.contentString=textField.text;
                 self.birthdaySelectorView.birthdayPickerBlock=^(BirthdayPickerView *view,NSString *contentText){
                     _contentArray[_indexPath.row]=contentText;
-                    textField.text= _contentArray[_indexPath.row];
+                    textField.text= [NSString stringWithString:_contentArray[_indexPath.row]];
+                    [_mutableDic setValue:[NSString stringWithString:_contentArray[_indexPath.row]] forKey:@"birthday"];
                 };
                 break;
             }
@@ -324,8 +355,10 @@
                 self.occupationSelectorView.contentString=textField.text;
                 self.occupationSelectorView.occupationSelectorBlock=^(OccupationSelectorView *view,NSString *contentText){
                     _contentArray[_indexPath.row]=contentText;
-                    textField.text= _contentArray[_indexPath.row];
+                    textField.text= [NSString stringWithString:_contentArray[_indexPath.row]];
+                    [_mutableDic setValue:[NSString stringWithString:_contentArray[_indexPath.row]] forKey:@"profession"];
                 };
+                
                 break;
             }
         }
@@ -340,9 +373,17 @@
 
 -(void)editInformationWithContentString:(NSString *)contentString
 {
-//    if ([_cell.textLabel.text isEqual:@"兴趣"] && ![_cell.contentTF.text isEqual:@""] )
-//        _cell.contentTF.text=[NSString stringWithFormat:@"%@,%@",_cell.contentTF.text,contentString];
-//    else if(![contentString isEqual:@"  "] && contentString!=nil )
+    if ([_cell.textLabel.text isEqualToString:@"昵称"])
+        [_mutableDic setValue:contentString forKey:@"username"];
+    else if([_cell.textLabel.text isEqualToString:@"省份签名"])
+        [_mutableDic setValue:contentString forKey:@"title"];
+    else if([_cell.textLabel.text isEqualToString:@"兴趣"])
+        [_mutableDic setValue:contentString forKey:@"interest"];
+    else if([_cell.textLabel.text isEqualToString:@"电子邮件"])
+        [_mutableDic setValue:contentString forKey:@"email"];
+    else if([_cell.textLabel.text isEqualToString:@"电话号码"])
+        [_mutableDic setValue:contentString forKey:@"mobilePhoneNumber"];
+    
     _cell.contentTF.text=contentString;
     _editInformationViewController=nil;
 }
