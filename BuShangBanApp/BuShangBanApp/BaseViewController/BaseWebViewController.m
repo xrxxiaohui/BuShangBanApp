@@ -243,7 +243,7 @@ typedef enum : NSInteger {
     _zanNumLabel = [[UILabel alloc] init];
     _zanNumLabel.frame = CGRectMake(_zanButton.right+4, _zanButton.y+2, 25, 12);
     [_zanNumLabel setFont:[UIFont systemFontOfSize:12]];
-    [_zanNumLabel setText:@"122"];
+    [_zanNumLabel setText:@"0"];
     [_zanNumLabel setTextColor:COLOR(124, 124, 124)];
     [bottomImageView addSubview:_zanNumLabel];
     
@@ -269,20 +269,20 @@ typedef enum : NSInteger {
     _shareNumLabel = [[UILabel alloc] init];
     _shareNumLabel.frame = CGRectMake(_shareButton.right+4, _shareButton.y+2, 25, 12);
     [_shareNumLabel setFont:[UIFont systemFontOfSize:12]];
-    [_shareNumLabel setText:@"122"];
+    [_shareNumLabel setText:@"1"];
     [_shareNumLabel setTextColor:COLOR(124, 124, 124)];
     [bottomImageView addSubview:_shareNumLabel];
 
     
     NSString *likes_count = [NSString stringWithFormat:@"%@",[self.dataDics valueForKeyPath:@"related_post.likes_count"]];
-    [_zanNumLabel setText:likes_count];
+//    [_zanNumLabel setText:likes_count];
     
     NSString *share_count = [NSString stringWithFormat:@"%@",[self.dataDics valueForKeyPath:@"related_post.share_count"]];
     
-    [_shareNumLabel setText:share_count];
+//    [_shareNumLabel setText:share_count];
     
     NSString *comment_count = [NSString stringWithFormat:@"%@",[self.dataDics valueForKeyPath:@"related_post.comment_count"]];
-    [_commentNumLabel setText:comment_count];
+//    [_commentNumLabel setText:comment_count];
 }
 
 -(void)zanButtonClick{

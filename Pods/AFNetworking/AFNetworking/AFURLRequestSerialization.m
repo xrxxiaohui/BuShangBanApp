@@ -404,7 +404,9 @@ forHTTPHeaderField:(NSString *)field
     //        [request addValue: mySessionToken forHTTPHeaderField:@"user-token"];
     [mutableRequest addValue: @"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz" forHTTPHeaderField:@"X-LC-Id"];
     [mutableRequest addValue: @"MDOagSCTlLw9A6fkrcaphlB8" forHTTPHeaderField:@"X-LC-Key"];
-    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [mutableRequest addValue:[userDefaults objectForKey:@"sessionToken"] forHTTPHeaderField:@"X-LC-Session"];
+
     for (NSString *keyPath in AFHTTPRequestSerializerObservedKeyPaths()) {
         if ([self.mutableObservedChangedKeyPaths containsObject:keyPath]) {
             [mutableRequest setValue:[self valueForKeyPath:keyPath] forKey:keyPath];
@@ -525,6 +527,7 @@ forHTTPHeaderField:(NSString *)field
                                withParameters:(id)parameters
                                         error:(NSError *__autoreleasing *)error
 {
+//    13051699286   113428
     NSParameterAssert(request);
 
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
