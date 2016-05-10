@@ -76,10 +76,10 @@ static id _instance;
 
     [baseRequest startWithCompletionBlockWithSuccess:^(YTKBaseRequest *successRequest){
     
-        NSDictionary *_nsDic  = [successRequest.responseString objectFromJSONString];//[super parseJsonRequest:request];
+//        NSDictionary *_nsDic  = [successRequest.responseString objectFromJSONString];//[super parseJsonRequest:request];
         // 保证是字典类型
 //        if (_nsDic && [_nsDic isKindOfClass:[NSDictionary class]] && [[_nsDic valueForKeyPath:@"result.status"] isKindOfClass:[NSString class]])
-        if (_nsDic && [_nsDic isKindOfClass:[NSDictionary class]] ){
+        if ([successRequest.responseString objectFromJSONString] && ([[successRequest.responseString objectFromJSONString] isKindOfClass:[NSDictionary class]]|| [[successRequest.responseString objectFromJSONString]isKindOfClass:[NSArray class]])){
             
 //            if ([[_nsDic valueForKeyPath:@"result.status"] isEqualToString:@"01"]) {
                 if (successResult) {

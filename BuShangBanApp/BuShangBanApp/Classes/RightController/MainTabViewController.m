@@ -79,7 +79,6 @@ static MainTabViewController *main;
     [_tabController.tabBar setClipsToBounds:YES];
     [_tabController setSelectedIndex:0];
 
-
     _shadowView = [[UIControl alloc] initWithFrame:CGRectMake(0, self.view.height - _tabController.tabBar.height, _tabController.tabBar.width, _tabController.tabBar.height)];
     [_shadowView addTarget:self action:@selector(shadowViewClick:) forControlEvents:UIControlEventTouchUpInside];
     [_shadowView setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.3f]];

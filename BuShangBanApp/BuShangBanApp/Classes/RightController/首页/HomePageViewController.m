@@ -32,16 +32,16 @@
     [super viewDidLoad];
     self.view.backgroundColor = COLOR(249, 249, 249);
     
-    _fmVC=[[FMViewController alloc]init];
-    [self addChildViewController:_fmVC];
-    [self.view addSubview:_fmVC.view];
+//    _fmVC=[[FMViewController alloc]init];
+//    [self addChildViewController:_fmVC];
+//    [self.view addSubview:_fmVC.view];
     
-    UIButton *fmBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    UIImage *image=[UIImage imageNamed:@"FM"];
-    [fmBtn setBackgroundImage:image forState:UIControlStateNormal];
-    [fmBtn addTarget:self action:@selector(showFM) forControlEvents:UIControlEventTouchUpInside];
-    [self customLeftItemWithBtn:fmBtn];
-    fmBtn.frame=CGRectMake(0, 0, image.size.width, image.size.height);
+//    UIButton *fmBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+//    UIImage *image=[UIImage imageNamed:@"FM"];
+//    [fmBtn setBackgroundImage:image forState:UIControlStateNormal];
+//    [fmBtn addTarget:self action:@selector(showFM) forControlEvents:UIControlEventTouchUpInside];
+//    [self customLeftItemWithBtn:fmBtn];
+//    fmBtn.frame=CGRectMake(0, 0, image.size.width, image.size.height);
     
     [self customNavigationBarWithImage:@"logo"];
     UIButton *mentionButton = [UIButton buttonWithType:UIButtonTypeCustom];
