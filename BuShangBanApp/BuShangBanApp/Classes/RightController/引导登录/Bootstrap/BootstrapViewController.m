@@ -67,7 +67,6 @@
     [self.view addSubview:self.pageViewController.view];
 }
 - (IBAction)back:(UIButton *)sender {
-    
     _currentIndex--;
     if (_currentIndex>=0)
     {
