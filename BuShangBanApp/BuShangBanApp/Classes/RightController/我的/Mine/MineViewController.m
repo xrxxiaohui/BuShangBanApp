@@ -38,6 +38,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(judgeLoginStatus) name:@"judgeLoginStatus" object:nil];
+    
+    UIButton *tempButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [tempButton setFrame:CGRectMake(100, kScreenHeight-120, 60, 60)];
+    [tempButton setBackgroundColor:[UIColor blueColor]];
+    [self.view addSubview:tempButton];
+    [tempButton addTarget:self action:@selector(logOut) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)logOut{
+
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:@"0" forKey:kLoginStatus];
+    [MBProgressHUD showSuccess:@"退出登录！"];
 }
 
 -(void)judgeLoginStatus{
@@ -52,12 +65,6 @@
         
         [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
     }
-
-}
-
--(void)gotoFirstpage
-{
-
 }
 
 -(void)__loadData {

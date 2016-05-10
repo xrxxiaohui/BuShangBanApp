@@ -58,7 +58,8 @@
     _loginBtn.tag=1001;
     [self.view addSubview:_loginBtn];
     
-    _accountTF=[self textFieldWithPlaceHolder:@"手机号/邮箱" imageNamed:@"phone number"];
+//    _accountTF=[self textFieldWithPlaceHolder:@"手机号/邮箱" imageNamed:@"phone number"];
+        _accountTF=[self textFieldWithPlaceHolder:@"手机号" imageNamed:@"phone number"];
     _accountTF.keyboardType=UIKeyboardTypeNumberPad;
     
     _verificationCodeTF=[self textFieldWithPlaceHolder:@"验证码" imageNamed:@"Verification code"];
@@ -157,13 +158,12 @@
             NSDictionary *_paramsDict = @{  @"mobilePhoneNumber":tempString?tempString:@0   };
              [_urlParamsReq setParamsDict:_paramsDict];
             _urlParamsReq.requestMethod = YTKRequestMethodPost;
-            
 
             [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
-                if ([[successRequest.responseString objectFromJSONString] valueForKey:@"err"])
-                    [MBProgressHUD bwm_showTitle:[[successRequest.responseString objectFromJSONString] valueForKey:@"err"] toView:self.view hideAfter:2.0f];
+                if ([[successRequest.responseString objectFromJSONString] valueForKey:@"error"])
+                [MBProgressHUD showError:[[successRequest.responseString objectFromJSONString] valueForKey:@"error"]];
                 else
-                    [MBProgressHUD bwm_showTitle:@"验证码发送成功" toView:self.view hideAfter:2.0f];
+                    [MBProgressHUD showSuccess:@"验证码发送成功"];
                 
                 NSLog(@"access send sms success, successRequest: %@",[successRequest.responseString objectFromJSONString]);
                 
@@ -185,28 +185,94 @@
         {
             if([self __check])
             {
-                //                AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-                //                [manager GET:@"https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-                //
-                ////                    if(![_verificationCodeTF.text isEqualToString:@""])
-                ////                        [MBProgressHUD showError:@"验证码不对"];
-                ////                    else if(![_inivitTF.text isEqualToString:@""])
-                ////                        [MBProgressHUD showError:@"验证码不对"];
-                ////                    else if(@"")
-                ////                        [MBProgressHUD showError:@"这个账号已经注册过"];
-                ////                    else
-                //                        success=YES;
-                //                } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                //                    [MBProgressHUD showError:[NSString stringWithFormat:@"%@",error]];
-                //                }];
-                //                if (success)
-                {
-                    [[SliderViewController sharedSliderController].navigationController pushViewController:[[BootstrapViewController alloc] init] animated:YES];
+                NSString *tempString = [NSString stringWithFormat:@"%@",_accountTF.text];
+                [self __checkMobileWithPhone:_accountTF.text];
+                [self cutDownTimer];
+                
+                SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
+                [_urlParamsReq setUrlString:@"https://api.leancloud.cn/1.1/batch"];
+                
+                //拼接post数据
+                NSDictionary *whereDic = @{@"key": _inivitTF.text
+                                          };
+                
+                NSDictionary *bodyDic = @{@"class": @"InvitationCode",
+                                           @"where": whereDic
+                                           };
+                NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:1];
+                
+                
+                NSDictionary *tempDic1 = @{@"method": @"GET",
+                                           @"path": @"/1.1/classes/InvitationCode",
+                                           @"body":bodyDic
+                                          };
+                [tempArray addObject:tempDic1];
+                
+                
+                NSDictionary *bodyDic1 = @{  @"mobilePhoneNumber":tempString?tempString:@0,
+                                                @"smsCode":_verificationCodeTF.text,@"invitation_code":_inivitTF.text};
+                                                
+                NSDictionary *tempDic2 = @{@"method": @"POST",
+                                           @"path": @"/1.1/usersByMobilePhone",
+                                           @"body":bodyDic1
+                                           };
+                [tempArray addObject:tempDic2];
+
+                NSDictionary *_paramsDict = @{@"requests":tempArray};
+                
+                
+//                NSDictionary *_paramsDict = @{  @"mobilePhoneNumber":tempString?tempString:@0,
+//                                                @"smsCode":_verificationCodeTF.text,@"invitation_code":_inivitTF.text};
+                [_urlParamsReq setParamsDict:_paramsDict];
+                _urlParamsReq.requestMethod = YTKRequestMethodPost;
+                
+                [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
                     
-                    //                    NSDictionary *dic=@{};
-                    //                    [[NSUserDefaults standardUserDefaults] setObject:dic forKey:@"UserInfo"];
+                    NSArray *finalArray = [NSArray arrayWithArray:[successRequest.responseString objectFromJSONString]];
+                    if([finalArray count]>1){
+                    
+                        NSDictionary *tempDic = [finalArray objectAtIndex:0];
+                        NSDictionary *tempDic1 = [finalArray objectAtIndex:1];
+                        
+                        NSDictionary *successCode = [tempDic objectForKey:@"success"];
+                        NSDictionary *successCode1 = [tempDic1 objectForKey:@"success"];
+
+                        if(![self isBlankDictionary:successCode1]&&![self isBlankDictionary:successCode]){
+                        
+                            //成功
+                            [[SliderViewController sharedSliderController].navigationController pushViewController:[[BootstrapViewController alloc] init] animated:YES];
+
+                        }else{
+                        
+                            if([self isBlankDictionary:successCode]){
+                            
+                                NSString *_errorMsg = [[tempDic objectForKey:@"error"] objectForKey:@"error"];
+                                [MBProgressHUD showError:_errorMsg];
+                                return;
+                            }else if([self isBlankDictionary:successCode1]){
+                            
+                                NSString *_errorMsg = [[tempDic1 objectForKey:@"error"] objectForKey:@"error"];
+                                [MBProgressHUD showError:_errorMsg];
+                                return;
+                            }
+                        }
+
+                    }
+                    
+                    
+                } failureBlock:^(SSLXResultRequest *failRequest){
+                    
+                    NSLog(@"access send sms fail");
+                    
+                    NSDictionary *_failDict = [failRequest.responseString objectFromJSONString];
+                    NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
+                    if (_errorMsg)
+                        [MBProgressHUD showError:_errorMsg];
+                    else
+                        [MBProgressHUD showError:kMBProgressErrorTitle];
+                }];
+                
                 }
-            }
         }
             break;
         case 1004:
@@ -257,7 +323,6 @@
         }
     }
     
-    
     if(_passWordTF.text.length<6)
     {
         [MBProgressHUD showError:@"密码长度不能小于6"];
@@ -288,11 +353,11 @@
         [MBProgressHUD showError:@"验证码长度不对"];
         return NO;
     }
-    if (![self  __verificationCode:_verificationCodeTF.text])
-    {
-        [MBProgressHUD showError:@"验证码格式不对"];
-        return NO;
-    }
+//    if (![self  __verificationCode:_verificationCodeTF.text])
+//    {
+//        [MBProgressHUD showError:@"验证码格式不对"];
+//        return NO;
+//    }
     
     if(!_readedBtn.selected)
     {
@@ -361,4 +426,15 @@
         _cutDownTimer = nil;
     }
 }
+
+#pragma mark - 空字典判断
+- (BOOL) isBlankDictionary:(NSDictionary *)dictionary
+{
+    if (dictionary == nil || dictionary == NULL) { return YES; }
+    if ([dictionary isKindOfClass:[NSNull class]]) { return YES; }
+    if ([dictionary allKeys].count == 0)  {
+        return YES;
+    }  return NO;
+}
+
 @end
