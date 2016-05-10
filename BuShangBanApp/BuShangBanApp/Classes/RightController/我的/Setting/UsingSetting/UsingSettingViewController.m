@@ -139,9 +139,6 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UIStoryboard *UserProtocal=[UIStoryboard storyboardWithName:@"UserProtocal" bundle:nil];
-//    [[SliderViewController sharedSliderController].navigationController pushViewController:[UserProtocal instantiateViewControllerWithIdentifier:@"UserProtocal"] animated:YES];
-    
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if(indexPath.section == 1 && indexPath.row == 0)
     {

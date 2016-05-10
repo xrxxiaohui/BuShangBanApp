@@ -13,7 +13,7 @@
 #import "WXApi.h"
 #import "WeiboSDK.h"
 #import <AVOSCloud/AVOSCloud.h>
-#import "LoginOrRegistViewController.h"
+
 
 @interface AppDelegate ()
 

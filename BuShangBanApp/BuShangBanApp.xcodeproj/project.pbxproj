@@ -24,7 +24,9 @@
 		042B09A01CA42DFC003A533D /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042B099F1CA42DFC003A533D /* JavaScriptCore.framework */; };
 		042B09A21CA42E09003A533D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 042B09A11CA42E09003A533D /* ImageIO.framework */; };
 		042B09CE1CA5A082003A533D /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 042B09CD1CA5A082003A533D /* FileManager.m */; };
-		0447E4681CE0569C0002EADF /* FMView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447E4671CE0569C0002EADF /* FMView.m */; };
+		0447E4711CE091690002EADF /* FMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447E46F1CE091690002EADF /* FMViewController.m */; };
+		0447E4721CE091690002EADF /* FMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0447E4701CE091690002EADF /* FMViewController.xib */; };
+		0447E4841CE0A4200002EADF /* AccessSendSmsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447E4801CE0A4200002EADF /* AccessSendSmsApi.m */; };
 		044DAE1D1CA7E89F0058A319 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049EF24D1CA3904200C1D68A /* ShareSDK.framework */; };
 		049EF1E41CA38D8D00C1D68A /* AddressChoicePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF1D51CA38D8D00C1D68A /* AddressChoicePickerView.m */; };
 		049EF1E51CA38D8D00C1D68A /* AddressChoicePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049EF1D61CA38D8D00C1D68A /* AddressChoicePickerView.xib */; };
@@ -32,8 +34,6 @@
 		049EF1E71CA38D8D00C1D68A /* AreaObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF1D91CA38D8D00C1D68A /* AreaObject.m */; };
 		049EF1E91CA38D8D00C1D68A /* ScreenAdapt.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF1DF1CA38D8D00C1D68A /* ScreenAdapt.m */; };
 		049EF1EA1CA38D8D00C1D68A /* UIColor+PPCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF1E11CA38D8D00C1D68A /* UIColor+PPCategory.m */; };
-		049EF2331CA38F5700C1D68A /* LoginOrRegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF22E1CA38F5700C1D68A /* LoginOrRegistViewController.m */; };
-		049EF2341CA38F5700C1D68A /* LoginViewOrRegistView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF2301CA38F5700C1D68A /* LoginViewOrRegistView.m */; };
 		049EF2391CA38FA000C1D68A /* FindView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF2361CA38FA000C1D68A /* FindView.m */; };
 		049EF23A1CA38FA000C1D68A /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF2381CA38FA000C1D68A /* FindViewController.m */; };
 		049EF2481CA3900A00C1D68A /* infoConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 049EF2471CA3900A00C1D68A /* infoConfig.plist */; };
@@ -70,7 +70,6 @@
 		A30012B81CA3A12A00BD6FAD /* 750*1334.png in Resources */ = {isa = PBXBuildFile; fileRef = A30012B71CA3A12A00BD6FAD /* 750*1334.png */; };
 		A32DCB6A1CDF3DEA000D463A /* SuggestListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A32DCB691CDF3DEA000D463A /* SuggestListViewController.m */; };
 		A32DCB6D1CDF425D000D463A /* SuggestListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A32DCB6C1CDF425D000D463A /* SuggestListCell.m */; };
-		A32DCB701CDFEF16000D463A /* AccessSendSmsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = A32DCB6F1CDFEF16000D463A /* AccessSendSmsApi.m */; };
 		A33447F61CA290860006C8A3 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A33447F41CA290860006C8A3 /* 1.jpg */; };
 		A33447F71CA290860006C8A3 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A33447F51CA290860006C8A3 /* 3.jpg */; };
 		A33447F91CA290940006C8A3 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A33447F81CA290940006C8A3 /* 2.jpg */; };
@@ -263,8 +262,11 @@
 		042B09A11CA42E09003A533D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		042B09CC1CA5A082003A533D /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
 		042B09CD1CA5A082003A533D /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
-		0447E4661CE0569C0002EADF /* FMView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMView.h; sourceTree = "<group>"; };
-		0447E4671CE0569C0002EADF /* FMView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMView.m; sourceTree = "<group>"; };
+		0447E46E1CE091690002EADF /* FMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMViewController.h; sourceTree = "<group>"; };
+		0447E46F1CE091690002EADF /* FMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMViewController.m; sourceTree = "<group>"; };
+		0447E4701CE091690002EADF /* FMViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMViewController.xib; sourceTree = "<group>"; };
+		0447E4801CE0A4200002EADF /* AccessSendSmsApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessSendSmsApi.m; sourceTree = "<group>"; };
+		0447E4811CE0A4200002EADF /* AccessSendSmsApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessSendSmsApi.h; sourceTree = "<group>"; };
 		049EF1D41CA38D8D00C1D68A /* AddressChoicePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressChoicePickerView.h; sourceTree = "<group>"; };
 		049EF1D51CA38D8D00C1D68A /* AddressChoicePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressChoicePickerView.m; sourceTree = "<group>"; };
 		049EF1D61CA38D8D00C1D68A /* AddressChoicePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressChoicePickerView.xib; sourceTree = "<group>"; };
@@ -276,10 +278,6 @@
 		049EF1DF1CA38D8D00C1D68A /* ScreenAdapt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenAdapt.m; sourceTree = "<group>"; };
 		049EF1E01CA38D8D00C1D68A /* UIColor+PPCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PPCategory.h"; sourceTree = "<group>"; };
 		049EF1E11CA38D8D00C1D68A /* UIColor+PPCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PPCategory.m"; sourceTree = "<group>"; };
-		049EF22D1CA38F5700C1D68A /* LoginOrRegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginOrRegistViewController.h; sourceTree = "<group>"; };
-		049EF22E1CA38F5700C1D68A /* LoginOrRegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginOrRegistViewController.m; sourceTree = "<group>"; };
-		049EF22F1CA38F5700C1D68A /* LoginViewOrRegistView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewOrRegistView.h; sourceTree = "<group>"; };
-		049EF2301CA38F5700C1D68A /* LoginViewOrRegistView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewOrRegistView.m; sourceTree = "<group>"; };
 		049EF2351CA38FA000C1D68A /* FindView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindView.h; sourceTree = "<group>"; };
 		049EF2361CA38FA000C1D68A /* FindView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindView.m; sourceTree = "<group>"; };
 		049EF2371CA38FA000C1D68A /* FindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindViewController.h; sourceTree = "<group>"; };
@@ -350,8 +348,6 @@
 		A32DCB691CDF3DEA000D463A /* SuggestListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestListViewController.m; sourceTree = "<group>"; };
 		A32DCB6B1CDF425D000D463A /* SuggestListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestListCell.h; sourceTree = "<group>"; };
 		A32DCB6C1CDF425D000D463A /* SuggestListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestListCell.m; sourceTree = "<group>"; };
-		A32DCB6E1CDFEF16000D463A /* AccessSendSmsApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessSendSmsApi.h; sourceTree = "<group>"; };
-		A32DCB6F1CDFEF16000D463A /* AccessSendSmsApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessSendSmsApi.m; sourceTree = "<group>"; };
 		A33447F41CA290860006C8A3 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		A33447F51CA290860006C8A3 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		A33447F81CA290940006C8A3 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
@@ -667,6 +663,8 @@
 		042884761CD0C85900C08212 /* Bootstrap */ = {
 			isa = PBXGroup;
 			children = (
+				0447E4801CE0A4200002EADF /* AccessSendSmsApi.m */,
+				0447E4811CE0A4200002EADF /* AccessSendSmsApi.h */,
 				0428847D1CD0C85900C08212 /* BootstrapViewController.h */,
 				0428847E1CD0C85900C08212 /* BootstrapViewController.m */,
 				0428847F1CD0C85900C08212 /* BootstrapViewController.xib */,
@@ -707,7 +705,6 @@
 			isa = PBXGroup;
 			children = (
 				042884761CD0C85900C08212 /* Bootstrap */,
-				049EF2291CA38F5700C1D68A /* loginOrRegist */,
 				042884401CD08D3000C08212 /* LoginViewController.h */,
 				042884411CD08D3000C08212 /* LoginViewController.m */,
 				042884431CD0943300C08212 /* RegistViewController.h */,
@@ -719,19 +716,6 @@
 				0419C3601CD10AA60020750C /* BasicViewController.m */,
 			);
 			path = "引导登录";
-			sourceTree = "<group>";
-		};
-		049EF2291CA38F5700C1D68A /* loginOrRegist */ = {
-			isa = PBXGroup;
-			children = (
-				A32DCB6E1CDFEF16000D463A /* AccessSendSmsApi.h */,
-				A32DCB6F1CDFEF16000D463A /* AccessSendSmsApi.m */,
-				049EF22D1CA38F5700C1D68A /* LoginOrRegistViewController.h */,
-				049EF22E1CA38F5700C1D68A /* LoginOrRegistViewController.m */,
-				049EF22F1CA38F5700C1D68A /* LoginViewOrRegistView.h */,
-				049EF2301CA38F5700C1D68A /* LoginViewOrRegistView.m */,
-			);
-			path = loginOrRegist;
 			sourceTree = "<group>";
 		};
 		049EF2491CA3904200C1D68A /* release-v3.2.7 */ = {
@@ -1168,8 +1152,9 @@
 				A32DCB6C1CDF425D000D463A /* SuggestListCell.m */,
 				A3B12B501CC98D3C008F0CD4 /* JuXingView.h */,
 				A3B12B511CC98D3C008F0CD4 /* JuXingView.m */,
-				0447E4661CE0569C0002EADF /* FMView.h */,
-				0447E4671CE0569C0002EADF /* FMView.m */,
+				0447E46E1CE091690002EADF /* FMViewController.h */,
+				0447E46F1CE091690002EADF /* FMViewController.m */,
+				0447E4701CE091690002EADF /* FMViewController.xib */,
 			);
 			path = "首页";
 			sourceTree = "<group>";
@@ -1644,6 +1629,7 @@
 				042884841CD0C85900C08212 /* BootstrapViewController.xib in Resources */,
 				A3FD04591C993CF100E84A0B /* MBProgressHUD.bundle in Resources */,
 				049EF2761CA3904200C1D68A /* ShareSDK.bundle in Resources */,
+				0447E4721CE091690002EADF /* FMViewController.xib in Resources */,
 				049EF1E51CA38D8D00C1D68A /* AddressChoicePickerView.xib in Resources */,
 				049EF2721CA3904200C1D68A /* WeiboSDK.bundle in Resources */,
 				A38A86071CA4CB4400582AD5 /* launchImage@2x.png in Resources */,
@@ -1736,8 +1722,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				049EF2341CA38F5700C1D68A /* LoginViewOrRegistView.m in Sources */,
-				0447E4681CE0569C0002EADF /* FMView.m in Sources */,
 				04E3E4191CCE3633000FD2DF /* BasicInformationViewController.m in Sources */,
 				A3FD043F1C99397A00E84A0B /* MLTransitionAnimation.m in Sources */,
 				A39CD3461C9951C500F0D8EE /* SUNSlideSwitchView1.m in Sources */,
@@ -1775,7 +1759,6 @@
 				A3B12B4C1CC8757F008F0CD4 /* SuggestPageViewController.m in Sources */,
 				A39CD32E1C9950F600F0D8EE /* BaseViewController.m in Sources */,
 				A376A7E91CA00F6400B4F9BF /* HomeHeadViewCell.m in Sources */,
-				A32DCB701CDFEF16000D463A /* AccessSendSmsApi.m in Sources */,
 				A377D1461C99560A00C779A7 /* YUDarkGlassView.m in Sources */,
 				A3FD048F1C993EB900E84A0B /* NSMutableArray+TDSafeMutableArray.m in Sources */,
 				A377D1A71C995E3000C779A7 /* MJRefreshGifHeader.m in Sources */,
@@ -1800,7 +1783,6 @@
 				042B09CE1CA5A082003A533D /* FileManager.m in Sources */,
 				A39CD32F1C9950F600F0D8EE /* ArrowBackViewController.m in Sources */,
 				04E3E4241CCE3633000FD2DF /* UsingSettingViewController.m in Sources */,
-				049EF2331CA38F5700C1D68A /* LoginOrRegistViewController.m in Sources */,
 				0428848D1CD0D3AD00C08212 /* BootstrapTwoViewController.m in Sources */,
 				A377D1451C99560A00C779A7 /* YUBottomPopSelctView.m in Sources */,
 				A377D1491C99564500C779A7 /* ConstObject.m in Sources */,
@@ -1852,6 +1834,7 @@
 				A377D1AA1C995E3000C779A7 /* MJRefreshLegendHeader.m in Sources */,
 				042884421CD08D3000C08212 /* LoginViewController.m in Sources */,
 				A3FD04671C993DC200E84A0B /* SSLXNetworkManager.m in Sources */,
+				0447E4841CE0A4200002EADF /* AccessSendSmsApi.m in Sources */,
 				042884881CD0CBEA00C08212 /* BootstrapOneViewController.m in Sources */,
 				A3FD04681C993DC200E84A0B /* SSLXBaseRequest.m in Sources */,
 				A39CD29B1C9950A300F0D8EE /* LeftViewController.m in Sources */,
@@ -1863,6 +1846,7 @@
 				A377D1B11C995EB900C779A7 /* WechatShareView.m in Sources */,
 				A3FD04A31C99403E00E84A0B /* UserActionRequest.pb.m in Sources */,
 				042345761CD45C5C00E74F4A /* SettingViewController.m in Sources */,
+				0447E4711CE091690002EADF /* FMViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2003,10 +1987,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/release-v3.2.7/Static",
-					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK",
-					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK/Support/Optional",
-					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK/Support/Required",
 					"$(PROJECT_DIR)/release-v3.2.7/Static",
 					"$(PROJECT_DIR)/ShareSDK",
 					"$(PROJECT_DIR)/ShareSDK/Support/Optional",
@@ -2019,14 +1999,11 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
-					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
 				"LIBRARY_SEARCH_PATHS[arch=*]" = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
@@ -2048,10 +2025,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/release-v3.2.7/Static",
-					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK",
-					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK/Support/Optional",
-					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK/Support/Required",
 					"$(PROJECT_DIR)/release-v3.2.7/Static",
 					"$(PROJECT_DIR)/ShareSDK",
 					"$(PROJECT_DIR)/ShareSDK/Support/Optional",
@@ -2064,8 +2037,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
-					"$(PROJECT_DIR)/BuShangBanApp/Classes/RightController/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/ShareSDK/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);

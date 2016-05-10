@@ -30,15 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self customNavigationBarWithTitle:@"消息"];
-//<<<<<<< HEAD
-//    
-//    self.view.backgroundColor = [UIColor yellowColor];
-//    
-//    [self initData];
-//    [self createTabelView];
-//    [self fetchData];
-//=======
-//    [[NSNotificationCenter defaultCenter]postNotificationName:@"gotoFirstPage" object:nil];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"gotoFirstPage" object:nil];
     _logined =[[[NSUserDefaults standardUserDefaults]objectForKey:@"Loginned"] boolValue] ;
     if(!_logined)
     {
@@ -52,7 +44,6 @@
         [self createTabelView];
         [self fetchData];
     }
-//>>>>>>> 7072ceed0cabe37811d67a19de74bf59dc26b3dc
 }
 
 -(void)viewDidDisappear:(BOOL)animated

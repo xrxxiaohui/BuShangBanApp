@@ -7,12 +7,10 @@
 //
 
 
-
 #import "LoginViewController.h"
 #import "RegistViewController.h"
 #import "AFHTTPSessionManager.h"
 #import "MainTabViewController.h"
-
 #define URL @"https://leancloud.cn:443/1.1/login?username=%@&password=%@"
 
 
@@ -37,16 +35,16 @@
     _registBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     [_registBtn setTitle:@"注册" forState:UIControlStateNormal];
     [_registBtn addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
-    _registBtn.titleLabel.font=[UIFont fontWithName:@"PingFang TC-Light" size:14];
+    _registBtn.titleLabel.font=[UIFont fontWithName:@"PingFang TC Light" size:14];
     [_registBtn setTitleColor:[UIColor colorWithHexString:@"383838"] forState:UIControlStateNormal];
     _registBtn.frame=CGRectMake(kScreenWidth-60, 20, 44, 44);
     _registBtn.tag=1001;
     [self.view addSubview:_registBtn];
     
     _accountTF=[self textFieldWithPlaceHolder:@"手机号/邮箱" imageNamed:@"phone number"];
-    
     _passWordTF=[self textFieldWithPlaceHolder:@"密码" imageNamed:@"password"];
     _passWordTF.top=_accountTF.bottom;
+    
     
     [self shapeLayerWithStartPoint:CGPointMake(_accountTF.left, _accountTF.bottom-8) endPoint:CGPointMake(_accountTF.right, _accountTF.bottom-8)];
     [self shapeLayerWithStartPoint:CGPointMake(_passWordTF.left, _passWordTF.bottom-8) endPoint:CGPointMake(_passWordTF.right, _passWordTF.bottom-8)];
@@ -66,7 +64,12 @@
         return NO;
     }
     if ([_passWordTF.text isEqualToString:@""]){
+        _passWordTF.secureTextEntry=YES;
         [MBProgressHUD showError:@"密码不能为空"];
+        return NO;
+    }
+    if ([_passWordTF.text length]<6) {
+        [MBProgressHUD showError:@"密码不能小于6位"];
         return NO;
     }
     return YES;
@@ -98,7 +101,7 @@
                     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
                     
                     if ([[successRequest.responseString objectFromJSONString] valueForKey:@"sessionToken"]) {
-                            [MBProgressHUD bwm_showTitle:@"登录成功!" toView:self.view hideAfter:2.0f];
+                            [MBProgressHUD showSuccess:@"登录成功"];
                             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                             [userDefaults setObject:@"1" forKey:kLoginStatus];
                         
@@ -116,8 +119,7 @@
                         
                         [MBProgressHUD showError:_errorMsg];
                         
-                        //            UIAlertView *_alertView = [[UIAlertView alloc] initWithTitle:nil message:_errorMsg delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
-                        //            [_alertView show];
+                
                     }
                     else {
                         [MBProgressHUD showError:kMBProgressErrorTitle];

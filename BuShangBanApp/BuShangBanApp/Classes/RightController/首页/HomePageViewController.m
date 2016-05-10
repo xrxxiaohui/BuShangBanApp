@@ -11,6 +11,7 @@
 #import "MJRefresh.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import "SuggestPageViewController.h"
+#import "FMViewController.h"
 
 @interface HomePageViewController ()<UITableViewDataSource,UITableViewDelegate> {
     
@@ -19,6 +20,7 @@
     NSMutableArray *_homeListdataArray;
 
     NSString *_ScreenshotsPickPath;
+    FMViewController *_fmVC;
     int page;
 }
 
@@ -29,7 +31,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = COLOR(249, 249, 249);
-//    [self customNavigationBarWithTitle:@"不上班"];
+    
+    _fmVC=[[FMViewController alloc]init];
+    [self addChildViewController:_fmVC];
+    [self.view addSubview:_fmVC.view];
+    
+    UIButton *fmBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    UIImage *image=[UIImage imageNamed:@"FM"];
+    [fmBtn setBackgroundImage:image forState:UIControlStateNormal];
+    [fmBtn addTarget:self action:@selector(showFM) forControlEvents:UIControlEventTouchUpInside];
+    [self customLeftItemWithBtn:fmBtn];
+    fmBtn.frame=CGRectMake(0, 0, image.size.width, image.size.height);
+    
     [self customNavigationBarWithImage:@"logo"];
     UIButton *mentionButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [mentionButton setFrame:CGRectMake(self.navView.width - 60, (self.navView.height - 40)/2, 60, 40)];
@@ -44,6 +57,15 @@
     [self fetchHomeListData];
 }
 
+-(void)showFM
+{
+    _fmVC.view.frame=CGRectMake(0,64, kScreenWidth, 0);
+    _fmVC.view.alpha=0;
+    [UIView animateWithDuration:0.3 animations:^{
+        _fmVC.view.height=40;
+        _fmVC.view.alpha=1;
+    }];
+}
 
 -(void)initData{
      page = 1;
@@ -89,6 +111,11 @@
     page++;
     [self fetchData];
 }
+
+
+//https://leancloud.cn:443/1.1/classes/_Status?limit=10&&order=-createdAt&include=related_post&keys=-related_post.body
+
+//https://leancloud.cn:443/1.1/classes/_Status?limit=10&&order=-createdAt&include=related_post,related_post.author&keys=-related_post.body
 
 -(void)fetchHomeListData {
 

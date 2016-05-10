@@ -89,14 +89,15 @@
 - (void)__clickEvent:(UIButton *)sender {
     if (!sender.selected)
     {
-        [[NSUserDefaults standardUserDefaults] setObject:sender.titleLabel.text forKey:@"selectedItem"];
-        [[NSUserDefaults standardUserDefaults]synchronize];
         if (_tempButton.selected)
             _tempButton.selected=!_tempButton.selected;
-        else
-            _tempButton.selected=!sender.selected;
         sender.selected=!sender.selected;
+        _tempButton=sender;
+        [[NSUserDefaults standardUserDefaults] setObject:sender.titleLabel.text forKey:@"selectedItem"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
     }
+    else
+        sender.selected=!sender.selected;
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

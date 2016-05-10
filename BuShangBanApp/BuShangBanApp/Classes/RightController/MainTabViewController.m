@@ -14,7 +14,6 @@
 
 #import "LocationManager.h"
 #import "APIRequestManager.h"
-#import "LoginOrRegistViewController.h"
 
 #import "HomePageViewController.h"
 #import "FindViewController.h"
@@ -23,7 +22,6 @@
 
 @interface MainTabViewController () <UITabBarControllerDelegate> {
     BOOL _needPop;
-    LoginOrRegistViewController *_loginOrRegistVC;
     UIControl *_shadowView;
 }
 
@@ -48,7 +46,6 @@ static MainTabViewController *main;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removeLoginOrRigistView) name:@"LoginSuccess" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotoFirstpage) name:@"gotoFirstPage" object:nil];
 
     if ( [[[UIDevice currentDevice] systemVersion] floatValue] >= 6 ) {
@@ -95,10 +92,6 @@ static MainTabViewController *main;
     
     [_shadowView addSubview:effectview];
     [self.view addSubview:_shadowView];
-
-
-//    [self addLoginOrRigistView];
-
 }
 
 -(void)gotoFirstpage
@@ -106,18 +99,9 @@ static MainTabViewController *main;
     [_tabController setSelectedIndex:0];
 }
 
-- (void)addLoginOrRigistView {
-    if ( !_loginOrRegistVC ) {
-        _loginOrRegistVC = [[LoginOrRegistViewController alloc] init];
-        [_tabController.view addSubview:_loginOrRegistVC.view];
-    }
+- (void)removeLoginOrRigistView
+{
 }
-
-- (void)removeLoginOrRigistView {
-    [_loginOrRegistVC.view removeFromSuperview];
-    _loginOrRegistVC = nil;
-}
-
 - (void)shadowViewClick:(UIControl *)control {
     
 }

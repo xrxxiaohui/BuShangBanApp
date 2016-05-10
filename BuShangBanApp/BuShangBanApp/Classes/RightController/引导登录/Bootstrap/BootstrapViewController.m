@@ -16,7 +16,6 @@
 @interface BootstrapViewController ()
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *labelTopConstraint;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *nextBtnBottomConstraint;
 
 @property (weak, nonatomic) IBOutlet UILabel *promptLabel;
@@ -47,12 +46,12 @@
     self.labelTopConstraint.constant*=adapt.scaleHeight;
     self.nextBtnBottomConstraint.constant*=adapt.scaleHeight;
     
-    self.promptLabel.font=[UIFont fontWithName:@"PingFang SC Light" size:16];
+    self.promptLabel.font=[UIFont fontWithName:fontName size:16];
     self.promptLabel.textColor=nomalTextColor;
     self.promptLabel.text=self.titleArray[0];
     
     [self.nextBtn setTitle:@"下一步" forState:UIControlStateNormal];
-    self.nextBtn.titleLabel.font=[UIFont fontWithName:@"PingFang SC Light" size:16];
+    self.nextBtn.titleLabel.font=[UIFont fontWithName:fontName size:16];
 
     self.pageViewController=[[UIPageViewController alloc]initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
      navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
@@ -75,7 +74,8 @@
     if(_currentIndex==[_viewControllerS count])
     {
         [self.navigationController popToRootViewControllerAnimated:YES];
-        
+        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"Loginned"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         
         [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedItem"];
         [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedItems"];
