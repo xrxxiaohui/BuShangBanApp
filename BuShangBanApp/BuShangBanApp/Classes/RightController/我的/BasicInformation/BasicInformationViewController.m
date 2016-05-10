@@ -155,8 +155,6 @@
         
         [_mutableDic setValue:_objectID forKey:@"objectId"];
         
-//        SSLXUrlParamsRequest *_urlParamsReq=[[SSLXUrlParamsRequest alloc]init];
-        
         
     }];
 }
