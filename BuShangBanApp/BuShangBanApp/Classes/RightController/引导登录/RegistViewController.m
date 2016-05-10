@@ -142,7 +142,7 @@
     [super clickEvent:sender];
     switch (sender.tag) {
         case 1000:
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            [self.navigationController popViewControllerAnimated:YES];
             break;
         case 1001:
              [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
