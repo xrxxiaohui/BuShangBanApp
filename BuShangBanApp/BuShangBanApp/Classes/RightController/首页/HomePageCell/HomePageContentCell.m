@@ -171,6 +171,13 @@
     [_commentNumLabel setText:comment_count];
     
     NSString *categoryStr =[[self.dataInfo valueForKeyPath:@"related_post.category.name"] safeString];
+    if([categoryStr isEqualToString:@"默认分类"])
+        categoryStr = @"默认";
+    else if([categoryStr isEqualToString:@"大公司"])
+        categoryStr = @"公司";
+    else if ([categoryStr isEqualToString:@"运营&市场"])
+        categoryStr = @"运营";
+    [_leftUpLabel setText:categoryStr];
     NSLog(@"-----%@",categoryStr);
 }
 

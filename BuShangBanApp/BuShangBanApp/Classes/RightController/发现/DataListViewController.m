@@ -9,10 +9,11 @@
 #import "DataListViewController.h"
 #import "DetailViewController.h"
 #import "DataListTableViewCell.h"
+#import "BaseWebViewController.h"
 
 //https://leancloud.cn:443/1.1/classes/Post?where=%7B%22category%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22PostCagegory%22%2C%22objectId%22%3A%22571eae66c4c9710056d94de6%22%7D%7D&&&order=-sort&&keys=-body
 
-#define URL @"https://leancloud.cn:443/1.1/classes/Post?where=%7B%22category%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22PostCagegory%22%2C%22objectId%22%3A%22571eae66c4c9710056d94de6%22%7D%7D&&&order=-sort&&keys=-body&include=author"
+#define URL @"https://leancloud.cn:443/1.1/classes/Post?where=%7B%22category%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22PostCagegory%22%2C%22objectId%22%3A%22571eae66c4c9710056d94de6%22%7D%7D&&&order=-sort&&keys=-body&include=author,category"
 
 @interface DataListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -23,6 +24,7 @@
 @property(nonatomic,strong)NSMutableArray *imageURLArray;
 @property(nonatomic,strong)NSMutableArray *profileArray;
 @property(nonatomic,strong)NSMutableArray *avarArray;
+@property(nonatomic,strong)NSDictionary *tempDic;
 
 @end
 
@@ -62,9 +64,14 @@
     
     SSLXUrlParamsRequest *_urlParamsReq1 = [[SSLXUrlParamsRequest alloc] init];
     [_urlParamsReq1 setUrlString:URL];
+    NSDictionary *_paramsDict = @{  @"category":_title?_title:@0   };
+    [_urlParamsReq1 setParamsDict:_paramsDict];
+    _urlParamsReq1.requestMethod = YTKRequestMethodPost;
+    
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq1 successBlock:^(SSLXResultRequest *successReq){
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
         self.results=_successInfo[@"results"];
+        self.tempDic = _successInfo;
         for (NSDictionary *dic in self.results)
         {
 //            if ([dic[@"author"][@"objectId"] isEqualToString:_objectID])
@@ -119,8 +126,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DetailViewController *vc=[[DetailViewController alloc]initWithURL:self.URLArray[indexPath.row]];
-    [[SliderViewController sharedSliderController].navigationController pushViewController:vc animated:YES];
+//    DetailViewController *vc=[[DetailViewController alloc]initWithURL:self.URLArray[indexPath.row]];
+//    [[SliderViewController sharedSliderController].navigationController pushViewController:vc animated:YES];
+//    NSDictionary *dataDic = [[_homeListdataArray objectAtIndex:indexPath.row] safeDictionary];
+    NSString *urlStr = self.URLArray[indexPath.row];
+    BaseWebViewController *baseWebView = [[BaseWebViewController alloc] init];
+    baseWebView.isTestWeb = NO;
+    baseWebView.webUrl = urlStr;
+    baseWebView.dataDics = self.tempDic;
+    [[SliderViewController sharedSliderController].navigationController pushViewController:baseWebView animated:YES ];
+
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
