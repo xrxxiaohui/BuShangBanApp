@@ -199,6 +199,7 @@ static MainTabViewController *main;
 
     if(tabBarController.selectedIndex==3){
     
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:@"judgeLoginStatus" object:nil];
     }
 }

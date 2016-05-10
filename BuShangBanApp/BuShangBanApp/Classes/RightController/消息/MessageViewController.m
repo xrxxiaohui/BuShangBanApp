@@ -30,27 +30,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self customNavigationBarWithTitle:@"消息"];
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"gotoFirstPage" object:nil];
-    _logined =[[[NSUserDefaults standardUserDefaults]objectForKey:@"Loginned"] boolValue] ;
-    if(!_logined)
-    {
-        _hasPush=YES;
-        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
-    }
-    else
-    {
-        self.view.backgroundColor = [UIColor yellowColor];
+//    [[NSNotificationCenter defaultCenter]postNotificationName:@"gotoFirstPage" object:nil];
+//    _logined =[[[NSUserDefaults standardUserDefaults]objectForKey:@"Loginned"] boolValue] ;
+//    if(!_logined)
+//    {
+//        _hasPush=YES;
+//        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
+//    }
+//    else
+//    {
+//        self.view.backgroundColor = [UIColor yellowColor];
         [self initData];
         [self createTabelView];
         [self fetchData];
-    }
+//    }
 }
 
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    if(!_hasPush)
-        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
+//    if(!_hasPush)
+//        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
 }
 
 -(void)initData{

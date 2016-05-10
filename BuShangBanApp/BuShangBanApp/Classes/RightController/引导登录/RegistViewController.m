@@ -18,6 +18,8 @@
 
 #define iniviteURL @"https://leancloud.cn:443/1.1/classes/InvitationCode?where=%7B%22key%22%3A%22bsb%22%7D&limit=1&&order=-updatedAt&&keys=-ACL%2C-createdAt%2C-updatedAt%2C-objectId%2C-count"
 
+#define completeRegister @"https://api.leancloud.cn/1.1/batch"
+
 @interface RegistViewController ()
 {
     UIButton *_loginBtn;
