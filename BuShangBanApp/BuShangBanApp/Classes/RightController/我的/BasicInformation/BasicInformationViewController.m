@@ -155,9 +155,6 @@
         
         [_mutableDic setValue:_objectID forKey:@"objectId"];
         
-        SSLXUrlParamsRequest *_urlParamsReq=[[SSLXUrlParamsRequest alloc]init];
-        
-        
         
     }];
 }
@@ -181,7 +178,6 @@
 
 -(void)saveInformation:(UIButton *)sender
 {
-    
     
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
     _urlParamsReq.requestMethod =  YTKRequestMethodPut;
@@ -370,7 +366,6 @@
     return YES;
 }
 
-
 -(void)editInformationWithContentString:(NSString *)contentString
 {
     if ([_cell.textLabel.text isEqualToString:@"昵称"])
@@ -387,4 +382,5 @@
     _cell.contentTF.text=contentString;
     _editInformationViewController=nil;
 }
+
 @end
