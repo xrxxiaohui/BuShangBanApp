@@ -102,7 +102,10 @@
                     
                     if ([[successRequest.responseString objectFromJSONString] valueForKey:@"sessionToken"]) {
                             [MBProgressHUD showSuccess:@"登录成功"];
+                            NSString *sessionToken =[[successRequest.responseString objectFromJSONString] valueForKey:@"sessionToken"];
                             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                            [userDefaults setObject:sessionToken forKey:kSessionToken];
+                        
                             [userDefaults setObject:@"1" forKey:kLoginStatus];
                         
                             [self.navigationController popToRootViewControllerAnimated:YES];
