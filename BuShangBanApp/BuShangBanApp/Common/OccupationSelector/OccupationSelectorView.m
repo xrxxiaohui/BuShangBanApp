@@ -51,7 +51,8 @@
             
             _dataSource=@[@"创作",@"运营",@"产品",@"技术",@"设计",@"投资",@"市场",@"行政"];
             [self.occupationSelector selectRow:INT32_C(_dataSource.count/2) inComponent:0 animated:YES];
-            _contentText=self.dataSource[INT32_C(_dataSource.count/2)];
+            _contentString=[NSString stringWithString:self.dataSource[INT32_C(_dataSource.count/2)]];
+            _contentText=[NSString stringWithString:self.dataSource[INT32_C(_dataSource.count/2)]];
             _cancelBtn= [self btnWithTitle:@"取 消" tag:1001 x:10];
             _okBtn = [self btnWithTitle:@"确 定" tag:1000 x:kScreenWidth-44-10];
         }

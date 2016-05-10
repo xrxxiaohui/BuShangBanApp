@@ -359,8 +359,6 @@
 //        return NO;
 //    }
     
-    
-    
     if(!_readedBtn.selected)
     {
         [MBProgressHUD showError:@"用户协议没有选中"];

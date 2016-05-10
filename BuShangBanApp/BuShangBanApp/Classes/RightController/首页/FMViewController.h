@@ -6,8 +6,9 @@
 //  Copyright © 2016年 Zuo. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+
 
 @interface FMViewController : UIViewController
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
 
 @end

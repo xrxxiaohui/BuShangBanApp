@@ -56,6 +56,12 @@
     [super viewWillAppear:animated];
     [self customNavigationBarWithTitle:@"基本资料"];
     [self defaultLeftItem];
+    UIButton *saveBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    [saveBtn addTarget:self action:@selector(saveInformation:) forControlEvents:UIControlEventTouchUpInside];
+    [saveBtn setTitle:@"保存" forState:UIControlStateNormal];
+    saveBtn.titleLabel.font=[UIFont fontWithName:fontName size:15];
+    [saveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self customRightItemWithBtn:saveBtn];
 }
 
 
@@ -158,6 +164,11 @@
         _grayMaskView=grayMaskView;
     }
     return _grayMaskView;
+}
+
+-(void)saveInformation:(UIButton *)sender
+{
+    
 }
 
 #pragma mark ---- 懒加载 ----
