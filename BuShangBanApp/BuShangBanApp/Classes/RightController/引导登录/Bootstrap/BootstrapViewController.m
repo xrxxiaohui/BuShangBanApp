@@ -6,6 +6,8 @@
 //  Copyright © 2016年 Zuo. All rights reserved.
 //
 
+#define saveInformationURL  @"https://api.leancloud.cn/1.1/users/570387b3ebcb7d005b196d24"
+
 #import "BootstrapViewController.h"
 #import "BootstrapOneViewController.h"
 #import "BootstrapTwoViewController.h"
@@ -93,14 +95,23 @@
         [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"Loginned"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-        
         NSDictionary *dic=@{@"sex":((BootstrapOneViewController *)_viewControllerS[0]).maleBtn.selected?@"男":@"女",
                             @"city_name":((BootstrapOneViewController *)_viewControllerS[0]).placeTF.text,@"username":((BootstrapOneViewController *)_viewControllerS[0]).nickNameTF.text,
             @"profession":((BootstrapTwoViewController *)_viewControllerS[1]).selectedItem,
             @"interest":((BootstrapThriViewController *)_viewControllerS[2]).selectedItems};
         
+        SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
+        _urlParamsReq.requestMethod =  YTKRequestMethodPut;
+        [_urlParamsReq setParamsDict:dic];
+        [_urlParamsReq setUrlString:saveInformationURL];
         
-        
+        [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
+            if([successRequest.responseJSONObject objectForKey:@"updatedAt"])
+                [MBProgressHUD showError:@"信息保存完成"];
+        } failureBlock:^(SSLXResultRequest *failRequest){
+            NSString *_errorMsg = [[failRequest.responseString objectFromJSONString] objectForKey:@"error"];
+            _errorMsg?[MBProgressHUD showError:_errorMsg]:[MBProgressHUD showError:kMBProgressErrorTitle];
+        }];
     }
 }
 

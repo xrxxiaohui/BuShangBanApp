@@ -27,7 +27,7 @@
     [super viewDidLoad];
     [self customNavigationBarWithTitle:@"发现"];
     FindView *findView = [[FindView alloc] init];
-    self.dic=@{@"1000":@"产品",@"1001":@"设计",@"1002":@"技术", @"1003":@"媒体", @"1004":@"运营", @"1005":@"创业",@"1006": @"大公司", @"1007":@"同好",@"1008": @"热门"};
+    self.dic=@{@"1000":@"产品",@"1001":@"设计",@"1002":@"技术", @"1003":@"媒体", @"1004":@"运营", @"1005":@"创业",@"1006": @"公司", @"1007":@"同好",@"1008": @"热门"};
     [self.view addSubview:findView];
     
     SSLXUrlParamsRequest *_urlParamsReq1 = [[SSLXUrlParamsRequest alloc] init];

@@ -155,7 +155,6 @@
         
         [_mutableDic setValue:_objectID forKey:@"objectId"];
         
-        
     }];
 }
 
@@ -186,9 +185,8 @@
     
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
     
-        NSLog(@"*********%@",successRequest.responseJSONObject);
-        
-        
+        if([successRequest.responseJSONObject objectForKey:@"updatedAt"])
+            [MBProgressHUD showError:@"信息更新完成"];
     } failureBlock:^(SSLXResultRequest *failRequest){
         NSString *_errorMsg = [[failRequest.responseString objectFromJSONString] objectForKey:@"error"];
         _errorMsg?[MBProgressHUD showError:_errorMsg]:[MBProgressHUD showError:kMBProgressErrorTitle];

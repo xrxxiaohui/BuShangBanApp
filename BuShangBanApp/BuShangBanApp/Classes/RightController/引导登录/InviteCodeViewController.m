@@ -37,9 +37,9 @@
 - (IBAction)btnClick:(UIButton *)sender {
     
     if (sender.tag == 1000)
-        [self __loadWebViewWithURL:@"http://bushangban.duapp.com/invitationCode/invitationCode/personalInvitationCode.html"];
+        [self __loadWebViewWithURL:@"http://form.mikecrm.com/m91Rdl"];
     else if(sender.tag == 1001)
-         [self __loadWebViewWithURL:@"http://bushangban.duapp.com/invitationCode/invitationCode/companyInvitationCode.html"];
+         [self __loadWebViewWithURL:@"http://form.mikecrm.com/D7yX9W"];
     else if(sender.tag ==1003)
         [self.navigationController popViewControllerAnimated:YES];
 }
@@ -59,17 +59,5 @@
         [_webView removeFromSuperview];
     }
 }
-
-//        SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
-//        [_urlParamsReq setUrlString:URL];
-//        [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
-//            NSArray *results=[[successRequest.responseString objectFromJSONString] valueForKey:@"results"];
-//            NSString* key=[results[0] objectForKey:@"key"];
-//            [MBProgressHUD bwm_showTitle:[@"验证码:" stringByAppendingString:key] toView:self.view  hideAfter:3.0f];
-//        } failureBlock:^(SSLXResultRequest *failRequest){
-//            NSString *_errorMsg = [[failRequest.responseString objectFromJSONString] objectForKey:@"error"];
-//            _errorMsg?[MBProgressHUD showError:_errorMsg]:[MBProgressHUD showError:kMBProgressErrorTitle];
-//        }];
-
 
 @end
