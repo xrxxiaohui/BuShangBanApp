@@ -37,9 +37,9 @@
 - (IBAction)btnClick:(UIButton *)sender {
     
     if (sender.tag == 1000)
-        [self __loadWebViewWithURL:@"http://bushangban.duapp.com/invitationCode/invitationCode/personalInvitationCode.html"];
+        [self __loadWebViewWithURL:@"http://form.mikecrm.com/D7yX9W"];
     else if(sender.tag == 1001)
-         [self __loadWebViewWithURL:@"http://bushangban.duapp.com/invitationCode/invitationCode/companyInvitationCode.html"];
+         [self __loadWebViewWithURL:@"http://form.mikecrm.com/D7yX9W"];
     else if(sender.tag ==1003)
         [self.navigationController popViewControllerAnimated:YES];
 }
