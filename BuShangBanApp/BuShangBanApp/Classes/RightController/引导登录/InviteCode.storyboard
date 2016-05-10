@@ -87,6 +87,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="groupBtn" destination="sai-EI-ZA7" id="Wwt-jp-nT9"/>
+                        <outlet property="personalBtn" destination="aV2-WT-jQX" id="y4I-PJ-UhR"/>
                         <outlet property="textView1" destination="Y0A-tw-jKG" id="8mx-iy-bwJ"/>
                         <outlet property="textView2" destination="DSk-aK-igD" id="ngW-sh-hiV"/>
                     </connections>

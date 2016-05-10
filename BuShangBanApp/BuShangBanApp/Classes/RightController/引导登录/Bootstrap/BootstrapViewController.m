@@ -62,6 +62,20 @@
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:self.pageViewController.view];
 }
+- (IBAction)back:(UIButton *)sender {
+    
+    _currentIndex--;
+    if (_currentIndex>=0)
+    {
+        [self.pageViewController setViewControllers:@[_viewControllerS[_currentIndex]] direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:nil];
+        self.promptLabel.text=self.titleArray[_currentIndex];
+    }else
+    {
+        _currentIndex=0;
+    }
+    if(_currentIndex!=[_viewControllerS count]-1)
+        [self.nextBtn setTitle:@"下一步" forState:UIControlStateNormal];
+}
 
 - (IBAction)clickEvent:(UIButton *)sender {
     _currentIndex++;
