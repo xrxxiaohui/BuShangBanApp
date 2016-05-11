@@ -23,6 +23,7 @@
     CGFloat _top;
 }
 - (instancetype)initWithFrame:(CGRect)frame {
+    
     self = [super initWithFrame:frame];
     self.frame = CGRectMake(0, 64, kScreenWidth, 448 * adapt.scaleHeight+marginTop);
     if ( self )
@@ -45,11 +46,11 @@
             }
             else
                 _left = marginLeft + btn.right;
-        }  
+        }
+        
     }
     return self;
 }
-
 
 - (UIButton *)__buttonWithNomalImage:(UIImage *)nomalImage tag:(NSInteger)tag {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -65,12 +66,14 @@
 - (UILabel *)__labelWithText:(NSString *)text btn:(UIButton *)btn {
     UILabel *label = [[UILabel alloc] init];
     label.text = text;
-    label.font = [UIFont fontWithName:fontName size:12.f * adapt.scaleWidth];
+    label.font = [UIFont fontWithName:fontName size:12.f];
+    
     label.textColor = [UIColor colorWithHexString:@"#383838"];
     [label sizeToFit];
     label.top = btn.bottom + margin;
     label.centerX = btn.centerX;
     [self addSubview:label];
+    
     return label;
 }
 @end
