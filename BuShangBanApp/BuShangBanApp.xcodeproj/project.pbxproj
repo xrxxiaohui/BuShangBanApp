@@ -11,12 +11,6 @@
 		04125B371CDC945B0076076C /* DataListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04125B361CDC945B0076076C /* DataListTableViewCell.m */; };
 		0419C3611CD10AA60020750C /* BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0419C3601CD10AA60020750C /* BasicViewController.m */; };
 		0419C3651CD10B650020750C /* BootstrapThriViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0419C3631CD10B650020750C /* BootstrapThriViewController.m */; };
-		041A91DC1CE33AB900C20937 /* PingFang Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 041A91D61CE33AB900C20937 /* PingFang Bold.ttf */; };
-		041A91DD1CE33AB900C20937 /* PingFang ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 041A91D71CE33AB900C20937 /* PingFang ExtraLight.ttf */; };
-		041A91DE1CE33AB900C20937 /* PingFang Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 041A91D81CE33AB900C20937 /* PingFang Heavy.ttf */; };
-		041A91DF1CE33AB900C20937 /* PingFang Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 041A91D91CE33AB900C20937 /* PingFang Light.ttf */; };
-		041A91E01CE33AB900C20937 /* PingFang Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 041A91DA1CE33AB900C20937 /* PingFang Medium.ttf */; };
-		041A91E11CE33AB900C20937 /* PingFang Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 041A91DB1CE33AB900C20937 /* PingFang Regular.ttf */; };
 		042345761CD45C5C00E74F4A /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042345751CD45C5C00E74F4A /* SettingViewController.m */; };
 		0423457A1CD45C7300E74F4A /* OccupationSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 042345791CD45C7300E74F4A /* OccupationSelectorView.m */; };
 		042884421CD08D3000C08212 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042884411CD08D3000C08212 /* LoginViewController.m */; };
@@ -245,12 +239,6 @@
 		0419C3601CD10AA60020750C /* BasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicViewController.m; sourceTree = "<group>"; };
 		0419C3621CD10B650020750C /* BootstrapThriViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BootstrapThriViewController.h; sourceTree = "<group>"; };
 		0419C3631CD10B650020750C /* BootstrapThriViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BootstrapThriViewController.m; sourceTree = "<group>"; };
-		041A91D61CE33AB900C20937 /* PingFang Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Bold.ttf"; sourceTree = "<group>"; };
-		041A91D71CE33AB900C20937 /* PingFang ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang ExtraLight.ttf"; sourceTree = "<group>"; };
-		041A91D81CE33AB900C20937 /* PingFang Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Heavy.ttf"; sourceTree = "<group>"; };
-		041A91D91CE33AB900C20937 /* PingFang Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Light.ttf"; sourceTree = "<group>"; };
-		041A91DA1CE33AB900C20937 /* PingFang Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Medium.ttf"; sourceTree = "<group>"; };
-		041A91DB1CE33AB900C20937 /* PingFang Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Regular.ttf"; sourceTree = "<group>"; };
 		042345741CD45C5C00E74F4A /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		042345751CD45C5C00E74F4A /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		042345781CD45C7300E74F4A /* OccupationSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OccupationSelectorView.h; sourceTree = "<group>"; };
@@ -663,19 +651,6 @@
 			path = User;
 			sourceTree = "<group>";
 		};
-		041A91D51CE33AB900C20937 /* 苹方字体 */ = {
-			isa = PBXGroup;
-			children = (
-				041A91D61CE33AB900C20937 /* PingFang Bold.ttf */,
-				041A91D71CE33AB900C20937 /* PingFang ExtraLight.ttf */,
-				041A91D81CE33AB900C20937 /* PingFang Heavy.ttf */,
-				041A91D91CE33AB900C20937 /* PingFang Light.ttf */,
-				041A91DA1CE33AB900C20937 /* PingFang Medium.ttf */,
-				041A91DB1CE33AB900C20937 /* PingFang Regular.ttf */,
-			);
-			path = "苹方字体";
-			sourceTree = "<group>";
-		};
 		042345771CD45C7300E74F4A /* OccupationSelector */ = {
 			isa = PBXGroup;
 			children = (
@@ -978,7 +953,6 @@
 		A33447F31CA28F350006C8A3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				041A91D51CE33AB900C20937 /* 苹方字体 */,
 				A38A86051CA4CB4400582AD5 /* launchImage@2x.png */,
 				A38A86061CA4CB4400582AD5 /* launchImage@3x.png */,
 				A30012B71CA3A12A00BD6FAD /* 750*1334.png */,
@@ -1611,7 +1585,7 @@
 				TargetAttributes = {
 					A3FD03E41C99190700E84A0B = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = TVAL974929;
+						DevelopmentTeam = D9JKBYA667;
 					};
 					A3FD03FD1C99190700E84A0B = {
 						CreatedOnToolsVersion = 7.1;
@@ -1664,21 +1638,15 @@
 				A38A86041CA4CA9000582AD5 /* Launch Screen.storyboard in Resources */,
 				A33447F71CA290860006C8A3 /* 3.jpg in Resources */,
 				049EF26F1CA3904200C1D68A /* ShareSDKUI.bundle in Resources */,
-				041A91DE1CE33AB900C20937 /* PingFang Heavy.ttf in Resources */,
-				041A91DF1CE33AB900C20937 /* PingFang Light.ttf in Resources */,
 				04E3E4901CCF8FF8000FD2DF /* UserProtocal.storyboard in Resources */,
 				049EF2741CA3904200C1D68A /* read_me.txt in Resources */,
 				A30012B81CA3A12A00BD6FAD /* 750*1334.png in Resources */,
-				041A91DD1CE33AB900C20937 /* PingFang ExtraLight.ttf in Resources */,
 				04E3E41B1CCE3633000FD2DF /* EditInformationViewController.xib in Resources */,
 				A3EB11671CA2AAE100DC0731 /* tree.jpeg in Resources */,
-				041A91DC1CE33AB900C20937 /* PingFang Bold.ttf in Resources */,
 				A33447F61CA290860006C8A3 /* 1.jpg in Resources */,
 				04DE3E8F1CD5AC5100D9244B /* InviteCode.storyboard in Resources */,
-				041A91E01CE33AB900C20937 /* PingFang Medium.ttf in Resources */,
 				A377D1A21C995E3000C779A7 /* MJRefresh.bundle in Resources */,
 				049EF1E61CA38D8D00C1D68A /* area.plist in Resources */,
-				041A91E11CE33AB900C20937 /* PingFang Regular.ttf in Resources */,
 				A33447FF1CA29BAF0006C8A3 /* Icon.pdf in Resources */,
 				A38A86081CA4CB4400582AD5 /* launchImage@3x.png in Resources */,
 				A377D13C1C99560A00C779A7 /* FontAwesome.ttf in Resources */,
@@ -1942,8 +1910,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuhong Zhang (5M86JXSH55)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1962,7 +1930,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1987,8 +1955,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuhong Zhang (5M86JXSH55)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuhong Zhang (5M86JXSH55)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -2001,7 +1969,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2015,8 +1983,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuhong Zhang (5M86JXSH55)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuhong Zhang (5M86JXSH55)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/release-v3.2.7/Static",
@@ -2040,9 +2008,9 @@
 					"$(PROJECT_DIR)/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
 				New_Setting = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bushangban.;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bushangban.bushangban;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "90bd3abf-aedf-4f53-bceb-0c29b0acfc6d";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2053,8 +2021,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yuhong Zhang (5M86JXSH55)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yuhong Zhang (5M86JXSH55)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/release-v3.2.7/Static",
@@ -2073,9 +2041,9 @@
 					"$(PROJECT_DIR)/ShareSDK/Support/PlatformSDK/WeChatSDK",
 				);
 				New_Setting = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bushangban.;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bushangban.bushangban;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "90bd3abf-aedf-4f53-bceb-0c29b0acfc6d";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
