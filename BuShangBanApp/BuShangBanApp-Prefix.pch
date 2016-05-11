@@ -132,7 +132,6 @@
 
 //字体
 #define fontName @"PingFang SC"
-
 #define nomalFont [UIFont fontWithName:fontName size:14.f]
 #define smallerFont [UIFont fontWithName:fontName size:12.f]
 
