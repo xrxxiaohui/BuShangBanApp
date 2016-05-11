@@ -254,6 +254,10 @@
                         if(![self isBlankDictionary:successCode1]&&![self isBlankDictionary:successCode]){
                         
                             //成功
+                            NSString *sessionToken = [[successRequest.responseString objectFromJSONString] valueForKey:@"sessionToken"];
+                            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                            [userDefaults setObject:sessionToken forKey:kSessionToken];
+                            
                             [[SliderViewController sharedSliderController].navigationController pushViewController:[[BootstrapViewController alloc] init] animated:YES];
 
                         }else{

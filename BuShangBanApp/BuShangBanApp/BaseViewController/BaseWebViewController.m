@@ -37,7 +37,6 @@ typedef enum : NSInteger {
 
 @interface BaseWebViewController () <UIWebViewDelegate,SKStoreProductViewControllerDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate> {
 
-    UIWebView *_webView;
     WechatShareView *_wechatShareView;
     
     UIButton *_shareButton;//分享
@@ -51,8 +50,9 @@ typedef enum : NSInteger {
     NSString *categoryStr;
 }
 
-@property (nonatomic, retain) UIView *backgroundViews;
-@property (nonatomic, retain) UIView *shareView;
+@property (nonatomic, copy) UIView *backgroundViews;
+@property (nonatomic, copy) UIView *shareView;
+@property (nonatomic,copy)  UIWebView *webView;
 
 @end
 
@@ -63,26 +63,12 @@ typedef enum : NSInteger {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor redColor]];
     [self customNavigationBarWithTitle:@""];
-    [self customWebView];
+//    [self customWebView];
 
     [self customRightBtn];
     
 //    _wechatShareView = [[WechatShareView alloc] initWechatShareView];
 //    [self.view addSubview:_wechatShareView];
-
-    if (self.isTestWeb) {
-        [self setWebUrl:@"http://wangchaotest.duapp.com/2/index.html"];
-    }
-//    self.webUrl = @"http://wangchaotest.duapp.com/2/index.html";
-    NSURLRequest *_request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.webUrl]];
-    [_webView loadRequest:_request];
-    
-    [self bottomView];
-    
-}
-
--(void)customWebView {
-
     _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, _navHeight, self.view.width, self.view.height - _navHeight)];
     [_webView setScalesPageToFit:NO];
     [_webView setDelegate:self];
@@ -93,6 +79,26 @@ typedef enum : NSInteger {
     [_webView addGestureRecognizer:recognizer];
     
     [self.view addSubview:_webView];
+
+    if (self.isTestWeb) {
+        [self setWebUrl:@"http://wangchaotest.duapp.com/2/index.html"];
+    }
+//    self.webUrl = @"http://wangchaotest.duapp.com/2/index.html";
+    NSURLRequest *_request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:self.webUrl]];
+    [_webView loadRequest:_request];
+    [self bottomView];
+    
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+
+    NSLog(@"---%@",request.URL);
+    return YES;
+}
+
+
+-(void)customWebView {
+
 }
 
 
@@ -298,12 +304,12 @@ typedef enum : NSInteger {
     
 }
 
--(void)setWebUrl:(NSString *)webUrl {
-
-    _webUrl = webUrl;
-    NSURLRequest *_request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:_webUrl]];
-    [_webView loadRequest:_request];
-}
+//-(void)setWebUrl:(NSString *)webUrl {
+//
+//    _webUrl = webUrl;
+////    NSURLRequest *_request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:_webUrl]];
+////    [_webView loadRequest:_request];
+//}
 
 -(void)customRightBtn {
 
