@@ -6,13 +6,14 @@
 //  Copyright © 2016年 Zuo. All rights reserved.
 //
 
+#define URL @"https://leancloud.cn:443/1.1/login?username=%@&password=%@"
 
 #import "LoginViewController.h"
 #import "RegistViewController.h"
 #import "AFHTTPSessionManager.h"
 #import "MainTabViewController.h"
-#define URL @"https://leancloud.cn:443/1.1/login?username=%@&password=%@"
 
+#define adapt  [[[ScreenAdapt alloc]init] adapt]
 
 @interface LoginViewController ()
 {
@@ -37,11 +38,11 @@
     [_registBtn addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
     _registBtn.titleLabel.font=[UIFont fontWithName:@"PingFang TC Light" size:14];
     [_registBtn setTitleColor:[UIColor colorWithHexString:@"383838"] forState:UIControlStateNormal];
-    _registBtn.frame=CGRectMake(kScreenWidth-60, 20, 44, 44);
+    _registBtn.frame=CGRectMake(kScreenWidth-50, 20, 44,44);
     _registBtn.tag=1001;
     [self.view addSubview:_registBtn];
     
-    _accountTF=[self textFieldWithPlaceHolder:@"手机号/邮箱" imageNamed:@"phone number"];
+    _accountTF=[self textFieldWithPlaceHolder:@"手机号" imageNamed:@"phone number"];
     _passWordTF=[self textFieldWithPlaceHolder:@"密码" imageNamed:@"password"];
     _passWordTF.top=_accountTF.bottom;
     
@@ -49,7 +50,7 @@
     [self shapeLayerWithStartPoint:CGPointMake(_accountTF.left, _accountTF.bottom-8) endPoint:CGPointMake(_accountTF.right, _accountTF.bottom-8)];
     [self shapeLayerWithStartPoint:CGPointMake(_passWordTF.left, _passWordTF.bottom-8) endPoint:CGPointMake(_passWordTF.right, _passWordTF.bottom-8)];
     
-    _loginBtn=[self buttonWithImageName:@"Button" tag:1002 frame:CGRectMake(0, _passWordTF.bottom+74, 300, 44) title:@"登录"];
+    _loginBtn=[self buttonWithImageName:@"Button" tag:1002 frame:CGRectMake(0, _passWordTF.bottom+74, 300 *adapt.scaleWidth, 44 *adapt.scaleHeight) title:@"登录"];
     _loginBtn.centerX=self.view.centerX;
     [_contentView addSubview:_loginBtn];
     
@@ -63,6 +64,13 @@
         [MBProgressHUD showError:@"账号不能为空"];
         return NO;
     }
+    
+    if([self  __validateMobile:_accountTF.text])
+    {
+        [MBProgressHUD showError:@"手机号格式不对"];
+        return NO;
+    }
+    
     if ([_passWordTF.text isEqualToString:@""]){
         _passWordTF.secureTextEntry=YES;
         [MBProgressHUD showError:@"密码不能为空"];
@@ -72,7 +80,17 @@
         [MBProgressHUD showError:@"密码不能小于6位"];
         return NO;
     }
+    
+    
     return YES;
+}
+
+//手机号码验证
+- (BOOL) __validateMobile:(NSString *)mobile
+{
+    NSString *phoneRegex = @"/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
+    return [phoneTest evaluateWithObject:mobile];
 }
 
 -(void)clickEvent:(UIButton *)sender

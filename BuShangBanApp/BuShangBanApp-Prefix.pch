@@ -132,8 +132,10 @@
 
 //字体
 #define fontName @"PingFang SC"
+
 #define nomalFont [UIFont fontWithName:fontName size:14.f]
 #define smallerFont [UIFont fontWithName:fontName size:12.f]
+
 //颜色
 #define  bgColor  [UIColor colorWithHexString:@"f9f9f9"]
 #define  nomalTextColor [UIColor colorWithHexString:@"#383838"]

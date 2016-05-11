@@ -47,15 +47,16 @@
 
         self.backgroundColor = [UIColor whiteColor];
         _leftUpButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_leftUpButton setFrame:CGRectMake(12+12, 12, 34, 40)];
-        [_leftUpButton setImage:[UIImage imageNamed:@"greenBackground"] forState:UIControlStateNormal];
-//        [_leftUpButton setTitle:@"设计" forState:UIControlStateNormal];
+        UIImage *image=[UIImage imageNamed:@"greenBackground"];
+        [_leftUpButton setBackgroundImage:image forState:UIControlStateNormal];
+        [_leftUpButton setFrame:CGRectMake(12+12, 12, image.size.width, image.size.height)];
         
         _leftUpLabel = [[UILabel alloc] init];
         [_leftUpLabel setFont:[UIFont boldSystemFontOfSize:14]];
         [_leftUpLabel setTextColor:COLOR(255, 255, 255)];
-        [_leftUpLabel setFrame:CGRectMake(2, 8, 35, 15)];
+        [_leftUpLabel setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
         [_leftUpLabel setText:@"设计"];
+        _leftUpLabel.textAlignment=NSTextAlignmentCenter;
         [_leftUpButton addSubview:_leftUpLabel];
         
         _rightAvarButton = [UIButton buttonWithType:UIButtonTypeCustom];

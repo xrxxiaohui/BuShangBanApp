@@ -70,15 +70,14 @@
 -(void)customView{
 
     UIButton *listPageButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [listPageButton setBackgroundImage:[UIImage imageNamed:@"listPageButton"] forState:UIControlStateNormal];
-    [listPageButton setFrame:CGRectMake(125*kDefaultBiLi, (kScreenHeight-83), 22, 22)];
-
+    [listPageButton setImage:[UIImage imageNamed:@"listPageButton"] forState:UIControlStateNormal];
+    [listPageButton setFrame:CGRectMake(kScreenWidth/2-70, (kScreenHeight-83), 45, 45)];
     [listPageButton addTarget:self action:@selector(toListPage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:listPageButton];
     
     UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [closeButton setFrame:CGRectMake((kScreenWidth-125)*kDefaultBiLi, (kScreenHeight-83), 22, 22)];
-    [closeButton setBackgroundImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+    [closeButton setFrame:CGRectMake(kScreenWidth/2+25, (kScreenHeight-83), 45, 45)];
+    [closeButton setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
     [closeButton addTarget:self action:@selector(closePage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:closeButton];
     

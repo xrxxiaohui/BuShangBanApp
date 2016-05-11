@@ -15,7 +15,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.01</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -98,6 +98,15 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>PingFang Medium.ttf</string>
+		<string>PingFang Regular.ttf</string>
+		<string>PingFang Bold.ttf</string>
+		<string>PingFang ExtraLight.ttf</string>
+		<string>PingFang Heavy.ttf</string>
+		<string>PingFang Light.ttf</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

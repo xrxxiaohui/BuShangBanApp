@@ -32,7 +32,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = COLOR(249, 249, 249);
 
-    
 //    UIButton *fmBtn=[UIButton buttonWithType:UIButtonTypeCustom];
 //    UIImage *image=[UIImage imageNamed:@"FM"];
 //    [fmBtn setBackgroundImage:image forState:UIControlStateNormal];
@@ -76,13 +75,8 @@
 }
 
 -(void)createTabelView{
-    UIImageView *lineImageView = [[UIImageView alloc] init];
-    lineImageView.backgroundColor = COLOR(0xd9, 0xd9, 0xd9);
-    [lineImageView setFrame:CGRectMake(0, 64, kScreenWidth, 1)];
-    [self.view addSubview:lineImageView];
-
     CGFloat height = kScreenHeight - 65;
-    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 65, self.view.width, height) style:UITableViewStyleGrouped];
+    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, height) style:UITableViewStyleGrouped];
     
     _mainTableView.delegate = self;
     _mainTableView.dataSource = self;

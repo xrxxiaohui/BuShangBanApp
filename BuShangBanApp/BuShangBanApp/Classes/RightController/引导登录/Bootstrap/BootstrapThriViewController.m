@@ -71,8 +71,9 @@
 }
 
 -(UIButton *)__btn:(UIButton *)btn title:(NSString *)title  image:(UIImage *)image tag:(NSInteger)tag {
-    btn.frame=CGRectMake(_left, _top, 96*adapt.scaleWidth, 96*adapt.scaleWidth);
+    btn.frame=CGRectMake(_left, _top, ceilf(96*adapt.scaleWidth), ceilf(96*adapt.scaleWidth));
     [btn setTitle:title forState:UIControlStateNormal];
+    btn.titleLabel.font=[UIFont systemFontOfSize:ceilf(16 * adapt.scaleWidth)];
     [btn setTitleColor:[UIColor colorWithHexString:@"383838"] forState:UIControlStateNormal];
     [btn setTitle:@"" forState:UIControlStateSelected];
     [btn setBackgroundImage:image forState:UIControlStateSelected];

@@ -8,18 +8,18 @@
 
 #import "BootstrapOneViewController.h"
 #import "BuShangBanImagePicker.h"
+#import "AddressChoicePickerView.h"
 
 #define adapt  [[[ScreenAdapt alloc]init] adapt]
 
-@interface BootstrapOneViewController ()
+@interface BootstrapOneViewController ()<UITextFieldDelegate>
 
 @end
 
 @implementation BootstrapOneViewController
 {
-    UIButton *_tempButton;
+    UIButton *_tempBtn;
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self __crateUI];
@@ -41,25 +41,38 @@
     [self.maleBtn setImage:[UIImage imageNamed:@"men_selected"] forState:UIControlStateSelected];
     self.maleBtn.frame=CGRectMake(kScreenWidth/2-44, self.headBtn.bottom+30, 44, 44);
     self.maleBtn.selected=YES;
+    _tempBtn=self.maleBtn;
    
     self.femaleBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     [self __btn:self.femaleBtn imageName:@"female_nomal" tag:1002];
     [self.femaleBtn setImage:[UIImage imageNamed:@"female_selected"] forState:UIControlStateSelected];
     self.femaleBtn.frame=CGRectMake(kScreenWidth/2, self.headBtn.bottom+30, 44, 44);
     
-    self.nickNameTF=[[UITextField alloc]initWithFrame:CGRectMake(0, 0, 300, 48)];
+    self.nickNameTF=[[UITextField alloc]initWithFrame:CGRectMake(0, 0, 300*adapt.scaleWidth, 48)];
     [self __textFieldWithTextField:self.nickNameTF imageNamed:@"nickname" placeHolder:@"昵称"];
     self.nickNameTF.centerX=self.view.centerX;
     self.nickNameTF.top=198;
     
-    self.placeTF=[[UITextField alloc]initWithFrame:CGRectMake(0, 0, 300, 48)];
+    self.placeTF=[[UITextField alloc]initWithFrame:CGRectMake(0, 0, 300*adapt.scaleWidth, 48)];
     [self __textFieldWithTextField:self.placeTF imageNamed:@"loaction" placeHolder:@"地点"];
     self.placeTF.centerX=self.view.centerX;
+    self.placeTF.delegate=self;
     self.placeTF.top=self.nickNameTF.bottom;
     
     [self __shapeLayerWithStartPoint:CGPointMake(self.nickNameTF.left, self.nickNameTF.bottom-8) endPoint:CGPointMake(self.nickNameTF.right, self.nickNameTF.bottom-8)];
     [self __shapeLayerWithStartPoint:CGPointMake(self.placeTF.left, self.placeTF.bottom-8) endPoint:CGPointMake(self.placeTF.right, self.placeTF.bottom-8)];
 }
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [textField endEditing:YES];
+    AddressChoicePickerView *addressChoice=[[AddressChoicePickerView alloc]init];
+    addressChoice.block=^(AddressChoicePickerView *view, UIButton *btn, AreaObject *locate){
+        textField.text=[NSString stringWithFormat:@"%@",locate];
+    };
+    [addressChoice show];
+}
+
 
 -(void)__clickEvent:(UIButton *)btn
 {
@@ -70,11 +83,11 @@
             _headBtn.clipsToBounds=YES;
         }];
     else
-        if (!btn.selected) {
-            btn.selected=!btn.selected;
-            if (_tempButton.selected)
-                _tempButton.selected=!_tempButton.selected;
-            _tempButton=btn;
+        if (!btn.selected)
+        {
+            _tempBtn.selected=NO;
+            btn.selected=YES;
+            _tempBtn=btn;
         }
 }
 

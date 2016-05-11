@@ -36,7 +36,6 @@
 @end
 
 
-
 @implementation DataListViewController
 {
     NSString *_title;
@@ -160,9 +159,6 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    DetailViewController *vc=[[DetailViewController alloc]initWithURL:self.URLArray[indexPath.row]];
-//    [[SliderViewController sharedSliderController].navigationController pushViewController:vc animated:YES];
-//    NSDictionary *dataDic = [[_homeListdataArray objectAtIndex:indexPath.row] safeDictionary];
     
     if(self.URLArray.count>indexPath.row){
     NSString *urlStr = self.URLArray[indexPath.row];

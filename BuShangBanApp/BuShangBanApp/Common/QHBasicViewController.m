@@ -315,10 +315,10 @@
     NSString *imageName = nil;
     if (isIos7 >= 7 && __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1)
     {
-        imageName = @"header_bg";
+        imageName = @"Group 15 Copy 3";
     }else
     {
-        imageName = @"header_bg";
+        imageName = @"Group 15 Copy 3";
     }
     UIImage *image = [QHCommonUtil imageNamed:imageName];
     UIImageView *navIV1 = (UIImageView *)[self.view viewWithTag:98];
