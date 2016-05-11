@@ -154,7 +154,7 @@
 -(void)fetchData {
     
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
-    [_urlParamsReq setUrlString:@"https://leancloud.cn:443/1.1/classes/Featured?limit=10&&order=-sort&"];
+    [_urlParamsReq setUrlString:@"https://leancloud.cn:443/1.1/classes/Featured?limit=3&&order=-sort&"];
     
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
         
@@ -329,7 +329,7 @@
 
 -(void)presentSuggestView{
     
-    [self ScreenShot];
+//    [self ScreenShot];
     SuggestPageViewController *suggestPageViewController = [[SuggestPageViewController alloc] init];
     [[SliderViewController sharedSliderController].navigationController presentViewController:suggestPageViewController animated:YES completion:nil];
 }
