@@ -28,6 +28,9 @@
     self.dic=@{@"1000":@"产品",@"1001":@"设计",@"1002":@"技术", @"1003":@"媒体", @"1004":@"运营", @"1005":@"创业",@"1006": @"公司", @"1007":@"同好",@"1008": @"热门"};
     [self.view addSubview:findView];
     
+    
+    
+    
     SSLXUrlParamsRequest *_urlParamsReq1 = [[SSLXUrlParamsRequest alloc] init];
     [_urlParamsReq1 setUrlString:URL];
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq1 successBlock:^(SSLXResultRequest *successReq){
