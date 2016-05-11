@@ -32,7 +32,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = COLOR(249, 249, 249);
 
-    
 //    UIButton *fmBtn=[UIButton buttonWithType:UIButtonTypeCustom];
 //    UIImage *image=[UIImage imageNamed:@"FM"];
 //    [fmBtn setBackgroundImage:image forState:UIControlStateNormal];
@@ -43,7 +42,7 @@
     [self customNavigationBarWithImage:@"logo"];
     UIButton *mentionButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [mentionButton setFrame:CGRectMake(self.navView.width - 60, (self.navView.height - 40)/2, 60, 40)];
-    [mentionButton setImage:[UIImage imageNamed:@"History"] forState:UIControlStateNormal];
+    [mentionButton setImage:[UIImage imageNamed:@"FrontCovers"] forState:UIControlStateNormal];
     [mentionButton addTarget:self action:@selector(presentSuggestView) forControlEvents:UIControlEventTouchUpInside];
     [self customRightItemWithBtn:mentionButton];
     
@@ -76,13 +75,8 @@
 }
 
 -(void)createTabelView{
-    UIImageView *lineImageView = [[UIImageView alloc] init];
-    lineImageView.backgroundColor = COLOR(0xd9, 0xd9, 0xd9);
-    [lineImageView setFrame:CGRectMake(0, 64, kScreenWidth, 1)];
-    [self.view addSubview:lineImageView];
-
     CGFloat height = kScreenHeight - 65;
-    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 65, self.view.width, height) style:UITableViewStyleGrouped];
+    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, height) style:UITableViewStyleGrouped];
     
     _mainTableView.delegate = self;
     _mainTableView.dataSource = self;

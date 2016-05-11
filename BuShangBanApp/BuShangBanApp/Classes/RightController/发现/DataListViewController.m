@@ -125,9 +125,6 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    DetailViewController *vc=[[DetailViewController alloc]initWithURL:self.URLArray[indexPath.row]];
-//    [[SliderViewController sharedSliderController].navigationController pushViewController:vc animated:YES];
-//    NSDictionary *dataDic = [[_homeListdataArray objectAtIndex:indexPath.row] safeDictionary];
     NSString *urlStr = self.URLArray[indexPath.row];
     BaseWebViewController *baseWebView = [[BaseWebViewController alloc] init];
     baseWebView.isTestWeb = NO;

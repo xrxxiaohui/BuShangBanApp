@@ -112,7 +112,6 @@
         [_shareNumLabel setTextColor:COLOR(124, 124, 124)];
         [self.contentView addSubview:_shareNumLabel];
         
-        
         UIImageView *lineImageView1 = [[UIImageView alloc] init];
         lineImageView1.backgroundColor = kCommonBottomLineColor;
         [lineImageView1 setFrame:CGRectMake(0, _shareButton.bottom+8, kScreenWidth, 0.5)];

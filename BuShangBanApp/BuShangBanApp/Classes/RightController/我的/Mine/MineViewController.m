@@ -15,6 +15,8 @@
 #import "User.h"
 #import "BootstrapOneViewController.h"
 
+#define adapt  [[[ScreenAdapt alloc]init] adapt]
+
 //https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24  用户信息
 //https://leancloud.cn:443/1.1/classes/Post?where=%7B%22author%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22_User%22%2C%22objectId%22%3A%22570387b3ebcb7d005b196d24%22%7D%7D&count=1&limit=0 文章数
 //https://leancloud.cn/1.1/users/570387b3ebcb7d005b196d24/followersAndFollowees?limit=0&count=1 关注我的和我关注的
@@ -135,7 +137,7 @@
         layout.minimumLineSpacing=1.5f;
         layout.minimumInteritemSpacing=1.f;
         
-        _collectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth+200-18) collectionViewLayout:layout];
+        _collectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth+200 *adapt.scaleHeight-18) collectionViewLayout:layout];
         [_collectionView registerClass:[MineCell class] forCellWithReuseIdentifier:@"MineCell"];
         [_collectionView registerClass:[MineSectionHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header"];
         _collectionView.backgroundColor=[UIColor colorWithHexString:@"d9d9d9"];
@@ -151,7 +153,7 @@
     if (!_titleDataSource) {
         
         _titleDataSource=[NSMutableArray arrayWithCapacity:9];
-        NSDictionary *blackDic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:20],
+        NSDictionary *blackDic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:20 * adapt.scaleWidth],
                                  NSForegroundColorAttributeName:[UIColor colorWithHexString:@"000000"]};
         NSDictionary *dimDic=@{NSFontAttributeName:smallerFont,
                                NSForegroundColorAttributeName:[UIColor colorWithHexString:@"808080"]};
@@ -224,7 +226,7 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    return CGSizeMake(kScreenWidth, 200);
+    return CGSizeMake(kScreenWidth, 200 *adapt.scaleHeight);
 }
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
