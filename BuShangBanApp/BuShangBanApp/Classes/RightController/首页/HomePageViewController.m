@@ -43,7 +43,7 @@
     [self customNavigationBarWithImage:@"logo"];
     UIButton *mentionButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [mentionButton setFrame:CGRectMake(self.navView.width - 60, (self.navView.height - 40)/2, 60, 40)];
-    [mentionButton setImage:[UIImage imageNamed:@"History"] forState:UIControlStateNormal];
+    [mentionButton setImage:[UIImage imageNamed:@"FrontCovers"] forState:UIControlStateNormal];
     [mentionButton addTarget:self action:@selector(presentSuggestView) forControlEvents:UIControlEventTouchUpInside];
     [self customRightItemWithBtn:mentionButton];
     
