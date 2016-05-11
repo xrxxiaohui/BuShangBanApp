@@ -75,7 +75,7 @@
 }
 
 -(void)createTabelView{
-    CGFloat height = kScreenHeight - 65;
+    CGFloat height = kScreenHeight - 64;
     _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, height) style:UITableViewStyleGrouped];
     
     _mainTableView.delegate = self;
