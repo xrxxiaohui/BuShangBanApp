@@ -27,7 +27,7 @@
     _closeBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     [_closeBtn setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
     [_closeBtn addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
-    _closeBtn.frame=CGRectMake(16, 20, 44,44);
+    _closeBtn.frame=CGRectMake(6, 20, 44,44);
     _closeBtn.tag=1000;
     [self.view addSubview:_closeBtn];
     
@@ -42,7 +42,7 @@
 
 -(UITextField *)textFieldWithPlaceHolder:(NSString *)placeholder imageNamed:(NSString *)imageNamed
 {
-    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(0, 0, 300, 48)];
+    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(0, 0, 300 * adapt.scaleWidth, 48)];
     textField.contentVerticalAlignment=UIControlContentVerticalAlignmentCenter;
     textField.centerX=self.view.centerX;
     textField.placeholder=placeholder;
@@ -67,7 +67,7 @@
     btn.backgroundColor=[UIColor whiteColor];
     [btn setBackgroundImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
-    btn.titleLabel.font=[UIFont fontWithName:@"PingFang TC-Light" size:14];
+    btn.titleLabel.font=[UIFont fontWithName:fontName size:14];
     btn.frame=frame;
     btn.tag=tag;
     return btn;

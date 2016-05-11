@@ -13,6 +13,7 @@
 #import "OtherViewController.h"
 #import "LoginViewController.h"
 #import "User.h"
+#import "BootstrapOneViewController.h"
 
 //https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24  用户信息
 //https://leancloud.cn:443/1.1/classes/Post?where=%7B%22author%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22_User%22%2C%22objectId%22%3A%22570387b3ebcb7d005b196d24%22%7D%7D&count=1&limit=0 文章数
@@ -39,11 +40,11 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(judgeLoginStatus) name:@"judgeLoginStatus" object:nil];
     
-    UIButton *tempButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [tempButton setFrame:CGRectMake(100, kScreenHeight-120, 60, 60)];
-    [tempButton setBackgroundColor:[UIColor blueColor]];
-    [self.view addSubview:tempButton];
-    [tempButton addTarget:self action:@selector(logOut) forControlEvents:UIControlEventTouchUpInside];
+//    UIButton *tempButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [tempButton setFrame:CGRectMake(100, kScreenHeight-120, 60, 60)];
+//    [tempButton setBackgroundColor:[UIColor blueColor]];
+//    [self.view addSubview:tempButton];
+//    [tempButton addTarget:self action:@selector(logOut) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void)logOut{
@@ -54,17 +55,16 @@
 }
 
 -(void)judgeLoginStatus{
-
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *loginStatus = [userDefaults objectForKey:kLoginStatus];
     
-    if([loginStatus isEqualToString:@"1"]){
+//    if([loginStatus isEqualToString:@"1"]){
         //已登录
         [self __loadData];
-    }else{
-        
-        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
-    }
+//    }else{
+//    
+//        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
+//    }
 }
 
 -(void)__loadData {
@@ -82,10 +82,6 @@
 //        NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
 //        _errorMsg? [MBProgressHUD showError:_errorMsg]: [MBProgressHUD showError:kMBProgressErrorTitle];
 //    }];
-    
-    
-    
-    
     
     
     SSLXUrlParamsRequest *_urlParamsReq1 = [[SSLXUrlParamsRequest alloc] init];

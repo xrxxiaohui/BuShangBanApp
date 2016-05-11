@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imO-4v-Gsk">
-                    <rect key="frame" x="0.0" y="66" width="600" height="16"/>
+                    <rect key="frame" x="0.0" y="40" width="600" height="16"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="16" id="KQe-Oa-giW"/>
                     </constraints>
@@ -62,15 +62,9 @@
                 <constraint firstItem="Xcw-cx-uDy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="Oqu-Nf-pjt"/>
                 <constraint firstItem="Wfn-Qc-YbB" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Pcw-dy-GCq"/>
                 <constraint firstItem="Xcw-cx-uDy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="YRl-Pq-piq"/>
-                <constraint firstItem="imO-4v-Gsk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="66" id="fcG-CO-GdU"/>
+                <constraint firstItem="imO-4v-Gsk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="40" id="fcG-CO-GdU"/>
                 <constraint firstAttribute="trailing" secondItem="imO-4v-Gsk" secondAttribute="trailing" id="ge1-EE-ycd"/>
-                <constraint firstItem="imO-4v-Gsk" firstAttribute="top" secondItem="Xcw-cx-uDy" secondAttribute="bottom" constant="8" symbolic="YES" id="mrs-yM-svs"/>
             </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="mrs-yM-svs"/>
-                </mask>
-            </variation>
         </view>
     </objects>
     <resources>

@@ -14,6 +14,8 @@
 #import <AVOSCloud/AVOSCloud.h>
 #import "AccessSendSmsApi.h"
 
+#define adapt  [[[ScreenAdapt alloc]init] adapt]
+
 #define requestSmsCode @"https://api.leancloud.cn/1.1/requestSmsCode"
 
 #define iniviteURL @"https://leancloud.cn:443/1.1/classes/InvitationCode?where=%7B%22key%22%3A%22bsb%22%7D&limit=1&&order=-updatedAt&&keys=-ACL%2C-createdAt%2C-updatedAt%2C-objectId%2C-count"
@@ -54,33 +56,34 @@
     [_loginBtn addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
     _loginBtn.titleLabel.font=[UIFont fontWithName:@"PingFang TC-Light" size:14];
     [_loginBtn setTitleColor:[UIColor colorWithHexString:@"383838"] forState:UIControlStateNormal];
-    _loginBtn.frame=CGRectMake(kScreenWidth-60, 20, 44,44);
+    _loginBtn.frame=CGRectMake(kScreenWidth-50, 20, 44,44);
     _loginBtn.tag=1001;
     [self.view addSubview:_loginBtn];
     
 //    _accountTF=[self textFieldWithPlaceHolder:@"手机号/邮箱" imageNamed:@"phone number"];
-        _accountTF=[self textFieldWithPlaceHolder:@"手机号" imageNamed:@"phone number"];
+    _accountTF=[self textFieldWithPlaceHolder:@"手机号" imageNamed:@"phone number"];
     _accountTF.keyboardType=UIKeyboardTypeNumberPad;
-    
+    _accountTF.clearButtonMode=UITextFieldViewModeAlways;
+
     _verificationCodeTF=[self textFieldWithPlaceHolder:@"验证码" imageNamed:@"Verification code"];
     _verificationCodeTF.keyboardType=UIKeyboardTypeNumberPad;
     _verificationCodeTF.top=_accountTF.bottom;
-    _verificationCodeTF.width=180;
+    _verificationCodeTF.width=180 *adapt.scaleWidth;
     
-    _getCodeBtn=[self buttonWithImageName:@"Get button" tag:1002 frame:CGRectMake(_verificationCodeTF.right+20, 0, 100, 30) title:@"获取验证码"];
-    _getCodeBtn.titleLabel.font=[UIFont fontWithName:fontName size:12];
+    _getCodeBtn=[self buttonWithImageName:@"Get button" tag:1002 frame:CGRectMake(_verificationCodeTF.right+20, 0, 100 *adapt.scaleWidth, 30 *adapt.scaleHeight) title:@"获取验证码"];
+    _getCodeBtn.titleLabel.font =[UIFont systemFontOfSize:ceilf(12*adapt.scaleWidth)];
     _getCodeBtn.bottom=_verificationCodeTF.bottom-8;
     [_contentView addSubview:_getCodeBtn];
     
     _passWordTF=[self textFieldWithPlaceHolder:@"密码" imageNamed:@"password"];
     _passWordTF.secureTextEntry=YES;
-    _passWordTF.top=_getCodeBtn.bottom;
+    _passWordTF.top=_verificationCodeTF.bottom;
+    _passWordTF.clearButtonMode=UITextFieldViewModeAlways;
     
     _passWordAgainTF=[self textFieldWithPlaceHolder:@"再次输入密码" imageNamed:@"password again"];
     _passWordAgainTF.secureTextEntry=YES;
     _passWordAgainTF.top=_passWordTF.bottom;
-    
-    [self shapeLayerWithStartPoint:CGPointMake(_passWordAgainTF.left, _passWordAgainTF.bottom-8) endPoint:CGPointMake(_passWordAgainTF.right, _passWordAgainTF.bottom-8)];
+    _passWordAgainTF.clearButtonMode=UITextFieldViewModeAlways;
     
     _inivitTF=[self textFieldWithPlaceHolder:@"邀请码" imageNamed:@"Invitation code"];
     _inivitTF.top=_passWordAgainTF.bottom;
@@ -94,15 +97,22 @@
     _inivitBtn.tag=1006;
     [_contentView addSubview:_inivitBtn];
     
-    [self shapeLayerWithStartPoint:CGPointMake(_accountTF.left, _accountTF.bottom-8) endPoint:CGPointMake(_accountTF.right, _accountTF.bottom-8)];
-    [self shapeLayerWithStartPoint:CGPointMake(_verificationCodeTF.left, _verificationCodeTF.bottom-8) endPoint:CGPointMake(_verificationCodeTF.right, _verificationCodeTF.bottom-8)];
-    [self shapeLayerWithStartPoint:CGPointMake(_passWordTF.left, _passWordTF.bottom-8) endPoint:CGPointMake(_passWordTF.right, _passWordTF.bottom-8)];
-    [self shapeLayerWithStartPoint:CGPointMake(_inivitTF.left, _inivitTF.bottom-8) endPoint:CGPointMake(_inivitTF.right, _inivitTF.bottom-8)];
+    [self shapeLayerWithStartPoint:CGPointMake(_accountTF.left, _accountTF.bottom-8)
+                          endPoint:CGPointMake(_accountTF.right, _accountTF.bottom-8)];
+    [self shapeLayerWithStartPoint:CGPointMake(_verificationCodeTF.left, _verificationCodeTF.bottom-8)
+                          endPoint:CGPointMake(_verificationCodeTF.right, _verificationCodeTF.bottom-8)];
+    [self shapeLayerWithStartPoint:CGPointMake(_passWordTF.left, _passWordTF.bottom-8)
+                          endPoint:CGPointMake(_passWordTF.right, _passWordTF.bottom-8)];
+    [self shapeLayerWithStartPoint:CGPointMake(_passWordAgainTF.left, _passWordAgainTF.bottom-8)
+                          endPoint:CGPointMake(_passWordAgainTF.right, _passWordAgainTF.bottom-8)];
+    [self shapeLayerWithStartPoint:CGPointMake(_inivitTF.left, _inivitTF.bottom-8)
+                          endPoint:CGPointMake(_inivitTF.right, _inivitTF.bottom-8)];
     
-    _registBtn=[self buttonWithImageName:@"Button" tag:1003 frame:CGRectMake(0,0, 300, 44) title:@"注册"];
+    _registBtn=[self buttonWithImageName:@"Button" tag:1003 frame:CGRectMake(0,0, 300*adapt.scaleWidth, 44*adapt.scaleHeight ) title:@"注册"];
     _registBtn.top=_inivitTF.bottom+64;
     _registBtn.centerX=self.view.centerX;
     [_contentView addSubview:_registBtn];
+    _registBtn.selected=YES;
     
     _contentView.height=_registBtn.bottom;
     
@@ -112,22 +122,25 @@
     [_readedBtn setImage:[UIImage imageNamed:@"勾选"] forState:UIControlStateSelected];
     [_readedBtn addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
     
-    NSDictionary *dic1=@{NSFontAttributeName:[UIFont fontWithName:fontName size:10],
-                        NSForegroundColorAttributeName:[UIColor colorWithHexString:@"383838"]};
-    NSAttributedString *attr1=[[NSAttributedString alloc] initWithString:@"我已阅读并同意不上班" attributes:dic1];
-    [_readedBtn setAttributedTitle:attr1 forState:UIControlStateNormal];
+    [_readedBtn  setTitleColor:[UIColor colorWithHexString:@"383838"] forState:UIControlStateNormal];
+    [_readedBtn setTitle:@"我已阅读并同意不上班" forState:UIControlStateNormal];
+    _readedBtn.titleLabel.font=[UIFont systemFontOfSize:10];
     _readedBtn.titleEdgeInsets=UIEdgeInsetsMake(0,3,0,0);
     _readedBtn.size=CGSizeMake(120, [UIImage imageNamed:@"方框"].size.height);
     _readedBtn.bottom=kScreenHeight-20;
+    _readedBtn.selected=YES;
     _readedBtn.tag=1004;
     [self.view addSubview:_readedBtn];
     
     _userProtocalBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     [_userProtocalBtn addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
-    NSDictionary *dic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:10],
-                        NSForegroundColorAttributeName:[UIColor colorWithHexString:@"4a90e2"]};
-    NSAttributedString *attr=[[NSAttributedString alloc] initWithString:@"用户协议" attributes:dic];
-    [_userProtocalBtn setAttributedTitle:attr forState:UIControlStateNormal];
+    _userProtocalBtn.titleLabel.font=[UIFont systemFontOfSize:10];
+    [_userProtocalBtn setTitle:@"用户协议" forState:UIControlStateNormal];
+    [_userProtocalBtn setTitleColor:[UIColor colorWithHexString:@"4a90e2"] forState:UIControlStateNormal];
+//    NSDictionary *dic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:10],
+//                        NSForegroundColorAttributeName:[UIColor colorWithHexString:@"4a90e2"]};
+//    NSAttributedString *attr=[[NSAttributedString alloc] initWithString:@"用户协议" attributes:dic];
+//    [_userProtocalBtn setAttributedTitle:attr forState:UIControlStateNormal];
     _userProtocalBtn.tag=1005;
     [_userProtocalBtn sizeToFit];
     [self.view addSubview:_userProtocalBtn];
@@ -149,36 +162,37 @@
             break;
         case 1002:
         {
-            NSString *tempString = [NSString stringWithFormat:@"%@",_accountTF.text];
-            [self __checkMobileWithPhone:_accountTF.text];
-            [self cutDownTimer];
-            
-            SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
-            [_urlParamsReq setUrlString:@"https://api.leancloud.cn/1.1/requestSmsCode"];
-            NSDictionary *_paramsDict = @{  @"mobilePhoneNumber":tempString?tempString:@0   };
-             [_urlParamsReq setParamsDict:_paramsDict];
-            _urlParamsReq.requestMethod = YTKRequestMethodPost;
-
-            [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
-                if ([[successRequest.responseString objectFromJSONString] valueForKey:@"error"])
-                [MBProgressHUD showError:[[successRequest.responseString objectFromJSONString] valueForKey:@"error"]];
-                else
-                    [MBProgressHUD showSuccess:@"验证码发送成功"];
+            if([self __checkMobileWithPhone:_accountTF.text])
+            {
+                NSString *tempString = [NSString stringWithFormat:@"%@",_accountTF.text];
+                [self cutDownTimer];
                 
-                NSLog(@"access send sms success, successRequest: %@",[successRequest.responseString objectFromJSONString]);
+                SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
+                [_urlParamsReq setUrlString:@"https://api.leancloud.cn/1.1/requestSmsCode"];
+                NSDictionary *_paramsDict = @{  @"mobilePhoneNumber":tempString?tempString:@0   };
+                [_urlParamsReq setParamsDict:_paramsDict];
+                _urlParamsReq.requestMethod = YTKRequestMethodPost;
                 
-            } failureBlock:^(SSLXResultRequest *failRequest){
-                
-                NSLog(@"access send sms fail");
-                
-                NSDictionary *_failDict = [failRequest.responseString objectFromJSONString];
-                NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
-                if (_errorMsg)
-                    [MBProgressHUD showError:_errorMsg];
-                else
-                    [MBProgressHUD showError:kMBProgressErrorTitle];
-            }];
-            
+                [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
+                    if ([[successRequest.responseString objectFromJSONString] valueForKey:@"error"])
+                        [MBProgressHUD showError:[[successRequest.responseString objectFromJSONString] valueForKey:@"error"]];
+                    else
+                        [MBProgressHUD showSuccess:@"验证码发送成功"];
+                    
+                    NSLog(@"access send sms success, successRequest: %@",[successRequest.responseString objectFromJSONString]);
+                    
+                } failureBlock:^(SSLXResultRequest *failRequest){
+                    
+                    NSLog(@"access send sms fail");
+                    
+                    NSDictionary *_failDict = [failRequest.responseString objectFromJSONString];
+                    NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
+                    if (_errorMsg)
+                        [MBProgressHUD showError:_errorMsg];
+                    else
+                        [MBProgressHUD showError:kMBProgressErrorTitle];
+                }];
+            }
             break;
         }
         case 1003:

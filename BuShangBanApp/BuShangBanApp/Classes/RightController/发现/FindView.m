@@ -13,7 +13,7 @@
 #define findViewController  [[FindViewController alloc]init]
 #define margin 6
 #define marginTop floor(40 * adapt.scaleHeight)
-#define marginLeft floor((kScreenWidth-75*3)/4)
+#define marginLeft floor((kScreenWidth-75* adapt.scaleWidth*3)/4)
 #define TAG 1000
 
 
@@ -45,8 +45,7 @@
             }
             else
                 _left = marginLeft + btn.right;
-        }
-        
+        }  
     }
     return self;
 }
@@ -55,7 +54,7 @@
 - (UIButton *)__buttonWithNomalImage:(UIImage *)nomalImage tag:(NSInteger)tag {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setBackgroundImage:nomalImage forState:UIControlStateNormal];
-    btn.size = CGSizeMake(75, 75);
+    btn.size = CGSizeMake(75*adapt.scaleWidth, 75*adapt.scaleWidth);
     btn.layer.cornerRadius = btn.width / 2;
     btn.tag = tag;
     [btn addTarget:findViewController action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
@@ -66,7 +65,7 @@
 - (UILabel *)__labelWithText:(NSString *)text btn:(UIButton *)btn {
     UILabel *label = [[UILabel alloc] init];
     label.text = text;
-    label.font = smallerFont;
+    label.font = [UIFont fontWithName:fontName size:12.f * adapt.scaleWidth];
     label.textColor = [UIColor colorWithHexString:@"#383838"];
     [label sizeToFit];
     label.top = btn.bottom + margin;

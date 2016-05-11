@@ -11,8 +11,6 @@
 #import "DataListViewController.h"
 #import "SliderViewController.h"
 
-//https://leancloud.cn:443/1.1/classes/PostCategory?order=-sort&&keys=-ACL%2C-createdAt%2C-updatedAt
-
 #define URL @"https://leancloud.cn:443/1.1/classes/PostCategory?order=-sort&&keys=-ACL%2C-createdAt%2C-updatedAt"
 
 @interface FindViewController ()
@@ -47,7 +45,7 @@
 - (void)clickEvent:(UIButton *)button
 {
     NSInteger Index=button.tag;
-    DataListViewController *dataListViewController = [[DataListViewController alloc] initWithTitle:[self.dic objectForKey:[NSString stringWithFormat:@"%ld",Index] ]objectID:[self.articalInfoArray[Index-1000] objectForKey:@"objectId"]];
+    DataListViewController *dataListViewController = [[DataListViewController alloc] initWithTitle:[self.dic objectForKey:[NSString stringWithFormat:@"%ld",(long)Index] ]objectID:[self.articalInfoArray[Index-1000] objectForKey:@"objectId"]];
     [[SliderViewController sharedSliderController].navigationController pushViewController:dataListViewController animated:YES];
 }
 
