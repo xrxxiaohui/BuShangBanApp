@@ -13,5 +13,6 @@
 @property (nonatomic, copy) NSString* webUrl;
 @property (nonatomic, assign) BOOL isTestWeb;
 @property (nonatomic, copy) NSDictionary* dataDics;
+@property (nonatomic, copy) NSString* objectID;
 
 @end

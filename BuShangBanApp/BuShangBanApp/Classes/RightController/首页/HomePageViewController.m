@@ -302,6 +302,7 @@
     baseWebView.isTestWeb = NO;
     baseWebView.webUrl = urlStr;
     baseWebView.dataDics = dataDic;
+    baseWebView.objectID = [dataDic objectForKey:@"objectId"];
     [[SliderViewController sharedSliderController].navigationController pushViewController:baseWebView animated:YES ];
 }
 
