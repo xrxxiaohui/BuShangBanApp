@@ -48,7 +48,7 @@
 - (void)clickEvent:(UIButton *)button
 {
     NSInteger Index=button.tag;
-    if(self.articalInfoArray.count>Index)
+    if(self.articalInfoArray.count>Index-1000)
     {
 
     DataListViewController *dataListViewController = [[DataListViewController alloc] initWithTitle:[self.dic objectForKey:[NSString stringWithFormat:@"%ld",(long)Index] ]objectID:[self.articalInfoArray[Index-1000] objectForKey:@"objectId"]];

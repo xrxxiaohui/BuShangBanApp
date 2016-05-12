@@ -15,11 +15,11 @@
 
 //#define URL @"https://leancloud.cn:443/1.1/classes/Post?where=%7B%22category%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22PostCagegory%22%2C%22objectId%22%3A%22571eae66c4c9710056d94de6%22%7D%7D&&&order=-sort&&keys=-body&include=author,category"
 
-#define headUrl @"https://leancloud.cn:443/1.1/classes/Post?"
-#define URL @"where={\"category\":{\"__type\":\"Pointer\",\"className\":\"PostCagegory\",\"objectId\":\"%@\"}}"
+#define headUrl @"https://leancloud.cn:443/1.1/classes/Post?where="
+#define URL @"{\"category\":{\"__type\":\"Pointer\",\"className\":\"PostCagegory\",\"objectId\":\"%@\"}}"
 #define url1 @"order=-updatedAt"
-#define url2 @"keys=-body,-body_html,-ACL"
-#define url3 @"include=category,author"
+#define url2 @"-body,-body_html,-ACL"
+#define url3 @"category,author"
 #define url4 @"limit=100"
 
 @interface DataListViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -69,13 +69,15 @@
      self.view.backgroundColor=bgColor;
     
     SSLXUrlParamsRequest *_urlParamsReq1 = [[SSLXUrlParamsRequest alloc] init];
-    NSString *encodeUrlString =[self encodeToPercentEscapeString:URL];
-    NSString *encodeUrlString1 = [self encodeToPercentEscapeString:url1];
+    
+    NSString *tempUrl = [NSString stringWithFormat:URL,_objectID];
+    NSString *encodeUrlString =[self encodeToPercentEscapeString:tempUrl];
+//    NSString *encodeUrlString1 = [self encodeToPercentEscapeString:url1];
     NSString *encodeUrlString2 = [self encodeToPercentEscapeString:url2];
     NSString *encodeUrlString3 = [self encodeToPercentEscapeString:url3];
-    NSString *encodeUrlString4 = [self encodeToPercentEscapeString:url4];
+//    NSString *encodeUrlString4 = [self encodeToPercentEscapeString:url4];
 
-    NSString *finalUrl = [NSString stringWithFormat:@"%@%@&%@&%@&%@&%@",headUrl,encodeUrlString,encodeUrlString1,encodeUrlString2,encodeUrlString3,encodeUrlString4];
+    NSString *finalUrl = [NSString stringWithFormat:@"%@%@&%@&%@&include=%@&keys=%@",headUrl,encodeUrlString,url1,url4,encodeUrlString3,encodeUrlString2];
     
     [_urlParamsReq1 setUrlString:finalUrl];
 

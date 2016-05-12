@@ -61,7 +61,7 @@ typedef enum : NSInteger {
 -(void)viewDidLoad {
 
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor redColor]];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     [self customNavigationBarWithTitle:@""];
 //    [self customWebView];
 
