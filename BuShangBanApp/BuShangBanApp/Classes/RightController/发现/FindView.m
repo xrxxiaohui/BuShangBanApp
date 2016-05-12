@@ -25,7 +25,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     
     self = [super initWithFrame:frame];
-    self.frame = CGRectMake(0, 64, kScreenWidth, 448 * adapt.scaleHeight+marginTop);
+    self.frame = CGRectMake(0, 64, kScreenWidth, 448 * adapt.scaleHeight+12);
     if ( self )
     {
         self.backgroundColor = [UIColor whiteColor];

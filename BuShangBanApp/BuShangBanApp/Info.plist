@@ -2,6 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>PingFang Bold.ttf</string>
+		<string>PingFang ExtraLight.ttf</string>
+		<string>PingFang Heavy.ttf</string>
+		<string>PingFang Light.ttf</string>
+		<string>PingFang Medium.ttf</string>
+		<string>PingFang Regular.ttf</string>
+	</array>
+	<key>CFBundleDisplayName</key>
+	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
 	<key>CFBundleExecutable</key>
@@ -98,15 +109,6 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>PingFang Medium.ttf</string>
-		<string>PingFang Regular.ttf</string>
-		<string>PingFang Bold.ttf</string>
-		<string>PingFang ExtraLight.ttf</string>
-		<string>PingFang Heavy.ttf</string>
-		<string>PingFang Light.ttf</string>
-	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

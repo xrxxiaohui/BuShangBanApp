@@ -137,7 +137,7 @@
         layout.minimumLineSpacing=1.5f;
         layout.minimumInteritemSpacing=1.f;
         
-        _collectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth+200 *adapt.scaleHeight-18) collectionViewLayout:layout];
+        _collectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth+200 *adapt.scaleHeight) collectionViewLayout:layout];
         [_collectionView registerClass:[MineCell class] forCellWithReuseIdentifier:@"MineCell"];
         [_collectionView registerClass:[MineSectionHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header"];
         _collectionView.backgroundColor=[UIColor colorWithHexString:@"d9d9d9"];
@@ -227,11 +227,6 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
     return CGSizeMake(kScreenWidth, 200 *adapt.scaleHeight);
-}
-
--(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
-    return UIEdgeInsetsMake(-18, 0, 0, 0);
 }
 
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath

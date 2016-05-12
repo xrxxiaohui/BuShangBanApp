@@ -47,8 +47,7 @@
     [lineImageView setFrame:CGRectMake(0, 64, kScreenWidth, 1)];
     [self.view addSubview:lineImageView];
     
-    
-    
+        
     CGFloat height = kScreenHeight-65 ;
     _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 65, self.view.width, height) style:UITableViewStylePlain];
     

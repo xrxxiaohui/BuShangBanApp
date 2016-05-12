@@ -53,7 +53,7 @@
 
     DataListViewController *dataListViewController = [[DataListViewController alloc] initWithTitle:[self.dic objectForKey:[NSString stringWithFormat:@"%ld",(long)Index] ]objectID:[self.articalInfoArray[Index-1000] objectForKey:@"objectId"]];
     [[SliderViewController sharedSliderController].navigationController pushViewController:dataListViewController animated:YES];
-}
+    }
 }
 
 -(NSMutableArray*)__sortContentWithkeys:(NSArray *)keys
