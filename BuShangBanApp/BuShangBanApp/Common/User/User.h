@@ -113,7 +113,7 @@ typedef NS_ENUM(NSUInteger, BuShangBanGender){
 @property(nonatomic, copy) NSString *distance;
 @property(nonatomic, copy) NSString *extension;
 
-@property(nonatomic, copy) NSDate *birthDay;
+@property(nonatomic, copy) NSString *birthDay;
 
 @property(nonatomic, assign) NSUInteger noteCount;
 @property(nonatomic, assign) NSUInteger favCount;

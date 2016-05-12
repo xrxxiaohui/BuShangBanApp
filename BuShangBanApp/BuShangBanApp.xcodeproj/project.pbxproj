@@ -1244,10 +1244,7 @@
 				A3FD041D1C9936D000E84A0B /* Common */,
 				A3FD03EB1C99190700E84A0B /* AppDelegate.h */,
 				A3FD03EC1C99190700E84A0B /* AppDelegate.m */,
-				A3FD03F11C99190700E84A0B /* Main.storyboard */,
 				A3FD03F41C99190700E84A0B /* Assets.xcassets */,
-				049EF2471CA3900A00C1D68A /* infoConfig.plist */,
-				A3FD03F91C99190700E84A0B /* Info.plist */,
 				A3FD03E81C99190700E84A0B /* Supporting Files */,
 			);
 			path = BuShangBanApp;
@@ -1256,6 +1253,9 @@
 		A3FD03E81C99190700E84A0B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A3FD03F11C99190700E84A0B /* Main.storyboard */,
+				049EF2471CA3900A00C1D68A /* infoConfig.plist */,
+				A3FD03F91C99190700E84A0B /* Info.plist */,
 				A377D1561C995A4A00C779A7 /* BuShangBanApp-Prefix.pch */,
 				A3FD041B1C99197300E84A0B /* Podfile */,
 				A3FD03E91C99190700E84A0B /* main.m */,

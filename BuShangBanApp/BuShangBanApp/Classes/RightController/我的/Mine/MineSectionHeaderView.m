@@ -31,7 +31,7 @@
         
         [self __shapeLayerWithStartPoint:CGPointMake(kScreenWidth/2, 168*adapt.scaleHeight) endPoint:CGPointMake(kScreenWidth/2, 168*adapt.scaleHeight+12)];
         
-        _myFocusLabel=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth/2+14*adapt.scaleWidth, 162*adapt.scaleHeight, 80, 14)];
+        _myFocusLabel=[[UILabel alloc]initWithFrame:CGRectMake(ceilf(kScreenWidth/2+14*adapt.scaleWidth), ceilf(162*adapt.scaleHeight), 80, 14)];
         _myFocusLabel.tag=10001;
         [self addSubview:_myFocusLabel];
     }
@@ -61,6 +61,8 @@
     NSDictionary *nomalTextDic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:14 * adapt.scaleWidth],NSForegroundColorAttributeName:nomalTextColor};
     [mutableAttributedString appendAttributedString:[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"  %d",digit] attributes:nomalTextDic]];
     label.attributedText=mutableAttributedString;
+    if([title isEqualToString:@"关注我"])
+        label.right=kScreenWidth/2-ceilf(14*adapt.scaleWidth);
     [label sizeToFit];
     return label;
 }

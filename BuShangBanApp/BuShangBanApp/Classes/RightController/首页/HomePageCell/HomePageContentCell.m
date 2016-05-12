@@ -39,12 +39,6 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-
-        UIImageView *lineImageView = [[UIImageView alloc] init];
-        lineImageView.backgroundColor = kCommonBottomLineColor;
-        [lineImageView setFrame:CGRectMake(0, 0, kScreenWidth, 0.5)];
-        [self.contentView addSubview:lineImageView];
-
         self.backgroundColor = [UIColor whiteColor];
         _leftUpButton = [UIButton buttonWithType:UIButtonTypeCustom];
         UIImage *image=[UIImage imageNamed:@"greenBackground"];

@@ -331,8 +331,9 @@ typedef enum : NSInteger {
 }
 
 -(void)toArticalPage:(id)sender{
-
+    
     DataListViewController *dataListViewController = [[DataListViewController alloc] initWithTitle:categoryStr objectID:@""];
+    
     [[SliderViewController sharedSliderController].navigationController pushViewController:dataListViewController animated:YES];
 
 }

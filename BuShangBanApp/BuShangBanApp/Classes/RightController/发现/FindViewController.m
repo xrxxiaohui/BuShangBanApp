@@ -20,16 +20,12 @@
 
 @implementation FindViewController
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self customNavigationBarWithTitle:@"发现"];
     FindView *findView = [[FindView alloc] init];
     self.dic=@{@"1000":@"产品",@"1001":@"设计",@"1002":@"技术", @"1003":@"媒体", @"1004":@"运营", @"1005":@"创业",@"1006": @"公司", @"1007":@"同好",@"1008": @"热门"};
     [self.view addSubview:findView];
-    
-    
-    
     
     SSLXUrlParamsRequest *_urlParamsReq1 = [[SSLXUrlParamsRequest alloc] init];
     [_urlParamsReq1 setUrlString:URL];
@@ -50,9 +46,8 @@
     NSInteger Index=button.tag;
     if(self.articalInfoArray.count>Index-1000)
     {
-
-    DataListViewController *dataListViewController = [[DataListViewController alloc] initWithTitle:[self.dic objectForKey:[NSString stringWithFormat:@"%ld",(long)Index] ]objectID:[self.articalInfoArray[Index-1000] objectForKey:@"objectId"]];
-    [[SliderViewController sharedSliderController].navigationController pushViewController:dataListViewController animated:YES];
+        DataListViewController *dataListViewController = [[DataListViewController alloc] initWithTitle:[self.dic objectForKey:[NSString stringWithFormat:@"%ld",(long)Index] ]objectID:[self.articalInfoArray[Index-1000] objectForKey:@"objectId"]];
+        [[SliderViewController sharedSliderController].navigationController pushViewController:dataListViewController animated:YES];
     }
 }
 
