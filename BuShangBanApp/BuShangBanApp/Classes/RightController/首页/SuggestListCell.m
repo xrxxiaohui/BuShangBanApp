@@ -98,6 +98,9 @@
     [backgroundView setBackgroundColor:[UIColor whiteColor]];
     [backgroundView.layer setMasksToBounds:YES];
     backgroundView.layer.cornerRadius = 10;
+    backgroundView.layer.shadowColor = COLOR(227, 2, 2).CGColor;
+    backgroundView.layer.shadowRadius = 10;
+    backgroundView.layer.shadowOffset = CGSizeMake(backgroundView.width, 15);
     [backgroundView setFrame:CGRectMake(37*kDefaultBiLi, 20*kDefaultBiLi, 340*kDefaultBiLi, 500*kDefaultBiLi)];
 //    backgroundView.userInteractionEnabled = YES;
     [self addSubview:backgroundView];

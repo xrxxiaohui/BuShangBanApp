@@ -28,6 +28,9 @@
     [super viewDidLoad];
     [self customNavigationBarWithTitle:@"每日首推"];
     self.view.backgroundColor=bgColor;
+    
+    
+    
     [self initData];
     [self createTabelView];
     [self fetchData];
@@ -44,18 +47,30 @@
     [lineImageView setFrame:CGRectMake(0, 64, kScreenWidth, 1)];
     [self.view addSubview:lineImageView];
     
-    
-    CGFloat height = kScreenHeight-64 ;
-    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, height) style:UITableViewStylePlain];
+        
+    CGFloat height = kScreenHeight-65 ;
+    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 65, self.view.width, height) style:UITableViewStylePlain];
     
     _mainTableView.delegate = self;
     _mainTableView.dataSource = self;
     _mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _mainTableView.backgroundColor = COLOR(249, 249, 249);
+//    _mainTableView.backgroundColor = COLOR(249, 249, 249);
+    _mainTableView.backgroundColor = [UIColor clearColor];
+//    _mainTableView.opaque = YES;
+    _mainTableView.alpha = 0.98;
     //设置下拉刷新回调
     [_mainTableView addGifHeaderWithRefreshingTarget:self refreshingAction:@selector(fetchData)];
     //    [_mainTableView addGifFooterWithRefreshingTarget:self refreshingAction:@selector(requestDataMore)];
     
+    
+    UIImageView *backgroungImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cardBackground"]];
+    backgroungImageView.frame = CGRectMake(0, 65, kScreenWidth, kScreenHeight);
+    
+    UIVisualEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+    UIVisualEffectView *effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
+    effectview.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    [backgroungImageView addSubview:effectview];
+    [self.view addSubview:backgroungImageView];
     [self.view addSubview:_mainTableView];
 }
 
@@ -113,12 +128,13 @@
         cell = [[SuggestListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
     }
         
-        NSDictionary *tempDic = [[_dataArray objectAtIndex:indexPath.row] safeDictionary];
-        [cell setDataInfo:tempDic];
-        [cell refreshUI];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-        return cell;
+    NSDictionary *tempDic = [[_dataArray objectAtIndex:indexPath.row] safeDictionary];
+    [cell setDataInfo:tempDic];
+    [cell refreshUI];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+    return cell;
     
 }
 

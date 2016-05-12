@@ -66,7 +66,7 @@
         
 //        NSString *avarString = [NSString stringWithFormat:@"%@",[self.dataInfo objectForKey:@"avar"]];
         [_avarButton setImage:[UIImage imageNamed:@"System"] forState:UIControlStateNormal];
-        NSString *mainTitleString = @"系统通知";
+//        NSString *mainTitleString = @"系统通知";
 //        if([[self.dataInfo objectForKey:@"mainTitle"] isBlankString]){
 //        
 //            mainTitleString = @"系统消息";
@@ -74,6 +74,8 @@
 //        
 //           mainTitleString = [NSString stringWithFormat:@"%@",[self.dataInfo objectForKey:@"mainTitle"]];
 //        }
+        NSString *mainTitleString = [NSString stringWithFormat:@"%@",[self.dataInfo objectForKey:@"title"]];
+
         NSString *subTitleString = [NSString stringWithFormat:@"%@",[self.dataInfo objectForKey:@"summary"]];
         [_mainTitleLabel setText:[NSString stringWithFormat:@"%@",mainTitleString]];
         [_subTitleLabel setText:[NSString stringWithFormat:@"%@",subTitleString]];
