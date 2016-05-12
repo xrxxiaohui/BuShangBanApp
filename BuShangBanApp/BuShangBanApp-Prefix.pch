@@ -128,8 +128,6 @@
 
 #endif
 
-//默认
-
 //字体
 #define fontName @"PingFang SC"
 #define nomalFont [UIFont fontWithName:fontName size:14.f]
