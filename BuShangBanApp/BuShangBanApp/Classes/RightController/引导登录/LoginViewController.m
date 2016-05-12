@@ -36,7 +36,7 @@
     _registBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     [_registBtn setTitle:@"注册" forState:UIControlStateNormal];
     [_registBtn addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
-    _registBtn.titleLabel.font=[UIFont fontWithName:@"PingFang TC Light" size:14];
+    _registBtn.titleLabel.font=[UIFont fontWithName:fontName size:14];
     [_registBtn setTitleColor:[UIColor colorWithHexString:@"383838"] forState:UIControlStateNormal];
     _registBtn.frame=CGRectMake(kScreenWidth-50, 20, 44,44);
     _registBtn.tag=1001;

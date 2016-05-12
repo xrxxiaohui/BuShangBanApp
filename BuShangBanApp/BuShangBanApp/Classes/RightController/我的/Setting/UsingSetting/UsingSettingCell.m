@@ -19,7 +19,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.switchView=[[UISwitch alloc]initWithFrame:CGRectMake(kScreenWidth-61, 8, 81, 31)];
-        [self.switchView addTarget:[[UsingSettingViewController alloc]init] action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
+//        [self.switchView addTarget:[[UsingSettingViewController alloc]init] action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
         [self addSubview:self.switchView];
         self.textLabel.font=[UIFont fontWithName:fontName size:14];
         self.textLabel.textColor=[UIColor colorWithHexString:@"383838"];
@@ -29,7 +29,6 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
 }
 
 @end

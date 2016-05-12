@@ -198,7 +198,7 @@
 - (UITableView *)tableView {
     if ( !_tableView )
     {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth,kScreenHeight) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth,kScreenHeight-64) style:UITableViewStyleGrouped];
         _tableView.contentSize=CGSizeMake(kScreenWidth, 180+44*7+12<kScreenHeight?180+44*7+12:kScreenHeight);
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -252,6 +252,8 @@
             }];
         else
             [cell.headBtn setBackgroundImage:[UIImage imageNamed:@"Default avatar"] forState:UIControlStateNormal];
+        [cell.headBtn addTarget:self action:@selector(setHeadImage:) forControlEvents:UIControlEventTouchUpInside];
+        [cell addSubview:cell.headBtn];
     }
     else
     {

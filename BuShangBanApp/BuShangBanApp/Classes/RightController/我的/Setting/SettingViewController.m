@@ -86,6 +86,7 @@
         [settingCell.headImageView sd_setImageWithURL:_imageURL];
         settingCell.titleLabel.text=self.dataSource[indexPath.section][indexPath.row];
         settingCell.detailTitleLabel.text=_detailtext;
+        [settingCell.editBtn addTarget:self action:@selector(btnEvent) forControlEvents:UIControlEventTouchUpInside];
         return settingCell;
     }else{
         UITableViewCell *cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];

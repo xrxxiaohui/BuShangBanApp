@@ -32,7 +32,6 @@
         _editBtn=[UIButton buttonWithType:UIButtonTypeCustom];
         _editBtn.frame=CGRectMake(kScreenWidth-44, 0, 44, 44);
         [_editBtn setImage:[UIImage imageNamed:@"modify"] forState:UIControlStateNormal];
-        [_editBtn addTarget:[[SettingViewController alloc]init]  action:@selector(btnEvent) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_editBtn];
     }
     return self;

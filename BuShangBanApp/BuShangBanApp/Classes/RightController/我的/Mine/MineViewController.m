@@ -17,8 +17,6 @@
 
 #define adapt  [[[ScreenAdapt alloc]init] adapt]
 
-//https://leancloud.cn/1.1/users/570387b3ebcb7d005b196d24/followersAndFollowees?limit=0&count=1 关注我的和我关注的
-
 #define userURL @"https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24"
 #define articalURL @"https://leancloud.cn:443/1.1/classes/Post?where=%7B%22author%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22_User%22%2C%22objectId%22%3A%22570387b3ebcb7d005b196d24%22%7D%7D&count=1&limit=0"
 #define  aboutMe @"https://leancloud.cn/1.1/users/570387b3ebcb7d005b196d24/followersAndFollowees?limit=0&count=1"
@@ -56,12 +54,12 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *loginStatus = [userDefaults objectForKey:kLoginStatus];
     
-//    if([loginStatus isEqualToString:@"1"]){
+    if([loginStatus isEqualToString:@"1"]){
         //已登录
         [self __loadData];
-//    }else{
-//        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
-//    }
+    }else{
+        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
+    }
 }
 
 -(void)__loadData {
@@ -182,13 +180,11 @@
     return _imageDataSource;
 }
 
-
 #pragma mark -- 代理 --
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.imageDataSource.count;
 }
-
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -202,9 +198,8 @@
     CGSize size=cell.contentImageView.image.size;
     cell.contentImageView.size=CGSizeMake(size.width *adapt.scaleWidth, size.height *adapt.scaleHeight);
     cell.contentLabel.attributedText=self.titleDataSource[indexPath.row];
-    if (indexPath.row == 4 || indexPath.row == 5) {
+    if (indexPath.row == 4 || indexPath.row == 5)
         cell.backgroundColor=[UIColor colorWithHexString:@"f5f5f5"];
-    }
     return cell;
 }
 
@@ -226,14 +221,16 @@
         } failureBlock:nil];
         
         MineSectionHeaderView *sectionHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header" forIndexPath:indexPath];
+         [sectionHeaderView.settingBtn addTarget:self action:@selector(settingBtn:) forControlEvents:UIControlEventTouchUpInside];
         [sectionHeaderView.settingBtn setImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
         if(self.user.avatarImageURL)
             [sectionHeaderView.headImageView sd_setImageWithURL:self.user.avatarImageURL];
         else
             sectionHeaderView.headImageView.image = [UIImage imageNamed:@"Default avatar"];
         [sectionHeaderView labelWithLable:sectionHeaderView.focusMeLabel Titlt:@"关注我" digit:(int32_t)[self.user.focusMeNumber integerValue]];
-        
         [sectionHeaderView labelWithLable:sectionHeaderView.myFocusLabel Titlt:@"我关注" digit:(int32_t)[self.user.focusMeNumber integerValue]];
+        [sectionHeaderView.focusMeLabel sizeToFit];
+        sectionHeaderView.focusMeLabel.right=kScreenWidth/2-ceilf(14*adapt.scaleWidth);
         [sectionHeaderView nickNameLabelWithNickName:self.user.username label:self.self.user.label];
         reusableView=sectionHeaderView;
     }

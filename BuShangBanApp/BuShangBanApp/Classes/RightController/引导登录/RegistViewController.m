@@ -54,7 +54,7 @@
     _loginBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     [_loginBtn setTitle:@"登录" forState:UIControlStateNormal];
     [_loginBtn addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
-    _loginBtn.titleLabel.font=[UIFont fontWithName:@"PingFang TC-Light" size:14];
+    _loginBtn.titleLabel.font=[UIFont fontWithName:fontName size:14];
     [_loginBtn setTitleColor:[UIColor colorWithHexString:@"383838"] forState:UIControlStateNormal];
     _loginBtn.frame=CGRectMake(kScreenWidth-50, 20, 44,44);
     _loginBtn.tag=1001;
@@ -146,7 +146,7 @@
     [self.view addSubview:_userProtocalBtn];
     _readedBtn.left=(kScreenWidth-_userProtocalBtn.width-_readedBtn.width)/2;
     _userProtocalBtn.left=_readedBtn.right;
-    _userProtocalBtn.bottom=kScreenHeight-12;
+    _userProtocalBtn.bottom=kScreenHeight-11;
 }
 
 
@@ -254,7 +254,8 @@
                         if(![self isBlankDictionary:successCode1]&&![self isBlankDictionary:successCode]){
                         
                             //成功
-                            NSString *sessionToken = [[successRequest.responseString objectFromJSONString] valueForKey:@"sessionToken"];
+                            NSString *sessionToken1 = [NSString stringWithFormat:@"%@",[[successRequest.responseString objectFromJSONString] valueForKey:@"sessionToken"]];
+                            NSString *sessionToken = SafeForString(sessionToken1);
                             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                             [userDefaults setObject:sessionToken forKey:kSessionToken];
                             

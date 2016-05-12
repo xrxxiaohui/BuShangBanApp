@@ -47,7 +47,6 @@
             else
                 _left = marginLeft + btn.right;
         }
-        
     }
     return self;
 }
@@ -58,8 +57,8 @@
     btn.size = CGSizeMake(75*adapt.scaleWidth, 75*adapt.scaleWidth);
     btn.layer.cornerRadius = btn.width / 2;
     btn.tag = tag;
-    [btn addTarget:findViewController action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:btn];
+//    [btn addTarget:findViewController action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
     return btn;
 }
 

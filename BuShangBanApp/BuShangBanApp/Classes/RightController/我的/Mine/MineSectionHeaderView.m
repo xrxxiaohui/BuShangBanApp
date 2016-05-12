@@ -61,9 +61,6 @@
     NSDictionary *nomalTextDic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:14 * adapt.scaleWidth],NSForegroundColorAttributeName:nomalTextColor};
     [mutableAttributedString appendAttributedString:[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"  %d",digit] attributes:nomalTextDic]];
     label.attributedText=mutableAttributedString;
-    if([title isEqualToString:@"关注我"])
-        label.right=kScreenWidth/2-ceilf(14*adapt.scaleWidth);
-    [label sizeToFit];
     return label;
 }
 
@@ -109,7 +106,7 @@
 - (UIButton *)settingBtn {
     if (!_settingBtn ) {
         _settingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_settingBtn addTarget:[[MineViewController alloc] init] action:@selector(settingBtn:) forControlEvents:UIControlEventTouchUpInside];
+//        [_settingBtn addTarget:[[MineViewController alloc] init] action:@selector(settingBtn:) forControlEvents:UIControlEventTouchUpInside];
         _settingBtn.size=CGSizeMake(50, 50);
         _settingBtn.left = kScreenWidth - _settingBtn.width;
         _settingBtn.top = 33.f;
