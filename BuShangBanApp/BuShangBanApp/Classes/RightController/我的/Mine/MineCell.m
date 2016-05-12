@@ -8,10 +8,7 @@
 
 #import "MineCell.h"
 
-
-
 @implementation MineCell
-
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -29,8 +26,4 @@
     }
     return self;
 }
-
-
-
-
 @end

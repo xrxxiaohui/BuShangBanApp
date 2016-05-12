@@ -57,12 +57,6 @@
     //    [_mainTableView addGifFooterWithRefreshingTarget:self refreshingAction:@selector(requestDataMore)];
     
     [self.view addSubview:_mainTableView];
-    
-//    UIImageView *lineImageView1 = [[UIImageView alloc] init];
-//    lineImageView1.backgroundColor = COLOR(0xd9, 0xd9, 0xd9);
-//    [lineImageView1 setFrame:CGRectMake(0, kScreenHeight-50, kScreenWidth, 1)];
-//    [self.view addSubview:lineImageView1];
-    
 }
 
 -(void)fetchData {

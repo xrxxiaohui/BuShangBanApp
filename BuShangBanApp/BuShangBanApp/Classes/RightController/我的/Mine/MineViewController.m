@@ -199,6 +199,7 @@
 }
 
 
+
 #pragma mark -- 代理 --
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -246,6 +247,8 @@
     }
     return reusableView;
 }
+
+
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
