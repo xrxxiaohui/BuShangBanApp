@@ -55,10 +55,10 @@
 
 -(UILabel *)labelWithLable:(UILabel *)label  Titlt:(NSString *)title digit:(int)digit 
 {
-    NSDictionary *placeHoldTextDic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:10 * adapt.scaleWidth],NSForegroundColorAttributeName:placeHoldTextColor};
+    NSDictionary *placeHoldTextDic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:10 ],NSForegroundColorAttributeName:placeHoldTextColor};
     NSMutableAttributedString *mutableAttributedString =[[NSMutableAttributedString alloc]initWithString:title attributes:placeHoldTextDic];
 
-    NSDictionary *nomalTextDic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:14 * adapt.scaleWidth],NSForegroundColorAttributeName:nomalTextColor};
+    NSDictionary *nomalTextDic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:14],NSForegroundColorAttributeName:nomalTextColor};
     [mutableAttributedString appendAttributedString:[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"  %d",digit] attributes:nomalTextDic]];
     label.attributedText=mutableAttributedString;
     return label;
@@ -80,7 +80,7 @@
         nickName = [NSString stringWithFormat:@"%@  |  ", nickName];
         
         NSDictionary *nickNameDic =
-        @{NSForegroundColorAttributeName : placeHoldTextColor, NSFontAttributeName : [UIFont fontWithName:fontName size:15.f  * adapt.scaleWidth]};
+        @{NSForegroundColorAttributeName : placeHoldTextColor, NSFontAttributeName : [UIFont fontWithName:fontName size:15.f]};
         NSDictionary *labelDic =
         @{NSForegroundColorAttributeName : placeHoldTextColor, NSFontAttributeName : smallerFont};
         

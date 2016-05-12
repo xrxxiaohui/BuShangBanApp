@@ -13,4 +13,6 @@
 
 @interface FindView : BaseView
 
+typedef void(^evnetBlock)(NSInteger tag);
+@property(nonatomic,copy)evnetBlock clickEvent;
 @end

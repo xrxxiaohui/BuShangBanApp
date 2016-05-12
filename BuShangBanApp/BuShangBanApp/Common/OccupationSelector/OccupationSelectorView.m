@@ -17,12 +17,11 @@
 @property(nonatomic,strong)UIView *cornerView;
 @property(nonatomic,weak)UIPickerView *occupationSelector;
 
-@property(nonatomic,strong)NSArray *dataSource;
+@property(nonatomic,strong)NSMutableArray *dataSource;
 
 @property(nonatomic,strong)UIButton *okBtn;
 @property(nonatomic,strong)UIButton *cancelBtn;
 
-@property(nonatomic,copy)NSString *contentText;
 @end
 
 @implementation OccupationSelectorView
@@ -49,10 +48,10 @@
             self.backgroundView.backgroundColor=[UIColor whiteColor];
             [self.cornerView addSubview:self.backgroundView];
             
-            _dataSource=@[@"创作",@"运营",@"产品",@"技术",@"设计",@"投资",@"市场",@"行政"];
-            [self.occupationSelector selectRow:INT32_C(_dataSource.count/2) inComponent:0 animated:YES];
-            _contentString=[NSString stringWithString:self.dataSource[INT32_C(_dataSource.count/2)]];
-            _contentText=[NSString stringWithString:self.dataSource[INT32_C(_dataSource.count/2)]];
+            self.dataSource=[NSMutableArray arrayWithArray:@[@"创作",@"运营",@"产品",@"技术",@"设计",@"投资",@"市场",@"行政"]];
+            [self.occupationSelector selectRow:_dataSource.count/2 inComponent:0 animated:YES];
+            self.contentString=[NSString stringWithString:self.dataSource[_dataSource.count/2]];
+            self.contentText=[NSString stringWithString:self.dataSource[_dataSource.count/2]];
             _cancelBtn= [self btnWithTitle:@"取 消" tag:1001 x:10];
             _okBtn = [self btnWithTitle:@"确 定" tag:1000 x:kScreenWidth-44-10];
         }
@@ -84,9 +83,9 @@
 -(void)clickEvent:(UIButton *)sender
 {
     if (sender.tag == 1000)
-        _contentString=_contentText;
+        self.contentString=[NSString stringWithString:self.contentText];
     if (_occupationSelectorBlock)
-        _occupationSelectorBlock(self,_contentString);
+        _occupationSelectorBlock(self,self.contentString);
     [self hide];
 }
 
@@ -127,7 +126,7 @@
 }
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return _dataSource.count;
+    return self.dataSource.count;
 }
 
 -(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
@@ -156,11 +155,11 @@
 }
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return _dataSource[row];
+    return [NSString stringWithString:_dataSource[row]];
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    _contentText=_dataSource[row];
+    self.contentText=[NSString stringWithString:_dataSource[row]];
 }
 @end

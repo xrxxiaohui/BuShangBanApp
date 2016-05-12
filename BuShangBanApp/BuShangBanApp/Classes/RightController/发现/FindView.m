@@ -7,10 +7,9 @@
 //
 
 #import "FindView.h"
-#import "FindViewController.h"
+
 
 #define adapt  [[[ScreenAdapt alloc]init] adapt]
-#define findViewController  [[FindViewController alloc]init]
 #define margin 6
 #define marginTop floor(40 * adapt.scaleHeight)
 #define marginLeft floor((kScreenWidth-75* adapt.scaleWidth*3)/4)
@@ -58,7 +57,7 @@
     btn.layer.cornerRadius = btn.width / 2;
     btn.tag = tag;
     [self addSubview:btn];
-//    [btn addTarget:findViewController action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
+    [btn addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
     return btn;
 }
 
@@ -66,7 +65,6 @@
     UILabel *label = [[UILabel alloc] init];
     label.text = text;
     label.font = [UIFont fontWithName:fontName size:12.f];
-    
     label.textColor = [UIColor colorWithHexString:@"#383838"];
     [label sizeToFit];
     label.top = btn.bottom + margin;
@@ -75,4 +73,13 @@
     
     return label;
 }
+
+
+-(void)clickEvent:(UIButton *)btn
+{
+    if(_clickEvent)
+        _clickEvent(btn.tag);
+}
+
+
 @end

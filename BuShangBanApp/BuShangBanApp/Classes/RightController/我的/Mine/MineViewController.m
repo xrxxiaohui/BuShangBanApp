@@ -34,6 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.collectionView.backgroundColor=bgColor;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(judgeLoginStatus) name:@"judgeLoginStatus" object:nil];
     
 //    UIButton *tempButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -54,22 +55,32 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *loginStatus = [userDefaults objectForKey:kLoginStatus];
     
-    if([loginStatus isEqualToString:@"1"]){
+//    if([loginStatus isEqualToString:@"1"]){
         //已登录
         [self __loadData];
-    }else{
-        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
-    }
+//    }else
+//        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
 }
 
 -(void)__loadData {
     self.user=[[User alloc]init];
+    
+    SSLXUrlParamsRequest *_urlParamsRe = [[SSLXUrlParamsRequest alloc] init];
+    [_urlParamsRe setUrlString:aboutMe];
+    [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsRe successBlock:^(SSLXResultRequest *successReq){
+        NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
+        self.user.myFocusNumber= _successInfo[@"followees_count"];
+        self.user.focusMeNumber= _successInfo[@"followers_count"];
+        [self.collectionView reloadData];
+    } failureBlock:nil];
+    
     
     SSLXUrlParamsRequest *_urlParamsReq1 = [[SSLXUrlParamsRequest alloc] init];
     [_urlParamsReq1 setUrlString:articalURL];
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq1 successBlock:^(SSLXResultRequest *successReq){
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
         self.user.artcailCount=_successInfo[@"count"];
+        [self.collectionView reloadData];
     } failureBlock:nil];
     
     NSDateFormatter *formatter=[[NSDateFormatter alloc] init];
@@ -96,7 +107,7 @@
         self.user.avatarImageURL=[NSURL URLWithString:self.user.avatar[@"url"]];
         self.user.age = currentYear-[[self.user.birthDay componentsSeparatedByString:@"-"][0] integerValue] +1;
         
-        self.collectionView.backgroundColor=bgColor;
+        [self.collectionView reloadData];
     } failureBlock:^(SSLXResultRequest *failReq){
         NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
         NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
@@ -212,14 +223,7 @@
 {
     UICollectionReusableView *reusableView=nil;
     if (kind == UICollectionElementKindSectionHeader) {
-        SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
-        [_urlParamsReq setUrlString:aboutMe];
-        [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
-            NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
-           self.user.myFocusNumber= _successInfo[@"followees_count"];
-           self.user.focusMeNumber= _successInfo[@"followers_count"];
-        } failureBlock:nil];
-        
+
         MineSectionHeaderView *sectionHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header" forIndexPath:indexPath];
          [sectionHeaderView.settingBtn addTarget:self action:@selector(settingBtn:) forControlEvents:UIControlEventTouchUpInside];
         [sectionHeaderView.settingBtn setImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];

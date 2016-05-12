@@ -133,7 +133,6 @@
 -(void)hideGrayMaskView
 {
     [self.tableView endEditing:YES];
-
     _contentArray[_indexPath.row]=_cell.contentTF.text;
     _cell.contentTF.userInteractionEnabled=NO;
     [_grayMaskView removeFromSuperview];
@@ -158,14 +157,11 @@
     }];
 }
 
-
 - (UIView *)grayMaskView {
     if ( !_grayMaskView ) {
-        
         UIView *grayMaskView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         grayMaskView.layer.backgroundColor = [UIColor grayColor].CGColor;
         grayMaskView.alpha = 0.4f;
-        
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapEvent:)];
         tap.numberOfTapsRequired = 1;
         tap.numberOfTouchesRequired = 1;
@@ -177,14 +173,12 @@
 
 -(void)saveInformation:(UIButton *)sender
 {
-    
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
     _urlParamsReq.requestMethod =  YTKRequestMethodPut;
     [_urlParamsReq setParamsDict:_mutableDic];
     [_urlParamsReq setUrlString:saveInformationURL];
     
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
-    
         if([successRequest.responseJSONObject objectForKey:@"updatedAt"])
             [MBProgressHUD showError:@"信息更新完成"];
     } failureBlock:^(SSLXResultRequest *failRequest){
@@ -202,6 +196,7 @@
         _tableView.contentSize=CGSizeMake(kScreenWidth, 180+44*7+12<kScreenHeight?180+44*7+12:kScreenHeight);
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.showsVerticalScrollIndicator=NO;
         [self.view addSubview:self.tableView];
     }
     return _tableView;
@@ -257,7 +252,7 @@
     }
     else
     {
-        [cell.contentTF setText:_contentArray[indexPath.section][indexPath.row]];
+        cell.contentTF.text=_contentArray[indexPath.section][indexPath.row];
         cell.contentTF.delegate=self;
     }
     return cell;

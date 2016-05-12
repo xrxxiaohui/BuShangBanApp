@@ -48,9 +48,10 @@
         _leftUpLabel = [[UILabel alloc] init];
         [_leftUpLabel setFont:[UIFont boldSystemFontOfSize:14]];
         [_leftUpLabel setTextColor:COLOR(255, 255, 255)];
-        [_leftUpLabel setFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+        [_leftUpLabel setFrame:CGRectMake(0,0, image.size.width, image.size.height-10)];
         [_leftUpLabel setText:@"设计"];
         _leftUpLabel.textAlignment=NSTextAlignmentCenter;
+        _leftUpLabel.adjustsFontSizeToFitWidth=YES;
         [_leftUpButton addSubview:_leftUpLabel];
         
         _rightAvarButton = [UIButton buttonWithType:UIButtonTypeCustom];

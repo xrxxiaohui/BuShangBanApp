@@ -21,7 +21,7 @@
         self.textLabel.font = [UIFont fontWithName:fontName size:14.f];
         _contentTF = [[UITextField alloc] init];
         _contentTF.font = [UIFont fontWithName:fontName size:14];
-        _contentTF.frame=CGRectMake(kScreenWidth/2, 17, kScreenWidth/2-12, 14);
+        _contentTF.frame=CGRectMake(kScreenWidth/3, 17, kScreenWidth/3*2-12, 14);
         _contentTF.textAlignment = NSTextAlignmentRight;
         _contentTF.borderStyle = UITextBorderStyleNone;
         _contentTF.textColor = [UIColor colorWithHexString:@"#7c7c7c"];

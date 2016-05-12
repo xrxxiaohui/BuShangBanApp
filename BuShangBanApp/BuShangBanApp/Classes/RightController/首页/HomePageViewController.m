@@ -249,7 +249,6 @@
         [cell refreshUI];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
-
     }
     
 }

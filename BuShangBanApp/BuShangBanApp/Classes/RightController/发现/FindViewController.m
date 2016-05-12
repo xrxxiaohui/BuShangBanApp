@@ -23,39 +23,44 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self customNavigationBarWithTitle:@"发现"];
+    [self __loadUI];
+    [self __loadData];
+}
+
+-(void)__loadUI
+{
     FindView *findView = [[FindView alloc] init];
-    [self.view addSubview:findView];
-    
-    for (UIView  *view in [findView subviews])
+    findView.clickEvent=^(NSInteger tag)
     {
-        if([@[@"1000",@"1001",@"1002",@"1003",@"1004",@"1005",@"1006",@"1007",@"1008"] containsObject:[NSString stringWithFormat:@"%ld",view.tag]])
-        [(UIButton *)view addTarget:self action:@selector(clickEvent:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    self.dic=@{@"1000":@"产品",@"1001":@"设计",@"1002":@"技术", @"1003":@"媒体", @"1004":@"运营", @"1005":@"创业",@"1006": @"公司", @"1007":@"同好",@"1008": @"热门"};
+        NSInteger Index=tag;
+        if(self.articalInfoArray.count>Index-1000)
+        {
+            DataListViewController *dataListViewController = [[DataListViewController alloc] initWithTitle:[self.dic objectForKey:[NSString stringWithFormat:@"%ld",(long)Index] ]objectID:[self.articalInfoArray[Index-1000] objectForKey:@"objectId"]];
+            [[SliderViewController sharedSliderController].navigationController pushViewController:dataListViewController animated:YES];
+        }
+    };
+    [self.view addSubview:findView];
+}
+
+-(void)__loadData
+{
+    self.dic=@{@"1000":@"产品",@"1001":@"设计",@"1002":@"技术", @"1003":@"媒体", @"1004":@"运营&市场", @"1005":@"创业",@"1006": @"大公司", @"1007":@"同好",@"1008": @"热门"};
     
     SSLXUrlParamsRequest *_urlParamsReq1 = [[SSLXUrlParamsRequest alloc] init];
     [_urlParamsReq1 setUrlString:URL];
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq1 successBlock:^(SSLXResultRequest *successReq){
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
         self.articalInfoArray=_successInfo[@"results"];
-
+        
         self.articalInfoArray=[self __sortContentWithkeys:@[@"产品",@"设计",@"技术",@"媒体",@"运营&市场",@"创业",@"大公司",@"同好",@"热门"]];
     }failureBlock:^(SSLXResultRequest *failReq){
         NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
         NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
         _errorMsg? [MBProgressHUD showError:_errorMsg]: [MBProgressHUD showError:kMBProgressErrorTitle];
     }];
+    
 }
 
-- (void)clickEvent:(UIButton *)button
-{
-    NSInteger Index=button.tag;
-    if(self.articalInfoArray.count>Index-1000)
-    {
-        DataListViewController *dataListViewController = [[DataListViewController alloc] initWithTitle:[self.dic objectForKey:[NSString stringWithFormat:@"%ld",(long)Index] ]objectID:[self.articalInfoArray[Index-1000] objectForKey:@"objectId"]];
-        [[SliderViewController sharedSliderController].navigationController pushViewController:dataListViewController animated:YES];
-    }
-}
 
 -(NSMutableArray*)__sortContentWithkeys:(NSArray *)keys
 {

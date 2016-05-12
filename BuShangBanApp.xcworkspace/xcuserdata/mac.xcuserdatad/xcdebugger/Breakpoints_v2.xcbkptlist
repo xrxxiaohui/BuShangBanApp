@@ -25,62 +25,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x53d1;&#x73b0;/FindViewController.m"
-            timestampString = "484743966.244878"
+            filePath = "BuShangBanApp/BuShangBanApp/Common/OccupationSelector/OccupationSelectorView.m"
+            timestampString = "484757089.210978"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-clickEvent:"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x53d1;&#x73b0;/FindViewController.m"
-            timestampString = "484742616.368184"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[FindViewController viewDidLoad]"
-                  moduleName = "BuShangBanApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac/Desktop/BuShangBanApp/BuShangBanApp/BuShangBanApp/Classes/RightController/%E5%8F%91%E7%8E%B0/FindViewController.m"
-                  timestampString = "484746517.702375"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "292">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[FindViewController viewDidLoad]"
-                  moduleName = "BuShangBanApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mac/Desktop/BuShangBanApp/BuShangBanApp/BuShangBanApp/Classes/RightController/%E5%8F%91%E7%8E%B0/FindViewController.m"
-                  timestampString = "484746517.70256"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "308">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
