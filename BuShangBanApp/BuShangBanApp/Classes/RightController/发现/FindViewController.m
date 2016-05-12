@@ -33,7 +33,7 @@
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
         self.articalInfoArray=_successInfo[@"results"];
 
-        self.articalInfoArray=[self __sortContentWithkeys:@[@"产品",@"设计",@"技术",@"媒体",@"运营&市场",@"创业",@"大公司",@"同好",@"默认分类"]];
+        self.articalInfoArray=[self __sortContentWithkeys:@[@"产品",@"设计",@"技术",@"媒体",@"运营&市场",@"创业",@"大公司",@"同好",@"热门"]];
     }failureBlock:^(SSLXResultRequest *failReq){
         NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
         NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
@@ -56,8 +56,10 @@
     NSMutableArray *arr=[NSMutableArray new];
     for(int i=0;i<self.articalInfoArray.count; i++)
         for(NSDictionary *dic in self.articalInfoArray)
+            if(keys.count>i){
             if ([dic[@"name"] isEqualToString:keys[i]])
                 [arr addObject:dic];
+            }
     return arr;
 }
 

@@ -155,7 +155,7 @@
     NSString *avatarString = [[self.dataInfo valueForKeyPath:@"related_post.author.avatar.url"] safeString];
     [_rightAvarButton sd_setImageWithURL:[NSURL URLWithString:avatarString]  forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"authoravar"] options:SDWebImageRefreshCached];
 
-    NSString *likes_count = [NSString stringWithFormat:@"%@",[self.dataInfo valueForKeyPath:@"related_post.likes_count"]];
+    NSString *likes_count = [NSString stringWithFormat:@"%@",[self.dataInfo valueForKeyPath:@"related_post.like_count"]];
     [_zanNumLabel setText:likes_count];
     
     NSString *share_count = [NSString stringWithFormat:@"%@",[self.dataInfo valueForKeyPath:@"related_post.share_count"]];
