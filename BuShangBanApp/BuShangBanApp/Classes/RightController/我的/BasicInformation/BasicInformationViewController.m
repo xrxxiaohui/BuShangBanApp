@@ -33,7 +33,7 @@
 
 @property(nonatomic, weak)OccupationSelectorView *occupationSelectorView;
 
-@property(nonatomic,weak)BirthdayPickerView *birthdaySelectorView;
+@property(nonatomic, weak)BirthdayPickerView *birthdaySelectorView;
 
 @property(nonatomic, strong)EditInformationViewController *editInformationViewController;
 @end
@@ -53,7 +53,7 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    
+    _tableView.backgroundColor=bgColor;
     [self __initData];
 }
 
@@ -75,31 +75,36 @@
     self.user=[[User alloc]init];
     _mutableDic =[NSMutableDictionary dictionary];
     _titleArray=[NSArray arrayWithObjects:@[@"头像"],@[@"昵称", @"身份签名",@"所在地",@"生日", @"职业", @"兴趣"], @[@"电话号码",@"电子邮件" ],nil];
-    _contentArray =[NSMutableArray array];
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
     [_urlParamsReq setUrlString:userURL];
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
         
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
-        
-        self.user.city_name=_successInfo[@"city_name"];
-        self.user.birthDay=_successInfo[@"birthday"];
-        self.user.mobilePhoneNumber=_successInfo[@"mobilePhoneNumber"];
-        self.user.interest=_successInfo[@"interest"];
-        self.user.username=_successInfo[@"username"];
-        self.user.profession=_successInfo[@"profession"];
+
         self.user.sex = _successInfo[@"sex"];
-        self.user.email=_successInfo[@"email"];
-        self.user.label=_successInfo[@"title"];
         self.user.avatar=_successInfo[@"avatar"];
         self.user.avatarImageURL=[NSURL URLWithString:self.user.avatar[@"url"]];
+    
+        NSString *birthday = [[[_successInfo[@"birthday"] objectForKey:@"iso"] substringWithRange:NSMakeRange(0, 10)] stringByReplacingOccurrencesOfString:@"-" withString:@","];
+        NSMutableArray *array1=[NSMutableArray array];
+        [array1 addObject:_successInfo[@"username"]];
+        [array1 addObject:_successInfo[@"title"]];
+        [array1 addObject:_successInfo[@"city_name"]];
+        [array1 addObject:birthday];
+    
+        [array1 addObject:_successInfo[@"profession"]];
+        [array1 addObject:[_successInfo[@"interest"] componentsJoinedByString:@","]];
         
+         NSMutableArray *array2=[NSMutableArray array];
+        [array2 addObject:_successInfo[@"mobilePhoneNumber"]];
+        [array2 addObject:_successInfo[@"email"]];
+        
+        self.contentArray =[NSMutableArray array];
         [self.contentArray addObject:@[@""]];
-        [self.contentArray addObject:@[_successInfo[@"username"], _successInfo[@"title"],_successInfo[@"city_name"],
-        @"1993,1,1",_successInfo[@"profession"],[self.user.interest componentsJoinedByString:@","]]];
-        [self.contentArray addObject:@[_successInfo[@"mobilePhoneNumber"],_successInfo[@"email"]]];
+        [self.contentArray addObject:array1];
+        [self.contentArray addObject:array2];
         
-        self.tableView.backgroundColor=bgColor;
+        [self.tableView reloadData];
     } failureBlock:^(SSLXResultRequest *failReq){
         NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
         NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
@@ -133,7 +138,6 @@
 -(void)hideGrayMaskView
 {
     [self.tableView endEditing:YES];
-    _contentArray[_indexPath.row]=_cell.contentTF.text;
     _cell.contentTF.userInteractionEnabled=NO;
     [_grayMaskView removeFromSuperview];
     _grayMaskView = nil;
@@ -151,9 +155,7 @@
         btn.layer.cornerRadius = btn.width / 2;
         btn.clipsToBounds = YES;
         _user.avatarImage=[btn snapshotImage];
-        
         [_mutableDic setValue:_objectID forKey:@"objectId"];
-        
     }];
 }
 
@@ -201,7 +203,6 @@
     }
     return _tableView;
 }
-
 
 -(BirthdayPickerView *)birthdaySelectorView{
     if(!_birthdaySelectorView)
@@ -322,34 +323,32 @@
             case 2:
             {
                 AddressChoicePickerView *addressChoice=[[AddressChoicePickerView alloc]init];
-                addressChoice.block=^(AddressChoicePickerView *view, UIButton *btn, AreaObject *locate)
-                {
-                    _contentArray[_indexPath.row]=[NSString stringWithFormat:@"%@",locate];
-                    textField.text= [NSString stringWithString:_contentArray[_indexPath.row]];
-                    [_mutableDic setValue:[NSString stringWithString:_contentArray[_indexPath.row]] forKey:@"city_name"];
+                addressChoice.block=^(AddressChoicePickerView *view, UIButton *btn, AreaObject *locate){
+                    _contentArray[1][2]=[NSString stringWithFormat:@"%@",locate];
+                    textField.text= [NSString stringWithFormat:@"%@",locate];
+                    [_mutableDic setValue:[NSString stringWithString:_contentArray[1][2]] forKey:@"city_name"];
                 };
                 [addressChoice show];
                 break;
             }
             case 3:
             {
-                self.birthdaySelectorView.contentString=textField.text;
+                self.birthdaySelectorView.contentString=[NSString stringWithString:textField.text];
                 self.birthdaySelectorView.birthdayPickerBlock=^(BirthdayPickerView *view,NSString *contentText){
-                    _contentArray[_indexPath.row]=contentText;
-                    textField.text= [NSString stringWithString:_contentArray[_indexPath.row]];
-                    [_mutableDic setValue:[NSString stringWithString:_contentArray[_indexPath.row]] forKey:@"birthday"];
+                    _contentArray[1][3]=contentText;
+                    textField.text= contentText;
+                    [_mutableDic setValue:[NSString stringWithString:_contentArray[1][3]] forKey:@"birthday"];
                 };
                 break;
             }
             case 4:
             {
-                self.occupationSelectorView.contentString=textField.text;
+                self.occupationSelectorView.contentString=[NSString stringWithString:textField.text];
                 self.occupationSelectorView.occupationSelectorBlock=^(OccupationSelectorView *view,NSString *contentText){
-                    _contentArray[_indexPath.row]=contentText;
-                    textField.text= [NSString stringWithString:_contentArray[_indexPath.row]];
-                    [_mutableDic setValue:[NSString stringWithString:_contentArray[_indexPath.row]] forKey:@"profession"];
+                    _contentArray[1][4]=contentText;
+                    textField.text= contentText;
+                    [_mutableDic setValue:[NSString stringWithString:contentText] forKey:@"profession"];
                 };
-                
                 break;
             }
         }

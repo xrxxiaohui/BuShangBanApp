@@ -35,7 +35,6 @@
 
 @end
 
-
 @implementation DataListViewController
 {
     NSString *_title;
@@ -89,9 +88,7 @@
         self.tempDic = _successInfo;
         for (NSDictionary *dic in self.results)
         {
-//            if ([dic[@"author"][@"objectId"] isEqualToString:_objectID])
              NSString *avatarString = SafeForString([dic valueForKeyPath:@"author.avatar.url"]);
-            
             [self.URLArray addObject:dic[@"link"]];
             [self.titleArray addObject:dic[@"title"]];
             [self.profileArray addObject:dic[@"summary"]];
@@ -133,7 +130,7 @@
         _tabelView.dataSource=self;
         _tabelView.separatorColor=[UIColor whiteColor];
         _tabelView.showsVerticalScrollIndicator=NO;
-//        [_tabelView registerClass:[DataListTableViewCell class] forCellReuseIdentifier:@"DataListTableViewCell"];
+        [_tabelView registerClass:[DataListTableViewCell class] forCellReuseIdentifier:@"DataListTableViewCell"];
         [self.view addSubview:_tabelView];
     }
     return _tabelView;
@@ -151,6 +148,9 @@
     if (!cell)
         cell = [[DataListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    
+    
     cell.leftUpLabel.text=_title;
     cell.leftUpLabel.adjustsFontSizeToFitWidth=YES;
     cell.mainContentLabel.text=self.profileArray[indexPath.row];

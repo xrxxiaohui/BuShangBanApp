@@ -34,9 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(judgeLoginStatus) name:@"judgeLoginStatus" object:nil];
-    
 //    UIButton *tempButton = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [tempButton setFrame:CGRectMake(100, kScreenHeight-120, 60, 60)];
 //    [tempButton setBackgroundColor:[UIColor blueColor]];
@@ -71,16 +69,19 @@
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
         self.user.myFocusNumber= _successInfo[@"followees_count"];
         self.user.focusMeNumber= _successInfo[@"followers_count"];
+//<<<<<<< HEAD
         self.collectionView.backgroundColor=bgColor;
+//=======
+//        [_collectionView reloadData];
+//>>>>>>> b6af7ce800a2d028702b40235f1c9735068322e4
     } failureBlock:nil];
-    
     
     SSLXUrlParamsRequest *_urlParamsReq1 = [[SSLXUrlParamsRequest alloc] init];
     [_urlParamsReq1 setUrlString:articalURL];
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq1 successBlock:^(SSLXResultRequest *successReq){
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
         self.user.artcailCount=_successInfo[@"count"];
-        [self.collectionView reloadData];
+        [_collectionView reloadData];
     } failureBlock:nil];
     
     NSDateFormatter *formatter=[[NSDateFormatter alloc] init];
@@ -100,19 +101,20 @@
         self.user.interest=_successInfo[@"interest"];
         self.user.username=_successInfo[@"username"];
         self.user.profession=_successInfo[@"profession"];
+        
         self.user.sex = _successInfo[@"sex"];
         self.user.email=_successInfo[@"email"];
         self.user.label=_successInfo[@"title"];
         self.user.avatar=_successInfo[@"avatar"];
         self.user.avatarImageURL=[NSURL URLWithString:self.user.avatar[@"url"]];
         self.user.age = currentYear-[[self.user.birthDay componentsSeparatedByString:@"-"][0] integerValue] +1;
-        
-        [self.collectionView reloadData];
+        self.collectionView.backgroundColor=bgColor;
     } failureBlock:^(SSLXResultRequest *failReq){
         NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
         NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
         _errorMsg? [MBProgressHUD showError:_errorMsg]: [MBProgressHUD showError:kMBProgressErrorTitle];
     }];
+
 }
 
 -(void)settingBtn:(UIButton *)btn
@@ -133,7 +135,6 @@
         _collectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth+200 *adapt.scaleHeight) collectionViewLayout:layout];
         [_collectionView registerClass:[MineCell class] forCellWithReuseIdentifier:@"MineCell"];
         [_collectionView registerClass:[MineSectionHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header"];
-        _collectionView.backgroundColor=[UIColor colorWithHexString:@"d9d9d9"];
         _collectionView.delegate=self;
         _collectionView.dataSource=self;
         [self.view addSubview:_collectionView];
@@ -150,18 +151,17 @@
                                  NSForegroundColorAttributeName:[UIColor colorWithHexString:@"000000"]};
         NSDictionary *dimDic=@{NSFontAttributeName:smallerFont,
                                NSForegroundColorAttributeName:[UIColor colorWithHexString:@"808080"]};
-        
-        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:self.user.profession attributes:dimDic]];
+
+        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:SafeForString(self.user.profession) attributes:dimDic]];
         [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"%lu,%@岁",(unsigned long)self.user.age ,([self.user.sex integerValue] ==1?@"男":@"女")] attributes:dimDic]];
-        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:self.user.city_name attributes:dimDic]];
-        
+        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:SafeForString(self.user.city_name) attributes:dimDic]];
         NSMutableAttributedString *articalAttr=[[NSMutableAttributedString alloc]initWithString:@"文章篇" attributes:dimDic];
-        NSAttributedString *articalInsertAttr=[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@" %@ ",self.user.artcailCount] attributes:blackDic];
+        NSAttributedString *articalInsertAttr=[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@" %@ ",self.user.artcailCount?self.user.artcailCount:@"0"] attributes:blackDic];
         [articalAttr insertAttributedString:articalInsertAttr atIndex:2];
         [_titleDataSource addObject:articalAttr];
         
         NSMutableAttributedString *detailedListAttr=[[NSMutableAttributedString alloc]initWithString:@"清单篇" attributes:dimDic];
-        NSAttributedString *detailedListInsertAttr=[[NSAttributedString alloc]initWithString:@" 0 " attributes:blackDic];
+        NSAttributedString *detailedListInsertAttr=[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:SafeForString(@" 0 ")] attributes:blackDic];
         [detailedListAttr insertAttributedString:detailedListInsertAttr atIndex:2];
         [_titleDataSource addObject:detailedListAttr];
         
@@ -178,7 +178,7 @@
     if (!_imageDataSource)
     {
         _imageDataSource=[NSMutableArray arrayWithCapacity:9];
-        [_imageDataSource addObject:[UIImage imageNamed:self.user.profession]];
+        [_imageDataSource addObject:[UIImage imageNamed:self.user.profession?self.user.profession:@"技术"]];
         [_imageDataSource addObject:[UIImage imageNamed:([self.user.sex integerValue] ==1?@"men":@"female")]];
         [_imageDataSource addObject:[UIImage imageNamed:@"location_big"]];
         [_imageDataSource addObject:[UIImage imageNamed:@"article"]];
@@ -223,7 +223,6 @@
 {
     UICollectionReusableView *reusableView=nil;
     if (kind == UICollectionElementKindSectionHeader) {
-
         MineSectionHeaderView *sectionHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header" forIndexPath:indexPath];
          [sectionHeaderView.settingBtn addTarget:self action:@selector(settingBtn:) forControlEvents:UIControlEventTouchUpInside];
         [sectionHeaderView.settingBtn setImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
@@ -231,11 +230,11 @@
             [sectionHeaderView.headImageView sd_setImageWithURL:self.user.avatarImageURL];
         else
             sectionHeaderView.headImageView.image = [UIImage imageNamed:@"Default avatar"];
-        [sectionHeaderView labelWithLable:sectionHeaderView.focusMeLabel Titlt:@"关注我" digit:(int32_t)[self.user.focusMeNumber integerValue]];
-        [sectionHeaderView labelWithLable:sectionHeaderView.myFocusLabel Titlt:@"我关注" digit:(int32_t)[self.user.focusMeNumber integerValue]];
+        [sectionHeaderView labelWithLable:sectionHeaderView.focusMeLabel Titlt:@"关注我" digit:(int32_t)[ SafeForString(self.user.focusMeNumber) integerValue]];
+        [sectionHeaderView labelWithLable:sectionHeaderView.myFocusLabel Titlt:@"我关注" digit:(int32_t)[SafeForString(self.user.focusMeNumber) integerValue]];
         [sectionHeaderView.focusMeLabel sizeToFit];
         sectionHeaderView.focusMeLabel.right=kScreenWidth/2-ceilf(14*adapt.scaleWidth);
-        [sectionHeaderView nickNameLabelWithNickName:self.user.username label:self.self.user.label];
+        [sectionHeaderView nickNameLabelWithNickName:SafeForString(self.user.username) label:self.self.user.label];
         reusableView=sectionHeaderView;
     }
     return reusableView;

@@ -137,10 +137,6 @@
     _userProtocalBtn.titleLabel.font=[UIFont systemFontOfSize:10];
     [_userProtocalBtn setTitle:@"用户协议" forState:UIControlStateNormal];
     [_userProtocalBtn setTitleColor:[UIColor colorWithHexString:@"4a90e2"] forState:UIControlStateNormal];
-//    NSDictionary *dic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:10],
-//                        NSForegroundColorAttributeName:[UIColor colorWithHexString:@"4a90e2"]};
-//    NSAttributedString *attr=[[NSAttributedString alloc] initWithString:@"用户协议" attributes:dic];
-//    [_userProtocalBtn setAttributedTitle:attr forState:UIControlStateNormal];
     _userProtocalBtn.tag=1005;
     [_userProtocalBtn sizeToFit];
     [self.view addSubview:_userProtocalBtn];
@@ -153,6 +149,7 @@
 -(void)clickEvent:(UIButton *)sender
 {
     [super clickEvent:sender];
+    [self.view endEditing:YES];
     switch (sender.tag) {
         case 1000:
             [self.navigationController popViewControllerAnimated:YES];
@@ -290,7 +287,6 @@
                     else
                         [MBProgressHUD showError:kMBProgressErrorTitle];
                 }];
-                
                 }
         }
             break;

@@ -10,7 +10,6 @@
 #import "FindView.h"
 #import "DataListViewController.h"
 #import "SliderViewController.h"
-
 #define URL @"https://leancloud.cn:443/1.1/classes/PostCategory?order=-sort&&keys=-ACL%2C-createdAt%2C-updatedAt"
 
 @interface FindViewController ()
@@ -30,7 +29,7 @@
 -(void)__loadUI
 {
     FindView *findView = [[FindView alloc] init];
-    findView.clickEvent=^(NSInteger tag)
+    findView.clickEventBlock=^(NSInteger tag)
     {
         NSInteger Index=tag;
         if(self.articalInfoArray.count>Index-1000)

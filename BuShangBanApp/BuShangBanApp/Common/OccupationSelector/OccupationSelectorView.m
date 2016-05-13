@@ -21,6 +21,7 @@
 
 @property(nonatomic,strong)UIButton *okBtn;
 @property(nonatomic,strong)UIButton *cancelBtn;
+@property(nonatomic,copy)NSString *contentText;
 
 @end
 
@@ -50,7 +51,7 @@
             
             self.dataSource=[NSMutableArray arrayWithArray:@[@"创作",@"运营",@"产品",@"技术",@"设计",@"投资",@"市场",@"行政"]];
             [self.occupationSelector selectRow:_dataSource.count/2 inComponent:0 animated:YES];
-            self.contentString=[NSString stringWithString:self.dataSource[_dataSource.count/2]];
+    
             self.contentText=[NSString stringWithString:self.dataSource[_dataSource.count/2]];
             _cancelBtn= [self btnWithTitle:@"取 消" tag:1001 x:10];
             _okBtn = [self btnWithTitle:@"确 定" tag:1000 x:kScreenWidth-44-10];
@@ -83,7 +84,7 @@
 -(void)clickEvent:(UIButton *)sender
 {
     if (sender.tag == 1000)
-        self.contentString=[NSString stringWithString:self.contentText];
+        self.contentString=self.contentText;
     if (_occupationSelectorBlock)
         _occupationSelectorBlock(self,self.contentString);
     [self hide];

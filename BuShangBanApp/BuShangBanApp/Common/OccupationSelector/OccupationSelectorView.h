@@ -15,7 +15,6 @@ typedef void (^OccupationSelectorBlock)(OccupationSelectorView *view,NSString *c
 @property(nonatomic,copy)OccupationSelectorBlock occupationSelectorBlock;
 
 @property(nonatomic,strong)NSString *contentString;
-@property(nonatomic,copy)NSString *contentText;
 
 - (void)show;
 
