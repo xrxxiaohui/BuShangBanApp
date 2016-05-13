@@ -330,7 +330,7 @@ typedef enum : NSInteger {
 
     
     UIButton *shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [shareButton setFrame:CGRectMake(self.navView.width - 75, self.navView.height -0, 60, 12)];
+    [shareButton setFrame:CGRectMake(self.navView.width - 75, self.navView.height -0, 40, 12)];
 //    [shareButton setImage:[UIImage imageNamed:@"share_nomal"] forState:UIControlStateNormal];
 //    [shareButton setImage:[UIImage imageNamed:@"share_selected"] forState:UIControlStateHighlighted];
     //             [shareButton setTitle:@"分享" forState:UIControlStateNormal];
