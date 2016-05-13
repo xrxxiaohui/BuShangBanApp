@@ -104,22 +104,8 @@
 
 - (NSString *)encodeToPercentEscapeString: (NSString *) input
 {
-    NSString*
-    outputStr = (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(
-                                                                             
-                                                                             NULL, /* allocator */
-                                                                             
-                                                                             (__bridge CFStringRef)input,
-                                                                             
-                                                                             NULL, /* charactersToLeaveUnescaped */
-                                                                             
-                                                                             (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-                                                                             
-                                                                             kCFStringEncodingUTF8);
-    
-    
-    return
-    outputStr;
+    NSString* outputStr = (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, /* allocator */(__bridge CFStringRef)input,NULL, /* charactersToLeaveUnescaped */ (CFStringRef)@"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8);
+    return outputStr;
 }
 
 -(UITableView *)tabelView
@@ -162,18 +148,19 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(self.URLArray.count>indexPath.row){
-    NSString *urlStr = self.URLArray[indexPath.row];
-    BaseWebViewController *baseWebView = [[BaseWebViewController alloc] init];
-    baseWebView.isTestWeb = NO;
-    baseWebView.webUrl = urlStr;
-    baseWebView.dataDics = self.tempDic;
-    [[SliderViewController sharedSliderController].navigationController pushViewController:baseWebView animated:YES ];
+    if(self.URLArray.count>indexPath.row)
+    {
+        NSString *urlStr = self.URLArray[indexPath.row];
+        BaseWebViewController *baseWebView = [[BaseWebViewController alloc] init];
+        baseWebView.isTestWeb = NO;
+        baseWebView.webUrl = urlStr;
+        baseWebView.dataDics = self.tempDic;
+        [[SliderViewController sharedSliderController].navigationController pushViewController:baseWebView animated:YES ];
     }
-
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return [DataListTableViewCell getCellHeight];
 }
 
