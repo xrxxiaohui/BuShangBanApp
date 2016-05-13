@@ -294,10 +294,10 @@
     if(section == 0)
         return nil;
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 44)];
+    view.backgroundColor=bgColor;
     UILabel *label=[[UILabel alloc]init];
     label.font=[UIFont fontWithName:fontName size:12];
     label.textColor=placeHoldTextColor;
-    label.backgroundColor=bgColor;
     label.text=section==1?@"基本资料":@"联系方式";
     [label sizeToFit];
     label.centerY=view.centerY;
@@ -313,7 +313,6 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.01;
 }
-
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
     if (_indexPath.section ==1)
