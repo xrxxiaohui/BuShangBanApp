@@ -128,7 +128,9 @@
 #endif
 
 //字体
-#define fontName @"PingFang SC"
+//#define fontName @"PingFang SC"
+
+#define fontName @"Helvetica"
 #define nomalFont [UIFont fontWithName:fontName size:14.f]
 #define smallerFont [UIFont fontWithName:fontName size:12.f]
 

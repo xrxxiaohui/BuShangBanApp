@@ -17,9 +17,7 @@
 #define adapt  [[[ScreenAdapt alloc]init] adapt]
 
 #define requestSmsCode @"https://api.leancloud.cn/1.1/requestSmsCode"
-
 #define iniviteURL @"https://leancloud.cn:443/1.1/classes/InvitationCode?where=%7B%22key%22%3A%22bsb%22%7D&limit=1&&order=-updatedAt&&keys=-ACL%2C-createdAt%2C-updatedAt%2C-objectId%2C-count"
-
 #define completeRegister @"https://api.leancloud.cn/1.1/batch"
 
 @interface RegistViewController ()
@@ -36,6 +34,8 @@
     UIButton *_readedBtn;
     UIButton *_userProtocalBtn;
     NSTimer *_cutDownTimer;
+    CGFloat _bottom;
+    CGFloat _duration;
 }
 @end
 
@@ -60,7 +60,6 @@
     _loginBtn.tag=1001;
     [self.view addSubview:_loginBtn];
     
-//    _accountTF=[self textFieldWithPlaceHolder:@"手机号/邮箱" imageNamed:@"phone number"];
     _accountTF=[self textFieldWithPlaceHolder:@"手机号" imageNamed:@"phone number"];
     _accountTF.keyboardType=UIKeyboardTypeNumberPad;
     _accountTF.clearButtonMode=UITextFieldViewModeAlways;
@@ -115,6 +114,7 @@
     _registBtn.selected=YES;
     
     _contentView.height=_registBtn.bottom;
+    _bottom=_contentView.bottom;
     
     _readedBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     [_readedBtn setTitleColor:[UIColor colorWithHexString:@"383838"] forState:UIControlStateNormal];
@@ -143,8 +143,14 @@
     _readedBtn.left=(kScreenWidth-_userProtocalBtn.width-_readedBtn.width)/2;
     _userProtocalBtn.left=_readedBtn.right;
     _userProtocalBtn.bottom=kScreenHeight-11;
+    [self.view addSubview:_closeBtn];
 }
 
+- (NSTimer *)cutDownTimer {
+    if (!_cutDownTimer)
+        _cutDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeCutDown) userInfo:nil repeats:YES];
+    return _cutDownTimer;
+}
 
 -(void)clickEvent:(UIButton *)sender
 {
@@ -326,8 +332,6 @@
     return YES;
 }
 
-
-
 -(BOOL)__check
 {
     NSArray *textFieldArray=[NSArray arrayWithObjects:_accountTF, _verificationCodeTF,_passWordTF,_passWordAgainTF,_inivitTF,nil];
@@ -408,23 +412,25 @@
 
 -(void)showKeyBoard:(NSNotification *)noti
 {
-    [super showKeyBoard:noti];
+    CGRect frame=[[noti userInfo][UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    _duration=[[noti userInfo][UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    if (frame.origin.y<_contentView.bottom) {
+        [UIView animateWithDuration:_duration animations:^{
+            _contentView.bottom=frame.origin.y;
+        }];
+    }
     _loginBtn.hidden=YES;
     _closeBtn.hidden=YES;
 }
 
 -(void)hideKeyBoard:(NSNotification *)noti
 {
-    [super hideKeyBoard:noti];
+    _duration=[[noti userInfo][UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    [UIView animateWithDuration:_duration animations:^{
+        _contentView.bottom=_bottom;
+    }];
     _loginBtn.hidden=NO;
     _closeBtn.hidden=NO;
-}
-
-
-- (NSTimer *)cutDownTimer {
-    if (!_cutDownTimer)
-        _cutDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timeCutDown) userInfo:nil repeats:YES];
-    return _cutDownTimer;
 }
 
 //倒计时
@@ -447,9 +453,14 @@
 {
     if (dictionary == nil || dictionary == NULL) { return YES; }
     if ([dictionary isKindOfClass:[NSNull class]]) { return YES; }
-    if ([dictionary allKeys].count == 0)  {
-        return YES;
-    }  return NO;
+    if ([dictionary allKeys].count == 0)  { return YES; }
+    return NO;
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [super touchesBegan:touches withEvent:event];
+    [self.view endEditing:YES];
 }
 
 @end

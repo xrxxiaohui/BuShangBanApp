@@ -35,6 +35,9 @@
 @property(nonatomic,strong)NSMutableArray *imageURLArray;
 @property(nonatomic,strong)NSMutableArray *profileArray;
 @property(nonatomic,strong)NSMutableArray *avarArray;
+@property(nonatomic,strong)NSMutableArray *shareCountArray;
+@property(nonatomic,strong)NSMutableArray *likeCountArray;
+@property(nonatomic,strong)NSMutableArray *commentCountArray;
 @property(nonatomic,strong)NSDictionary *tempDic;
 @property(nonatomic,strong)NSMutableArray *categoryArray;
 
@@ -56,6 +59,9 @@
         self.avarArray=[NSMutableArray array];
         self.categoryArray=[NSMutableArray array];
 
+        self.shareCountArray=[NSMutableArray array];
+        self.likeCountArray=[NSMutableArray array];
+        self.commentCountArray=[NSMutableArray array];
     }
     return self;
 }
@@ -109,6 +115,9 @@
             [self.titleArray addObject:dic[@"title"]];
             [self.profileArray addObject:dic[@"summary"]];
             [self.imageURLArray addObject:dic[@"feature_image"]];
+            [self.commentCountArray addObject:dic[@"comment_count"]];
+            [self.likeCountArray addObject:dic[@"like_count"]];
+            [self.shareCountArray addObject:dic[@"share_count"]];
             [self.avarArray addObject:avatarString];
             [self.categoryArray addObject:categoryString];
         }
@@ -152,7 +161,6 @@
         cell = [[DataListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    
     NSString *categoryStr =[[self.categoryArray objectAtIndex:indexPath.row] safeString];
     if([categoryStr isEqualToString:@"默认分类"])
         categoryStr = @"默认";
@@ -163,11 +171,12 @@
     else if ([categoryStr isEqualToString:@"原创封面"])
         categoryStr = @"原创";
 
-    
     cell.leftUpLabel.text=categoryStr;
-//    cell.leftUpLabel.adjustsFontSizeToFitWidth=YES;
     cell.mainContentLabel.text=self.profileArray[indexPath.row];
     cell.mainTitleLabel.text=self.titleArray[indexPath.row];
+    cell.shareNumLabel.text=[NSString stringWithFormat:@"%@",self.shareCountArray[indexPath.row]];
+    cell.commentNumLabel.text=[NSString stringWithFormat:@"%@",self.commentCountArray[indexPath.row]];;
+    cell.zanNumLabel.text=[NSString stringWithFormat:@"%@",self.likeCountArray[indexPath.row]];
     [cell.centerImageView sd_setImageWithURL:[NSURL URLWithString:self.imageURLArray[indexPath.row]] placeholderImage:[UIImage imageNamed:@"place"]];
     [cell.rightAvarButton sd_setImageWithURL:[NSURL URLWithString:self.avarArray[indexPath.row]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"authoravar"] options:SDWebImageRefreshCached];
     return cell;
@@ -192,3 +201,4 @@
 }
 
 @end
+

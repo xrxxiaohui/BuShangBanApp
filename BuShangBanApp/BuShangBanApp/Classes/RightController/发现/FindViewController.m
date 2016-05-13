@@ -57,9 +57,7 @@
         NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
         _errorMsg? [MBProgressHUD showError:_errorMsg]: [MBProgressHUD showError:kMBProgressErrorTitle];
     }];
-    
 }
-
 
 -(NSMutableArray*)__sortContentWithkeys:(NSArray *)keys
 {
