@@ -301,7 +301,7 @@
     baseWebView.isTestWeb = NO;
     baseWebView.webUrl = urlStr;
     baseWebView.dataDics = dataDic;
-    baseWebView.objectID = [dataDic objectForKey:@"objectId"];
+    baseWebView.objectID = [[[dataDic objectForKey:@"related_post"] objectForKey:@"category"] objectForKey:@"objectId"];
     [[SliderViewController sharedSliderController].navigationController pushViewController:baseWebView animated:YES ];
 }
 

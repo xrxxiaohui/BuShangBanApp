@@ -11,7 +11,8 @@
 #import "SuggestListCell.h"
 #import "BaseWebViewController.h"
 
-#define URL @"https://leancloud.cn:443/1.1/classes/Post?where=%7B%22featured_at%22%3A%7B%22%24exists%22%3Atrue%7D%7D&limit=100&skip=1&order=-featured_at&&keys=-body&include=author"
+//#define URL @"https://leancloud.cn:443/1.1/classes/Post?where=%7B%22featured_at%22%3A%7B%22%24exists%22%3Atrue%7D%7D&limit=100&skip=1&order=-featured_at&&keys=-body&include=author"
+#define URL @"https://leancloud.cn:443/1.1/classes/Post?where=%7B%22featured_at%22%3A%7B%22%24ne%22%3Anull%7D%7D&limit=100&skip=1&order=-featured_at&include=category%2C%20author&keys=-body%2C-body_html%2C-ACL"
 
 @interface SuggestListViewController ()<UITableViewDelegate,UITableViewDataSource>{
 

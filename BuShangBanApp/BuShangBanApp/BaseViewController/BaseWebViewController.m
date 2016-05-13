@@ -48,10 +48,10 @@ typedef enum : NSInteger {
     CameraMoveDirection direction;
     UIView *bottomViews;
     NSString *categoryStr;
+     UIView *backgroundViews;
+    UIView *shareView;
 }
 
-@property (nonatomic, copy) UIView *backgroundViews;
-@property (nonatomic, copy) UIView *shareView;
 @property (nonatomic,copy)  UIWebView *webView;
 
 @end
@@ -331,8 +331,7 @@ typedef enum : NSInteger {
 }
 
 -(void)toArticalPage:(id)sender{
-    
-    DataListViewController *dataListViewController = [[DataListViewController alloc] initWithTitle:categoryStr objectID:@""];
+    DataListViewController *dataListViewController = [[DataListViewController alloc] initWithTitle:categoryStr objectID:self.objectID];
     
     [[SliderViewController sharedSliderController].navigationController pushViewController:dataListViewController animated:YES];
 
@@ -356,7 +355,8 @@ typedef enum : NSInteger {
     [backgroundview addGestureRecognizer: fingerTap];
     
     [self.view addSubview:backgroundview];
-    self.backgroundViews = backgroundview;
+    backgroundViews = [[UIView alloc] init];
+    backgroundViews = backgroundview;
     
     UIView *shareview = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenBounds.size.height, kScreenBounds.size.width, 225)];
     shareview.backgroundColor =COLOR(0xf1, 0xf1, 0xf1);
@@ -397,7 +397,7 @@ typedef enum : NSInteger {
     [self.view addSubview:shareview];
     
     UILabel *labelWeixin;
-    if(iPhone6)
+//    if(iPhone6)
 //        labelWeixin = [[UILabel alloc] initWithFrame:CGRectMake(45*kScreenWidth/320-1, weixinButton.bottom+7, 33+33, 15)];
 //    else if (iPhone6p)
 //        labelWeixin = [[UILabel alloc] initWithFrame:CGRectMake(45*kScreenWidth/320-2, weixinButton.bottom+7, 33+33, 15)];
@@ -455,7 +455,8 @@ typedef enum : NSInteger {
     sinaLabel.font = [UIFont systemFontOfSize:12];
     sinaLabel.text = @"微博";
     [shareview addSubview:sinaLabel];
-    self.shareView = shareview;
+    shareView = [[UIView alloc] init];
+    shareView = shareview;
     
     UIButton *cancleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     cancleButton.frame = CGRectMake(0, 142*kScreenWidth/414, kScreenWidth, 49);
@@ -484,15 +485,15 @@ typedef enum : NSInteger {
 {
     CGFloat screenHeight=kScreenBounds.size.height;
     [UIView animateWithDuration:0.25 animations:^{
-        self.shareView.center = CGPointMake(kScreenBounds.size.width/2, screenHeight);
-        self.backgroundViews.backgroundColor = [UIColor clearColor];
+        shareView.center = CGPointMake(kScreenBounds.size.width/2, screenHeight);
+        backgroundViews.backgroundColor = [UIColor clearColor];
     }completion:^(BOOL finished){
         
-        [self.shareView removeFromSuperview];
-        self.shareView = nil;
+        [shareView removeFromSuperview];
+        shareView = nil;
         
-        [self.backgroundViews removeFromSuperview];
-        self.backgroundViews = nil;
+        [backgroundViews removeFromSuperview];
+        backgroundViews = nil;
         
     }];
     

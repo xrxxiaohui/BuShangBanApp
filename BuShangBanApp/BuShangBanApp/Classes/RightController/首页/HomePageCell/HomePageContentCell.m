@@ -173,6 +173,10 @@
         categoryStr = @"公司";
     else if ([categoryStr isEqualToString:@"运营&市场"])
         categoryStr = @"运营";
+    else if ([categoryStr isEqualToString:@"原创封面"])
+        categoryStr = @"原创";
+
+    
     [_leftUpLabel setText:categoryStr];
     NSLog(@"-----%@",categoryStr);
 }
