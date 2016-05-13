@@ -50,7 +50,8 @@
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq1 successBlock:^(SSLXResultRequest *successReq){
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
         self.articalInfoArray=_successInfo[@"results"];
-        self.articalInfoArray=[self __sortContentWithkeys:@[@"产品",@"设计",@"技术",@"媒体",@"运营&市场",@"创业",@"大公司",@"同好",@"热门"]];
+        
+        self.articalInfoArray=[self __sortContentWithkeys:@[@"产品",@"设计",@"技术",@"媒体",@"运营",@"创业",@"大公司",@"同好",@"热门"]];
     }failureBlock:^(SSLXResultRequest *failReq){
         NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
         NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
