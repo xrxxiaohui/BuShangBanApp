@@ -144,8 +144,15 @@
 }
 
 -(void)customRightItemWithBtn1:(UIButton *)sender {
+    sender.size=CGSizeMake(28, 28);
+    sender.left = kScreenWidth - sender.width-16;
+    sender.top = (_navView.height - sender.height)/2;
+    [_navView addSubview:sender];
+}
+
+-(void)customRightItemWithBtn2:(UIButton *)sender {
     sender.size=CGSizeMake(60, 12);
-    sender.left = kScreenWidth - sender.width;
+    sender.left = kScreenWidth - sender.width-38-16;
     sender.top = (_navView.height - sender.height)/2;
     [_navView addSubview:sender];
 }

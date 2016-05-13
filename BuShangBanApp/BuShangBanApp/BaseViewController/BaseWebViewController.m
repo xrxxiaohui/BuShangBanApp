@@ -317,6 +317,18 @@ typedef enum : NSInteger {
     
     categoryStr =[[self.dataDics valueForKeyPath:@"related_post.category.name"] safeString];
 
+    
+    NSString *categoryStr1 =categoryStr;
+    if([categoryStr1 isEqualToString:@"默认分类"])
+        categoryStr1 = @"默认";
+    else if([categoryStr1 isEqualToString:@"大公司"])
+        categoryStr1 = @"公司";
+    else if ([categoryStr1 isEqualToString:@"运营&市场"])
+        categoryStr1 = @"运营";
+    else if ([categoryStr1 isEqualToString:@"原创封面"])
+        categoryStr1 = @"原创";
+
+    
     UIButton *shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [shareButton setFrame:CGRectMake(self.navView.width - 75, self.navView.height -0, 60, 12)];
 //    [shareButton setImage:[UIImage imageNamed:@"share_nomal"] forState:UIControlStateNormal];
@@ -327,14 +339,25 @@ typedef enum : NSInteger {
     [shareButton.titleLabel setFont:[UIFont systemFontOfSize:12]];
     [shareButton setTitle:categoryStr forState:UIControlStateNormal];
     
-    [self customRightItemWithBtn1:shareButton];
+    [self customRightItemWithBtn2:shareButton];
+    
+    
+    UIButton *categoryButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [categoryButton setFrame:CGRectMake(self.navView.width - 75, self.navView.height -0, 28, 28)];
+    NSString *imageStr = [NSString stringWithFormat:@"%@3",categoryStr1];
+    [categoryButton setImage:[UIImage imageNamed:imageStr] forState:UIControlStateNormal];
+    //    [shareButton setImage:[UIImage imageNamed:@"share_selected"] forState:UIControlStateHighlighted];
+    //             [shareButton setTitle:@"分享" forState:UIControlStateNormal];
+    [categoryButton addTarget:self action:@selector(toArticalPage:) forControlEvents:UIControlEventTouchUpInside];
+    [self customRightItemWithBtn1:categoryButton];
+
 }
 
 -(void)toArticalPage:(id)sender{
+   
     DataListViewController *dataListViewController = [[DataListViewController alloc] initWithTitle:categoryStr objectID:self.objectID];
     
     [[SliderViewController sharedSliderController].navigationController pushViewController:dataListViewController animated:YES];
-
 }
 
 - (void)shareBtnClick:(id)sender
@@ -347,7 +370,6 @@ typedef enum : NSInteger {
 
 - (void)shareButtonClick
 {
-    
     UIView *backgroundview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight+20)];
     backgroundview.backgroundColor =[UIColor colorWithRed:0./255. green:0./255. blue:0./255. alpha:0.2];
     
@@ -360,7 +382,6 @@ typedef enum : NSInteger {
     
     UIView *shareview = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenBounds.size.height, kScreenBounds.size.width, 225)];
     shareview.backgroundColor =COLOR(0xf1, 0xf1, 0xf1);
-    
     
     //短信button
     UIButton *duanxinButton = [[UIButton alloc] initWithFrame:CGRectMake(47*kScreenWidth/414, 44, 50, 50)];

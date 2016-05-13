@@ -11,6 +11,7 @@
 #import "DetailViewController.h"
 #import "BaseWebViewController.h"
 #import "SuggestListViewController.h"
+#import "CustomLabel.h"
 
 @interface SuggestPageViewController (){
 
@@ -19,7 +20,7 @@
     UILabel *_mainContentLabel;
     NSMutableArray *dataArray;
     UIImageView *mainImageView;
-    
+    CustomLabel *topTitleLabel;
 }
 
 @end
@@ -81,6 +82,28 @@
     [closeButton addTarget:self action:@selector(closePage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:closeButton];
     
+    topTitleLabel = [[CustomLabel alloc] init];
+    [topTitleLabel setFrame:CGRectMake(72*kDefaultBiLi, (120)*kDefaultBiLi, 270*kDefaultBiLi, 50)];
+    [self.view addSubview:topTitleLabel];
+    
+//    //渐变颜色的起始颜色
+//    UIColor *startColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:1.0];
+//    //渐变颜色的结束颜色
+//    UIColor *endColor = [UIColor colorWithRed:227 green:227 blue:227 alpha:0.5];
+//    CAGradientLayer *bgLayer = [[CAGradientLayer alloc]init];
+//    bgLayer.frame = topTitleLabel.frame;
+//    [bgLayer setColors:[[NSArray alloc]initWithObjects:(id)startColor.CGColor,(id)endColor.CGColor, nil]];
+//    [self.view.layer insertSublayer:bgLayer atIndex:0];
+//    //对customLabel中的属性进行初始化
+//    [topTitleLabel setTextColor:[UIColor whiteColor]];
+////    topTitleLabel.glowColor  = [UIColor initWithWhite:0 alpha:0.8];
+//    topTitleLabel.glowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+//    topTitleLabel.glowAmount = 12;
+    [topTitleLabel setTextColor:[UIColor whiteColor]];
+    topTitleLabel.textAlignment = NSTextAlignmentCenter;
+//    topTitleLabel.glowoffset = CGSizeMake(0.0, 0.0);
+//    topTitleLabel.text = @"中环任命共和国";
+    topTitleLabel.font = [UIFont systemFontOfSize:18];
     
     _rightAvarButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_rightAvarButton setFrame:CGRectMake(kScreenWidth-81*kDefaultBiLi, (292+90)*kScreenWidth/414, 28, 28)];
@@ -122,7 +145,9 @@
         [nameLabel setText:nameString];
         NSString *avatarString = [[tempDataDic valueForKeyPath:@"author.avatar.url"] safeString];
         [_rightAvarButton sd_setImageWithURL:[NSURL URLWithString:avatarString] forState:UIControlStateNormal];
-        
+        NSString *titleStr = [[tempDataDic objectForKey:@"title"] safeString];
+        topTitleLabel.numberOfLines = 2;
+        [topTitleLabel setText:titleStr];
         
     }
 }
@@ -181,25 +206,32 @@
     backgroundView.userInteractionEnabled = YES;
     [self.view addSubview:backgroundView];
     
+    
+    
     UITapGestureRecognizer *fingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toWebDetailPage)];
     [backgroundView addGestureRecognizer:fingerTap];
     mainImageView = [[UIImageView alloc] init];
     mainImageView.userInteractionEnabled = YES;
-//    [mainImageView setImage:[UIImage imageNamed:@"tree.jpeg"]];
     [mainImageView.layer setMasksToBounds:YES];
     mainImageView.layer.cornerRadius = 10;
          
     [mainImageView setFrame:CGRectMake(37*kDefaultBiLi, 90*kDefaultBiLi, 340*kDefaultBiLi,340*kDefaultBiLi)];
     UITapGestureRecognizer *fingerTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toWebDetailPage)];
     [mainImageView addGestureRecognizer: fingerTap1];
-
     [self.view addSubview:mainImageView];
+    
+    UIImageView *mengbanImageView = [[UIImageView alloc] init];
+    [mengbanImageView setImage:[UIImage imageNamed:@"mengban"]];
+    [mengbanImageView setFrame:mainImageView.frame];
+    [self.view addSubview:mengbanImageView];
+    mengbanImageView.userInteractionEnabled = YES;
     
     UIImageView *maskView = [[UIImageView alloc]init];
     [maskView setImage:[UIImage imageNamed:@"MaskR10"]];
     [maskView setFrame:CGRectMake(37*kDefaultBiLi, 340*kDefaultBiLi-10, 340*kDefaultBiLi, 90*kDefaultBiLi+10)];
     [self.view addSubview:maskView];
 
+   
 }
 
 

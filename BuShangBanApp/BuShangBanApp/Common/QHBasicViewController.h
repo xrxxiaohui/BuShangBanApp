@@ -56,4 +56,5 @@ typedef void(^actionBlock)(void);
 -(void)customNavigationBarWithImage:(NSString *)image;
 -(void)hiddenNavigationBar;
 -(void)nohiddenNavigationBar;
+-(void)customRightItemWithBtn2:(UIButton *)sender ;
 @end
