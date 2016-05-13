@@ -11,6 +11,7 @@
 #import "MJRefresh.h"
 #import "LoginViewController.h"
 #import "BaseWebViewController.h"
+#import "MessageDetailViewController.h"
 
 @interface MessageViewController ()<UITableViewDataSource,UITableViewDelegate>{
 
@@ -28,29 +29,17 @@
 //https://leancloud.cn:443/1.1/classes/Message?limit=10&&order=-createdAt&&
 
 - (void)viewDidLoad {
+   
     [super viewDidLoad];
     [self customNavigationBarWithTitle:@"消息"];
-//    [[NSNotificationCenter defaultCenter]postNotificationName:@"gotoFirstPage" object:nil];
-//    _logined =[[[NSUserDefaults standardUserDefaults]objectForKey:@"Loginned"] boolValue] ;
-//    if(!_logined)
-//    {
-//        _hasPush=YES;
-//        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
-//    }
-//    else
-//    {
-//        self.view.backgroundColor = [UIColor yellowColor];
-        [self initData];
-        [self createTabelView];
-        [self fetchData];
-//    }
+    [self initData];
+    [self createTabelView];
+    [self fetchData];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-//    if(!_hasPush)
-//        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
 }
 
 -(void)initData{
@@ -91,25 +80,10 @@
     // 请求
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
     [_urlParamsReq setUrlString:@"https://leancloud.cn:443/1.1/classes/Message?limit=100&&order=-createdAt&&"];
-    
-    //    NSDictionary *_tempParam = @{@"bid":@"888888"};
-    //    [_urlParamsReq setParamsDict:_tempParam];
-    
-    NSDictionary *_tempParam = @{@"bid":@"888888"};
-    
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
         
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
         NSArray *_resultArray = [[_successInfo objectForKey:@"results"] safeArray];
-        //        NSDictionary *_businessData = [_resultInfo objectForKey:@"businessData"];
-        //        NSDictionary *_activifyData  = [_businessData objectForKey:@"get_gonglue"];
-        //
-        //
-        //        if ([[_activifyDataa objectForKey:@"results"] isKindOfClass:[NSArray class]]) {
-        //
-        //            //            [self setAbroadArray:[_activifyData objectForKey:@"results"]];
-        //            //            [self.tableView reloadData];
-        //        }
         _dataArray =[NSMutableArray arrayWithArray:_resultArray];
         
         [_mainTableView.header endRefreshing];
@@ -168,14 +142,19 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [AVAnalytics event:@"messagePageList_click"];
-    BaseWebViewController *baseWebView = [[BaseWebViewController alloc] init];
+//    BaseWebViewController *baseWebView = [[BaseWebViewController alloc] init];
+////    baseWebView.isTestWeb = YES;
+//    
+//    NSDictionary *tempDic = [[_dataArray objectAtIndex:indexPath.row] safeDictionary];
+//    NSString *urlString = [tempDic objectForKey:@"link"];
 //    baseWebView.isTestWeb = YES;
+//    baseWebView.webUrl = urlString;
     
     NSDictionary *tempDic = [[_dataArray objectAtIndex:indexPath.row] safeDictionary];
-    NSString *urlString = [tempDic objectForKey:@"link"];
-    baseWebView.isTestWeb = YES;
-    baseWebView.webUrl = urlString;
-    [[SliderViewController sharedSliderController].navigationController pushViewController:baseWebView animated:YES ];
+    MessageDetailViewController *messageDetail = [[MessageDetailViewController alloc] init];
+    messageDetail.titles = @"系统通知";
+    messageDetail.messageString = [tempDic objectForKey:@"summary"];
+    [[SliderViewController sharedSliderController].navigationController pushViewController:messageDetail animated:YES ];
     
 }
 
