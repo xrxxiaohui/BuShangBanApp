@@ -71,10 +71,8 @@
     
     NSString *tempUrl = [NSString stringWithFormat:URL,_objectID];
     NSString *encodeUrlString =[self encodeToPercentEscapeString:tempUrl];
-//    NSString *encodeUrlString1 = [self encodeToPercentEscapeString:url1];
     NSString *encodeUrlString2 = [self encodeToPercentEscapeString:url2];
     NSString *encodeUrlString3 = [self encodeToPercentEscapeString:url3];
-//    NSString *encodeUrlString4 = [self encodeToPercentEscapeString:url4];
 
     NSString *finalUrl = [NSString stringWithFormat:@"%@%@&%@&%@&include=%@&keys=%@",headUrl,encodeUrlString,url1,url4,encodeUrlString3,encodeUrlString2];
     
@@ -134,7 +132,6 @@
     if (!cell)
         cell = [[DataListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     cell.leftUpLabel.text=_title;
     cell.leftUpLabel.adjustsFontSizeToFitWidth=YES;
     cell.mainContentLabel.text=self.profileArray[indexPath.row];
