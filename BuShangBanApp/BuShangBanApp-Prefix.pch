@@ -23,7 +23,6 @@
 
 #endif
 
-
 #ifdef __OBJC__
 
 #import <UIkit/UIKit.h>
@@ -127,8 +126,6 @@
 #define Log(...)
 
 #endif
-
-//默认
 
 //字体
 #define fontName @"PingFang SC"

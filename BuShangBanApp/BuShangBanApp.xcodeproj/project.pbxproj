@@ -81,6 +81,12 @@
 		A33447F91CA290940006C8A3 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A33447F81CA290940006C8A3 /* 2.jpg */; };
 		A33447FF1CA29BAF0006C8A3 /* Icon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A33447FE1CA29BAF0006C8A3 /* Icon.pdf */; };
 		A35916C11CE4977600AA374B /* MessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A35916C01CE4977600AA374B /* MessageDetailViewController.m */; };
+		A35916C41CE5851A00AA374B /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A35916C31CE5851A00AA374B /* UIImage+Extension.m */; };
+		A35916C91CE5B7E900AA374B /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A35916C61CE5B7E900AA374B /* MessageModel.m */; };
+		A35916CA1CE5B7E900AA374B /* CellFrameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A35916C81CE5B7E900AA374B /* CellFrameModel.m */; };
+		A35916CD1CE5B82A00AA374B /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A35916CC1CE5B82A00AA374B /* MessageCell.m */; };
+		A35916D01CE5BC8D00AA374B /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A35916CF1CE5BC8D00AA374B /* NSString+Extension.m */; };
+		A35916D31CE5BF2D00AA374B /* UIImage+ResizeImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A35916D21CE5BF2D00AA374B /* UIImage+ResizeImage.m */; };
 		A376843D1CC4B4A600D4C546 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A376843C1CC4B4A600D4C546 /* MessageTableViewCell.m */; };
 		A376A7E91CA00F6400B4F9BF /* HomeHeadViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A376A7E61CA00F6400B4F9BF /* HomeHeadViewCell.m */; };
 		A376A7EA1CA00F6400B4F9BF /* HomePageContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A376A7E81CA00F6400B4F9BF /* HomePageContentCell.m */; };
@@ -367,6 +373,18 @@
 		A33447FE1CA29BAF0006C8A3 /* Icon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Icon.pdf; sourceTree = "<group>"; };
 		A35916BF1CE4977600AA374B /* MessageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDetailViewController.h; sourceTree = "<group>"; };
 		A35916C01CE4977600AA374B /* MessageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDetailViewController.m; sourceTree = "<group>"; };
+		A35916C21CE5851A00AA374B /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
+		A35916C31CE5851A00AA374B /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
+		A35916C51CE5B7E900AA374B /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
+		A35916C61CE5B7E900AA374B /* MessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
+		A35916C71CE5B7E900AA374B /* CellFrameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellFrameModel.h; sourceTree = "<group>"; };
+		A35916C81CE5B7E900AA374B /* CellFrameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellFrameModel.m; sourceTree = "<group>"; };
+		A35916CB1CE5B82A00AA374B /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		A35916CC1CE5B82A00AA374B /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		A35916CE1CE5BC8D00AA374B /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		A35916CF1CE5BC8D00AA374B /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		A35916D11CE5BF2D00AA374B /* UIImage+ResizeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ResizeImage.h"; sourceTree = "<group>"; };
+		A35916D21CE5BF2D00AA374B /* UIImage+ResizeImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ResizeImage.m"; sourceTree = "<group>"; };
 		A376843B1CC4B4A600D4C546 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
 		A376843C1CC4B4A600D4C546 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		A376A7E51CA00F6400B4F9BF /* HomeHeadViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeHeadViewCell.h; sourceTree = "<group>"; };
@@ -1202,6 +1220,8 @@
 		A39CD39E1C99529400F0D8EE /* 消息 */ = {
 			isa = PBXGroup;
 			children = (
+				A35916CB1CE5B82A00AA374B /* MessageCell.h */,
+				A35916CC1CE5B82A00AA374B /* MessageCell.m */,
 				A377D14D1C99575D00C779A7 /* MessageViewController.h */,
 				A377D14E1C99575D00C779A7 /* MessageViewController.m */,
 				A376843B1CC4B4A600D4C546 /* MessageTableViewCell.h */,
@@ -1249,10 +1269,7 @@
 				A3FD041D1C9936D000E84A0B /* Common */,
 				A3FD03EB1C99190700E84A0B /* AppDelegate.h */,
 				A3FD03EC1C99190700E84A0B /* AppDelegate.m */,
-				A3FD03F11C99190700E84A0B /* Main.storyboard */,
 				A3FD03F41C99190700E84A0B /* Assets.xcassets */,
-				049EF2471CA3900A00C1D68A /* infoConfig.plist */,
-				A3FD03F91C99190700E84A0B /* Info.plist */,
 				A3FD03E81C99190700E84A0B /* Supporting Files */,
 			);
 			path = BuShangBanApp;
@@ -1261,6 +1278,9 @@
 		A3FD03E81C99190700E84A0B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A3FD03F11C99190700E84A0B /* Main.storyboard */,
+				049EF2471CA3900A00C1D68A /* infoConfig.plist */,
+				A3FD03F91C99190700E84A0B /* Info.plist */,
 				A377D1561C995A4A00C779A7 /* BuShangBanApp-Prefix.pch */,
 				A3FD041B1C99197300E84A0B /* Podfile */,
 				A3FD03E91C99190700E84A0B /* main.m */,
@@ -1298,6 +1318,8 @@
 				049EF1DC1CA38D8D00C1D68A /* ScreenAdapt */,
 				049EF1E01CA38D8D00C1D68A /* UIColor+PPCategory.h */,
 				049EF1E11CA38D8D00C1D68A /* UIColor+PPCategory.m */,
+				A35916CE1CE5BC8D00AA374B /* NSString+Extension.h */,
+				A35916CF1CE5BC8D00AA374B /* NSString+Extension.m */,
 				A377D1831C995E3000C779A7 /* MJRefresh */,
 				A377D1241C99560A00C779A7 /* YUScreentPoper */,
 				A377D1201C9955C100C779A7 /* GMDCircleLoader */,
@@ -1305,6 +1327,8 @@
 				A39CD3451C9951C500F0D8EE /* SUNSlideSwitchView1.m */,
 				A39CD3231C9950C600F0D8EE /* SUNSlideSwitchView.h */,
 				A39CD3241C9950C600F0D8EE /* SUNSlideSwitchView.m */,
+				A35916D11CE5BF2D00AA374B /* UIImage+ResizeImage.h */,
+				A35916D21CE5BF2D00AA374B /* UIImage+ResizeImage.m */,
 				A3FD04981C993EF900E84A0B /* Define.h */,
 				A3FD04771C993E9F00E84A0B /* Tools */,
 				A3FD044C1C993CF100E84A0B /* Categories */,
@@ -1496,6 +1520,8 @@
 		A3FD04771C993E9F00E84A0B /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				A35916C21CE5851A00AA374B /* UIImage+Extension.h */,
+				A35916C31CE5851A00AA374B /* UIImage+Extension.m */,
 				A377D1531C99596A00C779A7 /* UIView+Extension.h */,
 				A377D1541C99596A00C779A7 /* UIView+Extension.m */,
 				A3FD04781C993EB900E84A0B /* TDSafeArray.h */,
@@ -1527,6 +1553,10 @@
 		A3FD049C1C99402F00E84A0B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A35916C51CE5B7E900AA374B /* MessageModel.h */,
+				A35916C61CE5B7E900AA374B /* MessageModel.m */,
+				A35916C71CE5B7E900AA374B /* CellFrameModel.h */,
+				A35916C81CE5B7E900AA374B /* CellFrameModel.m */,
 				A377D1471C99564500C779A7 /* ConstObject.h */,
 				A377D1481C99564500C779A7 /* ConstObject.m */,
 				A3FD049D1C99403E00E84A0B /* ProtocolBuffer */,
@@ -1774,6 +1804,7 @@
 				A3FD04731C993E3900E84A0B /* UserAccountManager.m in Sources */,
 				A3FD04951C993EB900E84A0B /* NSNull+Exception.m in Sources */,
 				A377D14F1C99575D00C779A7 /* MessageViewController.m in Sources */,
+				A35916CD1CE5B82A00AA374B /* MessageCell.m in Sources */,
 				A377D1AB1C995E3000C779A7 /* UIScrollView+MJExtension.m in Sources */,
 				A377D1421C99560A00C779A7 /* UIWindow+YUBottomPoper.m in Sources */,
 				A377D1411C99560A00C779A7 /* UIView+YUStyle.m in Sources */,
@@ -1785,6 +1816,7 @@
 				A3FD04261C99386700E84A0B /* QHBasicViewController.m in Sources */,
 				049EF2391CA38FA000C1D68A /* FindView.m in Sources */,
 				04125B371CDC945B0076076C /* DataListTableViewCell.m in Sources */,
+				A35916D01CE5BC8D00AA374B /* NSString+Extension.m in Sources */,
 				A39CD29C1C9950A300F0D8EE /* MainTabViewController.m in Sources */,
 				04E3E41F1CCE3633000FD2DF /* MineViewController.m in Sources */,
 				A3FD04931C993EB900E84A0B /* NSString+JSON.m in Sources */,
@@ -1798,6 +1830,7 @@
 				A39CD32E1C9950F600F0D8EE /* BaseViewController.m in Sources */,
 				A376A7E91CA00F6400B4F9BF /* HomeHeadViewCell.m in Sources */,
 				A377D1461C99560A00C779A7 /* YUDarkGlassView.m in Sources */,
+				A35916D31CE5BF2D00AA374B /* UIImage+ResizeImage.m in Sources */,
 				A3FD048F1C993EB900E84A0B /* NSMutableArray+TDSafeMutableArray.m in Sources */,
 				A377D1A71C995E3000C779A7 /* MJRefreshGifHeader.m in Sources */,
 				04E3E4231CCE3633000FD2DF /* UsingSettingCell.m in Sources */,
@@ -1829,6 +1862,7 @@
 				A3FD04451C99397A00E84A0B /* UIView+KGViewExtend.m in Sources */,
 				A3FD04431C99397A00E84A0B /* SliderViewController.m in Sources */,
 				A377D1AC1C995E3000C779A7 /* UIScrollView+MJRefresh.m in Sources */,
+				A35916CA1CE5B7E900AA374B /* CellFrameModel.m in Sources */,
 				A3FD04701C993DFF00E84A0B /* KVStoreManager.m in Sources */,
 				A3FD04921C993EB900E84A0B /* SSHttpRequest.m in Sources */,
 				A39CD3311C9950F600F0D8EE /* BaseWebViewController.m in Sources */,
@@ -1854,6 +1888,7 @@
 				A377D1431C99560A00C779A7 /* yConst.m in Sources */,
 				A377D1441C99560A00C779A7 /* YUBottomPopSelctModel.m in Sources */,
 				A3FD03EA1C99190700E84A0B /* main.m in Sources */,
+				A35916C91CE5B7E900AA374B /* MessageModel.m in Sources */,
 				A3B12B521CC98D3C008F0CD4 /* JuXingView.m in Sources */,
 				A376A7ED1CA00F9000B4F9BF /* DataListViewController.m in Sources */,
 				A39CD3411C99514C00F0D8EE /* BaseTableCell.m in Sources */,
@@ -1875,6 +1910,7 @@
 				0447E4841CE0A4200002EADF /* AccessSendSmsApi.m in Sources */,
 				042884881CD0CBEA00C08212 /* BootstrapOneViewController.m in Sources */,
 				A3FD04681C993DC200E84A0B /* SSLXBaseRequest.m in Sources */,
+				A35916C41CE5851A00AA374B /* UIImage+Extension.m in Sources */,
 				A39CD29B1C9950A300F0D8EE /* LeftViewController.m in Sources */,
 				0419C3611CD10AA60020750C /* BasicViewController.m in Sources */,
 				A39CD3C51C99529400F0D8EE /* HomePageViewController.m in Sources */,

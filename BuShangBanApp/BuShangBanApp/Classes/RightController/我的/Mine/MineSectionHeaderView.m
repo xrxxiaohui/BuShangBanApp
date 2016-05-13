@@ -31,7 +31,7 @@
         
         [self __shapeLayerWithStartPoint:CGPointMake(kScreenWidth/2, 168*adapt.scaleHeight) endPoint:CGPointMake(kScreenWidth/2, 168*adapt.scaleHeight+12)];
         
-        _myFocusLabel=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth/2+14*adapt.scaleWidth, 162*adapt.scaleHeight, 80, 14)];
+        _myFocusLabel=[[UILabel alloc]initWithFrame:CGRectMake(ceilf(kScreenWidth/2+14*adapt.scaleWidth), ceilf(162*adapt.scaleHeight), 80, 14)];
         _myFocusLabel.tag=10001;
         [self addSubview:_myFocusLabel];
     }
@@ -55,13 +55,12 @@
 
 -(UILabel *)labelWithLable:(UILabel *)label  Titlt:(NSString *)title digit:(int)digit 
 {
-    NSDictionary *placeHoldTextDic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:10 * adapt.scaleWidth],NSForegroundColorAttributeName:placeHoldTextColor};
+    NSDictionary *placeHoldTextDic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:10 ],NSForegroundColorAttributeName:placeHoldTextColor};
     NSMutableAttributedString *mutableAttributedString =[[NSMutableAttributedString alloc]initWithString:title attributes:placeHoldTextDic];
 
-    NSDictionary *nomalTextDic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:14 * adapt.scaleWidth],NSForegroundColorAttributeName:nomalTextColor};
+    NSDictionary *nomalTextDic=@{NSFontAttributeName:[UIFont fontWithName:fontName size:14],NSForegroundColorAttributeName:nomalTextColor};
     [mutableAttributedString appendAttributedString:[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"  %d",digit] attributes:nomalTextDic]];
     label.attributedText=mutableAttributedString;
-    [label sizeToFit];
     return label;
 }
 
@@ -81,7 +80,7 @@
         nickName = [NSString stringWithFormat:@"%@  |  ", nickName];
         
         NSDictionary *nickNameDic =
-        @{NSForegroundColorAttributeName : placeHoldTextColor, NSFontAttributeName : [UIFont fontWithName:fontName size:15.f  * adapt.scaleWidth]};
+        @{NSForegroundColorAttributeName : placeHoldTextColor, NSFontAttributeName : [UIFont fontWithName:fontName size:15.f]};
         NSDictionary *labelDic =
         @{NSForegroundColorAttributeName : placeHoldTextColor, NSFontAttributeName : smallerFont};
         
@@ -107,7 +106,7 @@
 - (UIButton *)settingBtn {
     if (!_settingBtn ) {
         _settingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_settingBtn addTarget:[[MineViewController alloc] init] action:@selector(settingBtn:) forControlEvents:UIControlEventTouchUpInside];
+//        [_settingBtn addTarget:[[MineViewController alloc] init] action:@selector(settingBtn:) forControlEvents:UIControlEventTouchUpInside];
         _settingBtn.size=CGSizeMake(50, 50);
         _settingBtn.left = kScreenWidth - _settingBtn.width;
         _settingBtn.top = 33.f;

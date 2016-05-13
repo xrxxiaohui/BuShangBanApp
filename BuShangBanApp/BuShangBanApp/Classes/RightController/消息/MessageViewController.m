@@ -153,7 +153,10 @@
     NSDictionary *tempDic = [[_dataArray objectAtIndex:indexPath.row] safeDictionary];
     MessageDetailViewController *messageDetail = [[MessageDetailViewController alloc] init];
     messageDetail.titles = @"系统通知";
-    messageDetail.messageString = [tempDic objectForKey:@"summary"];
+    messageDetail.messageString = SafeForString([tempDic objectForKey:@"summary"]);
+    messageDetail.timeString = SafeForString([tempDic objectForKey:@"createdAt"]);
+    NSDictionary *tempDic1 = @{@"text":SafeForString([tempDic objectForKey:@"summary"]),@"time":SafeForString([tempDic objectForKey:@"createdAt"]),@"type":@"1"};
+    messageDetail.dataDic = tempDic1;
     [[SliderViewController sharedSliderController].navigationController pushViewController:messageDetail animated:YES ];
     
 }

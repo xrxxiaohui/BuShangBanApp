@@ -17,20 +17,14 @@
 
 #define adapt  [[[ScreenAdapt alloc]init] adapt]
 
-//https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24  用户信息
-//https://leancloud.cn:443/1.1/classes/Post?where=%7B%22author%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22_User%22%2C%22objectId%22%3A%22570387b3ebcb7d005b196d24%22%7D%7D&count=1&limit=0 文章数
-//https://leancloud.cn/1.1/users/570387b3ebcb7d005b196d24/followersAndFollowees?limit=0&count=1 关注我的和我关注的
-
 #define userURL @"https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24"
 #define articalURL @"https://leancloud.cn:443/1.1/classes/Post?where=%7B%22author%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22_User%22%2C%22objectId%22%3A%22570387b3ebcb7d005b196d24%22%7D%7D&count=1&limit=0"
-
 #define  aboutMe @"https://leancloud.cn/1.1/users/570387b3ebcb7d005b196d24/followersAndFollowees?limit=0&count=1"
 
 @interface MineViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
 @property(nonatomic,strong)UICollectionView *collectionView;
 @property(nonatomic,strong)NSArray *array;
-
 @property(nonatomic,strong)User *user;
 
 @end
@@ -40,6 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(judgeLoginStatus) name:@"judgeLoginStatus" object:nil];
     
 //    UIButton *tempButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -60,30 +55,24 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *loginStatus = [userDefaults objectForKey:kLoginStatus];
     
-//    if([loginStatus isEqualToString:@"1"]){
+    if([loginStatus isEqualToString:@"1"]){
         //已登录
         [self __loadData];
-//    }else{
-//    
-//        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
-//    }
+    }else
+        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
 }
 
 -(void)__loadData {
     self.user=[[User alloc]init];
     
-//    SSLXUrlParamsRequest *_urlParamsReq2 = [[SSLXUrlParamsRequest alloc] init];
-//    [_urlParamsReq2 setUrlString:aboutMe];
-//    [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq2 successBlock:^(SSLXResultRequest *successReq){
-//        NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
-//        
-//        NSLog(@"*************aboutMe:%@",_successInfo);
-//        
-//    } failureBlock:^(SSLXResultRequest *failReq){
-//        NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
-//        NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
-//        _errorMsg? [MBProgressHUD showError:_errorMsg]: [MBProgressHUD showError:kMBProgressErrorTitle];
-//    }];
+    SSLXUrlParamsRequest *_urlParamsRe = [[SSLXUrlParamsRequest alloc] init];
+    [_urlParamsRe setUrlString:aboutMe];
+    [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsRe successBlock:^(SSLXResultRequest *successReq){
+        NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
+        self.user.myFocusNumber= _successInfo[@"followees_count"];
+        self.user.focusMeNumber= _successInfo[@"followers_count"];
+        self.collectionView.backgroundColor=bgColor;
+    } failureBlock:nil];
     
     
     SSLXUrlParamsRequest *_urlParamsReq1 = [[SSLXUrlParamsRequest alloc] init];
@@ -91,19 +80,22 @@
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq1 successBlock:^(SSLXResultRequest *successReq){
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
         self.user.artcailCount=_successInfo[@"count"];
-    } failureBlock:^(SSLXResultRequest *failReq){
-        NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
-        NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
-        _errorMsg? [MBProgressHUD showError:_errorMsg]: [MBProgressHUD showError:kMBProgressErrorTitle];
-    }];
+        [self.collectionView reloadData];
+    } failureBlock:nil];
+    
+    NSDateFormatter *formatter=[[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy,MM,dd"];
+    NSString *dateTime = [formatter stringFromDate:[NSDate date]];
+    NSArray *dateArr=[dateTime componentsSeparatedByString:@","];
+    NSInteger  currentYear=[[NSString stringWithString:dateArr[0]] integerValue];
     
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
     [_urlParamsReq setUrlString:userURL];
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
-        
+    
         self.user.city_name=_successInfo[@"city_name"];
-        self.user.birthDay=_successInfo[@"birthday"];
+        self.user.birthDay=[_successInfo[@"birthday"] objectForKey:@"iso"];
         self.user.mobilePhoneNumber=_successInfo[@"mobilePhoneNumber"];
         self.user.interest=_successInfo[@"interest"];
         self.user.username=_successInfo[@"username"];
@@ -113,8 +105,9 @@
         self.user.label=_successInfo[@"title"];
         self.user.avatar=_successInfo[@"avatar"];
         self.user.avatarImageURL=[NSURL URLWithString:self.user.avatar[@"url"]];
+        self.user.age = currentYear-[[self.user.birthDay componentsSeparatedByString:@"-"][0] integerValue] +1;
         
-        self.collectionView.backgroundColor=bgColor;
+        [self.collectionView reloadData];
     } failureBlock:^(SSLXResultRequest *failReq){
         NSDictionary *_failDict = [failReq.responseString objectFromJSONString];
         NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
@@ -159,7 +152,7 @@
                                NSForegroundColorAttributeName:[UIColor colorWithHexString:@"808080"]};
         
         [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:self.user.profession attributes:dimDic]];
-        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@,23岁",([self.user.sex integerValue] ==1?@"男":@"女")] attributes:dimDic]];
+        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"%lu,%@岁",(unsigned long)self.user.age ,([self.user.sex integerValue] ==1?@"男":@"女")] attributes:dimDic]];
         [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:self.user.city_name attributes:dimDic]];
         
         NSMutableAttributedString *articalAttr=[[NSMutableAttributedString alloc]initWithString:@"文章篇" attributes:dimDic];
@@ -198,14 +191,11 @@
     return _imageDataSource;
 }
 
-
-
 #pragma mark -- 代理 --
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.imageDataSource.count;
 }
-
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -219,9 +209,8 @@
     CGSize size=cell.contentImageView.image.size;
     cell.contentImageView.size=CGSizeMake(size.width *adapt.scaleWidth, size.height *adapt.scaleHeight);
     cell.contentLabel.attributedText=self.titleDataSource[indexPath.row];
-    if (indexPath.row == 4 || indexPath.row == 5) {
+    if (indexPath.row == 4 || indexPath.row == 5)
         cell.backgroundColor=[UIColor colorWithHexString:@"f5f5f5"];
-    }
     return cell;
 }
 
@@ -234,21 +223,23 @@
 {
     UICollectionReusableView *reusableView=nil;
     if (kind == UICollectionElementKindSectionHeader) {
+
         MineSectionHeaderView *sectionHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header" forIndexPath:indexPath];
+         [sectionHeaderView.settingBtn addTarget:self action:@selector(settingBtn:) forControlEvents:UIControlEventTouchUpInside];
         [sectionHeaderView.settingBtn setImage:[UIImage imageNamed:@"setting"] forState:UIControlStateNormal];
         if(self.user.avatarImageURL)
             [sectionHeaderView.headImageView sd_setImageWithURL:self.user.avatarImageURL];
         else
             sectionHeaderView.headImageView.image = [UIImage imageNamed:@"Default avatar"];
-        [sectionHeaderView labelWithLable:sectionHeaderView.focusMeLabel Titlt:@"关注我" digit:100];
-        [sectionHeaderView labelWithLable:sectionHeaderView.myFocusLabel Titlt:@"我关注" digit:234];
+        [sectionHeaderView labelWithLable:sectionHeaderView.focusMeLabel Titlt:@"关注我" digit:(int32_t)[self.user.focusMeNumber integerValue]];
+        [sectionHeaderView labelWithLable:sectionHeaderView.myFocusLabel Titlt:@"我关注" digit:(int32_t)[self.user.focusMeNumber integerValue]];
+        [sectionHeaderView.focusMeLabel sizeToFit];
+        sectionHeaderView.focusMeLabel.right=kScreenWidth/2-ceilf(14*adapt.scaleWidth);
         [sectionHeaderView nickNameLabelWithNickName:self.user.username label:self.self.user.label];
         reusableView=sectionHeaderView;
     }
     return reusableView;
 }
-
-
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {

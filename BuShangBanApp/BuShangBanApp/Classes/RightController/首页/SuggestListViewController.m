@@ -11,7 +11,8 @@
 #import "SuggestListCell.h"
 #import "BaseWebViewController.h"
 
-#define URL @"https://leancloud.cn:443/1.1/classes/Post?where=%7B%22featured_at%22%3A%7B%22%24exists%22%3Atrue%7D%7D&limit=100&skip=1&order=-featured_at&&keys=-body&include=author"
+//#define URL @"https://leancloud.cn:443/1.1/classes/Post?where=%7B%22featured_at%22%3A%7B%22%24exists%22%3Atrue%7D%7D&limit=100&skip=1&order=-featured_at&&keys=-body&include=author"
+#define URL @"https://leancloud.cn:443/1.1/classes/Post?where=%7B%22featured_at%22%3A%7B%22%24ne%22%3Anull%7D%7D&limit=100&skip=1&order=-featured_at&include=category%2C%20author&keys=-body%2C-body_html%2C-ACL"
 
 @interface SuggestListViewController ()<UITableViewDelegate,UITableViewDataSource>{
 
@@ -30,7 +31,6 @@
     self.view.backgroundColor=bgColor;
     
     
-    
     [self initData];
     [self createTabelView];
     [self fetchData];
@@ -46,10 +46,10 @@
     lineImageView.backgroundColor = COLOR(0xd9, 0xd9, 0xd9);
     [lineImageView setFrame:CGRectMake(0, 64, kScreenWidth, 1)];
     [self.view addSubview:lineImageView];
-    
+
         
     CGFloat height = kScreenHeight-65 ;
-    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 65, self.view.width, height) style:UITableViewStylePlain];
+    _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, height) style:UITableViewStylePlain];
     
     _mainTableView.delegate = self;
     _mainTableView.dataSource = self;

@@ -13,5 +13,9 @@
 
 @property (nonatomic, copy)    NSString *titles;
 @property (nonatomic, copy)    NSString *messageString;
+@property (nonatomic, copy)    NSString *timeString;
+
+@property (nonatomic, copy)    NSDictionary *dataDic;
+
 
 @end

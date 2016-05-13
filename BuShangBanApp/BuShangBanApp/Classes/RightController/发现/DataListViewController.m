@@ -132,7 +132,8 @@
         _tabelView.delegate=self;
         _tabelView.dataSource=self;
         _tabelView.separatorColor=[UIColor whiteColor];
-        [_tabelView registerClass:[DataListTableViewCell class] forCellReuseIdentifier:@"DataListTableViewCell"];
+        _tabelView.showsVerticalScrollIndicator=NO;
+//        [_tabelView registerClass:[DataListTableViewCell class] forCellReuseIdentifier:@"DataListTableViewCell"];
         [self.view addSubview:_tabelView];
     }
     return _tabelView;
@@ -151,7 +152,7 @@
         cell = [[DataListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.leftUpLabel.text=_title;
-    [cell.leftUpLabel sizeToFit];
+    cell.leftUpLabel.adjustsFontSizeToFitWidth=YES;
     cell.mainContentLabel.text=self.profileArray[indexPath.row];
     cell.mainTitleLabel.text=self.titleArray[indexPath.row];
     [cell.centerImageView sd_setImageWithURL:[NSURL URLWithString:self.imageURLArray[indexPath.row]] placeholderImage:[UIImage imageNamed:@"place"]];
@@ -161,7 +162,6 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     if(self.URLArray.count>indexPath.row){
     NSString *urlStr = self.URLArray[indexPath.row];
     BaseWebViewController *baseWebView = [[BaseWebViewController alloc] init];

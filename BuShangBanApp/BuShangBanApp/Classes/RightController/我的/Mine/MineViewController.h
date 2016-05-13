@@ -9,13 +9,12 @@
 
 #import "MineSectionHeaderView.h"
 
-
 @interface MineViewController : QHBasicViewController
 
 @property(nonatomic,strong)NSMutableArray *titleDataSource;
 @property(nonatomic,strong)NSMutableArray *imageDataSource;
 @property(nonatomic,strong)MineSectionHeaderView *sectionHeaderView;
--(void)settingBtn:(UIButton *)btn;
+//-(void)settingBtn:(UIButton *)btn;
 
 @end
 
