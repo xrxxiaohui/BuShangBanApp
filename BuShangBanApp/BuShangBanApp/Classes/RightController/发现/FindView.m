@@ -77,8 +77,8 @@
 
 -(void)clickEvent:(UIButton *)btn
 {
-    if(_clickEvent)
-        _clickEvent(btn.tag);
+    if(_clickEventBlock)
+        _clickEventBlock(btn.tag);
 }
 
 

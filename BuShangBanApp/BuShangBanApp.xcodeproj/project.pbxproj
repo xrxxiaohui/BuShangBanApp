@@ -1611,7 +1611,7 @@
 				TargetAttributes = {
 					A3FD03E41C99190700E84A0B = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = TVAL974929;
+						DevelopmentTeam = D9JKBYA667;
 					};
 					A3FD03FD1C99190700E84A0B = {
 						CreatedOnToolsVersion = 7.1;
