@@ -501,7 +501,7 @@
 		A3B12B501CC98D3C008F0CD4 /* JuXingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JuXingView.h; sourceTree = "<group>"; };
 		A3B12B511CC98D3C008F0CD4 /* JuXingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JuXingView.m; sourceTree = "<group>"; };
 		A3EB11661CA2AAE100DC0731 /* tree.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tree.jpeg; sourceTree = "<group>"; };
-		A3FD03E51C99190700E84A0B /* BuShangBanApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuShangBanApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3FD03E51C99190700E84A0B /* 不上班.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "不上班.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3FD03E91C99190700E84A0B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A3FD03EB1C99190700E84A0B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A3FD03EC1C99190700E84A0B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1252,7 +1252,7 @@
 		A3FD03E61C99190700E84A0B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A3FD03E51C99190700E84A0B /* BuShangBanApp.app */,
+				A3FD03E51C99190700E84A0B /* 不上班.app */,
 				A3FD03FE1C99190700E84A0B /* BuShangBanAppTests.xctest */,
 				A3FD04091C99190800E84A0B /* BuShangBanAppUITests.xctest */,
 			);
@@ -1601,7 +1601,7 @@
 			);
 			name = BuShangBanApp;
 			productName = BuShangBanApp;
-			productReference = A3FD03E51C99190700E84A0B /* BuShangBanApp.app */;
+			productReference = A3FD03E51C99190700E84A0B /* 不上班.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A3FD03FD1C99190700E84A0B /* BuShangBanAppTests */ = {
@@ -2089,7 +2089,7 @@
 				);
 				New_Setting = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bushangban.bushangban;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "不上班";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2122,7 +2122,7 @@
 				);
 				New_Setting = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bushangban.bushangban;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "不上班";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

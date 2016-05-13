@@ -36,6 +36,7 @@
 @property(nonatomic,strong)NSMutableArray *profileArray;
 @property(nonatomic,strong)NSMutableArray *avarArray;
 @property(nonatomic,strong)NSDictionary *tempDic;
+@property(nonatomic,strong)NSMutableArray *categoryArray;
 
 @end
 
@@ -53,6 +54,8 @@
         self.profileArray=[NSMutableArray array];
         self.imageURLArray=[NSMutableArray array];
         self.avarArray=[NSMutableArray array];
+        self.categoryArray=[NSMutableArray array];
+
     }
     return self;
 }
@@ -101,11 +104,13 @@
         for (NSDictionary *dic in self.results)
         {
              NSString *avatarString = SafeForString([dic valueForKeyPath:@"author.avatar.url"]);
+            NSString *categoryString =SafeForString([dic valueForKeyPath:@"category.name"]);
             [self.URLArray addObject:dic[@"link"]];
             [self.titleArray addObject:dic[@"title"]];
             [self.profileArray addObject:dic[@"summary"]];
             [self.imageURLArray addObject:dic[@"feature_image"]];
             [self.avarArray addObject:avatarString];
+            [self.categoryArray addObject:categoryString];
         }
         self.tabelView.backgroundColor=bgColor;
     } failureBlock:^(SSLXResultRequest *failReq){
@@ -148,7 +153,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     
-    NSString *categoryStr =[_title safeString];
+    NSString *categoryStr =[[self.categoryArray objectAtIndex:indexPath.row] safeString];
     if([categoryStr isEqualToString:@"默认分类"])
         categoryStr = @"默认";
     else if([categoryStr isEqualToString:@"大公司"])

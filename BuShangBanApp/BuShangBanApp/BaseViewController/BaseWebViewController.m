@@ -17,6 +17,7 @@
 // 自定义分享菜单栏需要导入的头文件
 #import <ShareSDKUI/SSUIShareActionSheetStyle.h>
 #import "DataListViewController.h"
+#import "LoginViewController.h"
 
 CGFloat const gestureMinimumTranslation = 2.0 ;
 
@@ -296,8 +297,19 @@ typedef enum : NSInteger {
 
 -(void)zanButtonClick{
 
-    
+    [self judgeLoginStatus];
 }
+
+-(void)judgeLoginStatus{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *loginStatus = [userDefaults objectForKey:kLoginStatus];
+    
+    if([loginStatus isEqualToString:@"1"]){
+        //已登录
+    }else
+        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
+}
+
 
 -(void)commentButtonClick{
 
