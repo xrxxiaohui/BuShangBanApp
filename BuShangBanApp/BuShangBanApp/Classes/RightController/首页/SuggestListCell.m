@@ -7,6 +7,7 @@
 //
 
 #import "SuggestListCell.h"
+#import "CustomLabel.h"
 
 @interface SuggestListCell() {
 
@@ -15,6 +16,8 @@
     UILabel *_mainContentLabel;
     NSMutableArray *dataArray;
     UIImageView *mainImageView;
+    
+    CustomLabel *topTitleLabel;
 }
 
 @end
@@ -50,7 +53,10 @@
     NSString *avatarString = [[self.dataInfo valueForKeyPath:@"author.avatar.url"] safeString];
     [_rightAvarButton sd_setImageWithURL:[NSURL URLWithString:avatarString] forState:UIControlStateNormal];
 
-    
+    NSString *titleStr = [[self.dataInfo objectForKey:@"title"] safeString];
+    [topTitleLabel setText:titleStr];
+    topTitleLabel.numberOfLines = 2;
+
 //    NSString *largeImageString = [self.dataInfo valueForKeyPath:@"feature_image.large"];
 //
 //    [mainImageView sd_setImageWithURL:[NSURL URLWithString:largeImageString] placeholderImage:nil];
@@ -66,6 +72,27 @@
 
 -(void)customView{
     
+    topTitleLabel = [[CustomLabel alloc] init];
+    [topTitleLabel setFrame:CGRectMake(72*kDefaultBiLi, (118-64)*kDefaultBiLi, 270*kDefaultBiLi, 50)];
+    [self addSubview:topTitleLabel];
+    
+    //渐变颜色的起始颜色
+    UIColor *startColor = [UIColor colorWithRed:255 green:255 blue:255 alpha:1.0];
+    //渐变颜色的结束颜色
+    UIColor *endColor = [UIColor colorWithRed:227 green:227 blue:227 alpha:0.5];
+    CAGradientLayer *bgLayer = [[CAGradientLayer alloc]init];
+    bgLayer.frame = topTitleLabel.frame;
+    [bgLayer setColors:[[NSArray alloc]initWithObjects:(id)startColor.CGColor,(id)endColor.CGColor, nil]];
+    [self.layer insertSublayer:bgLayer atIndex:0];
+    //对customLabel中的属性进行初始化
+    [topTitleLabel setTextColor:[UIColor whiteColor]];
+    //    topTitleLabel.glowColor  = [UIColor initWithWhite:0 alpha:0.8];
+    topTitleLabel.glowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    topTitleLabel.glowAmount = 12;
+    topTitleLabel.textAlignment = NSTextAlignmentCenter;
+    topTitleLabel.glowoffset = CGSizeMake(0.0, 0.0);
+    topTitleLabel.text = @"";
+    topTitleLabel.font = [UIFont systemFontOfSize:18];
     
     _rightAvarButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_rightAvarButton setFrame:CGRectMake(kScreenWidth-81*kDefaultBiLi, (292+90-70)*kScreenWidth/414, 28, 28)];
@@ -96,13 +123,16 @@
     
     UIView *backgroundView = [[UIView alloc] init];
     [backgroundView setBackgroundColor:[UIColor whiteColor]];
-    [backgroundView.layer setMasksToBounds:YES];
+//    [backgroundView.layer setMasksToBounds:YES];
     backgroundView.layer.cornerRadius = 10;
-    backgroundView.layer.shadowColor = COLOR(227, 227, 227).CGColor;
-    backgroundView.layer.shadowRadius = 10;
-    backgroundView.layer.shadowOpacity = 0.5;
+    
+    
+    backgroundView.layer.shadowColor = [UIColor colorWithRed:0xe3/255. green:0xe3/255. blue:0xe3/255. alpha:1].CGColor;
+    backgroundView.layer.shadowRadius = 7;
+    backgroundView.layer.shadowOpacity = 1;
 //    backgroundView.layer.borderWidth = 15.0f;
-    backgroundView.layer.shadowOffset = CGSizeMake(0,-3);
+    backgroundView.layer.shadowOffset = CGSizeMake(0,2);
+    
     [backgroundView setFrame:CGRectMake(37*kDefaultBiLi, 20*kDefaultBiLi, 340*kDefaultBiLi, 500*kDefaultBiLi)];
 //    backgroundView.userInteractionEnabled = YES;
     [self addSubview:backgroundView];
@@ -120,6 +150,12 @@
 //    UITapGestureRecognizer *fingerTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toWebDetailPage)];
 //    [mainImageView addGestureRecognizer: fingerTap1];
     [self addSubview:mainImageView];
+    
+    UIImageView *mengbanImageView = [[UIImageView alloc] init];
+    [mengbanImageView setImage:[UIImage imageNamed:@"mengban"]];
+    [mengbanImageView setFrame:mainImageView.frame];
+    [self addSubview:mengbanImageView];
+    mengbanImageView.userInteractionEnabled = YES;
     
     UIImageView *maskView = [[UIImageView alloc]init];
     [maskView setImage:[UIImage imageNamed:@"MaskR10"]];

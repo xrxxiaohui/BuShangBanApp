@@ -17,10 +17,14 @@
 
 #define headUrl @"https://leancloud.cn:443/1.1/classes/Post?where="
 #define URL @"{\"category\":{\"__type\":\"Pointer\",\"className\":\"PostCagegory\",\"objectId\":\"%@\"}}"
-#define url1 @"order=-updatedAt"
+#define url1 @"order=-published_at"
 #define url2 @"-body,-body_html,-ACL"
 #define url3 @"category,author"
 #define url4 @"limit=100"
+
+#define ChuangyeTouZi @"{\"category\":{\"$in\":[{\"__type\":\"Pointer\",\"className\":\"PostCategory\",\"objectId\":\"573594cb71cfe40057e97b57\"},{\"__type\":\"Pointer\",\"className\":\"PostCategory\",\"objectId\":\"571eb422df0eea0062af7736\"}]}}"
+
+#define MarketYunYing @"{\"category\":{\"$in\":[{\"__type\":\"Pointer\",\"className\":\"PostCategory\",\"objectId\":\"573594c61532bc00653a06fd\"},{\"__type\":\"Pointer\",\"className\":\"PostCategory\",\"objectId\":\"571eb43279bc440066a23361\"}]}}"
 
 @interface DataListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -75,7 +79,17 @@
     
     SSLXUrlParamsRequest *_urlParamsReq1 = [[SSLXUrlParamsRequest alloc] init];
     
-    NSString *tempUrl = [NSString stringWithFormat:URL,_objectID];
+    NSString *tempUrl = @"";
+    
+    if(([_title rangeOfString:@"创业"].location!=NSNotFound)||([_title rangeOfString:@"投资"].location!=NSNotFound)){
+    
+        tempUrl = ChuangyeTouZi;
+    }else if(([_title rangeOfString:@"市场"].location!=NSNotFound)||([_title rangeOfString:@"运营"].location!=NSNotFound)){
+    
+        tempUrl = MarketYunYing;
+    }else{
+            tempUrl = [NSString stringWithFormat:URL,_objectID];
+    }
     NSString *encodeUrlString =[self encodeToPercentEscapeString:tempUrl];
     NSString *encodeUrlString2 = [self encodeToPercentEscapeString:url2];
     NSString *encodeUrlString3 = [self encodeToPercentEscapeString:url3];

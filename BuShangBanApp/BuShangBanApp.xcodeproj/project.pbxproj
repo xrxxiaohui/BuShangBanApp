@@ -87,6 +87,7 @@
 		A35916CD1CE5B82A00AA374B /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A35916CC1CE5B82A00AA374B /* MessageCell.m */; };
 		A35916D01CE5BC8D00AA374B /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = A35916CF1CE5BC8D00AA374B /* NSString+Extension.m */; };
 		A35916D31CE5BF2D00AA374B /* UIImage+ResizeImage.m in Sources */ = {isa = PBXBuildFile; fileRef = A35916D21CE5BF2D00AA374B /* UIImage+ResizeImage.m */; };
+		A35916D61CE5CF8C00AA374B /* CustomLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = A35916D51CE5CF8C00AA374B /* CustomLabel.m */; };
 		A376843D1CC4B4A600D4C546 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A376843C1CC4B4A600D4C546 /* MessageTableViewCell.m */; };
 		A376A7E91CA00F6400B4F9BF /* HomeHeadViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A376A7E61CA00F6400B4F9BF /* HomeHeadViewCell.m */; };
 		A376A7EA1CA00F6400B4F9BF /* HomePageContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A376A7E81CA00F6400B4F9BF /* HomePageContentCell.m */; };
@@ -385,6 +386,8 @@
 		A35916CF1CE5BC8D00AA374B /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		A35916D11CE5BF2D00AA374B /* UIImage+ResizeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ResizeImage.h"; sourceTree = "<group>"; };
 		A35916D21CE5BF2D00AA374B /* UIImage+ResizeImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ResizeImage.m"; sourceTree = "<group>"; };
+		A35916D41CE5CF8C00AA374B /* CustomLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLabel.h; sourceTree = "<group>"; };
+		A35916D51CE5CF8C00AA374B /* CustomLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLabel.m; sourceTree = "<group>"; };
 		A376843B1CC4B4A600D4C546 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
 		A376843C1CC4B4A600D4C546 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		A376A7E51CA00F6400B4F9BF /* HomeHeadViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeHeadViewCell.h; sourceTree = "<group>"; };
@@ -1195,6 +1198,8 @@
 				A3B12B4B1CC8757F008F0CD4 /* SuggestPageViewController.m */,
 				A32DCB681CDF3DEA000D463A /* SuggestListViewController.h */,
 				A32DCB691CDF3DEA000D463A /* SuggestListViewController.m */,
+				A35916D41CE5CF8C00AA374B /* CustomLabel.h */,
+				A35916D51CE5CF8C00AA374B /* CustomLabel.m */,
 				A32DCB6B1CDF425D000D463A /* SuggestListCell.h */,
 				A32DCB6C1CDF425D000D463A /* SuggestListCell.m */,
 				A3B12B501CC98D3C008F0CD4 /* JuXingView.h */,
@@ -1813,6 +1818,7 @@
 				A3FD045A1C993CF100E84A0B /* UILabel+Attributed.m in Sources */,
 				A377D13E1C99560A00C779A7 /* UIButton+Bootstrap.m in Sources */,
 				04E3E41C1CCE3633000FD2DF /* MineCell.m in Sources */,
+				A35916D61CE5CF8C00AA374B /* CustomLabel.m in Sources */,
 				A3FD04261C99386700E84A0B /* QHBasicViewController.m in Sources */,
 				049EF2391CA38FA000C1D68A /* FindView.m in Sources */,
 				04125B371CDC945B0076076C /* DataListTableViewCell.m in Sources */,
