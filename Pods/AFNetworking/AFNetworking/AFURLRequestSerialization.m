@@ -20,6 +20,7 @@
 // THE SOFTWARE.
 
 #import "AFURLRequestSerialization.h"
+#define SafeForString(string) ((string && [string isKindOfClass:[NSString class]]) ? string :@"")
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED
 #import <MobileCoreServices/MobileCoreServices.h>
@@ -405,8 +406,9 @@ forHTTPHeaderField:(NSString *)field
     [mutableRequest addValue: @"fdOqfdJ3Ypgv6iaQJXLw7CgR-gzGzoHsz" forHTTPHeaderField:@"X-LC-Id"];
     [mutableRequest addValue: @"MDOagSCTlLw9A6fkrcaphlB8" forHTTPHeaderField:@"X-LC-Key"];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [mutableRequest addValue:[userDefaults objectForKey:@"sessionToken"] forHTTPHeaderField:@"X-LC-Session"];
-
+    NSString *tempString = SafeForString([userDefaults objectForKey:@"sessionToken"] );
+    [mutableRequest addValue:tempString forHTTPHeaderField:@"X-LC-Session"];
+    
     for (NSString *keyPath in AFHTTPRequestSerializerObservedKeyPaths()) {
         if ([self.mutableObservedChangedKeyPaths containsObject:keyPath]) {
             [mutableRequest setValue:[self valueForKeyPath:keyPath] forKey:keyPath];
