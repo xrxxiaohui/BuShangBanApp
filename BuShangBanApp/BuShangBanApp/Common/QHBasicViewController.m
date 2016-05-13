@@ -151,7 +151,7 @@
 }
 
 -(void)customRightItemWithBtn2:(UIButton *)sender {
-    sender.size=CGSizeMake(60, 12);
+    sender.size=CGSizeMake(40, 12);
     sender.left = kScreenWidth - sender.width-38-16;
     sender.top = (_navView.height - sender.height)/2;
     [_navView addSubview:sender];
