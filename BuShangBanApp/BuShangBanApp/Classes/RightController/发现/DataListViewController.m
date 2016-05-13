@@ -135,8 +135,6 @@
         cell = [[DataListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    
-    
     cell.leftUpLabel.text=_title;
     cell.leftUpLabel.adjustsFontSizeToFitWidth=YES;
     cell.mainContentLabel.text=self.profileArray[indexPath.row];
