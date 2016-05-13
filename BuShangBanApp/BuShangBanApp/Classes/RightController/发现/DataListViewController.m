@@ -132,8 +132,21 @@
     if (!cell)
         cell = [[DataListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.leftUpLabel.text=_title;
-    cell.leftUpLabel.adjustsFontSizeToFitWidth=YES;
+    
+    
+    NSString *categoryStr =[_title safeString];
+    if([categoryStr isEqualToString:@"默认分类"])
+        categoryStr = @"默认";
+    else if([categoryStr isEqualToString:@"大公司"])
+        categoryStr = @"公司";
+    else if ([categoryStr isEqualToString:@"运营&市场"])
+        categoryStr = @"运营";
+    else if ([categoryStr isEqualToString:@"原创封面"])
+        categoryStr = @"原创";
+
+    
+    cell.leftUpLabel.text=categoryStr;
+//    cell.leftUpLabel.adjustsFontSizeToFitWidth=YES;
     cell.mainContentLabel.text=self.profileArray[indexPath.row];
     cell.mainTitleLabel.text=self.titleArray[indexPath.row];
     [cell.centerImageView sd_setImageWithURL:[NSURL URLWithString:self.imageURLArray[indexPath.row]] placeholderImage:[UIImage imageNamed:@"place"]];
