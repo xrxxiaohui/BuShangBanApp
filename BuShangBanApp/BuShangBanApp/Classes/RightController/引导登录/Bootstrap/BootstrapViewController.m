@@ -94,10 +94,13 @@
         [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"Loginned"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-        NSDictionary *dic=@{@"sex":((BootstrapOneViewController *)_viewControllerS[0]).maleBtn.selected?@"男":@"女",
-                            @"city_name":((BootstrapOneViewController *)_viewControllerS[0]).placeTF.text,@"username":((BootstrapOneViewController *)_viewControllerS[0]).nickNameTF.text,
-            @"profession":((BootstrapTwoViewController *)_viewControllerS[1]).selectedItem,
-            @"interest":((BootstrapThriViewController *)_viewControllerS[2]).selectedItems};
+        NSDictionary *dic=@{
+            @"sex":((BootstrapOneViewController *)_viewControllerS[0]).maleBtn.selected?@"男":@"女",
+            @"city_name":SafeForString(((BootstrapOneViewController *)_viewControllerS[0]).placeTF.text),
+            @"username":SafeForString(((BootstrapOneViewController *)_viewControllerS[0]).nickNameTF.text),
+            @"profession":SafeForString(((BootstrapTwoViewController *)_viewControllerS[1]).selectedItem),
+            @"interest":SafeForArray(((BootstrapThriViewController *)_viewControllerS[2]).selectedItems)
+            };
         
         SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
         _urlParamsReq.requestMethod =  YTKRequestMethodPut;

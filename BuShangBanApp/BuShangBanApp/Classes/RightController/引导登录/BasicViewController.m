@@ -10,18 +10,16 @@
 
 #define adapt  [[[ScreenAdapt alloc]init] adapt]
 
-@interface BasicViewController ()
+@interface BasicViewController ()<UITextFieldDelegate>
 
 @end
 
 @implementation BasicViewController
-{
-    CGFloat _bottom;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _bottom=0;
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showKeyBoard:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hideKeyBoard:) name:UIKeyboardWillHideNotification object:nil];
     self.view.backgroundColor=bgColor;
     
     _closeBtn=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -35,9 +33,6 @@
     _contentView.backgroundColor=bgColor;
     _contentView.top=150 *adapt.scaleHeight;
     [self.view addSubview:_contentView];
-    
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showKeyBoard:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hideKeyBoard:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 -(UITextField *)textFieldWithPlaceHolder:(NSString *)placeholder imageNamed:(NSString *)imageNamed
@@ -45,6 +40,7 @@
     UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(0, 0, 300 * adapt.scaleWidth, 48)];
     textField.contentVerticalAlignment=UIControlContentVerticalAlignmentCenter;
     textField.centerX=self.view.centerX;
+    textField.delegate=self;
     textField.placeholder=placeholder;
     textField.font=[UIFont fontWithName:fontName size:14];
     UIImage *image=[UIImage imageNamed:imageNamed];
@@ -88,29 +84,22 @@
 }
 
 -(void)showKeyBoard:(NSNotification *)noti
-{
-    CGRect frame=[[noti userInfo][UIKeyboardFrameBeginUserInfoKey] CGRectValue];
-    if (frame.origin.y<_contentView.bottom) {
-        _bottom=_contentView.bottom;
-        _contentView.bottom=frame.origin.y;
-    }
-}
+{}
 
 -(void)hideKeyBoard:(NSNotification *)noti
-{
-    if (_bottom != 0)
-        _contentView.bottom=_bottom;
-}
-
+{}
 
 -(void)clickEvent:(UIButton *)sender
-{
-}
-
+{}
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [super touchesBegan:touches withEvent:event];
     [self.view endEditing:YES];
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 @end
