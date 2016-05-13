@@ -115,6 +115,7 @@
             [self.likeCountArray addObject:dic[@"like_count"]];
             [self.shareCountArray addObject:dic[@"share_count"]];
             [self.avarArray addObject:avatarString];
+            NSLog(@"**********%@",dic[@"title"]);
         }
         self.tabelView.backgroundColor=bgColor;
     } failureBlock:^(SSLXResultRequest *failReq){
