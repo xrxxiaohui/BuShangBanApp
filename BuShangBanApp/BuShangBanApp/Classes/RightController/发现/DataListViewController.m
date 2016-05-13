@@ -39,6 +39,7 @@
 @property(nonatomic,strong)NSMutableArray *likeCountArray;
 @property(nonatomic,strong)NSMutableArray *commentCountArray;
 @property(nonatomic,strong)NSDictionary *tempDic;
+@property(nonatomic,strong)NSMutableArray *categoryArray;
 
 @end
 
@@ -56,6 +57,8 @@
         self.profileArray=[NSMutableArray array];
         self.imageURLArray=[NSMutableArray array];
         self.avarArray=[NSMutableArray array];
+        self.categoryArray=[NSMutableArray array];
+
         self.shareCountArray=[NSMutableArray array];
         self.likeCountArray=[NSMutableArray array];
         self.commentCountArray=[NSMutableArray array];
@@ -107,6 +110,7 @@
         for (NSDictionary *dic in self.results)
         {
              NSString *avatarString = SafeForString([dic valueForKeyPath:@"author.avatar.url"]);
+            NSString *categoryString =SafeForString([dic valueForKeyPath:@"category.name"]);
             [self.URLArray addObject:dic[@"link"]];
             [self.titleArray addObject:dic[@"title"]];
             [self.profileArray addObject:dic[@"summary"]];
@@ -115,7 +119,7 @@
             [self.likeCountArray addObject:dic[@"like_count"]];
             [self.shareCountArray addObject:dic[@"share_count"]];
             [self.avarArray addObject:avatarString];
-
+            [self.categoryArray addObject:categoryString];
         }
         self.tabelView.backgroundColor=bgColor;
     } failureBlock:^(SSLXResultRequest *failReq){
@@ -157,7 +161,7 @@
         cell = [[DataListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    NSString *categoryStr =[_title safeString];
+    NSString *categoryStr =[[self.categoryArray objectAtIndex:indexPath.row] safeString];
     if([categoryStr isEqualToString:@"默认分类"])
         categoryStr = @"默认";
     else if([categoryStr isEqualToString:@"大公司"])
