@@ -106,7 +106,6 @@
 - (UIButton *)settingBtn {
     if (!_settingBtn ) {
         _settingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [_settingBtn addTarget:[[MineViewController alloc] init] action:@selector(settingBtn:) forControlEvents:UIControlEventTouchUpInside];
         _settingBtn.size=CGSizeMake(50, 50);
         _settingBtn.left = kScreenWidth - _settingBtn.width;
         _settingBtn.top = 33.f;

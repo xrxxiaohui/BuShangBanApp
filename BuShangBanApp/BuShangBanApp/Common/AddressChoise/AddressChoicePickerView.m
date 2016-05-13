@@ -116,6 +116,7 @@
 #pragma  mark - function
 
 - (void)show {
+    
     UIWindow *win = [[UIApplication sharedApplication] keyWindow];
     [win addSubview:self];
     [UIView animateWithDuration:0.3 animations:^{

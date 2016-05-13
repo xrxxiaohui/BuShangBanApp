@@ -13,7 +13,7 @@
 #import "OtherViewController.h"
 #import "LoginViewController.h"
 #import "User.h"
-#import "BootstrapOneViewController.h"
+#import "BootstrapViewController.h"
 
 #define adapt  [[[ScreenAdapt alloc]init] adapt]
 
@@ -34,7 +34,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(judgeLoginStatus) name:@"judgeLoginStatus" object:nil];
+    BootstrapViewController *tempView = [[BootstrapViewController alloc] init];
+    [[SliderViewController sharedSliderController].navigationController pushViewController:tempView animated:YES];
+
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(judgeLoginStatus) name:@"judgeLoginStatus" object:nil];
 //    UIButton *tempButton = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [tempButton setFrame:CGRectMake(100, kScreenHeight-120, 60, 60)];
 //    [tempButton setBackgroundColor:[UIColor blueColor]];
@@ -53,11 +56,11 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *loginStatus = [userDefaults objectForKey:kLoginStatus];
     
-    if([loginStatus isEqualToString:@"1"]){
-        //已登录
-        [self __loadData];
-    }else
-        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
+    //    if([loginStatus isEqualToString:@"1"]){
+//        //已登录
+//        [self __loadData];
+//    }else
+//        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
 }
 
 -(void)__loadData {
@@ -109,7 +112,6 @@
         NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
         _errorMsg? [MBProgressHUD showError:_errorMsg]: [MBProgressHUD showError:kMBProgressErrorTitle];
     }];
-
 }
 
 -(void)settingBtn:(UIButton *)btn
