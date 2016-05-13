@@ -251,7 +251,7 @@
                         if(![self isBlankDictionary:successCode1]&&![self isBlankDictionary:successCode]){
                         
                             //成功
-                            NSString *sessionToken1 = [NSString stringWithFormat:@"%@",[[successRequest.responseString objectFromJSONString] valueForKey:@"sessionToken"]];
+                            NSString *sessionToken1 = [NSString stringWithFormat:@"%@",[tempDic1 valueForKey:@"sessionToken"]];
                             NSString *sessionToken = SafeForString(sessionToken1);
                             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                             [userDefaults setObject:sessionToken forKey:kSessionToken];
