@@ -34,7 +34,7 @@
     self.contentImageView.image=image;
     CGSize size=image.size;
     self.contentImageView.size=CGSizeMake(size.width *adapt.scaleWidth, size.height *adapt.scaleHeight);
-    self.contentImageView.left=(kScreenWidth/3-1)/2+size.width/2;
+    self.contentImageView.left=(kScreenWidth/3-1-size.width)/2;
     self.contentLabel.attributedText=title;
 }
 @end

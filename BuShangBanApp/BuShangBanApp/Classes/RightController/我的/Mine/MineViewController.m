@@ -62,7 +62,7 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *loginStatus = [userDefaults objectForKey:kLoginStatus];
     
-        if([loginStatus isEqualToString:@"1"]){
+    if([loginStatus isEqualToString:@"1"]){
         //已登录
         [self __loadData];
     }else
@@ -259,7 +259,12 @@
         [sectionHeaderView labelWithLable:sectionHeaderView.myFocusLabel Titlt:@"我关注" digit:(int32_t)[SafeForString(self.user.focusMeNumber) integerValue]];
         [sectionHeaderView.focusMeLabel sizeToFit];
         sectionHeaderView.focusMeLabel.right=kScreenWidth/2-ceilf(14*adapt.scaleWidth);
-        [sectionHeaderView nickNameLabelWithNickName:SafeForString(self.user.username) label:self.self.user.profession];
+        NSString *label;
+        if ([self.user.label isEqualToString:@""])
+            label=self.user.profession;
+        else
+            label=self.user.label;
+        [sectionHeaderView nickNameLabelWithNickName:SafeForString(self.user.username) label:self.user.profession];
         reusableView=sectionHeaderView;
     }
     return reusableView;

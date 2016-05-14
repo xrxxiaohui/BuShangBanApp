@@ -56,6 +56,18 @@
     [_contentView addSubview:_loginBtn];
     
     _contentView.height=_loginBtn.bottom;
+
+
+    
+     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    _accountTF.text=[userDefaults objectForKey:@"userAccout"];
+    _passWordTF.text=[userDefaults objectForKey:@"userPassWord"];
+    [userDefaults synchronize];
+    if([_passWordTF.text length]>=6)
+    {
+         [userDefaults setBool:YES forKey:@"isLogin"];
+        [self clickEvent:_loginBtn];
+    }
 }
 
 
@@ -128,18 +140,16 @@
                             [userDefaults setObject:@"1" forKey:kLoginStatus];
                         
                         NSString *objectID = [NSString stringWithFormat:@"%@",[[successRequest.responseString objectFromJSONString] valueForKey:@"objectId"]];
-                        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-                        [userDefault setObject:objectID forKey:kObjectID];
+                        [userDefaults setObject:objectID forKey:kObjectID];
 //                        [[ConstObject instance] setObjectIDss:SafeForString(objectID)];
                         
                             [self.navigationController popToRootViewControllerAnimated:YES];
 
                             [[NSNotificationCenter defaultCenter] postNotificationName:@"judgeLoginStatus" object:nil];
-                            NSUserDefaults *userDefault=[NSUserDefaults standardUserDefaults];
-                            [userDefault setValue:_accountTF.text forKey:@"userAccout"];
-                            [userDefault setValue:_passWordTF.text forKey:@"userPassWord"];
-                        [userDefault setBool:YES forKey:@"isLogin"];
-                            [userDefault synchronize];
+                            [userDefaults setValue:_accountTF.text forKey:@"userAccout"];
+                            [userDefaults setValue:_passWordTF.text forKey:@"userPassWord"];
+                            [userDefaults setBool:YES forKey:@"isLogin"];
+                            [userDefaults synchronize];
                         }
                     
                 } failureBlock:^(SSLXResultRequest *failRequest){

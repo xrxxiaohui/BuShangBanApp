@@ -76,6 +76,8 @@
 
 - (void)nickNameLabelWithNickName:(NSString *)nickName label:(NSString *)label {
     if ( !_nickNameLabel ) {
+        if(![label isEqualToString:@""])
+        {
         _nickNameLabel = [[UILabel alloc] init];
         nickName = [NSString stringWithFormat:@"%@  |  ", nickName];
         
@@ -87,7 +89,9 @@
         NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:nickName attributes:nickNameDic];
         [attr appendAttributedString:[[NSAttributedString alloc] initWithString:label attributes:labelDic]];
         _nickNameLabel.attributedText = attr;
-        
+        }
+        else
+            _nickNameLabel.text=label;
         [_nickNameLabel sizeToFit];
         _nickNameLabel.centerX = self.centerX;
         _nickNameLabel.top = 128.f * adapt.scaleHeight;
