@@ -28,12 +28,6 @@
 		0447E4721CE091690002EADF /* FMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0447E4701CE091690002EADF /* FMViewController.xib */; };
 		0447E4841CE0A4200002EADF /* AccessSendSmsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447E4801CE0A4200002EADF /* AccessSendSmsApi.m */; };
 		044DAE1D1CA7E89F0058A319 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 049EF24D1CA3904200C1D68A /* ShareSDK.framework */; };
-		04669E561CE35B0900AE550C /* PingFang Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04669E501CE35B0900AE550C /* PingFang Bold.ttf */; };
-		04669E571CE35B0900AE550C /* PingFang ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04669E511CE35B0900AE550C /* PingFang ExtraLight.ttf */; };
-		04669E581CE35B0900AE550C /* PingFang Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04669E521CE35B0900AE550C /* PingFang Heavy.ttf */; };
-		04669E591CE35B0900AE550C /* PingFang Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04669E531CE35B0900AE550C /* PingFang Light.ttf */; };
-		04669E5A1CE35B0900AE550C /* PingFang Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04669E541CE35B0900AE550C /* PingFang Medium.ttf */; };
-		04669E5B1CE35B0900AE550C /* PingFang Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04669E551CE35B0900AE550C /* PingFang Regular.ttf */; };
 		049EF1E41CA38D8D00C1D68A /* AddressChoicePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF1D51CA38D8D00C1D68A /* AddressChoicePickerView.m */; };
 		049EF1E51CA38D8D00C1D68A /* AddressChoicePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 049EF1D61CA38D8D00C1D68A /* AddressChoicePickerView.xib */; };
 		049EF1E61CA38D8D00C1D68A /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 049EF1D71CA38D8D00C1D68A /* area.plist */; };
@@ -281,12 +275,6 @@
 		0447E4701CE091690002EADF /* FMViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMViewController.xib; sourceTree = "<group>"; };
 		0447E4801CE0A4200002EADF /* AccessSendSmsApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessSendSmsApi.m; sourceTree = "<group>"; };
 		0447E4811CE0A4200002EADF /* AccessSendSmsApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessSendSmsApi.h; sourceTree = "<group>"; };
-		04669E501CE35B0900AE550C /* PingFang Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Bold.ttf"; sourceTree = "<group>"; };
-		04669E511CE35B0900AE550C /* PingFang ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang ExtraLight.ttf"; sourceTree = "<group>"; };
-		04669E521CE35B0900AE550C /* PingFang Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Heavy.ttf"; sourceTree = "<group>"; };
-		04669E531CE35B0900AE550C /* PingFang Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Light.ttf"; sourceTree = "<group>"; };
-		04669E541CE35B0900AE550C /* PingFang Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Medium.ttf"; sourceTree = "<group>"; };
-		04669E551CE35B0900AE550C /* PingFang Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Regular.ttf"; sourceTree = "<group>"; };
 		049EF1D41CA38D8D00C1D68A /* AddressChoicePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressChoicePickerView.h; sourceTree = "<group>"; };
 		049EF1D51CA38D8D00C1D68A /* AddressChoicePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressChoicePickerView.m; sourceTree = "<group>"; };
 		049EF1D61CA38D8D00C1D68A /* AddressChoicePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressChoicePickerView.xib; sourceTree = "<group>"; };
@@ -714,19 +702,6 @@
 			path = Bootstrap;
 			sourceTree = "<group>";
 		};
-		04669E4F1CE35B0900AE550C /* 苹方字体 */ = {
-			isa = PBXGroup;
-			children = (
-				04669E501CE35B0900AE550C /* PingFang Bold.ttf */,
-				04669E511CE35B0900AE550C /* PingFang ExtraLight.ttf */,
-				04669E521CE35B0900AE550C /* PingFang Heavy.ttf */,
-				04669E531CE35B0900AE550C /* PingFang Light.ttf */,
-				04669E541CE35B0900AE550C /* PingFang Medium.ttf */,
-				04669E551CE35B0900AE550C /* PingFang Regular.ttf */,
-			);
-			path = "苹方字体";
-			sourceTree = "<group>";
-		};
 		049EF1D31CA38D8D00C1D68A /* AddressChoise */ = {
 			isa = PBXGroup;
 			children = (
@@ -1002,7 +977,6 @@
 		A33447F31CA28F350006C8A3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				04669E4F1CE35B0900AE550C /* 苹方字体 */,
 				A38A86051CA4CB4400582AD5 /* launchImage@2x.png */,
 				A38A86061CA4CB4400582AD5 /* launchImage@3x.png */,
 				A30012B71CA3A12A00BD6FAD /* 750*1334.png */,
@@ -1704,21 +1678,15 @@
 				A38A86041CA4CA9000582AD5 /* Launch Screen.storyboard in Resources */,
 				A33447F71CA290860006C8A3 /* 3.jpg in Resources */,
 				049EF26F1CA3904200C1D68A /* ShareSDKUI.bundle in Resources */,
-				04669E581CE35B0900AE550C /* PingFang Heavy.ttf in Resources */,
-				04669E591CE35B0900AE550C /* PingFang Light.ttf in Resources */,
 				04E3E4901CCF8FF8000FD2DF /* UserProtocal.storyboard in Resources */,
 				049EF2741CA3904200C1D68A /* read_me.txt in Resources */,
 				A30012B81CA3A12A00BD6FAD /* 750*1334.png in Resources */,
-				04669E571CE35B0900AE550C /* PingFang ExtraLight.ttf in Resources */,
 				04E3E41B1CCE3633000FD2DF /* EditInformationViewController.xib in Resources */,
 				A3EB11671CA2AAE100DC0731 /* tree.jpeg in Resources */,
-				04669E561CE35B0900AE550C /* PingFang Bold.ttf in Resources */,
 				A33447F61CA290860006C8A3 /* 1.jpg in Resources */,
 				04DE3E8F1CD5AC5100D9244B /* InviteCode.storyboard in Resources */,
-				04669E5A1CE35B0900AE550C /* PingFang Medium.ttf in Resources */,
 				A377D1A21C995E3000C779A7 /* MJRefresh.bundle in Resources */,
 				049EF1E61CA38D8D00C1D68A /* area.plist in Resources */,
-				04669E5B1CE35B0900AE550C /* PingFang Regular.ttf in Resources */,
 				A33447FF1CA29BAF0006C8A3 /* Icon.pdf in Resources */,
 				A38A86081CA4CB4400582AD5 /* launchImage@3x.png in Resources */,
 				A377D13C1C99560A00C779A7 /* FontAwesome.ttf in Resources */,
