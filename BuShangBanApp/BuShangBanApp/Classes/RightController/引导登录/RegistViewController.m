@@ -276,13 +276,16 @@
                             NSString *objectID = [NSString stringWithFormat:@"%@",[successCode1 objectForKey:@"objectId"]];
                             [[ConstObject instance] setObjectIDss:SafeForString(objectID)];
                             
+                           
                             [[NSNotificationCenter defaultCenter] postNotificationName:@"judgeLoginStatus" object:nil];
                             NSUserDefaults *userDefault=[NSUserDefaults standardUserDefaults];
                             [userDefault setValue:_accountTF.text forKey:@"userAccout"];
                             [userDefault setValue:_passWordTF.text forKey:@"userPassWord"];
                             [userDefault setBool:YES forKey:@"isLogin"];
-                            [userDefault synchronize];
                             
+//                            [[ConstObject instance] setObjectIDss:SafeForString(objectID)];
+                            [userDefault setObject:objectID forKey:kObjectID];
+                            [userDefault synchronize];
                             [[SliderViewController sharedSliderController].navigationController pushViewController:[[BootstrapViewController alloc] init] animated:YES];
 
                         }else{
