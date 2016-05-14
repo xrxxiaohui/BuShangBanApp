@@ -110,7 +110,7 @@
 @synthesize highyasNum;
 @synthesize lowSchoolRank;
 @synthesize highSchoolRank;
-
+@synthesize objectIDss;
 
 //@synthesize imagePickerBar,urlArray,totalSelectedCount,returnToWhichPage,rectFromZero,rootScrollView,photoTipButton,hasAlertLogin,networkIsAvailable,presentLoginController;
 

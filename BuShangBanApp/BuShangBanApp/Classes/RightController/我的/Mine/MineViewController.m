@@ -14,10 +14,11 @@
 #import "LoginViewController.h"
 #import "User.h"
 #import "BootstrapOneViewController.h"
+#import "ConstObject.h"
 
 #define adapt  [[[ScreenAdapt alloc]init] adapt]
 
-#define userURL @"https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24"
+#define userURL @"https://leancloud.cn:443/1.1/classes/_User/%@"
 #define articalURL @"https://leancloud.cn:443/1.1/classes/Post?where=%7B%22author%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22_User%22%2C%22objectId%22%3A%22570387b3ebcb7d005b196d24%22%7D%7D&count=1&limit=0"
 #define  aboutMe @"https://leancloud.cn/1.1/users/570387b3ebcb7d005b196d24/followersAndFollowees?limit=0&count=1"
 
@@ -85,23 +86,26 @@
     NSInteger  currentYear=[[NSString stringWithString:dateArr[0]] integerValue];
     
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
-    [_urlParamsReq setUrlString:userURL];
+    [_urlParamsReq setUrlString:[NSString stringWithFormat:userURL,[[ConstObject instance] objectIDss]]];
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
     
-        self.user.city_name=_successInfo[@"city_name"];
-        self.user.birthDay=[_successInfo[@"birthday"] objectForKey:@"iso"];
-        self.user.mobilePhoneNumber=_successInfo[@"mobilePhoneNumber"];
-        self.user.interest=_successInfo[@"interest"];
-        self.user.username=_successInfo[@"username"];
-        self.user.profession=_successInfo[@"profession"];
+        self.user.city_name=SafeForString(_successInfo[@"city_name"]);
+        self.user.birthDay=SafeForString([_successInfo[@"birthday"] objectForKey:@"iso"]);
+        self.user.mobilePhoneNumber=SafeForString(_successInfo[@"mobilePhoneNumber"]);
+        self.user.interest=SafeForString(_successInfo[@"interest"]);
+        self.user.username=SafeForString(_successInfo[@"username"]);
+        self.user.profession=SafeForString(_successInfo[@"profession"]);
         
-        self.user.sex = _successInfo[@"sex"];
-        self.user.email=_successInfo[@"email"];
-        self.user.label=_successInfo[@"title"];
-        self.user.avatar=_successInfo[@"avatar"];
-        self.user.avatarImageURL=[NSURL URLWithString:self.user.avatar[@"url"]];
-        self.user.age = currentYear-[[self.user.birthDay componentsSeparatedByString:@"-"][0] integerValue] +1;
+        self.user.sex = SafeForString(_successInfo[@"sex"]);
+        self.user.email=SafeForString(_successInfo[@"email"]);
+        self.user.label=SafeForString(_successInfo[@"title"]);
+//        self.user.avatar=SafeForString(_successInfo[@"avatar"]);
+        self.user.avatar=SafeForDictionary(_successInfo[@"avatar"]);
+        if(self.user.avatar.count>0)
+            self.user.avatarImageURL=([NSURL URLWithString:self.user.avatar[@"url"]]);
+        self.user.age = (currentYear-[[self.user.birthDay componentsSeparatedByString:@"-"][0] integerValue] +1);
+        self.user.nickName =SafeForString(_successInfo[@"nickname"]);
         
         self.collectionView.backgroundColor=bgColor;
     } failureBlock:^(SSLXResultRequest *failReq){

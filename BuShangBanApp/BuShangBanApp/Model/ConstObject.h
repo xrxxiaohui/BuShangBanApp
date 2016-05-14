@@ -54,6 +54,7 @@
 @property (nonatomic, retain) NSDictionary *personalInfoDics;
 @property (nonatomic, retain) NSMutableArray *localTagArray;
 
+@property (nonatomic, retain) NSString *objectIDss;
 
 
 //院校库筛选相关

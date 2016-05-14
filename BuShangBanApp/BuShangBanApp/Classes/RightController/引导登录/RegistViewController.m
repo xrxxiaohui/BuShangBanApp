@@ -13,6 +13,7 @@
 #import "BootstrapViewController.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import "AccessSendSmsApi.h"
+#import "ConstObject.h"
 
 #define adapt  [[[ScreenAdapt alloc]init] adapt]
 
@@ -227,7 +228,10 @@
                 
                 
                 NSDictionary *bodyDic1 = @{  @"mobilePhoneNumber":tempString?tempString:@0,
-                                                @"smsCode":_verificationCodeTF.text,@"invitation_code":_inivitTF.text};
+                                             @"smsCode":_verificationCodeTF.text,
+                                             @"invitation_code":_inivitTF.text,
+                                             @"password":_passWordTF.text
+                                             };
                                                 
                 NSDictionary *tempDic2 = @{@"method": @"POST",
                                            @"path": @"/1.1/usersByMobilePhone",
@@ -261,6 +265,9 @@
                             NSString *sessionToken = SafeForString(sessionToken1);
                             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                             [userDefaults setObject:sessionToken forKey:kSessionToken];
+                            
+                            NSString *objectID = [NSString stringWithFormat:@"%@",[successCode1 objectForKey:@"objectId"]];
+                            [[ConstObject instance] setObjectIDss:SafeForString(objectID)];
                             
                             [[SliderViewController sharedSliderController].navigationController pushViewController:[[BootstrapViewController alloc] init] animated:YES];
 
