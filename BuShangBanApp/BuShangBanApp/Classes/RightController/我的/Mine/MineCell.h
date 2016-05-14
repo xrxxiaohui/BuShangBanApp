@@ -14,4 +14,6 @@
 @property(nonatomic,strong)UIImageView *contentImageView;
 @property(nonatomic,strong)UILabel *contentLabel;
 
+-(void)setImage:(UIImage *)image title:(NSString *)title;
+
 @end

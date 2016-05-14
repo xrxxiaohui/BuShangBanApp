@@ -70,21 +70,18 @@ static BuShangBanImagePicker *imagePickerInstance = nil;
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *image = info[UIImagePickerControllerEditedImage];
-    if (image == nil) {
+    if (image == nil)
         image = info[UIImagePickerControllerOriginalImage];
-    }
-    if (_finishAction) {
+    if (_finishAction)
         _finishAction(image);
-    }
     [picker dismissViewControllerAnimated:YES completion:^{
     }];
     imagePickerInstance = nil;
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    if (_finishAction) {
-        _finishAction(nil);
-    }
+    if (_finishAction)
+        _finishAction([UIImage imageNamed:@"defaultHead"]);
     [picker dismissViewControllerAnimated:YES completion:^{
     }];
     imagePickerInstance = nil;

@@ -14,7 +14,6 @@
 @property(nonatomic,strong)NSMutableArray *titleDataSource;
 @property(nonatomic,strong)NSMutableArray *imageDataSource;
 @property(nonatomic,strong)MineSectionHeaderView *sectionHeaderView;
-//-(void)settingBtn:(UIButton *)btn;
 
 @end
 

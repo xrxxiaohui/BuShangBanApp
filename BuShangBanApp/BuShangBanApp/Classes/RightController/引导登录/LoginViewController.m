@@ -133,7 +133,11 @@
                             [self.navigationController popToRootViewControllerAnimated:YES];
 
                             [[NSNotificationCenter defaultCenter] postNotificationName:@"judgeLoginStatus" object:nil];
-
+                            NSUserDefaults *userDefault=[NSUserDefaults standardUserDefaults];
+                            [userDefault setValue:_accountTF.text forKey:@"userAccout"];
+                            [userDefault setValue:_passWordTF.text forKey:@"userPassWord"];
+                        [userDefault setBool:YES forKey:@"isLogin"];
+                            [userDefault synchronize];
                         }
                     
                 } failureBlock:^(SSLXResultRequest *failRequest){

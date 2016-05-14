@@ -2058,7 +2058,7 @@
 				New_Setting = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bushangban.bushangban;
 				PRODUCT_NAME = "不上班";
-				PROVISIONING_PROFILE = "90bd3abf-aedf-4f53-bceb-0c29b0acfc6d";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2091,7 +2091,7 @@
 				New_Setting = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bushangban.bushangban;
 				PRODUCT_NAME = "不上班";
-				PROVISIONING_PROFILE = "90bd3abf-aedf-4f53-bceb-0c29b0acfc6d";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -63,18 +63,8 @@
     [self __shapeLayerWithStartPoint:CGPointMake(self.placeTF.left, self.placeTF.bottom-8) endPoint:CGPointMake(self.placeTF.right, self.placeTF.bottom-8)];
 }
 
--(void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    [textField endEditing:YES];
-//    AddressChoicePickerView *addressChoice=[[AddressChoicePickerView alloc]init];
-//    addressChoice.block=^(AddressChoicePickerView *view, UIButton *btn, AreaObject *locate){
-//        textField.text=[NSString stringWithFormat:@"%@",locate];
-//    };
-//    [addressChoice show];
-}
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-
     [self.nickNameTF resignFirstResponder];
     
     AddressChoicePickerView *addressChoice=[[AddressChoicePickerView alloc]init];
@@ -111,7 +101,6 @@
     [self.view addSubview:btn];
     return btn;
 }
-
 
 -(UITextField *)__textFieldWithTextField:(UITextField *)textField imageNamed:(NSString *)imageNamed placeHolder:(NSString *)placeHolder
 {

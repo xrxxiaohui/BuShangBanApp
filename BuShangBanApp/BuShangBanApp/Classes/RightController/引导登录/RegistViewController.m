@@ -37,6 +37,7 @@
     NSTimer *_cutDownTimer;
     CGFloat _bottom;
     CGFloat _duration;
+    CGFloat _count;
 }
 @end
 
@@ -47,6 +48,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _totalTime = 60;
+    _count=0;
     [self __initView];
 }
 
@@ -166,8 +168,13 @@
             break;
         case 1002:
         {
-            if([self __checkMobileWithPhone:_accountTF.text])
+            if (_count>=2) {
+                [MBProgressHUD showSuccess:@"发送验证码次数用尽"];
+                break;
+            }
+            if([self __checkMobileWithPhone:_accountTF.text]  )
             {
+                _count++;
                 NSString *tempString = [NSString stringWithFormat:@"%@",_accountTF.text];
                 [self cutDownTimer];
                 
@@ -268,6 +275,13 @@
                             
                             NSString *objectID = [NSString stringWithFormat:@"%@",[successCode1 objectForKey:@"objectId"]];
                             [[ConstObject instance] setObjectIDss:SafeForString(objectID)];
+                            
+                            [[NSNotificationCenter defaultCenter] postNotificationName:@"judgeLoginStatus" object:nil];
+                            NSUserDefaults *userDefault=[NSUserDefaults standardUserDefaults];
+                            [userDefault setValue:_accountTF.text forKey:@"userAccout"];
+                            [userDefault setValue:_passWordTF.text forKey:@"userPassWord"];
+                            [userDefault setBool:YES forKey:@"isLogin"];
+                            [userDefault synchronize];
                             
                             [[SliderViewController sharedSliderController].navigationController pushViewController:[[BootstrapViewController alloc] init] animated:YES];
 

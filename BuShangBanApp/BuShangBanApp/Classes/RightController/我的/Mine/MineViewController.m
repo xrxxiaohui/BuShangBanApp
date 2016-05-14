@@ -36,10 +36,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    BootstrapViewController *tempView = [[BootstrapViewController alloc] init];
-//    [[SliderViewController sharedSliderController].navigationController pushViewController:tempView animated:YES];
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(judgeLoginStatus) name:@"judgeLoginStatus" object:nil];
+   
 //    UIButton *tempButton = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [tempButton setFrame:CGRectMake(100, kScreenHeight-120, 60, 60)];
 //    [tempButton setBackgroundColor:[UIColor blueColor]];
@@ -104,7 +102,6 @@
         self.user.sex = SafeForString(_successInfo[@"sex"]);
         self.user.email=SafeForString(_successInfo[@"email"]);
         self.user.label=SafeForString(_successInfo[@"title"]);
-//        self.user.avatar=SafeForString(_successInfo[@"avatar"]);
         self.user.avatar=SafeForDictionary(_successInfo[@"avatar"]);
         if(self.user.avatar.count>0)
             self.user.avatarImageURL=([NSURL URLWithString:self.user.avatar[@"url"]]);
@@ -155,7 +152,7 @@
                                NSForegroundColorAttributeName:[UIColor colorWithHexString:@"808080"]};
 
         [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:SafeForString(self.user.profession) attributes:dimDic]];
-        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"%lu,%@岁",(unsigned long)self.user.age ,([self.user.sex integerValue] ==1?@"男":@"女")] attributes:dimDic]];
+        [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"%lu岁,%@",(unsigned long)self.user.age ,([self.user.sex integerValue] ==1?@"男":@"女")] attributes:dimDic]];
         [_titleDataSource addObject:[[NSAttributedString alloc]initWithString:SafeForString(self.user.city_name) attributes:dimDic]];
         NSMutableAttributedString *articalAttr=[[NSMutableAttributedString alloc]initWithString:@"文章篇" attributes:dimDic];
         NSAttributedString *articalInsertAttr=[[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@" %@ ",self.user.artcailCount?self.user.artcailCount:@"0"] attributes:blackDic];
@@ -207,10 +204,9 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     MineCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"MineCell" forIndexPath:indexPath];
+    
+    [cell setImage:self.imageDataSource[indexPath.row] title:self.titleDataSource[indexPath.row]];
     cell.contentImageView.image=self.imageDataSource[indexPath.row];
-    CGSize size=cell.contentImageView.image.size;
-    cell.contentImageView.size=CGSizeMake(size.width *adapt.scaleWidth, size.height *adapt.scaleHeight);
-    cell.contentLabel.attributedText=self.titleDataSource[indexPath.row];
     if (indexPath.row == 4 || indexPath.row == 5)
         cell.backgroundColor=[UIColor colorWithHexString:@"f5f5f5"];
     return cell;
@@ -236,7 +232,7 @@
         [sectionHeaderView labelWithLable:sectionHeaderView.myFocusLabel Titlt:@"我关注" digit:(int32_t)[SafeForString(self.user.focusMeNumber) integerValue]];
         [sectionHeaderView.focusMeLabel sizeToFit];
         sectionHeaderView.focusMeLabel.right=kScreenWidth/2-ceilf(14*adapt.scaleWidth);
-        [sectionHeaderView nickNameLabelWithNickName:SafeForString(self.user.username) label:self.self.user.label];
+        [sectionHeaderView nickNameLabelWithNickName:SafeForString(self.user.username) label:self.self.user.profession];
         reusableView=sectionHeaderView;
     }
     return reusableView;
