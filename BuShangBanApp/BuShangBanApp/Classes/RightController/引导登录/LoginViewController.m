@@ -127,7 +127,9 @@
                             [userDefaults setObject:@"1" forKey:kLoginStatus];
                         
                         NSString *objectID = [NSString stringWithFormat:@"%@",[[successRequest.responseString objectFromJSONString] valueForKey:@"objectId"]];
-                        [[ConstObject instance] setObjectIDss:SafeForString(objectID)];
+                        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+                        [userDefault setObject:objectID forKey:kObjectID];
+//                        [[ConstObject instance] setObjectIDss:SafeForString(objectID)];
                         
                             [self.navigationController popToRootViewControllerAnimated:YES];
 

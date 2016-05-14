@@ -106,7 +106,10 @@
         SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
         _urlParamsReq.requestMethod =  YTKRequestMethodPut;
         [_urlParamsReq setParamsDict:dic];
-        NSString *finalObjectID = [[ConstObject instance] objectIDss];
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        
+        NSString *finalObjectID = [userDefault objectForKey:kObjectID];
+        
         NSLog(@"========%@",finalObjectID);
         [_urlParamsReq setUrlString:[NSString stringWithFormat:saveInformationURL,finalObjectID]];
         

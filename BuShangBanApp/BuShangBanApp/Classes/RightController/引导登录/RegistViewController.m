@@ -267,8 +267,10 @@
                             [userDefaults setObject:sessionToken forKey:kSessionToken];
                             
                             NSString *objectID = [NSString stringWithFormat:@"%@",[successCode1 objectForKey:@"objectId"]];
-                            [[ConstObject instance] setObjectIDss:SafeForString(objectID)];
-                            
+//                            [[ConstObject instance] setObjectIDss:SafeForString(objectID)];
+                            NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+                            [userDefault setObject:objectID forKey:kObjectID];
+
                             [[SliderViewController sharedSliderController].navigationController pushViewController:[[BootstrapViewController alloc] init] animated:YES];
 
                         }else{

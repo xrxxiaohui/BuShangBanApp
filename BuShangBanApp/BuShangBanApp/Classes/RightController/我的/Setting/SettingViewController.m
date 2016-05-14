@@ -20,16 +20,16 @@
 
 @implementation SettingViewController
 {
-    NSString *_detailtext;
+//    NSString *_detailtext;
     NSURL * _imageURL;
 }
 
 
 
--(instancetype)initWithImageURL:(NSURL *)imageURL{
-    if(self =[super init])
+-(void)initWithImageURL:(NSURL *)imageURL{
+//    if(self =[super init])
         _imageURL=imageURL;
-    return self;
+//    return self;
 }
 
 - (void)viewDidLoad {
@@ -63,8 +63,8 @@
 -(NSMutableArray *)dataSource
 {
     if (!_dataSource) {
-        _dataSource=[[NSMutableArray alloc]initWithArray:@[@[@"老编辑"],@[@"应用设置",@"关于我们",@"投诉建议"]]];
-        _detailtext=@"不上班创世人";
+        _dataSource=[[NSMutableArray alloc]initWithArray:@[@[self.userNames],@[@"应用设置",@"关于我们",@"投诉建议"]]];
+//        _detailtext=@"不上班创世人";
     }
     return _dataSource;
 }
@@ -83,9 +83,9 @@
 {
     if (indexPath.section == 0) {
         SettingCell *settingCell=[[SettingCell alloc]init];
-        [settingCell.headImageView sd_setImageWithURL:_imageURL];
+        [settingCell.headImageView sd_setImageWithURL:_imageURL placeholderImage:[UIImage imageNamed:@"defaultHead"]];
         settingCell.titleLabel.text=self.dataSource[indexPath.section][indexPath.row];
-        settingCell.detailTitleLabel.text=_detailtext;
+        settingCell.detailTitleLabel.text=self.detailtext;
         [settingCell.editBtn addTarget:self action:@selector(btnEvent) forControlEvents:UIControlEventTouchUpInside];
         return settingCell;
     }else{
