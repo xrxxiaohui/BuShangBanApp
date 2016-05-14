@@ -57,11 +57,11 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *loginStatus = [userDefaults objectForKey:kLoginStatus];
     
-    //    if([loginStatus isEqualToString:@"1"]){
-//        //已登录
-//        [self __loadData];
-//    }else
-//        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
+        if([loginStatus isEqualToString:@"1"]){
+        //已登录
+        [self __loadData];
+    }else
+        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
 }
 
 -(void)__loadData {

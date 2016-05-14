@@ -108,7 +108,7 @@
 
 #ifdef PRINTLOG
 
-//#define NSLog(...) NSLog(__VA_ARGS__)
+#define NSLog(...) NSLog(__VA_ARGS__)
 
 #else
 

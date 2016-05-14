@@ -112,7 +112,11 @@
         
         [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
             if([successRequest.responseJSONObject objectForKey:@"updatedAt"])
-                [MBProgressHUD showSuccess:@"信息保存完成"];
+                [MBProgressHUD showSuccess:@"恭喜您注册成功！"];
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                [userDefaults setObject:@"1" forKey:kLoginStatus];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"judgeLoginStatus" object:nil];
+            
         } failureBlock:^(SSLXResultRequest *failRequest){
             NSString *_errorMsg = [[failRequest.responseString objectFromJSONString] objectForKey:@"error"];
             _errorMsg?[MBProgressHUD showError:_errorMsg]:[MBProgressHUD showError:kMBProgressErrorTitle];
