@@ -121,8 +121,9 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"judgeLoginStatus" object:nil];
             
         } failureBlock:^(SSLXResultRequest *failRequest){
-            NSString *_errorMsg = [[failRequest.responseString objectFromJSONString] objectForKey:@"error"];
-            _errorMsg?[MBProgressHUD showError:_errorMsg]:[MBProgressHUD showError:kMBProgressErrorTitle];
+            [MBProgressHUD showError:@"注册失败请稍后重试！"];
+//            NSString *_errorMsg = [[failRequest.responseString objectFromJSONString] objectForKey:@"error"];
+//            _errorMsg?[MBProgressHUD showError:_errorMsg]:[MBProgressHUD showError:kMBProgressErrorTitle];
         }];
     }
 }

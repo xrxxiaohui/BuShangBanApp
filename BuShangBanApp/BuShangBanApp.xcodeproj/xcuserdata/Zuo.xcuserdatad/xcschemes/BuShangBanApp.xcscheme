@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A3FD03E41C99190700E84A0B"
-               BuildableName = "BuShangBanApp.app"
+               BuildableName = "&#x4e0d;&#x4e0a;&#x73ed;.app"
                BlueprintName = "BuShangBanApp"
                ReferencedContainer = "container:BuShangBanApp.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A3FD03E41C99190700E84A0B"
-            BuildableName = "BuShangBanApp.app"
+            BuildableName = "&#x4e0d;&#x4e0a;&#x73ed;.app"
             BlueprintName = "BuShangBanApp"
             ReferencedContainer = "container:BuShangBanApp.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A3FD03E41C99190700E84A0B"
-            BuildableName = "BuShangBanApp.app"
+            BuildableName = "&#x4e0d;&#x4e0a;&#x73ed;.app"
             BlueprintName = "BuShangBanApp"
             ReferencedContainer = "container:BuShangBanApp.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A3FD03E41C99190700E84A0B"
-            BuildableName = "BuShangBanApp.app"
+            BuildableName = "&#x4e0d;&#x4e0a;&#x73ed;.app"
             BlueprintName = "BuShangBanApp"
             ReferencedContainer = "container:BuShangBanApp.xcodeproj">
          </BuildableReference>

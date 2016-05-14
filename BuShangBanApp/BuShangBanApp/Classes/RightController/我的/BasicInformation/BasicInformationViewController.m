@@ -184,8 +184,11 @@
         if([successRequest.responseJSONObject objectForKey:@"updatedAt"])
             [MBProgressHUD showError:@"信息更新完成"];
     } failureBlock:^(SSLXResultRequest *failRequest){
-        NSString *_errorMsg = [[failRequest.responseString objectFromJSONString] objectForKey:@"error"];
-        _errorMsg?[MBProgressHUD showError:_errorMsg]:[MBProgressHUD showError:kMBProgressErrorTitle];
+        
+        [MBProgressHUD showError:@"信息更新失败"];
+        
+//        NSString *_errorMsg = [[failRequest.responseString objectFromJSONString] objectForKey:@"error"];
+//        _errorMsg?[MBProgressHUD showError:_errorMsg]:[MBProgressHUD showError:kMBProgressErrorTitle];
     }];
 }
 
