@@ -75,20 +75,21 @@
 
 
 - (void)nickNameLabelWithNickName:(NSString *)nickName label:(NSString *)label {
-    if ( !_nickNameLabel ) {
+    if ( !_nickNameLabel )
+    {
         if(![label isEqualToString:@""])
         {
-        _nickNameLabel = [[UILabel alloc] init];
-        nickName = [NSString stringWithFormat:@"%@  |  ", nickName];
+            _nickNameLabel = [[UILabel alloc] init];
+            nickName = [NSString stringWithFormat:@"%@  |  ", nickName];
         
-        NSDictionary *nickNameDic =
-        @{NSForegroundColorAttributeName : placeHoldTextColor, NSFontAttributeName : [UIFont fontWithName:fontName size:15.f]};
-        NSDictionary *labelDic =
-        @{NSForegroundColorAttributeName : placeHoldTextColor, NSFontAttributeName : smallerFont};
+            NSDictionary *nickNameDic =
+            @{NSForegroundColorAttributeName : placeHoldTextColor, NSFontAttributeName : [UIFont fontWithName:fontName size:15.f]};
+            NSDictionary *labelDic =
+            @{NSForegroundColorAttributeName : placeHoldTextColor, NSFontAttributeName : smallerFont};
         
-        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:nickName attributes:nickNameDic];
-        [attr appendAttributedString:[[NSAttributedString alloc] initWithString:label attributes:labelDic]];
-        _nickNameLabel.attributedText = attr;
+            NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:nickName attributes:nickNameDic];
+            [attr appendAttributedString:[[NSAttributedString alloc] initWithString:label attributes:labelDic]];
+            _nickNameLabel.attributedText = attr;
         }
         else
             _nickNameLabel.text=label;

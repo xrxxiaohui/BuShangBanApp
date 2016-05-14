@@ -35,6 +35,9 @@
 {
     NSInteger _currentIndex;
     NSMutableDictionary *_mutableDic;
+    BootstrapOneViewController *_one;
+    BootstrapTwoViewController *_two;
+    BootstrapThriViewController *_tri;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,6 +46,9 @@
 
 -(void)__initUI
 {
+    _one=[[BootstrapOneViewController alloc]init];
+    _two=[[BootstrapTwoViewController alloc]init];
+    _tri=[[BootstrapThriViewController alloc]init];
     _mutableDic=[NSMutableDictionary dictionary];
     _currentIndex=0;
     self.viewControllerS=@[[[BootstrapOneViewController alloc]init],[[BootstrapTwoViewController alloc]init],[[BootstrapThriViewController alloc]init]];
@@ -95,12 +101,17 @@
         [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"Loginned"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
+        if([_one.placeTF.text isEqualToString:@""]||[_one.nickNameTF.text isEqualToString:@""])
+        {
+            [MBProgressHUD showSuccess:@"昵称或地址没填"];
+            return ;
+        }
         NSDictionary *dic=@{
             @"sex":((BootstrapOneViewController *)_viewControllerS[0]).maleBtn.selected?@"男":@"女",
-            @"city_name":SafeForString(((BootstrapOneViewController *)_viewControllerS[0]).placeTF.text),
-            @"nickname":SafeForString(((BootstrapOneViewController *)_viewControllerS[0]).nickNameTF.text),
-            @"profession":SafeForString(((BootstrapTwoViewController *)_viewControllerS[1]).selectedItem),
-            @"interest":SafeForArray(((BootstrapThriViewController *)_viewControllerS[2]).selectedItems)
+            @"city_name":SafeForString(_one.placeTF.text),
+            @"nickname":SafeForString(_one.nickNameTF.text),
+            @"profession":SafeForString(_two.selectedItem),
+            @"interest":SafeForArray(_tri.selectedItems)
             };
         
         SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
