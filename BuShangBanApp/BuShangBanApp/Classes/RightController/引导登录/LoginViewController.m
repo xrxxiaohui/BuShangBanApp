@@ -12,6 +12,7 @@
 #import "RegistViewController.h"
 #import "AFHTTPSessionManager.h"
 #import "MainTabViewController.h"
+#import "ConstObject.h"
 
 #define adapt  [[[ScreenAdapt alloc]init] adapt]
 
@@ -124,8 +125,10 @@
                             NSString *sessionToken =[[successRequest.responseString objectFromJSONString] valueForKey:@"sessionToken"];
                             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                             [userDefaults setObject:sessionToken forKey:kSessionToken];
-                        
                             [userDefaults setObject:@"1" forKey:kLoginStatus];
+                        
+                        NSString *objectID = [NSString stringWithFormat:@"%@",[[successRequest.responseString objectFromJSONString] valueForKey:@"objectId"]];
+                        [[ConstObject instance] setObjectIDss:SafeForString(objectID)];
                         
                             [self.navigationController popToRootViewControllerAnimated:YES];
 

@@ -66,13 +66,25 @@
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [textField endEditing:YES];
+//    AddressChoicePickerView *addressChoice=[[AddressChoicePickerView alloc]init];
+//    addressChoice.block=^(AddressChoicePickerView *view, UIButton *btn, AreaObject *locate){
+//        textField.text=[NSString stringWithFormat:@"%@",locate];
+//    };
+//    [addressChoice show];
+}
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+
+    [self.nickNameTF resignFirstResponder];
+    
     AddressChoicePickerView *addressChoice=[[AddressChoicePickerView alloc]init];
     addressChoice.block=^(AddressChoicePickerView *view, UIButton *btn, AreaObject *locate){
         textField.text=[NSString stringWithFormat:@"%@",locate];
     };
     [addressChoice show];
+    
+    return NO;
 }
-
 
 -(void)__clickEvent:(UIButton *)btn
 {
