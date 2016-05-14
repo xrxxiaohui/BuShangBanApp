@@ -64,13 +64,6 @@
         [MBProgressHUD showError:@"账号不能为空"];
         return NO;
     }
-    
-    if([self  __validateMobile:_accountTF.text])
-    {
-        [MBProgressHUD showError:@"手机号格式不对"];
-        return NO;
-    }
-    
     if ([_passWordTF.text isEqualToString:@""]){
         _passWordTF.secureTextEntry=YES;
         [MBProgressHUD showError:@"密码不能为空"];
@@ -80,9 +73,17 @@
         [MBProgressHUD showError:@"密码不能小于6位"];
         return NO;
     }
+    if([_accountTF.text isEqualToString:@"xinzhi"])
+    {
+        return YES;
+    }
     
-    
-    return YES;
+    if(![self  __validateMobile:_accountTF.text])
+    {
+        [MBProgressHUD showError:@"手机号格式不对"];
+        return NO;
+    }
+       return YES;
 }
 
 //手机号码验证
@@ -136,15 +137,7 @@
                                         
                     NSDictionary *_failDict = [failRequest.responseString objectFromJSONString];
                     NSString *_errorMsg = [_failDict objectForKey:@"error"];
-                    if (_errorMsg) {
-                        
-                        [MBProgressHUD showError:_errorMsg];
-                        
-                
-                    }
-                    else {
-                        [MBProgressHUD showError:kMBProgressErrorTitle];
-                    }
+                    _errorMsg?[MBProgressHUD showError:_errorMsg]:[MBProgressHUD showError:kMBProgressErrorTitle];
                 }];
             }
             break;

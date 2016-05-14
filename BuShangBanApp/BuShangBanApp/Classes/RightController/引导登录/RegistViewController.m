@@ -142,7 +142,7 @@
     [self.view addSubview:_userProtocalBtn];
     _readedBtn.left=(kScreenWidth-_userProtocalBtn.width-_readedBtn.width)/2;
     _userProtocalBtn.left=_readedBtn.right;
-    _userProtocalBtn.bottom=kScreenHeight-11;
+    _userProtocalBtn.bottom=kScreenHeight-13;
     [self.view addSubview:_closeBtn];
 }
 

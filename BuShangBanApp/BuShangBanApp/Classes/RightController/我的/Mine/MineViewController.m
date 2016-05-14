@@ -34,10 +34,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    BootstrapViewController *tempView = [[BootstrapViewController alloc] init];
-    [[SliderViewController sharedSliderController].navigationController pushViewController:tempView animated:YES];
+//    BootstrapViewController *tempView = [[BootstrapViewController alloc] init];
+//    [[SliderViewController sharedSliderController].navigationController pushViewController:tempView animated:YES];
 
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(judgeLoginStatus) name:@"judgeLoginStatus" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(judgeLoginStatus) name:@"judgeLoginStatus" object:nil];
 //    UIButton *tempButton = [UIButton buttonWithType:UIButtonTypeCustom];
 //    [tempButton setFrame:CGRectMake(100, kScreenHeight-120, 60, 60)];
 //    [tempButton setBackgroundColor:[UIColor blueColor]];
@@ -56,11 +56,11 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *loginStatus = [userDefaults objectForKey:kLoginStatus];
     
-    //    if([loginStatus isEqualToString:@"1"]){
-//        //已登录
-//        [self __loadData];
-//    }else
-//        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
+        if([loginStatus isEqualToString:@"1"]){
+        //已登录
+        [self __loadData];
+    }else
+        [[SliderViewController sharedSliderController].navigationController pushViewController:[[LoginViewController alloc] init] animated:YES];
 }
 
 -(void)__loadData {
