@@ -9,7 +9,9 @@
 
 @interface SettingViewController : QHBasicViewController
 
--(instancetype)initWithImageURL:(NSURL *)imageURL;
+-(void)initWithImageURL:(NSURL *)imageURL;
+@property(nonatomic,copy)NSString *userNames;
+@property(nonatomic,copy)NSString *detailtext;
 
 //-(void)btnEvent;
 

@@ -302,6 +302,8 @@
 #define SaveUserTag @"SaveUserTag"  //问答资讯页
 #define kLoginStatus @"loginStatus"
 #define kSessionToken @"sessionToken"
+#define kObjectID @"objectID"
+
 //1已登录
 
 

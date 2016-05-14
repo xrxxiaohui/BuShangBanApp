@@ -20,8 +20,14 @@
 #define adapt  [[[ScreenAdapt alloc]init] adapt]
 
 #define userURL @"https://leancloud.cn:443/1.1/classes/_User/%@"
-#define articalURL @"https://leancloud.cn:443/1.1/classes/Post?where=%7B%22author%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22_User%22%2C%22objectId%22%3A%22570387b3ebcb7d005b196d24%22%7D%7D&count=1&limit=0"
-#define  aboutMe @"https://leancloud.cn/1.1/users/570387b3ebcb7d005b196d24/followersAndFollowees?limit=0&count=1"
+#define  aboutMe @"https://leancloud.cn/1.1/users/%@/followersAndFollowees?limit=0&count=1"
+
+#define articalURL @"%7B%22author%22%3A%7B%22__type%22%3A%22Pointer%22%2C%22className%22%3A%22_User%22%2C%22objectId%22%3A%22570387b3ebcb7d005b196d24%22%7D%7D&count=1&limit=0"
+
+#define articalURL1 @"https://leancloud.cn:443/1.1/classes/Post?where="
+#define url1 @"{\"author\":{\"__type\":\"Pointer\",\"className\":\"_User\",\"objectId\":\"%@\"}}"
+#define url2 @"count=1"
+#define url3 @"limit=0"
 
 @interface MineViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -67,7 +73,10 @@
     self.user=[[User alloc]init];
     
     SSLXUrlParamsRequest *_urlParamsRe = [[SSLXUrlParamsRequest alloc] init];
-    [_urlParamsRe setUrlString:aboutMe];
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *finalObjectID = [userDefault objectForKey:kObjectID];
+
+    [_urlParamsRe setUrlString:[NSString stringWithFormat:aboutMe,finalObjectID]];
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsRe successBlock:^(SSLXResultRequest *successReq){
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
         self.user.myFocusNumber= _successInfo[@"followees_count"];
@@ -75,7 +84,12 @@
     } failureBlock:nil];
     
     SSLXUrlParamsRequest *_urlParamsReq1 = [[SSLXUrlParamsRequest alloc] init];
-    [_urlParamsReq1 setUrlString:articalURL];
+    
+    NSString *pinObjectid = [NSString stringWithFormat:url1,finalObjectID];
+    NSString *encodeUrlString =[self encodeToPercentEscapeString:pinObjectid];
+    
+    NSString *finalURL = [NSString stringWithFormat:@"%@%@%@%@",articalURL1,encodeUrlString,url2,url3];
+    [_urlParamsReq1 setUrlString:finalURL];
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq1 successBlock:^(SSLXResultRequest *successReq){
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
         self.user.artcailCount=_successInfo[@"count"];
@@ -88,7 +102,9 @@
     NSInteger  currentYear=[[NSString stringWithString:dateArr[0]] integerValue];
     
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
-    [_urlParamsReq setUrlString:[NSString stringWithFormat:userURL,[[ConstObject instance] objectIDss]]];
+//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    
+    [_urlParamsReq setUrlString:[NSString stringWithFormat:userURL,finalObjectID]];
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
     
@@ -118,10 +134,21 @@
 
 -(void)settingBtn:(UIButton *)btn
 {
-    SettingViewController *setVC=[[SettingViewController alloc] initWithImageURL:self.user.avatarImageURL];
+    SettingViewController *setVC=[[SettingViewController alloc] init];
+    NSDictionary *avatarDic = SafeForDictionary(self.user.avatar);
+    NSURL *avarImageUrl = [NSURL URLWithString:SafeForString([avatarDic objectForKey:@"url"])];
+    [setVC initWithImageURL:avarImageUrl];
+//                                  WithImageURL:self.user.avatarImageURL];
+    setVC.userNames = SafeForString(self.user.nickName);
+    setVC.detailtext = SafeForString(self.user.profession);
     [[SliderViewController sharedSliderController].navigationController pushViewController:setVC  animated:YES];
 }
 
+- (NSString *)encodeToPercentEscapeString: (NSString *) input
+{
+    NSString* outputStr = (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(NULL, /* allocator */(__bridge CFStringRef)input,NULL, /* charactersToLeaveUnescaped */ (CFStringRef)@"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8);
+    return outputStr;
+}
 #pragma mark -- 懒加载 --
 -(UICollectionView *)collectionView
 {
