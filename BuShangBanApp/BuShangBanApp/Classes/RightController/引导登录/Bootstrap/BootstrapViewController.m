@@ -108,10 +108,10 @@
         }
         NSDictionary *dic=@{
             @"sex":((BootstrapOneViewController *)_viewControllerS[0]).maleBtn.selected?@"男":@"女",
-            @"city_name":SafeForString(_one.placeTF.text),
-            @"nickname":SafeForString(_one.nickNameTF.text),
-            @"profession":SafeForString(_two.selectedItem),
-            @"interest":SafeForArray(_tri.selectedItems)
+            @"city_name":SafeForString(((BootstrapOneViewController *)_viewControllerS[0]).placeTF.text),
+            @"nickname":SafeForString(((BootstrapOneViewController *)_viewControllerS[0]).nickNameTF.text),
+            @"profession":SafeForString(((BootstrapTwoViewController *)_viewControllerS[1]).selectedItem),
+            @"interest":SafeForArray(((BootstrapThriViewController *)_viewControllerS[2]).selectedItems)
             };
         
         SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];

@@ -204,7 +204,14 @@
     if (!_imageDataSource)
     {
         _imageDataSource=[NSMutableArray arrayWithCapacity:9];
-        [_imageDataSource addObject:[UIImage imageNamed:self.user.profession?self.user.profession:@"技术"]];
+        
+        NSString *imageStr = SafeForString(self.user.profession);
+        if([imageStr length]==0)
+            imageStr = @"技术";
+        UIImage *tempImage = [UIImage imageNamed:imageStr];
+        [_imageDataSource addObject:tempImage];
+        
+//        [_imageDataSource addObject:[UIImage imageNamed:(self.user.profession?self.user.profession:@"技术")]];
         [_imageDataSource addObject:[UIImage imageNamed:([self.user.sex integerValue] ==1?@"men":@"female")]];
         [_imageDataSource addObject:[UIImage imageNamed:@"location_big"]];
         [_imageDataSource addObject:[UIImage imageNamed:@"article"]];

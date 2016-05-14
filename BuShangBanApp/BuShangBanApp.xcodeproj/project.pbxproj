@@ -1620,7 +1620,7 @@
 		A3FD03DD1C99190700E84A0B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Zuo;
 				TargetAttributes = {
 					A3FD03E41C99190700E84A0B = {
@@ -1963,7 +1963,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2058,7 +2058,7 @@
 				New_Setting = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bushangban.bushangban;
 				PRODUCT_NAME = "不上班";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "90bd3abf-aedf-4f53-bceb-0c29b0acfc6d";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2091,7 +2091,7 @@
 				New_Setting = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bushangban.bushangban;
 				PRODUCT_NAME = "不上班";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "90bd3abf-aedf-4f53-bceb-0c29b0acfc6d";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

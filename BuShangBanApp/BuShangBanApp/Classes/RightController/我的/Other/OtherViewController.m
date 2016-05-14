@@ -75,6 +75,7 @@
         self.user.email=_successInfo[@"email"];
         self.user.label=_successInfo[@"title"];
         self.user.avatar=_successInfo[@"avatar"];
+        
         self.user.avatarImageURL=[NSURL URLWithString:self.user.avatar[@"url"]];
         
         self.collectionView.backgroundColor=bgColor;

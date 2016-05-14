@@ -278,7 +278,7 @@
                             [[ConstObject instance] setObjectIDss:SafeForString(objectID)];
                             
                            
-                            [[NSNotificationCenter defaultCenter] postNotificationName:@"judgeLoginStatus" object:nil];
+//                            [[NSNotificationCenter defaultCenter] postNotificationName:@"judgeLoginStatus" object:nil];
                             NSUserDefaults *userDefault=[NSUserDefaults standardUserDefaults];
                             [userDefault setValue:_accountTF.text forKey:@"userAccout"];
                             [userDefault setValue:_passWordTF.text forKey:@"userPassWord"];

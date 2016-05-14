@@ -85,7 +85,8 @@
 
         self.user.sex = _successInfo[@"sex"];
         self.user.avatar= SafeForDictionary(_successInfo[@"avatar"]);
-        self.user.avatarImageURL=[NSURL URLWithString:SafeForString(self.user.avatar[@"url"])];
+        if(self.user.avatar.count>0)
+            self.user.avatarImageURL=[NSURL URLWithString:SafeForString(self.user.avatar[@"url"])];
     
         NSString *birthday = [[[_successInfo[@"birthday"] objectForKey:@"iso"] substringWithRange:NSMakeRange(0, 10)] stringByReplacingOccurrencesOfString:@"-" withString:@","];
         NSMutableArray *array1=[NSMutableArray array];
