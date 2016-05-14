@@ -16,9 +16,9 @@
 #import "EditInformationViewController.h"
 #import "User.h"
 
-#define userURL @"https://leancloud.cn:443/1.1/classes/_User/570387b3ebcb7d005b196d24"
+#define userURL @"https://leancloud.cn:443/1.1/classes/_User/%@"
 
-#define saveInformationURL  @"https://api.leancloud.cn/1.1/users/570387b3ebcb7d005b196d24"
+#define saveInformationURL  @"https://api.leancloud.cn/1.1/users/%@"
 
 #define uploadImageURL @"https://api.leancloud.cn/1.1/files/570387b3ebcb7d005b196d24.jpeg"
 
@@ -76,7 +76,9 @@
     _mutableDic =[NSMutableDictionary dictionary];
     _titleArray=[NSArray arrayWithObjects:@[@"头像"],@[@"昵称", @"身份签名",@"所在地",@"生日", @"职业", @"兴趣"], @[@"电话号码",@"电子邮件" ],nil];
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
-    [_urlParamsReq setUrlString:userURL];
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *objectIDStr = [userDefault objectForKey:kObjectID];
+    [_urlParamsReq setUrlString:[NSString stringWithFormat:userURL,objectIDStr]];
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successReq){
         
         NSDictionary *_successInfo = [successReq.responseString objectFromJSONString];
@@ -87,17 +89,17 @@
     
         NSString *birthday = [[[_successInfo[@"birthday"] objectForKey:@"iso"] substringWithRange:NSMakeRange(0, 10)] stringByReplacingOccurrencesOfString:@"-" withString:@","];
         NSMutableArray *array1=[NSMutableArray array];
-        [array1 addObject:_successInfo[@"username"]];
-        [array1 addObject:_successInfo[@"title"]];
-        [array1 addObject:_successInfo[@"city_name"]];
-        [array1 addObject:birthday];
+        [array1 addObject:SafeForString(_successInfo[@"username"])];
+        [array1 addObject:SafeForString(_successInfo[@"title"])];
+        [array1 addObject:SafeForString(_successInfo[@"city_name"])];
+        [array1 addObject:SafeForString(birthday)];
     
-        [array1 addObject:_successInfo[@"profession"]];
-        [array1 addObject:[_successInfo[@"interest"] componentsJoinedByString:@","]];
+        [array1 addObject:SafeForString(_successInfo[@"profession"])];
+        [array1 addObject:SafeForString([_successInfo[@"interest"] componentsJoinedByString:@","])];
         
          NSMutableArray *array2=[NSMutableArray array];
-        [array2 addObject:_successInfo[@"mobilePhoneNumber"]];
-        [array2 addObject:_successInfo[@"email"]];
+        [array2 addObject:SafeForString(_successInfo[@"mobilePhoneNumber"])];
+        [array2 addObject:SafeForString(_successInfo[@"email"])];
         
         self.contentArray =[NSMutableArray array];
         [self.contentArray addObject:@[@""]];
@@ -178,7 +180,11 @@
     SSLXUrlParamsRequest *_urlParamsReq = [[SSLXUrlParamsRequest alloc] init];
     _urlParamsReq.requestMethod =  YTKRequestMethodPut;
     [_urlParamsReq setParamsDict:_mutableDic];
-    [_urlParamsReq setUrlString:saveInformationURL];
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *objectIDStr = [userDefault objectForKey:kObjectID];
+    
+    [_urlParamsReq setUrlString:[NSString stringWithFormat:saveInformationURL,objectIDStr]];
     
     [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
         if([successRequest.responseJSONObject objectForKey:@"updatedAt"])

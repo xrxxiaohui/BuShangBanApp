@@ -168,10 +168,10 @@
             break;
         case 1002:
         {
-            if (_count>=2) {
-                [MBProgressHUD showSuccess:@"发送验证码次数用尽"];
-                break;
-            }
+//            if (_count>=2) {
+//                [MBProgressHUD showSuccess:@"发送验证码次数用尽"];
+//                break;
+//            }
             if([self __checkMobileWithPhone:_accountTF.text]  )
             {
                 _count++;
@@ -185,9 +185,10 @@
                 _urlParamsReq.requestMethod = YTKRequestMethodPost;
                 
                 [[SSLXNetworkManager sharedInstance] startApiWithRequest:_urlParamsReq successBlock:^(SSLXResultRequest *successRequest){
-                    if ([[successRequest.responseString objectFromJSONString] valueForKey:@"error"])
-                        [MBProgressHUD showError:[[successRequest.responseString objectFromJSONString] valueForKey:@"error"]];
-                    else
+                    if ([[successRequest.responseString objectFromJSONString] valueForKey:@"error"]){
+//                        [MBProgressHUD showError:[[successRequest.responseString objectFromJSONString] valueForKey:@"error"]];
+                        [MBProgressHUD showError:@"验证码发送成功!"];
+                    }else
                         [MBProgressHUD showSuccess:@"验证码发送成功"];
                     
                     NSLog(@"access send sms success, successRequest: %@",[successRequest.responseString objectFromJSONString]);
@@ -195,13 +196,13 @@
                 } failureBlock:^(SSLXResultRequest *failRequest){
                     
                     NSLog(@"access send sms fail");
-                    
-                    NSDictionary *_failDict = [failRequest.responseString objectFromJSONString];
-                    NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
-                    if (_errorMsg)
-                        [MBProgressHUD showError:_errorMsg];
-                    else
-                        [MBProgressHUD showError:kMBProgressErrorTitle];
+                    [MBProgressHUD showError:@"验证码发送失败!"];
+//                    NSDictionary *_failDict = [failRequest.responseString objectFromJSONString];
+//                    NSString *_errorMsg = [_failDict valueForKeyPath:@"result.error.errorMessage"];
+//                    if (_errorMsg)
+//                        [MBProgressHUD showError:_errorMsg];
+//                    else
+//                        [MBProgressHUD showError:kMBProgressErrorTitle];
                 }];
             }
             break;
@@ -292,13 +293,16 @@
                         
                             if([self isBlankDictionary:successCode]){
                             
-                                NSString *_errorMsg = [[tempDic objectForKey:@"error"] objectForKey:@"error"];
-                                [MBProgressHUD showError:_errorMsg];
+//                                NSString *_errorMsg = [[tempDic objectForKey:@"error"] objectForKey:@"error"];
+//                                [MBProgressHUD showError:_errorMsg];
+                                [MBProgressHUD showError:@"邀请码错误!"];
                                 return;
                             }else if([self isBlankDictionary:successCode1]){
                             
-                                NSString *_errorMsg = [[tempDic1 objectForKey:@"error"] objectForKey:@"error"];
-                                [MBProgressHUD showError:_errorMsg];
+                                [MBProgressHUD showError:@"验证码错误!"];
+
+//                                NSString *_errorMsg = [[tempDic1 objectForKey:@"error"] objectForKey:@"error"];
+//                                [MBProgressHUD showError:_errorMsg];
                                 return;
                             }
                         }
@@ -348,9 +352,9 @@
         [MBProgressHUD showError:@"号码长度不为11"];
         return NO;
     }
-    if([self __validateMobile:phoneNumber])
+    if(![self __validateMobile:phoneNumber])
     {
-        [MBProgressHUD showError:@"号码不对"];
+        [MBProgressHUD showError:@"请输入正确的手机号"];
         return NO;
     }
     return YES;
@@ -382,7 +386,7 @@
     {
         if(![self __validateEmail:_accountTF.text])
         {
-            [MBProgressHUD showError:@"邮箱格式不对"];
+            [MBProgressHUD showError:@"邮箱格式错误"];
             return NO;
         }
     }
@@ -393,7 +397,7 @@
     
     if([_verificationCodeTF.text length]!=6)
     {
-        [MBProgressHUD showError:@"验证码长度不对"];
+        [MBProgressHUD showError:@"验证码应该为6位"];
         return NO;
     }
 //    if (![self  __verificationCode:_verificationCodeTF.text])
@@ -421,9 +425,9 @@
 //手机号码验证
 - (BOOL) __validateMobile:(NSString *)mobile
 {
-    NSString *phoneRegex = @"/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/";
-    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
-    return [phoneTest evaluateWithObject:mobile];
+    //    NSString *phoneRegex = @"/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/";
+    //    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
+    return [mobile isMobilePhoneNumber];
 }
 
 //验证码

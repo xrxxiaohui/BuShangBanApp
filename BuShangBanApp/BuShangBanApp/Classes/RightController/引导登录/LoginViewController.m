@@ -13,6 +13,7 @@
 #import "AFHTTPSessionManager.h"
 #import "MainTabViewController.h"
 #import "ConstObject.h"
+#import "NSString+Utility.h"
 
 #define adapt  [[[ScreenAdapt alloc]init] adapt]
 
@@ -93,7 +94,7 @@
     
     if(![self  __validateMobile:_accountTF.text])
     {
-        [MBProgressHUD showError:@"手机号格式不对"];
+        [MBProgressHUD showError:@"请输入正确的手机号!"];
         return NO;
     }
        return YES;
@@ -102,9 +103,9 @@
 //手机号码验证
 - (BOOL) __validateMobile:(NSString *)mobile
 {
-    NSString *phoneRegex = @"/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/";
-    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
-    return [phoneTest evaluateWithObject:mobile];
+//    NSString *phoneRegex = @"/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/";
+//    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
+    return [mobile isMobilePhoneNumber];
 }
 
 -(void)clickEvent:(UIButton *)sender
@@ -154,9 +155,10 @@
                     
                 } failureBlock:^(SSLXResultRequest *failRequest){
                                         
-                    NSDictionary *_failDict = [failRequest.responseString objectFromJSONString];
-                    NSString *_errorMsg = [_failDict objectForKey:@"error"];
-                    _errorMsg?[MBProgressHUD showError:_errorMsg]:[MBProgressHUD showError:kMBProgressErrorTitle];
+//                    NSDictionary *_failDict = [failRequest.responseString objectFromJSONString];
+//                    NSString *_errorMsg = [_failDict objectForKey:@"error"];
+//                    _errorMsg?[MBProgressHUD showError:_errorMsg]:[MBProgressHUD showError:kMBProgressErrorTitle];
+                    [MBProgressHUD showError:@"手机号或密码错误!"];
                 }];
             }
             break;
