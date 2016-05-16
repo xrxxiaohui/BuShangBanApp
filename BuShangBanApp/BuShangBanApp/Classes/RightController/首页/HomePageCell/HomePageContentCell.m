@@ -39,6 +39,13 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        
+        UIImageView *lineImageView2 = [[UIImageView alloc] init];
+        lineImageView2.backgroundColor = kCommonBottomLineColor;
+        [lineImageView2 setFrame:CGRectMake(0, 0, kScreenWidth, 1)];
+        [self.contentView addSubview:lineImageView2];
+
+        
         self.backgroundColor = [UIColor whiteColor];
         _leftUpButton = [UIButton buttonWithType:UIButtonTypeCustom];
         UIImage *image=[UIImage imageNamed:@"greenBackground"];
@@ -127,15 +134,18 @@
         [_shareNumLabel setTextColor:COLOR(124, 124, 124)];
         [self.contentView addSubview:_shareNumLabel];
 
-        UIImageView *lineImageView1 = [[UIImageView alloc] init];
-        lineImageView1.backgroundColor = kCommonBottomLineColor;
-        [lineImageView1 setFrame:CGRectMake(0, _shareButton.bottom+8, kScreenWidth, 0.5)];
-        [self.contentView addSubview:lineImageView1];
-
+       
         UIView *grayView = [[UIView alloc] init];
         [grayView setBackgroundColor:COLOR(249, 249, 249)];
-        [grayView setFrame:CGRectMake(0, _shareButton.bottom+8.5, kScreenWidth, 12.5)];
+        [grayView setFrame:CGRectMake(0, _shareButton.bottom+8, kScreenWidth, 14)];
         [self.contentView addSubview:grayView];
+        
+        UIImageView *lineImageView1 = [[UIImageView alloc] init];
+        lineImageView1.backgroundColor = kCommonBottomLineColor;
+        [lineImageView1 setFrame:CGRectMake(0, 0, kScreenWidth, 1)];
+        [grayView addSubview:lineImageView1];
+        
+        
         
     }
     

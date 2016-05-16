@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x6d88;&#x606f;/MessageViewController.m"
-            timestampString = "484745156.161402"
+            timestampString = "484926947.922269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,45 +186,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x53d1;&#x73b0;/DataListViewController.m"
-            timestampString = "484831359.629084"
+            timestampString = "484835060.362277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
             endingLineNumber = "103"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__37-[DataListViewController viewDidLoad]_block_invoke"
-                  moduleName = "BuShangBanApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Zuo/Movies/BuShangBanApp/BuShangBanApp/BuShangBanApp/Classes/RightController/%E5%8F%91%E7%8E%B0/DataListViewController.m"
-                  timestampString = "484831485.851285"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "103"
-                  endingLineNumber = "103"
-                  offsetFromSymbolStart = "328">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__37-[DataListViewController viewDidLoad]_block_invoke"
-                  moduleName = "BuShangBanApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Zuo/Movies/BuShangBanApp/BuShangBanApp/BuShangBanApp/Classes/RightController/%E5%8F%91%E7%8E%B0/DataListViewController.m"
-                  timestampString = "484831485.851527"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "103"
-                  endingLineNumber = "103"
-                  offsetFromSymbolStart = "344">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -314,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x9996;&#x9875;/HomePageCell/HomePageContentCell.m"
-            timestampString = "484731452.783163"
+            timestampString = "484926408.701031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "-refreshUI"
             landmarkType = "5">
          </BreakpointContent>
@@ -336,22 +304,6 @@
             startingLineNumber = "43"
             endingLineNumber = "43"
             landmarkName = "+postStatReqWithUrl:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x5f15;&#x5bfc;&#x767b;&#x5f55;/RegistViewController.m"
-            timestampString = "484558342.736359"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
-            landmarkName = "-clickEvent:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -425,60 +377,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/YTKNetworkExtension/Pod/Classes/YTKNetworkAgent+HDExtension.m"
-            timestampString = "484447167.507032"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
-            landmarkName = "-hd_addRequest:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/YTKNetworkExtension/Pod/Classes/YTKNetworkAgent+HDExtension.m"
-            timestampString = "484447169.832316"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
-            landmarkName = "-hd_addRequest:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x5f15;&#x5bfc;&#x767b;&#x5f55;/LoginViewController.m"
-            timestampString = "484474147.79384"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "-__validateMobile:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-            timestampString = "484800529.955009"
+            timestampString = "484897041.884216"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "476"
-            endingLineNumber = "476"
+            startingLineNumber = "477"
+            endingLineNumber = "477"
             landmarkName = "-requestWithMultipartFormRequest:writingStreamContentsToFile:completionHandler:"
             landmarkType = "5">
             <Locations>
@@ -487,14 +391,14 @@
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[AFHTTPRequestSerializer requestWithMultipartFormRequest:writingStreamContentsToFile:completionHandler:]"
-                  moduleName = "BuShangBanApp"
+                  moduleName = "&#x4e0d;&#x4e0a;&#x73ed;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Zuo/Movies/BuShangBanApp/Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "484831485.866345"
+                  timestampString = "484901352.536839"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "476"
-                  endingLineNumber = "476"
+                  startingLineNumber = "477"
+                  endingLineNumber = "477"
                   offsetFromSymbolStart = "136">
                </Location>
                <Location
@@ -502,14 +406,14 @@
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[AFHTTPRequestSerializer requestWithMultipartFormRequest:writingStreamContentsToFile:completionHandler:]"
-                  moduleName = "BuShangBanApp"
+                  moduleName = "&#x4e0d;&#x4e0a;&#x73ed;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Zuo/Movies/BuShangBanApp/Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "484831485.866475"
+                  timestampString = "484901352.536968"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "476"
-                  endingLineNumber = "476"
+                  startingLineNumber = "477"
+                  endingLineNumber = "477"
                   offsetFromSymbolStart = "224">
                </Location>
             </Locations>
@@ -522,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-            timestampString = "484800529.955009"
+            timestampString = "484897041.884216"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "441"
-            endingLineNumber = "441"
+            startingLineNumber = "442"
+            endingLineNumber = "442"
             landmarkName = "-multipartFormRequestWithMethod:URLString:parameters:constructingBodyWithBlock:error:"
             landmarkType = "5">
             <Locations>
@@ -535,14 +439,14 @@
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[AFHTTPRequestSerializer multipartFormRequestWithMethod:URLString:parameters:constructingBodyWithBlock:error:]"
-                  moduleName = "BuShangBanApp"
+                  moduleName = "&#x4e0d;&#x4e0a;&#x73ed;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Zuo/Movies/BuShangBanApp/Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "484831485.867478"
+                  timestampString = "484901352.53771"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "441"
-                  endingLineNumber = "441"
+                  startingLineNumber = "442"
+                  endingLineNumber = "442"
                   offsetFromSymbolStart = "180">
                </Location>
                <Location
@@ -550,14 +454,14 @@
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[AFHTTPRequestSerializer multipartFormRequestWithMethod:URLString:parameters:constructingBodyWithBlock:error:]"
-                  moduleName = "BuShangBanApp"
+                  moduleName = "&#x4e0d;&#x4e0a;&#x73ed;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Zuo/Movies/BuShangBanApp/Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-                  timestampString = "484831485.86761"
+                  timestampString = "484901352.537823"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "441"
-                  endingLineNumber = "441"
+                  startingLineNumber = "442"
+                  endingLineNumber = "442"
                   offsetFromSymbolStart = "212">
                </Location>
             </Locations>
@@ -583,10 +487,10 @@
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[AFHTTPRequestOperationManager HEAD:parameters:success:failure:]"
-                  moduleName = "BuShangBanApp"
+                  moduleName = "&#x4e0d;&#x4e0a;&#x73ed;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Zuo/Movies/BuShangBanApp/Pods/AFNetworking/AFNetworking/AFHTTPRequestOperationManager.m"
-                  timestampString = "484831485.868655"
+                  timestampString = "484901352.538708"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "154"
@@ -598,10 +502,10 @@
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__65-[AFHTTPRequestOperationManager HEAD:parameters:success:failure:]_block_invoke"
-                  moduleName = "BuShangBanApp"
+                  moduleName = "&#x4e0d;&#x4e0a;&#x73ed;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Zuo/Movies/BuShangBanApp/Pods/AFNetworking/AFNetworking/AFHTTPRequestOperationManager.m"
-                  timestampString = "484831485.868783"
+                  timestampString = "484901352.538825"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "154"
@@ -666,11 +570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-            timestampString = "484800529.955009"
+            timestampString = "484897041.884216"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "904"
-            endingLineNumber = "904"
+            startingLineNumber = "905"
+            endingLineNumber = "905"
             landmarkName = "-requestByFinalizingMultipartFormData"
             landmarkType = "5">
          </BreakpointContent>
@@ -682,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-            timestampString = "484800529.955009"
+            timestampString = "484897041.884216"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1425"
-            endingLineNumber = "1425"
+            startingLineNumber = "1426"
+            endingLineNumber = "1426"
             landmarkName = "-requestBySerializingRequest:withParameters:error:"
             landmarkType = "5">
          </BreakpointContent>
@@ -697,12 +601,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x5f15;&#x5bfc;&#x767b;&#x5f55;/LoginViewController.m"
-            timestampString = "484482746.753215"
+            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x5f15;&#x5bfc;&#x767b;&#x5f55;/RegistViewController.m"
+            timestampString = "484888205.350612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "-clickEvent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -714,59 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x5f15;&#x5bfc;&#x767b;&#x5f55;/RegistViewController.m"
-            timestampString = "484568026.006252"
+            timestampString = "484888205.350612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
-            landmarkName = "-clickEvent:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[RegistViewController clickEvent:]"
-                  moduleName = "BuShangBanApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Zuo/Movies/BuShangBanApp/BuShangBanApp/BuShangBanApp/Classes/RightController/%E5%BC%95%E5%AF%BC%E7%99%BB%E5%BD%95/RegistViewController.m"
-                  timestampString = "484831485.873552"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "240"
-                  endingLineNumber = "240"
-                  offsetFromSymbolStart = "2944">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__35-[RegistViewController clickEvent:]_block_invoke_3"
-                  moduleName = "BuShangBanApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Zuo/Movies/BuShangBanApp/BuShangBanApp/BuShangBanApp/Classes/RightController/%E5%BC%95%E5%AF%BC%E7%99%BB%E5%BD%95/RegistViewController.m"
-                  timestampString = "484831485.873669"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "242"
-                  endingLineNumber = "242"
-                  offsetFromSymbolStart = "68">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x5f15;&#x5bfc;&#x767b;&#x5f55;/RegistViewController.m"
-            timestampString = "484568026.006252"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "-clickEvent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -778,11 +634,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x5f15;&#x5bfc;&#x767b;&#x5f55;/RegistViewController.m"
-            timestampString = "484629993.802217"
+            timestampString = "484888205.350612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "-clickEvent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -794,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x5f15;&#x5bfc;&#x767b;&#x5f55;/RegistViewController.m"
-            timestampString = "484568026.006252"
+            timestampString = "484888205.350612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "-clickEvent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -810,44 +666,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x5f15;&#x5bfc;&#x767b;&#x5f55;/RegistViewController.m"
-            timestampString = "484629993.802217"
+            timestampString = "484888205.350612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
             landmarkName = "-clickEvent:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-            timestampString = "484800529.955009"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "597"
-            endingLineNumber = "597"
-            landmarkName = "-requestBySerializingRequest:withParameters:error:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-            timestampString = "484800529.955009"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "571"
-            endingLineNumber = "571"
-            landmarkName = "-requestBySerializingRequest:withParameters:error:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -858,11 +682,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x53d1;&#x73b0;/DataListViewController.m"
-            timestampString = "484831359.629084"
+            timestampString = "484835060.362277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192">
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -888,11 +714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/BaseViewController/BaseWebViewController.m"
-            timestampString = "484829887.180463"
+            timestampString = "484834793.510329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "526"
-            endingLineNumber = "526"
+            startingLineNumber = "538"
+            endingLineNumber = "538"
             landmarkName = "-gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:"
             landmarkType = "5">
          </BreakpointContent>
@@ -904,7 +730,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/BaseViewController/BaseWebViewController.m"
-            timestampString = "484627684.920412"
+            timestampString = "484834793.510329"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuShangBanApp/BuShangBanApp/BaseViewController/BaseWebViewController.m"
+            timestampString = "484834793.510329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "96"
@@ -920,27 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/BaseViewController/BaseWebViewController.m"
-            timestampString = "484627684.920412"
+            timestampString = "484834793.510329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BuShangBanApp/BuShangBanApp/BaseViewController/BaseWebViewController.m"
-            timestampString = "484627684.920412"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -952,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/BaseViewController/BaseWebViewController.m"
-            timestampString = "484627684.920412"
+            timestampString = "484834793.510329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "-customWebView"
             landmarkType = "5">
          </BreakpointContent>
@@ -964,23 +790,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-            timestampString = "484800529.955009"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "565"
-            endingLineNumber = "565"
-            landmarkName = "-requestBySerializingRequest:withParameters:error:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Network/SSLXNetworkManager.m"
@@ -1000,7 +810,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x53d1;&#x73b0;/DataListViewController.m"
-            timestampString = "484831359.629084"
+            timestampString = "484835060.362277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
@@ -1016,11 +826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x53d1;&#x73b0;/DataListViewController.m"
-            timestampString = "484831359.629084"
+            timestampString = "484835060.362277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -1032,13 +842,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x53d1;&#x73b0;/DataListViewController.m"
-            timestampString = "484831359.629084"
+            timestampString = "484835060.362277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "@implementation DataListViewController"
-            landmarkType = "3">
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1064,11 +874,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x53d1;&#x73b0;/FindViewController.m"
-            timestampString = "484704152.039477"
+            timestampString = "484833032.334049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "-__loadUI"
             landmarkType = "5">
          </BreakpointContent>
@@ -1080,13 +890,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x53d1;&#x73b0;/FindViewController.m"
-            timestampString = "484717028.900561"
+            timestampString = "484832978.519135"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "-__sortContentWithkeys:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FindViewController __sortContentWithkeys:]"
+                  moduleName = "&#x4e0d;&#x4e0a;&#x73ed;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Zuo/Movies/BuShangBanApp/BuShangBanApp/BuShangBanApp/Classes/RightController/%E5%8F%91%E7%8E%B0/FindViewController.m"
+                  timestampString = "484901352.556858"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "232">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[FindViewController __sortContentWithkeys:]"
+                  moduleName = "&#x4e0d;&#x4e0a;&#x73ed;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Zuo/Movies/BuShangBanApp/BuShangBanApp/BuShangBanApp/Classes/RightController/%E5%8F%91%E7%8E%B0/FindViewController.m"
+                  timestampString = "484901352.556983"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "248">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1112,11 +954,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/BaseViewController/BaseWebViewController.m"
-            timestampString = "484829887.180463"
+            timestampString = "484834793.510329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
+            startingLineNumber = "368"
+            endingLineNumber = "368"
             landmarkName = "-toArticalPage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1144,7 +986,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x53d1;&#x73b0;/DataListViewController.m"
-            timestampString = "484831359.629084"
+            timestampString = "484835060.362277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
@@ -1160,11 +1002,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x6211;&#x7684;/Mine/MineViewController.m"
-            timestampString = "484820990.474383"
+            timestampString = "484884329.306416"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "-__loadData"
             landmarkType = "5">
          </BreakpointContent>
@@ -1176,43 +1018,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x6211;&#x7684;/Mine/MineViewController.m"
-            timestampString = "484820990.474383"
+            timestampString = "484887030.745792"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "-__loadData"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/AFNetworking/AFNetworking/AFURLRequestSerialization.m"
-            timestampString = "484800742.034367"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "566"
-            endingLineNumber = "566"
-            landmarkName = "-requestBySerializingRequest:withParameters:error:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x6211;&#x7684;/Mine/MineViewController.m"
-            timestampString = "484820990.474383"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "-collectionView"
             landmarkType = "5">
          </BreakpointContent>
@@ -1224,11 +1034,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x6211;&#x7684;/Mine/MineViewController.m"
-            timestampString = "484820990.474383"
+            timestampString = "484887030.745792"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "-imageDataSource"
             landmarkType = "5">
          </BreakpointContent>
@@ -1240,12 +1050,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x6211;&#x7684;/Mine/MineViewController.m"
-            timestampString = "484820990.474383"
+            timestampString = "484899213.245632"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
-            landmarkName = "-collectionView:layout:sizeForItemAtIndexPath:"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
+            landmarkName = "-collectionView:cellForItemAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1256,11 +1066,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x6211;&#x7684;/Mine/MineViewController.m"
-            timestampString = "484820990.474383"
+            timestampString = "484899213.245632"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "-collectionView:viewForSupplementaryElementOfKind:atIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1272,11 +1082,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x6d88;&#x606f;/MessageViewController.m"
-            timestampString = "484816341.694262"
+            timestampString = "484926947.922269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1320,11 +1130,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/BaseViewController/BaseWebViewController.m"
-            timestampString = "484829887.180463"
+            timestampString = "484834793.510329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
             landmarkName = "-shareButtonClick"
             landmarkType = "5">
          </BreakpointContent>
@@ -1336,11 +1146,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/BaseViewController/BaseWebViewController.m"
-            timestampString = "484829887.180463"
+            timestampString = "484834793.510329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "393"
-            endingLineNumber = "393"
+            startingLineNumber = "405"
+            endingLineNumber = "405"
             landmarkName = "-shareButtonClick"
             landmarkType = "5">
          </BreakpointContent>
@@ -1352,11 +1162,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/BaseViewController/BaseWebViewController.m"
-            timestampString = "484829887.180463"
+            timestampString = "484834793.510329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "478"
-            endingLineNumber = "478"
+            startingLineNumber = "490"
+            endingLineNumber = "490"
             landmarkName = "-shareButtonClick"
             landmarkType = "5">
          </BreakpointContent>
@@ -1368,12 +1178,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x53d1;&#x73b0;/DataListViewController.m"
-            timestampString = "484831359.629084"
+            timestampString = "484835060.362277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1384,11 +1194,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x9996;&#x9875;/HomePageCell/HomePageContentCell.m"
-            timestampString = "484821535.092957"
+            timestampString = "484926408.701031"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "-refreshUI"
             landmarkType = "5">
          </BreakpointContent>
@@ -1400,11 +1210,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x5f15;&#x5bfc;&#x767b;&#x5f55;/LoginViewController.m"
-            timestampString = "484821907.061681"
+            timestampString = "484889466.036027"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "-clickEvent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1416,11 +1226,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x5f15;&#x5bfc;&#x767b;&#x5f55;/RegistViewController.m"
-            timestampString = "484821919.323587"
+            timestampString = "484888205.350612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
             landmarkName = "-clickEvent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1432,11 +1242,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/BaseViewController/BaseWebViewController.m"
-            timestampString = "484829899.150383"
+            timestampString = "484834793.510329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "348"
-            endingLineNumber = "348"
+            startingLineNumber = "360"
+            endingLineNumber = "360"
             landmarkName = "-customRightBtn"
             landmarkType = "5">
          </BreakpointContent>
@@ -1448,12 +1258,236 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x53d1;&#x73b0;/DataListViewController.m"
-            timestampString = "484831426.789872"
+            timestampString = "484835060.362277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
             endingLineNumber = "78"
             landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x53d1;&#x73b0;/FindViewController.m"
+            timestampString = "484833034.938414"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "-__loadUI"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x5f15;&#x5bfc;&#x767b;&#x5f55;/RegistViewController.m"
+            timestampString = "484888205.350612"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
+            landmarkName = "-clickEvent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x5f15;&#x5bfc;&#x767b;&#x5f55;/LoginViewController.m"
+            timestampString = "484889466.036027"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-clickEvent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x6211;&#x7684;/Mine/MineSectionHeaderView.m"
+            timestampString = "484850394.063832"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "-nickNameLabelWithNickName:label:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x6211;&#x7684;/Mine/MineViewController.m"
+            timestampString = "484884329.306416"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "-__loadData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x6211;&#x7684;/Setting/SettingViewController.m"
+            timestampString = "484886080.999015"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "-dataSource"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x5f15;&#x5bfc;&#x767b;&#x5f55;/RegistViewController.m"
+            timestampString = "484896169.996605"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
+            landmarkName = "-__check"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x5f15;&#x5bfc;&#x767b;&#x5f55;/LoginViewController.m"
+            timestampString = "484890296.656226"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "-clickEvent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x5f15;&#x5bfc;&#x767b;&#x5f55;/LoginViewController.m"
+            timestampString = "484895916.680712"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "-clickEvent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x5f15;&#x5bfc;&#x767b;&#x5f55;/RegistViewController.m"
+            timestampString = "484895925.197995"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "-clickEvent:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x6211;&#x7684;/Mine/MineViewController.m"
+            timestampString = "484897788.622378"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "-titleDataSource"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x6211;&#x7684;/Mine/MineViewController.m"
+            timestampString = "484898109.259266"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "-__loadData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x6211;&#x7684;/Mine/MineViewController.m"
+            timestampString = "484899213.245632"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "-imageDataSource"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BuShangBanApp/BuShangBanApp/Classes/RightController/&#x6211;&#x7684;/Mine/MineViewController.m"
+            timestampString = "484899213.245632"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "-imageDataSource"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

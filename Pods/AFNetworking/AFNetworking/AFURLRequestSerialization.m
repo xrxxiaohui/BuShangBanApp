@@ -20,6 +20,7 @@
 // THE SOFTWARE.
 
 #import "AFURLRequestSerialization.h"
+//#import "Define.h"
 #define SafeForString(string) ((string && [string isKindOfClass:[NSString class]]) ? string :@"")
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED

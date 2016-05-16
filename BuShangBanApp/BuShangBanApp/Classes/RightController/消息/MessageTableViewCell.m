@@ -50,11 +50,7 @@
         [_subTitleLabel setFont:[UIFont systemFontOfSize:10]];
         [self.contentView addSubview:_subTitleLabel];
         
-        UIImageView *lineImageView = [[UIImageView alloc] init];
-        lineImageView.backgroundColor = kCommonBottomLineColor;
-        [lineImageView setFrame:CGRectMake(12, 47.5, kScreenWidth-12, 0.5)];
-        [self.contentView addSubview:lineImageView];
-
+        
     }
     
     return self;

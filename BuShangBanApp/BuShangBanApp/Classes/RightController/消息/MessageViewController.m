@@ -132,6 +132,18 @@
     NSDictionary *tempDic = [[_dataArray objectAtIndex:indexPath.row] safeDictionary];
     [cell setDataInfo:tempDic];
     [cell refreshUI];
+    
+    
+    UIImageView *lineImageView = [[UIImageView alloc] init];
+    lineImageView.backgroundColor = kCommonBottomLineColor;
+    [cell addSubview:lineImageView];
+    if(indexPath.row == _dataArray.count-1){
+    
+        [lineImageView setFrame:CGRectMake(0, 47.5, kScreenWidth, 0.5)];
+    }else
+        [lineImageView setFrame:CGRectMake(12, 47.5, kScreenWidth-12, 0.5)];
+
+
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     return cell;
 }
